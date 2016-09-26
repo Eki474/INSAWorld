@@ -7,7 +7,12 @@ namespace INSAWORLD
 {
     public class Game
     {
-        public void main()
+        public void Launch()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Initialize()
         {
             throw new System.NotImplementedException();
         }

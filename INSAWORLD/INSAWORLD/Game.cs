@@ -7,6 +7,39 @@ namespace INSAWORLD
 {
     public class Game
     {
+        public Player Player1
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public Player Player2
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public Map Map
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+    
         public void Launch()
         {
             throw new System.NotImplementedException();

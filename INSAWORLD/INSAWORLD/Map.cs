@@ -5,7 +5,24 @@ using System.Text;
 
 namespace INSAWORLD
 {
-    public class Map
+    public interface Map
     {
+        int Taille
+        {
+            get;
+            set;
+        }
+
+        int NbTurn
+        {
+            get;
+            set;
+        }
+
+        Array<Tile> CasesJoueur
+        {
+            get;
+            set;
+        }
     }
 }

@@ -56,17 +56,17 @@ namespace INSAWORLD
             throw new System.NotImplementedException();
         }
 
-        public bool Win()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void EndTurn()
         {
             throw new System.NotImplementedException();
         }
 
         public void StartTurn()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ComputePoints()
         {
             throw new System.NotImplementedException();
         }

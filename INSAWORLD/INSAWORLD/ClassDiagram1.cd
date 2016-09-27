@@ -15,19 +15,12 @@
   <Class Name="INSAWORLD.Player">
     <Position X="0.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAAAACAAAAAgAAAAEABEAQAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <HashCode>QAAEAACAAAAAgAAAAAABEAQAAAAAAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Units" />
     </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="INSAWORLD.Unit">
-    <Position X="4.75" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAg=</HashCode>
-      <FileName>Units.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Class Name="INSAWORLD.Demo">
     <Position X="7" Y="5.25" Width="1.5" />
@@ -85,12 +78,43 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="INSAWORLD.Unit">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAYAABAAAAAAAAAAIAIAAAAAAAAAAAQAAAAg=</HashCode>
+      <FileName>Unit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWORLD.Cerberus">
+    <Position X="4" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cerberus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWORLD.Centau">
+    <Position X="5.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Centau.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWORLD.Cyclops">
+    <Position X="2.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cyclops.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="INSAWORLD.Map">
     <Position X="8.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
       <FileName>Map.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CasesJoueur" />
+    </ShowAsAssociation>
   </Interface>
   <Interface Name="INSAWORLD.Tile">
     <Position X="11.25" Y="2.5" Width="1.5" />

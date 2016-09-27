@@ -19,7 +19,7 @@ namespace INSAWORLD
             set;
         }
 
-        Array<Tile> CasesJoueur
+        INSAWORLD.Tile** CasesJoueur
         {
             get;
             set;

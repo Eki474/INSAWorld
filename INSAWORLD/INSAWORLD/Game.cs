@@ -29,7 +29,7 @@ namespace INSAWORLD
             }
         }
 
-        public Map Map
+        public GameMap Map
         {
             get
             {

@@ -9,7 +9,6 @@
     <ShowAsAssociation>
       <Property Name="Player1" />
       <Property Name="Player2" />
-      <Property Name="Map" />
     </ShowAsAssociation>
   </Class>
   <Class Name="INSAWORLD.Player">
@@ -35,14 +34,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
       <FileName>Small.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="INSAWORLD.Standart">
-    <Position X="10.5" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
-      <FileName>Standart.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -106,22 +97,62 @@
       <FileName>Cyclops.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="INSAWORLD.Map">
-    <Position X="8.75" Y="3" Width="1.5" />
+  <Class Name="INSAWORLD.Coord">
+    <Position X="9.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Coord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWORLD.BuilderMap">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAABAAAAA=</HashCode>
+      <FileName>BuilderMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWORLD.IHM">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IHM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWORLD.Command">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAABAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="INSAWORLD.Standard">
+    <Position X="10.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
-      <FileName>Map.cs</FileName>
+      <FileName>Standard.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="CasesJoueur" />
-    </ShowAsAssociation>
-  </Interface>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Struct Name="System.Collections.Generic.KeyValuePair&lt;TKey, TValue&gt;" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier />
+  </Struct>
   <Interface Name="INSAWORLD.Tile">
     <Position X="11.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Tile.cs</FileName>
     </TypeIdentifier>
+  </Interface>
+  <Interface Name="INSAWORLD.GameMap">
+    <Position X="7" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>GameMap.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CasesJoueur" />
+    </ShowAsAssociation>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

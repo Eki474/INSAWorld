@@ -23,7 +23,7 @@ namespace INSAWORLD
             throw new System.NotImplementedException();
         }
 
-        public GameMap FillMap()
+        public bool FillMap()
         {
             throw new System.NotImplementedException();
         }

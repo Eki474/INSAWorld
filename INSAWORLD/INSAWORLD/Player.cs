@@ -40,17 +40,6 @@ namespace INSAWORLD
             }
         }
 
-        public ICollection<Unit> Units
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
         public bool Lost()
         {
             throw new System.NotImplementedException();

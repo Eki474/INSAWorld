@@ -5,7 +5,7 @@ using System.Text;
 
 namespace INSAWORLD
 {
-    public abstract class Unit
+    public class Unit
     {
         public float MovePoints
         {
@@ -73,11 +73,6 @@ namespace INSAWORLD
         }
 
         public void Reset()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void VictoryPoints()
         {
             throw new System.NotImplementedException();
         }

@@ -5,7 +5,23 @@ using System.Text;
 
 namespace INSAWORLD
 {
-    public class Cyclops : Unit
+    public class Cyclops : Race
     {
+        public Dictionary<Coord, Unit> Units
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public void VictoryPoints()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

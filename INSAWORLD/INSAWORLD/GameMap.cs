@@ -19,7 +19,7 @@ namespace INSAWORLD
             set;
         }
 
-        KeyValuePair<Coord, Tile> CasesJoueur
+        Dictionary<INSAWORLD.Coord, INSAWORLD.Tile> CasesJoueur
         {
             get;
             set;

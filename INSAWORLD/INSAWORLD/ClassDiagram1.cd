@@ -14,12 +14,9 @@
   <Class Name="INSAWORLD.Player">
     <Position X="0.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAEAACAAAAAgAAAAAABEAQAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <HashCode>QAAEAACAAAAAgAAAAAABEAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Units" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="INSAWORLD.Demo">
     <Position X="7" Y="5.25" Width="1.5" />
@@ -72,30 +69,17 @@
   <Class Name="INSAWORLD.Unit">
     <Position X="4" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAYAABAAAAAAAAAAIAIAAAAAAAAAAAQAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAYAABAAAAAAAAAAIAIAAAAAAAAAAAQAAAAg=</HashCode>
       <FileName>Unit.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="INSAWORLD.Cerberus">
-    <Position X="4" Y="8.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Cerberus.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="INSAWORLD.Centau">
-    <Position X="5.75" Y="8.25" Width="1.5" />
+    <Position X="0.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Centau.cs</FileName>
     </TypeIdentifier>
-  </Class>
-  <Class Name="INSAWORLD.Cyclops">
-    <Position X="2.25" Y="8.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Cyclops.cs</FileName>
-    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="INSAWORLD.Coord">
     <Position X="9.75" Y="0.75" Width="1.5" />
@@ -133,10 +117,22 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Struct Name="System.Collections.Generic.KeyValuePair&lt;TKey, TValue&gt;" Collapsed="true">
-    <Position X="9.5" Y="3.25" Width="1.5" />
-    <TypeIdentifier />
-  </Struct>
+  <Class Name="INSAWORLD.Cerberus">
+    <Position X="2.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Cerberus.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="INSAWORLD.Cyclops">
+    <Position X="4" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Cyclops.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="INSAWORLD.Tile">
     <Position X="11.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
@@ -150,9 +146,19 @@
       <HashCode>AAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
       <FileName>GameMap.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
+    <ShowAsCollectionAssociation>
       <Property Name="CasesJoueur" />
-    </ShowAsAssociation>
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="INSAWORLD.Race">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Race.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Units" />
+    </ShowAsCollectionAssociation>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

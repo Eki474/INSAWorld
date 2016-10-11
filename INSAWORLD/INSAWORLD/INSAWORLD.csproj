@@ -53,6 +53,7 @@
     <Compile Include="Plain.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Race.cs" />
     <Compile Include="Small.cs" />
     <Compile Include="Standard.cs" />
     <Compile Include="Swamp.cs" />
@@ -62,6 +63,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+    <None Include="SequenceDiagram1.sequencediagram" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SequenceDiagram1.sequencediagram.layout" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

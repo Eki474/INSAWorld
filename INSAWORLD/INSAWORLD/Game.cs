@@ -7,6 +7,23 @@ namespace INSAWORLD
 {
     public class Game
     {
+        private Player player1; //launch the game
+        private Player player2; //join the game
+        private GameMap map; //board
+
+        public Game(Player p1, Player p2)
+        {
+            player1 = p1;
+            player2 = p2;
+            BuilderMap.Instance.BuildMap();
+            BuilderMap.Instance.FillMap();
+        }
+
+        public ~Game()
+        {
+            //putain de destructeurs de merde, c'était plus facile en C++
+        }
+
         public Player Player1
         {
             get

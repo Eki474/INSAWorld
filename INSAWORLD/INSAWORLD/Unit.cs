@@ -7,6 +7,12 @@ namespace INSAWORLD
 {
     public class Unit
     {
+        private int movePoints; // number of tile the unit can move on
+        private int lifePoints; // number of points before the unit dies
+        private int defensePoints; // number of damage the creature can take 
+        private int attackPoints; // number of damages the creature can inflict
+        private bool played; // true if the unit as been played this turn, false if not
+
         public float MovePoints
         {
             get
@@ -62,16 +68,19 @@ namespace INSAWORLD
             }
         }
     
+        //method : move the unit on the map
         public bool Move()
         {
             throw new System.NotImplementedException();
         }
 
+        //method : attack an other unit
         public bool Attack()
         {
             throw new System.NotImplementedException();
         }
 
+        //method : all points are resetted
         public void Reset()
         {
             throw new System.NotImplementedException();

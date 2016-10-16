@@ -7,6 +7,17 @@ namespace INSAWORLD
 {
     public class Demo : GameMap
     {
+        private int taille; //size of the board
+        private Array casesJoueur; //to stock the tile
+        private int nbTurn; // number of maximum turns before the game ends
+
+        public Demo()
+        {
+            taille = 6;
+            nbTurn = 5;
+            //casesJoueur.generate(); in the C++ part ???
+        }
+
         public int Taille
         {
             get

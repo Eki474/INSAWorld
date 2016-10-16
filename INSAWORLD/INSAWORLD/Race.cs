@@ -5,6 +5,7 @@ using System.Text;
 
 namespace INSAWORLD
 {
+    //strategy : several implementations of VictoryPoints in function of the race
     public interface Race
     {
         Dictionary<Coord, INSAWORLD.Unit> Units

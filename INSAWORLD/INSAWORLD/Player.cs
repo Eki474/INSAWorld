@@ -7,6 +7,28 @@ namespace INSAWORLD
 {
     public class Player
     {
+        private string name; //name of the player
+        private int race; //race choosen by the player 
+        /* 
+         * -1 not set yet
+         * 0 Centau
+         * 1 Cerberus
+         * 2 Cyclops
+        */
+        private int points; //points earned by the player
+
+        public Player(string n)
+        {
+            name = n;
+            race = -1;
+            points = 0;
+        }
+
+        public ~Player()
+        {
+
+        }
+
         public string Name
         {
             get
@@ -40,21 +62,23 @@ namespace INSAWORLD
             }
         }
 
+        // method : return true if the game is lost by the player
+        // false if not
         public bool Lost()
         {
             throw new System.NotImplementedException();
         }
-
+        // method : end the turn of the player
         public void EndTurn()
         {
             throw new System.NotImplementedException();
         }
-
+        // method : begin the turn of the player
         public void StartTurn()
         {
             throw new System.NotImplementedException();
         }
-
+        // method compute points earned by the player this turn and add the result to global count
         public void ComputePoints()
         {
             throw new System.NotImplementedException();

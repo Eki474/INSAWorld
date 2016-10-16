@@ -5,6 +5,7 @@ using System.Text;
 
 namespace INSAWORLD
 {
+    //flyweight
     public interface Tile
     {
     }

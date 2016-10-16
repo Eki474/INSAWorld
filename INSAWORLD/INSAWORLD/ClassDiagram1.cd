@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="INSAWORLD.Game">
-    <Position X="4.5" Y="1.5" Width="1.5" />
+    <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQBAAAQAAwAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>wAAAEAAAQBAAAQAAwAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -14,14 +14,14 @@
   <Class Name="INSAWORLD.Player">
     <Position X="0.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAEAACAAAAAgAAAAAABEAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>QAAEAECAAAAAgAAAAAABEAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="INSAWORLD.Demo">
     <Position X="7" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAACgAAAAoAAAAAAAAAAAAAAAAAIAAAACAAA=</HashCode>
       <FileName>Demo.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -29,13 +29,13 @@
   <Class Name="INSAWORLD.Small">
     <Position X="8.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAACgAAAAoAAAAAAAAAAAAAAAAAIAAAACAAA=</HashCode>
       <FileName>Small.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="INSAWORLD.Plain">
-    <Position X="11.25" Y="3.75" Width="1.5" />
+    <Position X="11.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Plain.cs</FileName>
@@ -43,7 +43,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="INSAWORLD.Desert">
-    <Position X="14.75" Y="3.75" Width="1.5" />
+    <Position X="14.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Desert.cs</FileName>
@@ -51,7 +51,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="INSAWORLD.Volcano">
-    <Position X="13" Y="3.75" Width="1.5" />
+    <Position X="13" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Volcano.cs</FileName>
@@ -59,7 +59,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="INSAWORLD.Swamp">
-    <Position X="16.5" Y="3.75" Width="1.5" />
+    <Position X="16.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Swamp.cs</FileName>
@@ -67,31 +67,31 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="INSAWORLD.Unit">
-    <Position X="4" Y="4.5" Width="1.5" />
+    <Position X="4" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAYAABAAAAAAAAAAIAIAAAAAAAAAAAQAAAAg=</HashCode>
+      <HashCode>AAABCAAAAYAABAAAAAgAAQAIAIAAAAABAAAAAQAAAAg=</HashCode>
       <FileName>Unit.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="INSAWORLD.Centau">
     <Position X="0.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Centau.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="INSAWORLD.Coord">
-    <Position X="9.75" Y="0.75" Width="1.5" />
+    <Position X="9.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAYAA=</HashCode>
       <FileName>Coord.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="INSAWORLD.BuilderMap">
     <Position X="6.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAABAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAARAAAABAAAAA=</HashCode>
       <FileName>BuilderMap.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -112,7 +112,7 @@
   <Class Name="INSAWORLD.Standard">
     <Position X="10.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAACgAAAAoAAAAAAAAAAAAAAAAAIAAAACAAA=</HashCode>
       <FileName>Standard.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -120,7 +120,7 @@
   <Class Name="INSAWORLD.Cerberus">
     <Position X="2.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Cerberus.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -128,13 +128,13 @@
   <Class Name="INSAWORLD.Cyclops">
     <Position X="4" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Cyclops.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Interface Name="INSAWORLD.Tile">
-    <Position X="11.25" Y="2.5" Width="1.5" />
+    <Position X="11.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Tile.cs</FileName>
@@ -151,7 +151,7 @@
     </ShowAsCollectionAssociation>
   </Interface>
   <Interface Name="INSAWORLD.Race">
-    <Position X="0.5" Y="5" Width="1.5" />
+    <Position X="0.5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Race.cs</FileName>

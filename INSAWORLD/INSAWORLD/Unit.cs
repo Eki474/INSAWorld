@@ -13,6 +13,40 @@ namespace INSAWORLD
         private int attackPoints; // number of damages the creature can inflict
         private bool played; // true if the unit as been played this turn, false if not
 
+        public Unit(int race)
+        {
+            movePoints = 3;
+            played = false;
+            switch (race)
+            {
+                case -1:
+                    break;
+                case 0:
+                    //Centau
+                    lifePoints = 10;
+                    defensePoints = 2;
+                    attackPoints = 8;
+                    break;
+                case 1:
+                    //Cerberus
+                    lifePoints = 10;
+                    defensePoints = 4;
+                    attackPoints = 6;
+                    break;
+                case 2:
+                    //Cyclops
+                    lifePoints = 12;
+                    defensePoints = 6;
+                    attackPoints = 4;
+                    break;
+            }
+        }
+
+        public ~Unit()
+        {
+
+        }
+
         public float MovePoints
         {
             get

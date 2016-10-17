@@ -17,9 +17,8 @@ namespace INSAWORLD
 
         public ~Cerberus()
         {
-            //delete units;
             units.Clear(); //vide la liste
-            //à compléter le delete fonctionne pas 
+            units = null; 
         }
 
         public Dictionary<Coord, Unit> Units

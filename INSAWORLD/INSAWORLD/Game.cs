@@ -21,7 +21,9 @@ namespace INSAWORLD
 
         public ~Game()
         {
-            //putain de destructeurs de merde, c'était plus facile en C++
+            player1 = null;
+            player2 = null;
+            map = null;
         }
 
         public Player Player1

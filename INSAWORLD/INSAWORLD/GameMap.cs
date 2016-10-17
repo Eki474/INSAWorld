@@ -10,6 +10,7 @@ namespace INSAWORLD
     //problem : nombre d'unités par joueur change en fonction du type de map
     public interface GameMap
     {
+
         int NbTurn
         {
             get;

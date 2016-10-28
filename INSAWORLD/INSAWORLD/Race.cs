@@ -14,6 +14,6 @@ namespace INSAWORLD
             set;
         }
 
-        void VictoryPoints();
+        int VictoryPoints();
     }
 }

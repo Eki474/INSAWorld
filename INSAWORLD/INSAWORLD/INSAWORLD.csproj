@@ -63,10 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
-    <None Include="SequenceDiagram1.sequencediagram" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SequenceDiagram1.sequencediagram.layout" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\ModelioUML\SequenceDiagram1.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

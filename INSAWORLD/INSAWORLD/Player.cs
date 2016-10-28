@@ -40,7 +40,7 @@ namespace INSAWORLD
             }
         }
 
-        public int Race
+        public int Points
         {
             get
             {
@@ -51,7 +51,7 @@ namespace INSAWORLD
             }
         }
 
-        public int Points
+        public Race RacePlay
         {
             get
             {

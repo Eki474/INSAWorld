@@ -103,12 +103,14 @@ namespace INSAWORLD
         }
     
         //method : move the unit on the map
+        //return true if another unit is on the Tile false if not
         public bool Move()
         {
             throw new System.NotImplementedException();
         }
 
         //method : attack an other unit
+        //return true if the fight is won false if not
         public bool Attack()
         {
             throw new System.NotImplementedException();

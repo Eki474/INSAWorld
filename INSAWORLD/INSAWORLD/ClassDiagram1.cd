@@ -14,9 +14,12 @@
   <Class Name="INSAWORLD.Player">
     <Position X="0.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAEAECAAAAAgAAAAAABEAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAEAECAAAAAgAAAAAABEAQAAAAEAAAAAAAAAAAQAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="RacePlay" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="INSAWORLD.Demo">
     <Position X="7" Y="5.25" Width="1.5" />
@@ -151,7 +154,7 @@
     </ShowAsCollectionAssociation>
   </Interface>
   <Interface Name="INSAWORLD.Race">
-    <Position X="0.5" Y="6" Width="1.5" />
+    <Position X="0.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Race.cs</FileName>

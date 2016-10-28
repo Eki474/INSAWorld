@@ -59,12 +59,20 @@ namespace INSAWORLD
             }
         }
     
+        //launch a game
         public void Launch()
         {
             throw new System.NotImplementedException();
         }
 
+        //initialize units ??
         public void Initialize()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        //
+        public void EndGame()
         {
             throw new System.NotImplementedException();
         }

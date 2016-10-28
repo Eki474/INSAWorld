@@ -28,5 +28,10 @@ namespace INSAWORLD
             get;
             set;
         }
+
+        //decrement nbTurn when a turn is finished
+        //-0.5 for a turn in a two-players game. 
+        //return true if nbTurn < 0 false if ==0
+        bool TurnPlayed();
     }
 }

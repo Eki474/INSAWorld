@@ -8,7 +8,7 @@ namespace INSAWORLD
     public class Standard : GameMap
     {
         private int taille; //size of the board
-        private Array casesJoueur; //to stock the tile
+        private List<Tile> casesJoueur; //to stock the tile
         private int nbTurn; // number of maximum turns before the game ends
 
         public Standard()
@@ -16,6 +16,11 @@ namespace INSAWORLD
             taille = 14;
             nbTurn = 30;
             //casesJoueur.generate(); in the C++ part ???
+        }
+
+        public ~Standard()
+        {
+            casesJoueur.Clear();
         }
 
         public int NbTurn

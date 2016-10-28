@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="ProjectPOO" version="4">
+  <OBJECT>
+    <ID name="ProjectPOO" mc="Standard.PropertyContainer" uid="6d6b57aa-8845-489e-b62a-e899475c1433"/>
+    <PID name="ProjectPOO" mc="Standard.AnalystProject" uid="20c44812-124c-439c-86c7-d7f08d78f5ed"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[ProjectPOO]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

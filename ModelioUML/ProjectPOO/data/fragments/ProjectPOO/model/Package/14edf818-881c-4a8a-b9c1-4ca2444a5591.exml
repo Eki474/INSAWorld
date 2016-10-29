@@ -16,6 +16,18 @@
       <COMP relation="OwnedBehavior">
         <COMPID name="State Machine" mc="Standard.StateMachine" uid="6a3bdae0-b63b-47e2-8fb6-ec5303d4adbe"/>
         <COMPID name="Interaction" mc="Standard.Interaction" uid="6900ed37-aa29-47a5-85e2-2abc2a12c0c2"/>
+        <COMPID name="Interaction1" mc="Standard.Interaction" uid="e8842010-720f-45d7-9ec4-960b077de55b"/>
+      </COMP>
+      <COMP relation="OwnedElement">
+        <COMPID name="Player" mc="Standard.Class" uid="ec04c8a8-c96f-4b9f-86e1-91748e07dab4"/>
+        <COMPID name="Unit" mc="Standard.Class" uid="f74d7c92-fc93-44fe-8e76-f5481c23693c"/>
+        <COMPID name="Centau" mc="Standard.Class" uid="1484b56a-7d5c-465f-a9bf-49ef7fdd3e57"/>
+        <COMPID name="Cyclops" mc="Standard.Class" uid="c7388967-bbb0-4bfc-8431-d02b901ade03"/>
+        <COMPID name="Game" mc="Standard.Class" uid="a3031c33-1873-41e5-b403-6592feb90d1b"/>
+        <COMPID name="BuilderMap" mc="Standard.Class" uid="199c244a-f7a5-4603-b475-aeac8b711769"/>
+        <COMPID name="Demo" mc="Standard.Class" uid="8274b079-a101-4146-bcd8-66f26ad027f2"/>
+        <COMPID name="Tile" mc="Standard.Class" uid="1474e910-8cca-4aa8-aed0-42b64c421f22"/>
+        <COMPID name="Coord" mc="Standard.Class" uid="62ce78ca-abcb-4976-90b5-f787aa0c431c"/>
       </COMP>
       <COMP relation="Product">
         <COMPID name="overview diagram" mc="Standard.ClassDiagram" uid="a01ff7b2-ab1a-4c71-a06d-72a42ec3f00b"/>

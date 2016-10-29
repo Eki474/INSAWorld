@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Cyclops" version="4">
+  <OBJECT>
+    <ID name="Cyclops" mc="Standard.Class" uid="c7388967-bbb0-4bfc-8431-d02b901ade03"/>
+    <PID name="projectpoo" mc="Standard.Package" uid="14edf818-881c-4a8a-b9c1-4ca2444a5591"/>
+    <ATTRIBUTES>
+      <ATT name="IsActive">false</ATT>
+      <ATT name="IsMain">false</ATT>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Cyclops]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Player" version="4">
+  <OBJECT>
+    <ID name="Player" mc="Standard.Class" uid="ec04c8a8-c96f-4b9f-86e1-91748e07dab4"/>
+    <PID name="projectpoo" mc="Standard.Package" uid="14edf818-881c-4a8a-b9c1-4ca2444a5591"/>
+    <ATTRIBUTES>
+      <ATT name="IsActive">false</ATT>
+      <ATT name="IsMain">false</ATT>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Player]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

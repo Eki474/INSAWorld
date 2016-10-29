@@ -64,17 +64,17 @@ namespace INSAWORLD
 
         // method : return true if the game is lost by the player
         // false if not
-        public bool Lost()
+        public void Lost()
         {
             throw new System.NotImplementedException();
         }
         // method : end the turn of the player
-        public void EndTurn()
+        public bool EndTurn()
         {
             throw new System.NotImplementedException();
         }
         // method : begin the turn of the player
-        public void StartTurn()
+        public bool StartTurn()
         {
             throw new System.NotImplementedException();
         }

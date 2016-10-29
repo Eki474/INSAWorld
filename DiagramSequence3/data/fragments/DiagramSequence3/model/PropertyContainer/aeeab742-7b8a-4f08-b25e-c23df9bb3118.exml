@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="DiagramSequence3" version="4">
+  <OBJECT>
+    <ID name="DiagramSequence3" mc="Standard.PropertyContainer" uid="aeeab742-7b8a-4f08-b25e-c23df9bb3118"/>
+    <PID name="DiagramSequence3" mc="Standard.AnalystProject" uid="c38d25a9-44cb-4dea-a54c-4585ff48995e"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[DiagramSequence3]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

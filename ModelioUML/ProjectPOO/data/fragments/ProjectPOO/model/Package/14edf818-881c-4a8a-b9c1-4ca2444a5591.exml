@@ -13,6 +13,10 @@
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>
+      <COMP relation="OwnedBehavior">
+        <COMPID name="State Machine" mc="Standard.StateMachine" uid="6a3bdae0-b63b-47e2-8fb6-ec5303d4adbe"/>
+        <COMPID name="Interaction" mc="Standard.Interaction" uid="6900ed37-aa29-47a5-85e2-2abc2a12c0c2"/>
+      </COMP>
       <COMP relation="Product">
         <COMPID name="overview diagram" mc="Standard.ClassDiagram" uid="a01ff7b2-ab1a-4c71-a06d-72a42ec3f00b"/>
       </COMP>

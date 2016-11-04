@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="project1" version="4">
+  <OBJECT>
+    <ID name="project1" mc="Standard.Package" uid="0065617a-ba7f-43e0-ae09-21f415a0fcb8"/>
+    <PID name="Project1" mc="Standard.Project" uid="ab5a39fe-8617-4fab-b922-57a8e44de442"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[project1]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedBehavior">
+        <COMPID name="State Machine" mc="Standard.StateMachine" uid="d582bcf1-dc53-4813-90ac-a5340b2b8f6f"/>
+      </COMP>
+      <COMP relation="OwnedElement">
+        <COMPID name="Class" mc="Standard.Class" uid="03e0af3b-8f45-41e5-8ffc-91bec97a177f"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="overview diagram" mc="Standard.ClassDiagram" uid="74e0a7b0-5c48-40cf-abe9-bac0a5a4b793"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

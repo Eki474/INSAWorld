@@ -19,13 +19,6 @@ namespace INSAWORLD
             BuilderMap.Instance.FillMap();
         }
 
-        public ~Game()
-        {
-            player1 = null;
-            player2 = null;
-            map = null;
-        }
-
         public Player Player1
         {
             get

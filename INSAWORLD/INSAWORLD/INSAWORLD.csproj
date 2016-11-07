@@ -39,25 +39,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttackUnit.cs" />
     <Compile Include="BuilderMap.cs" />
     <Compile Include="Centau.cs" />
     <Compile Include="Cerberus.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="CommandImpl.cs" />
+    <Compile Include="CommandMenu.cs" />
     <Compile Include="Coord.cs" />
+    <Compile Include="CreateGame.cs" />
     <Compile Include="Cyclops.cs" />
     <Compile Include="Demo.cs" />
     <Compile Include="Desert.cs" />
+    <Compile Include="ExitGame.cs" />
+    <Compile Include="FabriqueRace.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameMap.cs" />
     <Compile Include="IHM.cs" />
+    <Compile Include="LoadForReplay.cs" />
+    <Compile Include="LoadGame.cs" />
+    <Compile Include="MoveUni.cs" />
+    <Compile Include="NextTurn.cs" />
     <Compile Include="Plain.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Race.cs" />
+    <Compile Include="ReplayCollector.cs" />
+    <Compile Include="SaveForReplay.cs" />
+    <Compile Include="SaveGame.cs" />
     <Compile Include="Small.cs" />
     <Compile Include="Standard.cs" />
     <Compile Include="Swamp.cs" />
     <Compile Include="Tile.cs" />
+    <Compile Include="ToCollect.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="Volcano.cs" />
   </ItemGroup>

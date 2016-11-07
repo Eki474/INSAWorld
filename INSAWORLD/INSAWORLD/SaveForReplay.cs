@@ -5,9 +5,10 @@ using System.Text;
 
 namespace INSAWORLD
 {
-    public class UnitsFactory
+    public class SaveReplayCommand : CommandMenu
     {
-        public UnitsFactory Instance
+
+        public ReplayCollector ReplayCollector
         {
             get
             {
@@ -18,9 +19,9 @@ namespace INSAWORLD
             }
         }
 
-        public ICollection<Unit> createUnits()
+        public void Execute()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

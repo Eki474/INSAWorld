@@ -5,7 +5,12 @@ using System.Text;
 
 namespace INSAWORLD
 {
-    public class IHM
+    public interface ToCollect
     {
+        string State
+        {
+            get;
+            set;
+        }
     }
 }

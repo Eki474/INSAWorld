@@ -7,7 +7,7 @@ namespace INSAWORLD
 {
     public class Unit
     {
-        private int movePoints; // number of tile the unit can move on
+        private int movePoints; // number of tile the unit can ActionMove on
         private int lifePoints; // number of points before the unit dies
         private int defensePoints; // number of damage the creature can take 
         private int attackPoints; // number of damages the creature can inflict
@@ -22,7 +22,7 @@ namespace INSAWORLD
                 case -1:
                     break;
                 case 0:
-                    //Centau
+                    //Centaurs
                     lifePoints = 10;
                     defensePoints = 2;
                     attackPoints = 8;
@@ -40,11 +40,6 @@ namespace INSAWORLD
                     attackPoints = 4;
                     break;
             }
-        }
-
-        public ~Unit()
-        {
-
         }
 
         public float MovePoints
@@ -101,15 +96,22 @@ namespace INSAWORLD
             {
             }
         }
-    
-        //method : move the unit on the map
-        //return true if another unit is on the Tile false if not
-        public bool Move()
-        {
-            throw new System.NotImplementedException();
-        }
 
-        //method : attack an other unit
+        public Race Race
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+    
+        //method : ActionMove the unit on the map
+        //return true if another unit is on the Tile false if not
+
+        //method : Attack an other unit
         //return true if the fight is won false if not
         public bool Attack()
         {

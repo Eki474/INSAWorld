@@ -5,9 +5,9 @@ using System.Text;
 
 namespace INSAWORLD
 {
-    public class UnitsFactory
+    public class AttackUnit : CommandMenu, ToCollect
     {
-        public UnitsFactory Instance
+        public string State
         {
             get
             {
@@ -17,10 +17,10 @@ namespace INSAWORLD
             {
             }
         }
-
-        public ICollection<Unit> createUnits()
+    
+        public void Execute()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

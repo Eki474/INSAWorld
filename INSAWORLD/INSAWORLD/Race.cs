@@ -8,7 +8,25 @@ namespace INSAWORLD
     //strategy : several implementations of VictoryPoints in function of the race
     public interface Race
     {
-        Dictionary<Coord, INSAWORLD.Unit> Units
+        int Attack
+        {
+            get;
+            set;
+        }
+
+        int Defense
+        {
+            get;
+            set;
+        }
+
+        int Life
+        {
+            get;
+            set;
+        }
+
+        int Move
         {
             get;
             set;
@@ -16,6 +34,6 @@ namespace INSAWORLD
 
         int VictoryPoints();
 
-        Unit getUnit();
+        void ActionMove();
     }
 }

@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 
 namespace INSAWORLD
-{//this class permtis to save coordinates of each cases of tha map
-    public class Coord 
+{
+    public class ReplayCollector
     {
-        private int x; //vertical coordinate of the map
-        private int y; //horizontal coordinate of the map
-        //getters and setters
-        public int X 
+
+        public System.Collections.Generic.ICollection<ToCollect> Step
         {
             get
             {
@@ -21,7 +19,7 @@ namespace INSAWORLD
             }
         }
 
-        public int Y 
+        public ToCollect InitState
         {
             get
             {
@@ -31,12 +29,10 @@ namespace INSAWORLD
             {
             }
         }
-        //constructor
-       public  Coord(int cx, int cy) 
+
+        public bool AddStep()
         {
-            x = cx;
-            y = cy;
+            throw new System.NotImplementedException();
         }
-        //destructor
     }
 }

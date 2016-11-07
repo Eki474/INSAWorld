@@ -11,7 +11,7 @@ namespace INSAWORLD
         private int race; //race choosen by the player 
         /* 
          * -1 not set yet
-         * 0 Centau
+         * 0 Centaurs
          * 1 Cerberus
          * 2 Cyclops
         */
@@ -22,11 +22,6 @@ namespace INSAWORLD
             name = n;
             race = -1;
             points = 0;
-        }
-
-        public ~Player()
-        {
-
         }
 
         public string Name
@@ -52,6 +47,17 @@ namespace INSAWORLD
         }
 
         public Race RacePlay
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public IDictionary<Coord, Unit> UnitsList
         {
             get
             {

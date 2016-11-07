@@ -5,23 +5,18 @@ using System.Text;
 
 namespace INSAWORLD
 {
-    public class Centau : Race
+    public class Centaurs : Race
     {
         //contains units of the race (so player) and their coordinates on the map
-        private Dictionary<Coord, Unit> units;
 
-        public Centau()
+        public Centaurs()
         {
             //add base units of the race
         }
 
-        public ~Centau()
-        {
-            units.Clear(); //vide la liste
-            units = null; 
-        }
+        //method : compute points earned by the race, this turn
 
-        public Dictionary<Coord, Unit> Units
+        public int Attack
         {
             get
             {
@@ -33,8 +28,48 @@ namespace INSAWORLD
             }
         }
 
-        //method : compute points earned by the race, this turn
-        public void VictoryPoints()
+        public int Defense
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int Life
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int Move
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int VictoryPoints()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ActionMove()
         {
             throw new NotImplementedException();
         }

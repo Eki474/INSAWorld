@@ -18,11 +18,6 @@ namespace INSAWORLD
             //casesJoueur.generate(); in the C++ part ???
         }
 
-        public ~Standard()
-        {
-            casesJoueur.Clear();
-        }
-
         public int NbTurn
         {
             get

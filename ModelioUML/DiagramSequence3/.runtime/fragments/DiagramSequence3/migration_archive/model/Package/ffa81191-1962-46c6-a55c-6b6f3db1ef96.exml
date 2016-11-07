@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="diagramsequence3" version="4">
+  <OBJECT>
+    <ID name="diagramsequence3" mc="Standard.Package" uid="ffa81191-1962-46c6-a55c-6b6f3db1ef96"/>
+    <PID name="DiagramSequence3" mc="Standard.Project" uid="74f06e89-fbfc-41a7-bd43-0d60d8b28c92"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[diagramsequence3]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedBehavior">
+        <COMPID name="Interaction" mc="Standard.Interaction" uid="d0f1fb5d-8442-4243-bedb-dc5dd95c248e"/>
+      </COMP>
+      <COMP relation="OwnedElement">
+        <COMPID name="Game" mc="Standard.Class" uid="c0a94c34-1acf-4e55-9183-85336f65ad1c"/>
+        <COMPID name="Player" mc="Standard.Class" uid="081cb42d-4e80-4ef2-9092-e8214cf9e7d6"/>
+        <COMPID name="Unit" mc="Standard.Class" uid="108ae269-1a35-4550-be58-2e60854d1052"/>
+        <COMPID name="Centau" mc="Standard.Class" uid="09081ae5-4ad4-4dc8-a56d-6d67f29781b4"/>
+        <COMPID name="Cyclops" mc="Standard.Class" uid="a22f5dfe-7212-4b8b-b6a2-b6f6d7a8cfab"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="overview diagram" mc="Standard.ClassDiagram" uid="f052a067-f885-4b33-bc9f-81fc62345ec7"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

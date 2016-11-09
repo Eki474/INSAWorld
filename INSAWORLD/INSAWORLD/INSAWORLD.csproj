@@ -43,8 +43,6 @@
     <Compile Include="BuilderMap.cs" />
     <Compile Include="Centau.cs" />
     <Compile Include="Cerberus.cs" />
-    <Compile Include="Command.cs" />
-    <Compile Include="CommandImpl.cs" />
     <Compile Include="CommandMenu.cs" />
     <Compile Include="Coord.cs" />
     <Compile Include="CreateGame.cs" />

@@ -9,103 +9,43 @@ namespace INSAWORLD
     {
         private int movePoints; // number of tile the unit can ActionMove on
         private int lifePoints; // number of points before the unit dies
-        private int defensePoints; // number of damage the creature can take 
-        private int attackPoints; // number of damages the creature can inflict
+        //private int defensePoints; // number of damage the creature can take 
+        //private int attackPoints; // number of damages the creature can inflict
         private bool played; // true if the unit as been played this turn, false if not
+        private Race race;
 
-        public Unit(int race)
+        public Unit(Race r)
         {
-            movePoints = 3;
+            race = r;
+            movePoints = r.Move;
+            lifePoints = r.Life;
             played = false;
-            switch (race)
-            {
-                case -1:
-                    break;
-                case 0:
-                    //Centaurs
-                    lifePoints = 10;
-                    defensePoints = 2;
-                    attackPoints = 8;
-                    break;
-                case 1:
-                    //Cerberus
-                    lifePoints = 10;
-                    defensePoints = 4;
-                    attackPoints = 6;
-                    break;
-                case 2:
-                    //Cyclops
-                    lifePoints = 12;
-                    defensePoints = 6;
-                    attackPoints = 4;
-                    break;
-            }
         }
+           
 
         public float MovePoints
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public int LifePoints
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
 
-        public int DefensePoints
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public int AttackPoints
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+       
 
         public bool Played
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public Race Race
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
         }
     
         //method : ActionMove the unit on the map

@@ -50,10 +50,10 @@
     <Compile Include="Demo.cs" />
     <Compile Include="Desert.cs" />
     <Compile Include="ExitGame.cs" />
-    <Compile Include="FabriqueRace.cs" />
+    <Compile Include="RaceFactory.cs" />
+    <Compile Include="UnitsFactory.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameMap.cs" />
-    <Compile Include="IHM.cs" />
     <Compile Include="LoadForReplay.cs" />
     <Compile Include="LoadGame.cs" />
     <Compile Include="MoveUni.cs" />

@@ -53,5 +53,23 @@ namespace INSAWORLD
                 throw new NotImplementedException();
             }
         }
+
+        Dictionary<Coord, Tile> GameMap.CasesJoueur
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public bool TurnPlayed()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

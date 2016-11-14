@@ -7,15 +7,13 @@ namespace INSAWORLD
 {
     public class UnitsFactory
     {
-        public UnitsFactory Instance
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+        public static UnitsFactory Instance { get; } = new UnitsFactory();
+
+        private UnitsFactory() {}
+
+        public Unit createUnit(Race r)
+        {   
+            return new Unit(r);
         }
 
         public ICollection<Unit> createUnits()

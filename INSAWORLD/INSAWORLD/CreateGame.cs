@@ -18,6 +18,19 @@ namespace INSAWORLD
             }
         }
 
+        public string State
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public void Execute()
         {
             throw new NotImplementedException();

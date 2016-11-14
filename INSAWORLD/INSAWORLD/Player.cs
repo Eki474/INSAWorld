@@ -7,31 +7,40 @@ namespace INSAWORLD
 {
     public class Player
     {
-        private string name; //name of the player
-        private int race; //race choosen by the player 
-        /* 
-         * -1 not set yet
-         * 0 Centaurs
-         * 1 Cerberus
-         * 2 Cyclops
-        */
-        private int points; //points earned by the player
+        private string name; //name of the player 
+        private Race racePlay; //race choosen by the player 
+        private int points; //points earned by the player 
+        IDictionary<Coord, Unit> unitsList; //units of the player 
 
-        public Player(string n)
+        public Player(string n, int race)
         {
             name = n;
-            race = -1;
             points = 0;
+            switch (race)
+            {
+                case 0: 
+                    racePlay = new Centaurs(); //centaurs
+                    break;
+                case 1:
+                    racePlay = new Cerberus(); //cerberus
+                    break;
+                case 2: 
+                    racePlay = new Cyclops(); //cyclops
+                    break;
+                default:
+                    break; //error
+            }
         }
 
         public string Name
         {
             get
             {
-                throw new System.NotImplementedException();
+                return name;
             }
             set
             {
+                name = value;
             }
         }
 
@@ -39,10 +48,11 @@ namespace INSAWORLD
         {
             get
             {
-                throw new System.NotImplementedException();
+                return points;
             }
             set
             {
+                points = value;
             }
         }
 
@@ -50,10 +60,11 @@ namespace INSAWORLD
         {
             get
             {
-                throw new System.NotImplementedException();
+                return racePlay;
             }
             set
             {
+                racePlay = value;
             }
         }
 
@@ -61,17 +72,18 @@ namespace INSAWORLD
         {
             get
             {
-                throw new System.NotImplementedException();
+                return unitsList;
             }
             set
             {
+                unitsList = value;
             }
         }
 
         // method : return true if the game is lost by the player
         // false if not
-        public void Lost()
-        {
+        public bool Lost()
+        {            
             throw new System.NotImplementedException();
         }
         // method : end the turn of the player

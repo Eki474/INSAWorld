@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INSAWORLD", "INSAWORLD\INSAWORLD.csproj", "{6FAD37F4-209A-4C98-944F-1F4DAB4551C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsaworldIHM", "InsaworldIHM\InsaworldIHM.csproj", "{D3A18867-7851-4717-91D4-68CA4A3F2A1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsaworldTEST", "InsaworldTEST\InsaworldTEST.csproj", "{27A0444D-73D5-424B-93F2-1FB4F36FC75F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{6FAD37F4-209A-4C98-944F-1F4DAB4551C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FAD37F4-209A-4C98-944F-1F4DAB4551C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FAD37F4-209A-4C98-944F-1F4DAB4551C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3A18867-7851-4717-91D4-68CA4A3F2A1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3A18867-7851-4717-91D4-68CA4A3F2A1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3A18867-7851-4717-91D4-68CA4A3F2A1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3A18867-7851-4717-91D4-68CA4A3F2A1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27A0444D-73D5-424B-93F2-1FB4F36FC75F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27A0444D-73D5-424B-93F2-1FB4F36FC75F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27A0444D-73D5-424B-93F2-1FB4F36FC75F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27A0444D-73D5-424B-93F2-1FB4F36FC75F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

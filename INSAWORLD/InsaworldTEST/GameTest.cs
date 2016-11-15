@@ -8,7 +8,7 @@ namespace InsaworldTEST
     public class GameTest
     {
         Game g;
-
+        
         [TestInitialize()]
         public void Initialize()
         {

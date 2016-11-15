@@ -21,51 +21,37 @@ namespace INSAWORLD
 
         public Player Player1
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public Player Player2
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public GameMap Map
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
-    
+
         //launch a game
         public void Launch()
         {
             throw new System.NotImplementedException();
         }
 
-        //initialize units ??
+        //create map and put units on it
+        //C++ dll call
         public void Initialize()
         {
             throw new System.NotImplementedException();
         }
 
-        //
-        public void EndGame()
+        //verify end of the game
+        public bool EndGame()
         {
             throw new System.NotImplementedException();
         }

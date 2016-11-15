@@ -11,6 +11,7 @@ namespace INSAWORLD
         private Race racePlay; //race choosen by the player 
         private int points; //points earned by the player 
         IDictionary<Coord, Unit> unitsList; //units of the player 
+        private bool playing; //player currently playing
 
         public Player(string n, int race)
         {
@@ -30,54 +31,37 @@ namespace INSAWORLD
                 default:
                     break; //error
             }
+            playing = false;
         }
 
         public string Name
         {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value;
-            }
+            get;
+            set;
         }
 
         public int Points
         {
-            get
-            {
-                return points;
-            }
-            set
-            {
-                points = value;
-            }
+            get;
+            set;
         }
 
         public Race RacePlay
         {
-            get
-            {
-                return racePlay;
-            }
-            set
-            {
-                racePlay = value;
-            }
+            get;
+            set;
         }
 
         public IDictionary<Coord, Unit> UnitsList
         {
-            get
-            {
-                return unitsList;
-            }
-            set
-            {
-                unitsList = value;
-            }
+            get;
+            set;
+        }
+
+            public bool Playing
+        {
+            get;
+            set;
         }
 
         // method : return true if the game is lost by the player

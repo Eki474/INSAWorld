@@ -13,5 +13,29 @@ namespace InsaworldTEST
             Unit unit1 = UnitsFactory.Instance.createUnit(race);
             Assert.AreEqual(unit1.LifePoints, race.Life);
         }
+
+        [TestMethod]
+        public void testAttack()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void testAttackFail()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void testReset()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void testPlayed()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

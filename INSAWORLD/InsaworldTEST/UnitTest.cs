@@ -6,12 +6,26 @@ namespace InsaworldTEST
     [TestClass]
     public class UnitTest
     {
+
+        Unit u;
+        Unit n;
+        Unit i;
+        Race race;
+
+        [TestInitialize()]
+        public void Initialize()
+        {
+            race = RaceFactory.Instance.createRace(0);
+            Race r = RaceFactory.Instance.createRace(1);
+            u = UnitsFactory.Instance.createUnit(race);
+            n = UnitsFactory.Instance.createUnit(race);
+            i = UnitsFactory.Instance.createUnit(r);
+        }
+
         [TestMethod]
         public void testUnit()
         {
-            Race race = RaceFactory.Instance.createRace(0);
-            Unit unit1 = UnitsFactory.Instance.createUnit(race);
-            Assert.AreEqual(unit1.LifePoints, race.Life);
+            Assert.AreEqual(u.LifePoints, race.Life);
         }
 
         [TestMethod]
@@ -29,13 +43,16 @@ namespace InsaworldTEST
         [TestMethod]
         public void testReset()
         {
-            throw new NotImplementedException();
+            u.MovePoints = 0;
+            u.Reset();
+            Assert.IsTrue(u.LifePoints != 0);
         }
 
         [TestMethod]
         public void testPlayed()
         {
-            throw new NotImplementedException();
+            u.Attack();
+            Assert.IsTrue(u.Played);
         }
     }
 }

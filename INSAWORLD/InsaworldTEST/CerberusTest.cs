@@ -16,10 +16,17 @@ namespace InsaworldTEST
         }
 
         [TestMethod]
-        public void TestCentaurs()
+        public void TestCerberus()
         {
             Assert.IsInstanceOfType(p.RacePlay, typeof(Cerberus));
             Assert.IsNotNull(p.RacePlay.Life);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(BadRaceException))]
+        public void TestCerberusFail()
+        {
+            Player trash = new Player("Batman", 5);
         }
 
         [TestMethod]

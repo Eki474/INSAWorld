@@ -17,20 +17,8 @@ namespace INSAWORLD
         {
             name = n;
             points = 0;
-            switch (race)
-            {
-                case 0: 
-                    racePlay = new Centaurs(); //centaurs
-                    break;
-                case 1:
-                    racePlay = new Cerberus(); //cerberus
-                    break;
-                case 2: 
-                    racePlay = new Cyclops(); //cyclops
-                    break;
-                default:
-                    break; //error
-            }
+            racePlay = RaceFactory.Instance.createRace(race);
+            unitsList = UnitsFactory.Instance.createUnits(RacePlay);
             playing = false;
         }
 

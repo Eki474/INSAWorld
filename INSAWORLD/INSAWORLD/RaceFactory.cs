@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace INSAWORLD
 {
@@ -20,7 +17,7 @@ namespace INSAWORLD
                 case 1: return new Cerberus();
                 case 2: return new Centaurs();
                 default:
-                    throw new Exception("Bad Race Initialization");
+                    throw new BadRaceException("Bad Race Initialization");
             }
         }
 

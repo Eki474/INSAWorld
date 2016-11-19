@@ -53,7 +53,7 @@ namespace INSAWORLD
 
         //method : Attack an other unit
         //return true if the fight is won false if not
-        public bool Attack()
+        public bool Attack(Coord c)
         {
             throw new System.NotImplementedException();
         }

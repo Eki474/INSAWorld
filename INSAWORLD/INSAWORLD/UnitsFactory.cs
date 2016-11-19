@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace INSAWORLD
 {
@@ -16,7 +13,7 @@ namespace INSAWORLD
             return new Unit(r);
         }
 
-        public ICollection<Unit> createUnits()
+        public IDictionary<Unit, Coord> createUnits(Race r)
         {
             throw new System.NotImplementedException();
         }

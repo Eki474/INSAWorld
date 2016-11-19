@@ -2,11 +2,13 @@
 
 namespace INSAWORLD
 {
-    public class OutOfBoundException : Exception
+    public class BadRaceException : Exception
     {
-        public OutOfBoundException(string s)
+
+        public BadRaceException(string s)
         {
             base.Exception(s);
         }
+
     }
 }

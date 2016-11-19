@@ -24,6 +24,13 @@ namespace InsaworldTEST
         }
 
         [TestMethod]
+        [ExpectedException(typeof(BadRaceException))]
+        public void TestCentaursFail()
+        {
+            Player trash = new Player("Batman", 5);
+        }
+
+        [TestMethod]
         public void TestActionMove()
         {
             System.Collections.Generic.IEnumerator<Unit> uList = p.UnitsList.Keys.GetEnumerator();

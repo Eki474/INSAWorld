@@ -41,7 +41,7 @@
   <ItemGroup>
     <Compile Include="AttackUnit.cs" />
     <Compile Include="BuilderMap.cs" />
-    <Compile Include="Centau.cs" />
+    <Compile Include="Centaurs.cs" />
     <Compile Include="Cerberus.cs" />
     <Compile Include="CommandMenu.cs" />
     <Compile Include="Coord.cs" />
@@ -50,13 +50,14 @@
     <Compile Include="Demo.cs" />
     <Compile Include="Desert.cs" />
     <Compile Include="ExitGame.cs" />
+    <Compile Include="OutOfBoundException.cs" />
     <Compile Include="RaceFactory.cs" />
     <Compile Include="UnitsFactory.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameMap.cs" />
     <Compile Include="LoadForReplay.cs" />
     <Compile Include="LoadGame.cs" />
-    <Compile Include="MoveUni.cs" />
+    <Compile Include="MoveUnit.cs" />
     <Compile Include="NextTurn.cs" />
     <Compile Include="Plain.cs" />
     <Compile Include="Player.cs" />

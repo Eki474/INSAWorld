@@ -55,6 +55,10 @@
     <Compile Include="UnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GameTest.cs" />
+    <Compile Include="PlayerTest.cs" />
+    <Compile Include="CentaursTest.cs" />
+    <Compile Include="CerberusTest.cs" />
+    <Compile Include="CyclopsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\INSAWORLD\INSAWORLD.csproj">

@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace INSAWORLD
 {
-    public class Cerberus : Race
+    public class Centaurs : Race
     {
         //contains units of the race (so player) and their coordinates on the map
 
-        public Cerberus()
+        public Centaurs()
         {
             //add base units of the race
         }

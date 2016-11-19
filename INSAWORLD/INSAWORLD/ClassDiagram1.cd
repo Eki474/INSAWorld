@@ -12,17 +12,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="INSAWORLD.Player">
-    <Position X="0.5" Y="2" Width="1.5" />
+    <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAEAACAAAAAgAAAAAABEAQAABAEAAAQAAAAAAAQAAA=</HashCode>
+      <HashCode>ABAEAACAAAAAgAAAAAgBEAQIABAEAAAQAAAAAAAQAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="RacePlay" />
     </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="UnitsList" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="INSAWORLD.Demo">
     <Position X="7" Y="5.25" Width="1.5" />
@@ -75,7 +72,7 @@
   <Class Name="INSAWORLD.Unit">
     <Position X="4" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAABCAAAAQAABAAAAAgAAQAIAIAAAAABAAAAAQAAAAg=</HashCode>
+      <HashCode>QAABCEAAAQAABAAAAAAAAAAAAIAAAAABAAAAAQAAAAg=</HashCode>
       <FileName>Unit.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -86,7 +83,7 @@
     <Position X="0.5" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAKAAAAAAAAAAAAAAAIAAAAAAAAAAAgABAAA=</HashCode>
-      <FileName>Centau.cs</FileName>
+      <FileName>Centaurs.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -131,7 +128,7 @@
   <Class Name="INSAWORLD.UnitsFactory">
     <Position X="2.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAI=</HashCode>
       <FileName>UnitsFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -206,7 +203,7 @@
     <Position X="7" Y="13" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>MoveUni.cs</FileName>
+      <FileName>MoveUnit.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -229,7 +226,7 @@
   <Class Name="INSAWORLD.RaceFactory">
     <Position X="1.25" Y="11.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABEAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>RaceFactory.cs</FileName>
     </TypeIdentifier>
   </Class>

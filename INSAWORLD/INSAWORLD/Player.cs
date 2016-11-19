@@ -10,7 +10,7 @@ namespace INSAWORLD
         private string name; //name of the player 
         private Race racePlay; //race choosen by the player 
         private int points; //points earned by the player 
-        IDictionary<Coord, Unit> unitsList; //units of the player 
+        IDictionary<Unit, Coord> unitsList; //units of the player 
         private bool playing; //player currently playing
 
         public Player(string n, int race)
@@ -43,7 +43,6 @@ namespace INSAWORLD
         public int Points
         {
             get;
-            set;
         }
 
         public Race RacePlay
@@ -52,16 +51,15 @@ namespace INSAWORLD
             set;
         }
 
-        public IDictionary<Coord, Unit> UnitsList
+        public IDictionary<Unit, Coord> UnitsList
         {
             get;
             set;
         }
 
-            public bool Playing
+        public bool Playing
         {
             get;
-            set;
         }
 
         // method : return true if the game is lost by the player

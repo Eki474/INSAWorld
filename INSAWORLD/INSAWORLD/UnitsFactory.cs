@@ -17,7 +17,8 @@ namespace INSAWORLD
         public IDictionary<Unit, Coord> createUnits(Race r, int taille)
         {
             var dico = new Dictionary<Unit, Coord>();
-            System.Random rnd = new System.Random();
+            //TODO units placement must be handled by C++ librairy
+            Random rnd = new Random();
             var coord = new Coord(rnd.Next(0,taille), rnd.Next(0, taille));
             //TODO check if no unit on coord
             int nbUnit;
@@ -26,7 +27,7 @@ namespace INSAWORLD
                 case 6: nbUnit = 4; break;
                 case 10: nbUnit = 6; break;
                 case 14: nbUnit = 8; break;
-                default: throw new System.Exception("size not valid"); 
+                default: throw new Exception("size not valid"); 
             }
 
             for(;nbUnit>=0;nbUnit--)

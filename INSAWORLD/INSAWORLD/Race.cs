@@ -30,6 +30,6 @@ namespace INSAWORLD
 
         int VictoryPoints();
 
-        void ActionMove(Unit u, Coord c);
+        bool ActionMove(Unit u, Coord c);
     }
 }

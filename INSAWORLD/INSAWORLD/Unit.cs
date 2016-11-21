@@ -35,8 +35,6 @@ namespace INSAWORLD
             set;
         }
 
-       
-
         public bool Played
         {
             get;
@@ -47,21 +45,39 @@ namespace INSAWORLD
         {
             get;
         }
-    
-        //method : ActionMove the unit on the map
-        //return true if another unit is on the Tile false if not
 
         //method : Attack an other unit
         //return true if the fight is won false if not
-        public bool Attack(Coord c)
+        public bool Attack(Coord c, Unit def)
         {
-            throw new System.NotImplementedException();
+            bool success = false;
+            success = race.ActionMove(this, c);
+            if (success)
+            {
+                double attacker = 0.5;
+                double defender = 0.5;
+                int ratio = race.Attack / def.Race.Defense;
+                if(ratio < 1)
+                {
+                    ratio
+                    attacker -= ratio;
+                    defender += ratio;
+                }else
+                {
+                    attacker += ratio;
+                    defender -= ratio;
+                }
+                played = true;
+            }
+            return success;
         }
 
         //method : all points are resetted
         public void Reset()
         {
-            throw new System.NotImplementedException();
+            lifePoints = race.Life;
+            movePoints = race.Move;
+            played = false;
         }
     }
 }

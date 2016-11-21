@@ -45,12 +45,7 @@ namespace INSAWORLD
             throw new NotImplementedException();
         }
 
-        public void ActionMove()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ActionMove(Unit u, Coord c)
+        bool Race.ActionMove(Unit u, Coord c)
         {
             throw new NotImplementedException();
         }

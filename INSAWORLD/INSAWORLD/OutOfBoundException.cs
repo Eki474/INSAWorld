@@ -4,9 +4,6 @@ namespace INSAWORLD
 {
     public class OutOfBoundException : Exception
     {
-        public OutOfBoundException(string s)
-        {
-            base.Exception(s);
-        }
+        public OutOfBoundException(string message) : base(message) { }
     }
 }

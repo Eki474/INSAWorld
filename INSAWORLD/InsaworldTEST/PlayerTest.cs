@@ -14,8 +14,8 @@ namespace InsaworldTEST
         [TestInitialize()]
         public void Initialize()
         {
-            p = new Player("Bob", 0);
-            l = new Player("Jean", 1);
+            p = new Player("Bob", 0, 6);
+            l = new Player("Jean", 1, 6);
         }
 
         [TestMethod]

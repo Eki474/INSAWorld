@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using INSAWORLD;
 
 namespace InsaworldTEST
@@ -12,7 +11,7 @@ namespace InsaworldTEST
         [TestInitialize()]
         public void Initialize()
         {
-            p = new Player("Michel", 2);
+            p = new Player("Michel", 2, 6);
         }
 
         [TestMethod]
@@ -26,7 +25,7 @@ namespace InsaworldTEST
         [ExpectedException(typeof(BadRaceException))]
         public void TestCerberusFail()
         {
-            Player trash = new Player("Batman", 5);
+            Player trash = new Player("Batman", 5, 6);
         }
 
         [TestMethod]

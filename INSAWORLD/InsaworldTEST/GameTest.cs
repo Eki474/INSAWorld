@@ -12,8 +12,8 @@ namespace InsaworldTEST
         [TestInitialize()]
         public void Initialize()
         {
-            Player p1 = new Player("Michel", 0);
-            Player p2 = new Player("Jean", 1);
+            Player p1 = new Player("Michel", 0, 6);
+            Player p2 = new Player("Jean", 1, 6);
             g = new Game(p1, p2);
         }
 

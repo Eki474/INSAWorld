@@ -12,13 +12,14 @@ namespace INSAWORLD
         private int points; //points earned by the player 
         IDictionary<Unit, Coord> unitsList; //units of the player 
         private bool playing; //player currently playing
+        private int tailleMap;
 
-        public Player(string n, int race)
+        public Player(string n, int race, int tailleMap)
         {
             name = n;
             points = 0;
             racePlay = RaceFactory.Instance.createRace(race);
-            unitsList = UnitsFactory.Instance.createUnits(RacePlay);
+            UnitsList = UnitsFactory.Instance.createUnits(racePlay, tailleMap);
             playing = false;
         }
 
@@ -28,6 +29,11 @@ namespace INSAWORLD
             set;
         }
 
+        public int TailleMap
+        {
+            get;
+            set;
+        }
         public int Points
         {
             get;
@@ -39,15 +45,24 @@ namespace INSAWORLD
             set;
         }
 
-        public IDictionary<Unit, Coord> UnitsList
-        {
-            get;
-            set;
-        }
+ 
 
         public bool Playing
         {
             get;
+        }
+
+        public IDictionary<Unit, Coord> UnitsList
+        {
+            get
+            {
+                return unitsList;
+            }
+
+            set
+            {
+                unitsList = value;
+            }
         }
 
         // method : return true if the game is lost by the player
@@ -68,6 +83,11 @@ namespace INSAWORLD
         }
         // method compute points earned by the player this turn and add the result to global count
         public void ComputePoints()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool Attack(Unit u, Coord c)
         {
             throw new System.NotImplementedException();
         }

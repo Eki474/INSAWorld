@@ -12,7 +12,7 @@ namespace InsaworldTEST
         [TestInitialize()]
         public void Initialize()
         {
-            p = new Player("Michel", 1);
+            p = new Player("Michel", 1, 6);
         }
 
         [TestMethod]
@@ -26,7 +26,7 @@ namespace InsaworldTEST
         [ExpectedException(typeof(BadRaceException))]
         public void TestCyclopsFail()
         {
-            Player trash = new Player("Batman", 5);
+            Player trash = new Player("Batman", 5, 6);
         }
 
         [TestMethod]

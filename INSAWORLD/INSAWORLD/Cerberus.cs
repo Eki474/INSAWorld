@@ -7,14 +7,18 @@ namespace INSAWORLD
 {
     public class Cerberus : Race
     {
-        //contains units of the race (so player) and their coordinates on the map
+        private int attack;
+        private int defense;
+        private int life;
+        private int move;
 
         public Cerberus()
         {
-            //add base units of the race
+            attack = 6;
+            defense = 4;
+            life = 10;
+            move = 3;
         }
-
-        //method : compute points earned by the race, this turn
 
         public int Attack
         {
@@ -45,7 +49,7 @@ namespace INSAWORLD
             throw new NotImplementedException();
         }
 
-        bool Race.ActionMove(Unit u, Coord c)
+        public bool ActionMove(Unit u, Coord c)
         {
             throw new NotImplementedException();
         }

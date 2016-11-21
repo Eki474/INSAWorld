@@ -4,33 +4,33 @@ using INSAWORLD;
 
 namespace InsaworldTEST
 {
-    [TestClass]
+    [TestClass()]
     public class CentaursTest
     {
 
         Player p;
 
         [TestInitialize()]
-        public void Initialize()
+        public void Setup()
         {
             p = new Player("Michel", 0, 6);
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void TestCentaurs()
         {
             Assert.IsInstanceOfType(p.RacePlay, typeof(Centaurs));
             Assert.IsNotNull(p.RacePlay.Life);
         }
 
-        [TestMethod]
+        [TestMethod()]
         [ExpectedException(typeof(BadRaceException))]
         public void TestCentaursFail()
         {
             Player trash = new Player("Batman", 5, 6);
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void TestActionMove()
         {
             System.Collections.Generic.IEnumerator<Unit> uList = p.UnitsList.Keys.GetEnumerator();
@@ -44,7 +44,7 @@ namespace InsaworldTEST
             Assert.AreEqual(changed, n);
         }
 
-        [TestMethod]
+        [TestMethod()]
         [ExpectedException(typeof(OutOfBoundException))]
         public void TestActionMoveFail()
         {
@@ -56,7 +56,7 @@ namespace InsaworldTEST
             p.RacePlay.ActionMove(u, changed);
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void TestVictoryPoints()
         {
             Assert.IsTrue(p.UnitsList != null & p.RacePlay.VictoryPoints() > 0);

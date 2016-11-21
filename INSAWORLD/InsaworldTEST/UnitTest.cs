@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 namespace InsaworldTEST
 {
-    [TestClass]
+    [TestClass()]
     public class UnitTest
     {
 
@@ -16,8 +16,8 @@ namespace InsaworldTEST
         Player p1;
         Player p2;
 
-        [TestInitialize]
-        public void Initialize()
+        [TestInitialize()]
+        public void Setup()
         {
             race = RaceFactory.Instance.createRace(0);
             r = RaceFactory.Instance.createRace(1);
@@ -29,21 +29,19 @@ namespace InsaworldTEST
 
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void testUnit()
         {
             Assert.AreEqual(u.LifePoints, race.Life);
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void testUnitList()
         {
-
-            //p1 = new Player("Jean", 2, 6);
             Assert.IsNotNull(p1.UnitsList);
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void testAttack()
         {
             IEnumerator<Unit> uList1 = p1.UnitsList.Keys.GetEnumerator();
@@ -58,7 +56,7 @@ namespace InsaworldTEST
             Assert.IsTrue(b && (u2.LifePoints < r.Life || u1.LifePoints < race.Life));
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void testAttackFail()
         {
             IEnumerator<Unit> uList1 = p1.UnitsList.Keys.GetEnumerator();
@@ -74,7 +72,7 @@ namespace InsaworldTEST
             Assert.IsFalse(b);
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void testReset()
         {
             u.MovePoints = 0;
@@ -82,7 +80,7 @@ namespace InsaworldTEST
             Assert.IsTrue(u.LifePoints != 0);
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void testPlayed()
         {
             //Attack

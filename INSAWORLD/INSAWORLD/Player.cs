@@ -18,8 +18,9 @@ namespace INSAWORLD
         {
             name = n;
             points = 0;
+            this.tailleMap = tailleMap;
             racePlay = RaceFactory.Instance.createRace(race);
-            UnitsList = UnitsFactory.Instance.createUnits(racePlay, tailleMap);
+            UnitsList = UnitsFactory.Instance.createUnits(racePlay, this.tailleMap);
             playing = false;
         }
 

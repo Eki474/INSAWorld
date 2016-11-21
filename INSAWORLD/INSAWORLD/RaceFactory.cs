@@ -5,10 +5,7 @@ namespace INSAWORLD
     public class RaceFactory
     {
         public static RaceFactory Instance { get; } = new RaceFactory();
-        private RaceFactory()
-        {
-
-        }
+        private RaceFactory()  { }
 
         public Race createRace(int i)
         {

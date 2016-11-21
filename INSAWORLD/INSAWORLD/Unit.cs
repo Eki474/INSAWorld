@@ -59,14 +59,18 @@ namespace INSAWORLD
                 int ratio = race.Attack / def.Race.Defense;
                 if(ratio < 1)
                 {
-                    ratio
-                    attacker -= ratio;
-                    defender += ratio;
+                    attacker = ratio * (100 / (ratio + 1));
+                    defender = 100 - attacker;
                 }else
                 {
+                    ratio = def.Race.Defense / race.Attack;
                     attacker += ratio;
-                    defender -= ratio;
+                    defender = ratio * (100 / (ratio + 1));
+                    attacker = 100 - defender;
                 }
+                Random prob = new Random();
+                if(prob.Next(0,100) < attacker) success = true;
+                else success = false;
                 played = true;
             }
             return success;

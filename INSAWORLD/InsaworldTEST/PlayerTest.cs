@@ -4,7 +4,7 @@ using INSAWORLD;
 
 namespace InsaworldTEST
 {
-    [TestClass]
+    [TestClass()]
     public class PlayerTest
     {
 
@@ -12,30 +12,33 @@ namespace InsaworldTEST
         Player l;
 
         [TestInitialize()]
-        public void Initialize()
+        public void Setup()
         {
             p = new Player("Bob", 0, 6);
             l = new Player("Jean", 1, 6);
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void TestPlayer()
         {
             Assert.IsNotNull(p.RacePlay);
         }
 
+        [TestMethod()]
         public void TestStartTurn()
         {
             p.StartTurn();
             Assert.IsTrue(p.Playing);
         }
 
+        [TestMethod()]
         public void TestEndTurn()
         {
             p.EndTurn();
             Assert.IsFalse(p.Playing);
         }
 
+        [TestMethod()]
         public void TestLost()
         {
             p.ComputePoints();
@@ -44,6 +47,7 @@ namespace InsaworldTEST
             Assert.AreEqual(p.Lost(), temp);
         }
 
+        [TestMethod()]
         public void TestComputePoints()
         {
             int temp = p.Points;

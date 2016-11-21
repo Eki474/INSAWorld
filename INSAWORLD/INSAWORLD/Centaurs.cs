@@ -4,14 +4,19 @@ namespace INSAWORLD
 {
     public class Centaurs : Race
     {
-        //contains units of the race (so player) and their coordinates on the map
+
+        private int attack;
+        private int defense;
+        private int life;
+        private int move;
 
         public Centaurs()
         {
-            //add base units of the race
+            attack = 8;
+            defense = 2;
+            life = 10;
+            move = 3;
         }
-
-        //method : compute points earned by the race, this turn
 
         public int Attack
         {

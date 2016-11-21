@@ -4,26 +4,26 @@ using INSAWORLD;
 
 namespace InsaworldTEST
 {
-    [TestClass]
+    [TestClass()]
     public class GameTest
     {
         Game g;
         
         [TestInitialize()]
-        public void Initialize()
+        public void Setup()
         {
             Player p1 = new Player("Michel", 0, 6);
             Player p2 = new Player("Jean", 1, 6);
             g = new Game(p1, p2);
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void TestGame()
         {
             Assert.IsNotNull(g.Player1);
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void TestLaunch()
         {
             g.Initialize();
@@ -31,14 +31,14 @@ namespace InsaworldTEST
             Assert.IsTrue(g.Player1.Playing);
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void TestInitialize()
         {
             g.Initialize();
             Assert.IsNotNull(g.Map);
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void TestEndGame()
         {
             for(int i=0; i<5; i++)
@@ -49,7 +49,7 @@ namespace InsaworldTEST
             Assert.IsTrue(g.EndGame());
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void TestEndGameFail()
         {
             Assert.IsFalse(g.EndGame());

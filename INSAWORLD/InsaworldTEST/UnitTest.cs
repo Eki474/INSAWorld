@@ -29,18 +29,27 @@ namespace InsaworldTEST
 
         }
 
+        /// <summary>
+        /// constructor for a single unit test
+        /// </summary>
         [TestMethod()]
         public void testUnit()
         {
             Assert.AreEqual(u.LifePoints, race.Life);
         }
 
+        /// <summary>
+        /// constructor for a list of units
+        /// </summary>
         [TestMethod()]
         public void testUnitList()
         {
             Assert.IsNotNull(p1.UnitsList);
         }
 
+        /// <summary>
+        /// test of attack on another unit, life points is well diminished
+        /// </summary>
         [TestMethod()]
         public void testAttack()
         {
@@ -56,6 +65,9 @@ namespace InsaworldTEST
             Assert.IsTrue(b && (u2.LifePoints < r.Life || u1.LifePoints < race.Life));
         }
 
+        /// <summary>
+        /// test of attack on another unit, when the units are too far from each other
+        /// </summary>
         [TestMethod()]
         public void testAttackFail()
         {
@@ -72,6 +84,9 @@ namespace InsaworldTEST
             Assert.IsFalse(b);
         }
 
+        /// <summary>
+        /// test if the unit goes back to its initial state after reset
+        /// </summary>
         [TestMethod()]
         public void testReset()
         {
@@ -80,6 +95,9 @@ namespace InsaworldTEST
             Assert.IsTrue(u.LifePoints != 0);
         }
 
+        /// <summary>
+        /// test if unit is marked as played when it can do anything else
+        /// </summary>
         [TestMethod()]
         public void testPlayed()
         {

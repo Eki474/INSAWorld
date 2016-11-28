@@ -84,12 +84,6 @@
   <ItemGroup>
     <None Include="..\..\ModelioUML\SequenceDiagram1.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\INSAWORLDCPP\INSAWORLDCPP.vcxproj">
-      <Project>{96b7ae32-374e-4ce3-a9fd-6e0c20b77385}</Project>
-      <Name>INSAWORLDCPP</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

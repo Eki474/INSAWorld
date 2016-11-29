@@ -15,6 +15,12 @@ namespace INSAWORLD
         private bool playing; //player currently playing
         private int tailleMap;
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="n">name of the player</param>
+        /// <param name="race">0 if Cyclops - 1 if Cerberus - 2 if Centaurs</param>
+        /// <param name="tailleMap">6 Demo - 10 Small - 14 Standard</param>
         public Player(string n, int race, int tailleMap)
         {
             name = n;
@@ -60,41 +66,60 @@ namespace INSAWORLD
             set{ unitsList = value; }
         }
 
-        // method : return true if the game is lost by the player
-        // false if not
+        /// <summary>
+        /// check difference between points
+        /// </summary>
+        /// <returns>true if the game is lost by the player false if not</returns>
         public bool Lost()
         {            
             throw new System.NotImplementedException();
         }
-        // method : end the turn of the player
+
+        /// <summary>
+        /// End the turn of the player : playing = false for the current player (while the other is on true thanks to StartTurn)
+        /// </summary>
+        /// <returns>true if the turn can be ended false if not</returns>
         public bool EndTurn()
         {
             throw new System.NotImplementedException();
         }
-        // method : begin the turn of the player
+
+        /// <summary>
+        /// begin the turn of a player : playing = true for the current player (while the other is on false thanks to EndTurn)
+        /// </summary>
+        /// <returns>true if the turn can be started false if not</returns>
         public bool StartTurn()
         {
             throw new System.NotImplementedException();
         }
-        // method compute points earned by the player this turn and add the result to global count
+
+        /// <summary>
+        /// method compute points earned by the player this turn and add the result to global count (attribute points)
+        /// </summary>
         public void ComputePoints()
         {
             throw new System.NotImplementedException();
         }
 
-        //call unit attack method and remove life points
+        /// <summary>
+        /// call unit attack method and remove life points
+        /// </summary>
+        /// <param name="u">unit which attack</param>
+        /// <param name="d">pair of unit/coord of the attacked unit</param>
+        /// <param name="myGame">reference to the game to obtain the map</param>
+        /// <returns>true if the attack has been done false if not</returns>
         public bool Attack(Unit u, KeyValuePair<Unit, Coord> d, ref Game myGame)
         {
             bool success = false;
             //use attack of unit
-            int lostLife = u.Attack(d.Value, d.Key);
+            int lostLife = u.Attack(d.Value, d.Key, ref myGame);
             if(lostLife > 0) //defender lost points
             {
                 if (d.Key.LifePoints < lostLife)
                 {
                     d.Key.LifePoints = 0;
                     myGame.Cleaner();
-                    u.Race.MoveOverride(u, d.Value, myGame);
+                    u.Race.MoveOverride(u, d.Value,  ref myGame);
                 }
                 else { d.Key.LifePoints -= lostLife; }
                 success = true;

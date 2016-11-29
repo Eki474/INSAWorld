@@ -29,10 +29,26 @@ namespace INSAWORLD
             get;
         }
 
+        
+        /// <summary>
+        /// compute victory points earn by one unit
+        /// </summary>
+        /// <returns>depend on the implementation</returns>
         int VictoryPoints(ref Game myGame);
 
+        /// <summary>
+        /// try to move the unit on the tile with coord
+        /// </summary>
+        /// <param name="u">unit to move</param>
+        /// <param name="c">coord to move on</param>
+        /// <returns>true if the unit can move on the tile, false if not</returns>
         bool ActionMove(Unit u, Coord c, ref Game myGame);
 
+        /// <summary>
+        /// move the unit on the tile of the killed unit if no other units on this tile
+        /// </summary>
+        /// <param name="u">unit to move</param>
+        /// <param name="c">move on those coord</param>
         void MoveOverride(Unit u, Coord c, ref Game myGame);
     }
 }

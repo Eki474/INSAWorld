@@ -6,12 +6,13 @@ using System.Text;
 namespace INSAWORLD
 {
     //singleton and builder for GameMap
-
-    //problem : on ne peut pas choisir le type de map 
     public class BuilderMap
     {
         private static BuilderMap instance;
 
+        /// <summary>
+        /// build the map using c++ dll
+        /// </summary>
         private BuilderMap()
         {
 
@@ -27,14 +28,20 @@ namespace INSAWORLD
                 return instance;
             }
         }
-    
-        //method : create the object GameMap
+
+        /// <summary>
+        /// create the object GameMap using c++ dll
+        /// </summary>
+        /// <returns>created GameMap empty</returns>
         public GameMap BuildMap()
         {
             throw new System.NotImplementedException();
         }
 
-        //method : fill the Tile of the GameMep
+        /// <summary>
+        /// fill the Tile of the GameMap using c++ dll
+        /// </summary>
+        /// <returns>created GameMap full</returns>
         public bool FillMap()
         {
             throw new System.NotImplementedException();

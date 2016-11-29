@@ -9,6 +9,10 @@ namespace INSAWORLD
         private bool played; // true if the unit as been played this turn, false if not
         private Race race;
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="r">race of the unit</param>
         public Unit(Race r)
         {
             race = r;
@@ -42,13 +46,18 @@ namespace INSAWORLD
             set { race = value; }
         }
 
-        //method : Attack an other unit
-        //return true if the fight is won false if not
-        public int Attack(Coord c, Unit def)
+        /// <summary>
+        /// Attack an other unit
+        /// </summary>
+        /// <param name="c">coord of the attacked unit</param>
+        /// <param name="def">unit which defend the tile on coord</param>
+        /// <param name="myGame">reference to game to use information from map</param>
+        /// <returns>true if the fight is won false if not</returns>
+        public int Attack(Coord c, Unit def, ref Game myGame)
         {
             bool success = false;
             int lifeP = 0;
-            success = race.ActionMove(this, c);
+            success = race.ActionMove(this, c, ref myGame);
             if (success)
             {
                 double attacker = 0.5;
@@ -86,7 +95,9 @@ namespace INSAWORLD
             return lifeP;
         }
 
-        //method : all points are resetted
+        /// <summary>
+        /// All points are resetted
+        /// </summary>
         public void Reset()
         {
             lifePoints = race.Life;

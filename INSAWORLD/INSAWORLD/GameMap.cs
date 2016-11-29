@@ -5,9 +5,6 @@ using System.Text;
 
 namespace INSAWORLD
 {
-    //factory
-
-    //problem : nombre d'unités par joueur change en fonction du type de map
     public interface GameMap
     {
 
@@ -29,9 +26,10 @@ namespace INSAWORLD
             set;
         }
 
-        //decrement nbTurn when a turn is finished
-        //-0.5 for a turn in a two-players game. 
-        //return true if nbTurn < 0 false if ==0
+        /// <summary>
+        /// decrement nbTurn when a turn is finished. -0.5 for a turn in a two-players game. 
+        /// </summary>
+        /// <returns>true if nbTurn inferior to 0 false if equals to 0</returns>
         bool TurnPlayed();
     }
 }

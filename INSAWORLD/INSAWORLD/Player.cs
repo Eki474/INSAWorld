@@ -119,7 +119,7 @@ namespace INSAWORLD
                 {
                     d.Key.LifePoints = 0;
                     myGame.Cleaner();
-                    u.Race.MoveOverride(u, d.Value,  ref myGame);
+                    u.Race.MoveOverride(u, d, ref myGame);
                 }
                 else { d.Key.LifePoints -= lostLife; }
                 success = true;

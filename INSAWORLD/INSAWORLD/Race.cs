@@ -34,7 +34,7 @@ namespace INSAWORLD
         /// compute victory points earn by one unit
         /// </summary>
         /// <returns>depend on the implementation</returns>
-        int VictoryPoints(ref Game myGame);
+        int VictoryPoints(Unit u, ref Game myGame);
 
         /// <summary>
         /// try to move the unit on the tile with coord
@@ -48,7 +48,7 @@ namespace INSAWORLD
         /// move the unit on the tile of the killed unit if no other units on this tile
         /// </summary>
         /// <param name="u">unit to move</param>
-        /// <param name="c">move on those coord</param>
-        void MoveOverride(Unit u, Coord c, ref Game myGame);
+        /// <param name="d">unit killed and his coord</param>
+        void MoveOverride(Unit u, KeyValuePair<Unit, Coord> d, ref Game myGame);
     }
 }

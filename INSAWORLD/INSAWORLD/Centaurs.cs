@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace INSAWORLD
 {
@@ -48,7 +50,7 @@ namespace INSAWORLD
         /// compute victory points earn by one unit
         /// </summary>
         /// <returns>3 on plain, 2 on desert, 1 on swamp, 0 on volcano</returns>
-        public int VictoryPoints(ref Game myGame)
+        public int VictoryPoints(Unit u, ref Game myGame)
         {
             throw new NotImplementedException();
         }
@@ -69,9 +71,26 @@ namespace INSAWORLD
         /// </summary>
         /// <param name="u">unit to move</param>
         /// <param name="c">move on those coord</param>
-        public void MoveOverride(Unit u, Coord c, ref Game myGame)
+        public void MoveOverride(Unit u, KeyValuePair<Unit, Coord> d, ref Game myGame)
         {
-            throw new NotImplementedException();
+            bool movement = true;
+            IDictionary<Unit,Coord> list1;
+            IDictionary<Unit, Coord> list2;
+            if (myGame.Player1.UnitsList.Contains(d))
+            {
+                list1 = myGame.Player1.UnitsList;
+                list2 = myGame.Player2.UnitsList;
+            }
+            else
+            {
+                list1 = myGame.Player2.UnitsList;
+                list2 = myGame.Player1.UnitsList;
+            }
+            foreach(Unit t in list1.Keys)
+            {
+                if (list1[t].Equals(d.Value) & !t.Equals(d.Key)) { movement = false; }
+            }
+            if (movement) { list2[u] = d.Value; }
         }
     }
 }

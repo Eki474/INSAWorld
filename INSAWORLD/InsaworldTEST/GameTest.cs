@@ -17,12 +17,18 @@ namespace InsaworldTEST
             g = new Game(p1, p2);
         }
 
+        /// <summary>
+        /// test the Game constructor
+        /// </summary>
         [TestMethod()]
         public void TestGame()
         {
             Assert.IsNotNull(g.Player1);
         }
 
+        /// <summary>
+        /// test if Launch method, start the game by making play a player
+        /// </summary>
         [TestMethod()]
         public void TestLaunch()
         {
@@ -31,6 +37,9 @@ namespace InsaworldTEST
             Assert.IsTrue(g.Player1.Playing);
         }
 
+        /// <summary>
+        /// test if the map is created
+        /// </summary>
         [TestMethod()]
         public void TestInitialize()
         {
@@ -38,6 +47,10 @@ namespace InsaworldTEST
             Assert.IsNotNull(g.Map);
         }
 
+        /// <summary>
+        /// test if the game is stopped by the EndGame method when there is no turn available to play
+        /// (limited by the map)
+        /// </summary>
         [TestMethod()]
         public void TestEndGame()
         {
@@ -49,6 +62,9 @@ namespace InsaworldTEST
             Assert.IsTrue(g.EndGame());
         }
 
+        /// <summary>
+        /// test if when no end game conditions are true, the game don't stop
+        /// </summary>
         [TestMethod()]
         public void TestEndGameFail()
         {

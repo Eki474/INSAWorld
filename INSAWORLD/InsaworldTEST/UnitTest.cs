@@ -2,6 +2,8 @@
 using INSAWORLD;
 using System.Collections.Generic;
 using System;
+using System.Linq;
+
 namespace InsaworldTEST
 {
     [TestClass()]
@@ -53,14 +55,12 @@ namespace InsaworldTEST
         [TestMethod()]
         public void testAttack()
         {
-            IEnumerator<Unit> uList1 = p1.UnitsList.Keys.GetEnumerator();
-            Unit u1 = uList1.Current;
+            Unit u1 = p1.UnitsList.Keys.First();
             p1.UnitsList.Add(u1, new Coord(0,0));
             IEnumerator<Unit> uList2 = p2.UnitsList.Keys.GetEnumerator();
-            Unit u2 = uList2.Current;
+            Unit u2 = p2.UnitsList.Keys.First();
             p2.UnitsList.Add(u2, new Coord(0, 1));
-            Coord c2;
-            p2.UnitsList.TryGetValue(u2, out c2);
+            Coord c2 = p2.UnitsList[u2];
             bool b = p1.Attack(u1, c2);
             Assert.IsTrue(b && (u2.LifePoints < r.Life || u1.LifePoints < race.Life));
         }
@@ -71,16 +71,12 @@ namespace InsaworldTEST
         [TestMethod()]
         public void testAttackFail()
         {
-            IEnumerator<Unit> uList1 = p1.UnitsList.Keys.GetEnumerator();
-            Unit u1 = uList1.Current;
+            Unit u1 = p1.UnitsList.Keys.First();
             p1.UnitsList.Add(u1, new Coord(0, 0));
-            IEnumerator<Unit> uList2 = p2.UnitsList.Keys.GetEnumerator();
-            Unit u2 = uList2.Current;
+            Unit u2 = p2.UnitsList.Keys.First();
             p2.UnitsList.Add(u2, new Coord(5, 5));
-            Coord c2;
-            p2.UnitsList.TryGetValue(u2, out c2);
+            Coord c2 = p2.UnitsList[u2];
             bool b = p1.Attack(u1, c2);
-
             Assert.IsFalse(b);
         }
 
@@ -102,19 +98,15 @@ namespace InsaworldTEST
         public void testPlayed()
         {
             //Attack
-            IEnumerator<Unit> uList1 = p1.UnitsList.Keys.GetEnumerator();
-            Unit u1 = uList1.Current;
+            Unit u1 = p1.UnitsList.Keys.First();
             p1.UnitsList.Add(u1, new Coord(0, 0));
-            IEnumerator<Unit> uList2 = p2.UnitsList.Keys.GetEnumerator();
-            Unit u2 = uList2.Current;
+            Unit u2 = p2.UnitsList.Keys.First();
             p2.UnitsList.Add(u2, new Coord(0, 1));
-            Coord c2;
-            p2.UnitsList.TryGetValue(u2, out c2);
+            Coord c2 = p2.UnitsList[u2];
             bool b = p1.Attack(u1, c2);
 
             //Move
-            Coord cMove;
-            p1.UnitsList.TryGetValue(u1, out cMove);
+            Coord cMove = p1.UnitsList[u1];
             Coord changed = new Coord(cMove.X, cMove.Y + 3);
             p1.RacePlay.ActionMove(u1, changed);
 

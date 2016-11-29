@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using INSAWORLD;
+using System.Linq;
 
 namespace InsaworldTEST
 {
@@ -14,6 +15,9 @@ namespace InsaworldTEST
             p = new Player("Michel", 2, 6);
         }
 
+        /// <summary>
+        /// test Cerberus constructor
+        /// </summary>
         [TestMethod()]
         public void TestCerberus()
         {
@@ -21,6 +25,9 @@ namespace InsaworldTEST
             Assert.IsNotNull(p.RacePlay.Life);
         }
 
+        /// <summary>
+        /// test if a wrong race is choose, an exception is risen
+        /// </summary>
         [TestMethod()]
         [ExpectedException(typeof(BadRaceException))]
         public void TestCerberusFail()
@@ -28,32 +35,35 @@ namespace InsaworldTEST
             Player trash = new Player("Batman", 5, 6);
         }
 
+        /// <summary>
+        /// test if a unit is moved by the ActionMove method
+        /// </summary>
         [TestMethod()]
         public void TestActionMove()
         {
-            System.Collections.Generic.IEnumerator<Unit> uList = p.UnitsList.Keys.GetEnumerator();
-            Unit u = uList.Current;
-            Coord c;
-            p.UnitsList.TryGetValue(u, out c);
-            Coord changed = new Coord(c.X + 1, c.Y + 1);
-            p.RacePlay.ActionMove(u, changed);
-            Coord n;
-            p.UnitsList.TryGetValue(u, out n);
+            var u = p.UnitsList.First();
+            Coord changed = new Coord(u.Value.X + 1, u.Value.Y + 1);
+            p.RacePlay.ActionMove(u.Key, changed);
+            Coord n = p.UnitsList.First().Value;
             Assert.AreEqual(changed, n);
         }
 
+        /// <summary>
+        /// test if when the unit is asked to move too far, it rise an exception
+        /// </summary>
         [TestMethod()]
         [ExpectedException(typeof(OutOfBoundException))]
         public void TestActionMoveFail()
         {
-            System.Collections.Generic.IEnumerator<Unit> uList = p.UnitsList.Keys.GetEnumerator();
-            Unit u = uList.Current;
-            Coord c;
-            p.UnitsList.TryGetValue(u, out c);
-            Coord changed = new Coord(c.X + 10, c.Y + 10);
-            p.RacePlay.ActionMove(u, changed);
+            var u = p.UnitsList.First();
+            Coord changed = new Coord(u.Value.X + 10, u.Value.Y + 10);
+            p.RacePlay.ActionMove(u.Key, changed);
         }
 
+        /// <summary>
+        /// test if at the beginning of the game players have points
+        /// test if when a player have no more units, he has no point and lost
+        /// </summary>
         [TestMethod()]
         public void TestVictoryPoints()
         {

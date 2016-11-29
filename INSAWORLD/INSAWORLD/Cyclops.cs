@@ -65,7 +65,7 @@ namespace INSAWORLD
         public bool ActionMove(Unit u, Coord c, ref Game myGame)
         {
             throw new NotImplementedException();
-        }
+        } 
 
         /// <summary>
         /// move the unit on the tile of the killed unit if no other units on this tile

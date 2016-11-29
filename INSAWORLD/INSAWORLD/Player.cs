@@ -26,44 +26,37 @@ namespace INSAWORLD
 
         public string Name
         {
-            get;
-            set;
+            get { return name; }
+            set { name = value; }
         }
 
         public int TailleMap
         {
-            get;
-            set;
+            get { return tailleMap; }
+            set { tailleMap = value; }
         }
         public int Points
         {
-            get;
+            get { return points; }
+            set { points = value; }
         }
 
         public Race RacePlay
         {
-            get;
-            set;
+            get { return racePlay; }
+            set { racePlay = value; }
         }
-
- 
 
         public bool Playing
         {
-            get;
+            get { return playing; }
+            set { playing = value; }
         }
 
         public IDictionary<Unit, Coord> UnitsList
         {
-            get
-            {
-                return unitsList;
-            }
-
-            set
-            {
-                unitsList = value;
-            }
+            get { return unitsList; }
+            set{ unitsList = value; }
         }
 
         // method : return true if the game is lost by the player
@@ -88,9 +81,38 @@ namespace INSAWORLD
             throw new System.NotImplementedException();
         }
 
-        public bool Attack(Unit u, Coord c)
+        //call unit attack method and remove life points
+        public bool Attack(Unit u, KeyValuePair<Unit, Coord> d)
         {
-            throw new System.NotImplementedException();
+            bool success = false;
+            //use attack of unit
+            int lostLife = u.Attack(d.Value, d.Key);
+            if(lostLife > 0) //defender lost points
+            {
+                if(d.Key.LifePoints < lostLife)
+                {
+                    d.Key.LifePoints = 0;
+                }
+                else
+                {
+                    d.Key.LifePoints -= lostLife;
+                }
+                success = true;
+            }
+            else if (lostLife < 0) //attacker lost points
+            {
+                lostLife = -lostLife;
+                if(u.LifePoints < lostLife)
+                {
+                    u.LifePoints = 0;
+                }else
+                {
+                    u.LifePoints -= lostLife;
+                }
+                success = true;
+            }
+            //call game cleaner method
+            return success;
         }
     }
 }

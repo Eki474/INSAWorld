@@ -7,10 +7,8 @@ namespace INSAWORLD
 {
     public class Unit
     {
-        private int movePoints; // number of tile the unit can ActionMove on
+        private float movePoints; // number of tile the unit can ActionMove on
         private int lifePoints; // number of points before the unit dies
-        //private int defensePoints; // number of damage the creature can take 
-        //private int attackPoints; // number of damages the creature can inflict
         private bool played; // true if the unit as been played this turn, false if not
         private Race race;
 
@@ -25,38 +23,40 @@ namespace INSAWORLD
 
         public float MovePoints
         {
-            get;
-            set;
+            get { return movePoints; }
+            set { movePoints = value; }
         }
 
         public int LifePoints
         {
-            get;
-            set;
+            get { return lifePoints; }
+            set { lifePoints = value; }
         }
 
         public bool Played
         {
-            get;
-            set;
+            get { return played; }
+            set { played = value; }
         }
 
         public Race Race
         {
-            get;
+            get { return race; }
+            set { race = value; }
         }
 
         //method : Attack an other unit
         //return true if the fight is won false if not
-        public bool Attack(Coord c, Unit def)
+        public int Attack(Coord c, Unit def)
         {
             bool success = false;
+            int lifeP = 0;
             success = race.ActionMove(this, c);
             if (success)
             {
                 double attacker = 0.5;
                 double defender = 0.5;
-                int ratio = race.Attack / def.Race.Defense;
+                int ratio = (race.Attack * (lifePoints / race.Life)) / (def.Race.Defense * (def.LifePoints / def.Race.Life));
                 if(ratio < 1)
                 {
                     attacker = ratio * (100 / (ratio + 1));
@@ -69,11 +69,24 @@ namespace INSAWORLD
                     attacker = 100 - defender;
                 }
                 Random prob = new Random();
-                if(prob.Next(0,100) < attacker) success = true;
-                else success = false;
+                Random lostPoints = new Random();
+                //if random between 0 and attacker --> the attacker wins
+                //if random superior to attacker --> the defenser wins
+                if (prob.Next(0, 100) < attacker)
+                {
+                    success = true;
+                    //if attacker wins --> return a positive value of the defenser life points lost
+                    lifeP = lostPoints.Next(1, race.Attack);
+                }
+                else
+                {
+                    success = false;
+                    //if attacker wins --> return a negative value of the defenser life points lost
+                    lifeP = -lostPoints.Next(1, def.race.Attack);
+                }
                 played = true;
             }
-            return success;
+            return lifeP;
         }
 
         //method : all points are resetted

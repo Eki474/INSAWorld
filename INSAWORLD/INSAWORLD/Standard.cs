@@ -8,7 +8,7 @@ namespace INSAWORLD
     public class Standard : GameMap
     {
         private int taille; //size of the board
-        private List<Tile> casesJoueur; //to stock the tile
+        private Dictionary<Coord, Tile> casesJoueur; //to stock the tile
         private int nbTurn; // number of maximum turns before the game ends
 
         public Standard()
@@ -20,51 +20,20 @@ namespace INSAWORLD
 
         public int NbTurn
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return nbTurn; }
+            set { nbTurn = value; }
         }
 
         public int Taille
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return taille; }
+            set { taille = value; }
         }
 
-        public KeyValuePair<Coord, Tile> CasesJoueur
+        public Dictionary<Coord, Tile> CasesJoueur
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        Dictionary<Coord, Tile> GameMap.CasesJoueur
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return casesJoueur; }
+            set { casesJoueur = value; }
         }
 
         public bool TurnPlayed()

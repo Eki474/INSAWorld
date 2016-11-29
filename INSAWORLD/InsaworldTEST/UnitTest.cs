@@ -57,12 +57,10 @@ namespace InsaworldTEST
         {
             Unit u1 = p1.UnitsList.Keys.First();
             p1.UnitsList.Add(u1, new Coord(0,0));
-            IEnumerator<Unit> uList2 = p2.UnitsList.Keys.GetEnumerator();
-            Unit u2 = p2.UnitsList.Keys.First();
-            p2.UnitsList.Add(u2, new Coord(0, 1));
-            Coord c2 = p2.UnitsList[u2];
-            bool b = p1.Attack(u1, c2);
-            Assert.IsTrue(b && (u2.LifePoints < r.Life || u1.LifePoints < race.Life));
+            var u2 = p2.UnitsList.First();
+            p2.UnitsList.Add(u2.Key, new Coord(0, 1));
+            bool b = p1.Attack(u1, u2);
+            Assert.IsTrue(b && (u1.LifePoints < u1.Race.Life || u2.Key.LifePoints < u2.Key.Race.Life));
         }
 
         /// <summary>
@@ -73,10 +71,9 @@ namespace InsaworldTEST
         {
             Unit u1 = p1.UnitsList.Keys.First();
             p1.UnitsList.Add(u1, new Coord(0, 0));
-            Unit u2 = p2.UnitsList.Keys.First();
-            p2.UnitsList.Add(u2, new Coord(5, 5));
-            Coord c2 = p2.UnitsList[u2];
-            bool b = p1.Attack(u1, c2);
+            var u2 = p2.UnitsList.First();
+            p2.UnitsList.Add(u2.Key, new Coord(5, 5));
+            bool b = p1.Attack(u1, u2);
             Assert.IsFalse(b);
         }
 
@@ -100,10 +97,9 @@ namespace InsaworldTEST
             //Attack
             Unit u1 = p1.UnitsList.Keys.First();
             p1.UnitsList.Add(u1, new Coord(0, 0));
-            Unit u2 = p2.UnitsList.Keys.First();
-            p2.UnitsList.Add(u2, new Coord(0, 1));
-            Coord c2 = p2.UnitsList[u2];
-            bool b = p1.Attack(u1, c2);
+            var u2 = p2.UnitsList.First();
+            p2.UnitsList.Add(u2.Key, new Coord(0, 1));
+            bool b = p1.Attack(u1, u2);
 
             //Move
             Coord cMove = p1.UnitsList[u1];

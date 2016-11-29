@@ -23,7 +23,7 @@ namespace INSAWORLD
             set;
         }
 
-        Dictionary<INSAWORLD.Coord, INSAWORLD.Tile> CasesJoueur
+        Dictionary<Coord, Tile> CasesJoueur
         {
             get;
             set;

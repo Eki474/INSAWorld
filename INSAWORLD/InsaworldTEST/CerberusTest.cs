@@ -12,7 +12,7 @@ namespace InsaworldTEST
         [TestInitialize()]
         public void Setup()
         {
-            p = new Player("Michel", 2, 6);
+            p = new Player("Michel", 1, 6);
         }
 
         /// <summary>

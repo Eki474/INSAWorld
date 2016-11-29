@@ -12,24 +12,14 @@ namespace INSAWORLD
         //getters and setters
         public int X 
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get { return x; }
+            set { x = value; }
         }
 
         public int Y 
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get { return y; }
+            set { y = value; }
         }
         //constructor
        public  Coord(int cx, int cy) 
@@ -37,6 +27,5 @@ namespace INSAWORLD
             x = cx;
             y = cy;
         }
-        //destructor
     }
 }

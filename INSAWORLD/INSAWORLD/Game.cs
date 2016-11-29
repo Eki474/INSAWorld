@@ -21,39 +21,45 @@ namespace INSAWORLD
 
         public Player Player1
         {
-            get;
-            set;
+            get { return player1; }
+            set { player1 = value; }
         }
 
         public Player Player2
         {
-            get;
-            set;
+            get { return player2; }
+            set { player2 = value; }
         }
 
         public GameMap Map
         {
-            get;
-            set;
+            get { return map; }
+            set { map = value; }
         }
 
         //launch a game
         public void Launch()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         //create map and put units on it
         //C++ dll call
         public void Initialize()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         //verify end of the game
         public bool EndGame()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
+        }
+
+        //after each attack remove units with no life points
+        public static void Cleaner()
+        {
+            throw new NotImplementedException();
         }
     }
 }

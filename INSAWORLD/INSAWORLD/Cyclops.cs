@@ -22,26 +22,26 @@ namespace INSAWORLD
 
         public int Attack
         {
-            get;
-            set;
+            get { return attack; }
+            set { attack = value; }
         }
 
         public int Defense
         {
-            get;
-            set;
+            get { return defense; }
+            set { defense = value; }
         }
 
         public int Life
         {
-            get;
-            set;
+            get { return life; }
+            set { life = value; }
         }
 
         public int Move
         {
-            get;
-            set;
+            get { return move; }
+            set { move = value; }
         }
 
         public int VictoryPoints()

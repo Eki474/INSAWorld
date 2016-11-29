@@ -61,7 +61,7 @@ namespace InsaworldTEST
             p2.UnitsList.Add(u2.Key, new Coord(0, 1));
             bool b = p1.Attack(u1, u2);
             Assert.IsTrue(b && (u1.LifePoints < u1.Race.Life || u2.Key.LifePoints < u2.Key.Race.Life));
-        }
+        } 
 
         /// <summary>
         /// test of attack on another unit, when the units are too far from each other

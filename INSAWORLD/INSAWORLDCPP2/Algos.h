@@ -17,7 +17,7 @@ public:
 	bool fillMap(TileType map[], int size);
 
 	// action suggest a move of a unit
-	bool suggestMove(int tableTile[], int race, int moveP);
+	bool suggestMove(int tableTile[7][7], bool race, int moveP);
 };
 
 

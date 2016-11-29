@@ -29,8 +29,10 @@ namespace INSAWORLD
             get;
         }
 
-        int VictoryPoints();
+        int VictoryPoints(ref Game myGame);
 
-        bool ActionMove(Unit u, Coord c);
+        bool ActionMove(Unit u, Coord c, ref Game myGame);
+
+        void MoveOverride(Unit u, Coord c, ref Game myGame);
     }
 }

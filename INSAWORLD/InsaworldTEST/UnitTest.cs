@@ -56,9 +56,9 @@ namespace InsaworldTEST
         public void testAttack()
         {
             Unit u1 = p1.UnitsList.Keys.First();
-            p1.UnitsList.Add(u1, new Coord(0,0));
+            p1.UnitsList[u1] = new Coord(0, 0);
             var u2 = p2.UnitsList.First();
-            p2.UnitsList.Add(u2.Key, new Coord(0, 1));
+            p2.UnitsList[u2.Key] = new Coord(0, 1);
             bool b = p1.Attack(u1, u2);
             Assert.IsTrue(b && (u1.LifePoints < u1.Race.Life || u2.Key.LifePoints < u2.Key.Race.Life));
         } 
@@ -70,11 +70,11 @@ namespace InsaworldTEST
         public void testAttackFail()
         {
             Unit u1 = p1.UnitsList.Keys.First();
-            p1.UnitsList.Add(u1, new Coord(0, 0));
+            p1.UnitsList[u1] = new Coord(0, 0);
             var u2 = p2.UnitsList.First();
-            p2.UnitsList.Add(u2.Key, new Coord(5, 5));
+            p2.UnitsList[u2.Key] = new Coord(5, 5);
             bool b = p1.Attack(u1, u2);
-            Assert.IsFalse(b);
+            Assert.IsFalse(b && (u1.LifePoints == u1.Race.Life || u2.Key.LifePoints == u2.Key.Race.Life));
         }
 
         /// <summary>
@@ -96,15 +96,10 @@ namespace InsaworldTEST
         {
             //Attack
             Unit u1 = p1.UnitsList.Keys.First();
-            p1.UnitsList.Add(u1, new Coord(0, 0));
+            p1.UnitsList[u1] = new Coord(0, 0);
             var u2 = p2.UnitsList.First();
-            p2.UnitsList.Add(u2.Key, new Coord(0, 1));
+            p2.UnitsList[u2.Key] = new Coord(0, 1);
             bool b = p1.Attack(u1, u2);
-
-            //Move
-            Coord cMove = p1.UnitsList[u1];
-            Coord changed = new Coord(cMove.X, cMove.Y + 3);
-            p1.RacePlay.ActionMove(u1, changed);
 
             Assert.IsTrue(u1.Played);
         }

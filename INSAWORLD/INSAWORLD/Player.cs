@@ -1,4 +1,5 @@
-﻿using System;
+﻿using INSAWORLD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -82,36 +83,33 @@ namespace INSAWORLD
         }
 
         //call unit attack method and remove life points
-        public bool Attack(Unit u, KeyValuePair<Unit, Coord> d)
+        public bool Attack(Unit u, KeyValuePair<Unit, Coord> d, ref Game myGame)
         {
             bool success = false;
             //use attack of unit
             int lostLife = u.Attack(d.Value, d.Key);
             if(lostLife > 0) //defender lost points
             {
-                if(d.Key.LifePoints < lostLife)
+                if (d.Key.LifePoints < lostLife)
                 {
                     d.Key.LifePoints = 0;
+                    myGame.Cleaner();
+                    u.Race.MoveOverride(u, d.Value, myGame);
                 }
-                else
-                {
-                    d.Key.LifePoints -= lostLife;
-                }
+                else { d.Key.LifePoints -= lostLife; }
                 success = true;
             }
             else if (lostLife < 0) //attacker lost points
             {
                 lostLife = -lostLife;
-                if(u.LifePoints < lostLife)
+                if (u.LifePoints < lostLife)
                 {
                     u.LifePoints = 0;
-                }else
-                {
-                    u.LifePoints -= lostLife;
+                    myGame.Cleaner();
                 }
+                else { u.LifePoints -= lostLife; }
                 success = true;
             }
-            //call game cleaner method
             return success;
         }
     }

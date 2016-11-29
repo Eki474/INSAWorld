@@ -57,7 +57,7 @@ namespace INSAWORLD
         }
 
         //after each attack remove units with no life points
-        public static void Cleaner()
+        public void Cleaner()
         {
             throw new NotImplementedException();
         }

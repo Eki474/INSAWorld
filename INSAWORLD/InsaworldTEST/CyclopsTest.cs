@@ -9,11 +9,14 @@ namespace InsaworldTEST
     public class CyclopsTest
     {
         Player p;
+        Game g;
 
         [TestInitialize()]
         public void Setup()
         {
             p = new Player("Michel", 0, 6);
+            Player temp = new Player("Jean", 1, 6);
+            g = new Game(p, temp);
         }
 
         /// <summary>
@@ -44,7 +47,7 @@ namespace InsaworldTEST
         {
             var u = p.UnitsList.First();
             Coord changed = new Coord(u.Value.X + 1, u.Value.Y + 1);
-            p.RacePlay.ActionMove(u.Key, changed);
+            p.RacePlay.ActionMove(u.Key, changed, ref g);
             Coord n = p.UnitsList.First().Value;
             Assert.AreEqual(changed, n);
         }
@@ -58,7 +61,7 @@ namespace InsaworldTEST
         {
             var u = p.UnitsList.First();
             Coord changed = new Coord(u.Value.X + 10, u.Value.Y + 10);
-            p.RacePlay.ActionMove(u.Key, changed);
+            p.RacePlay.ActionMove(u.Key, changed, ref g);
         }
 
         /// <summary>
@@ -68,9 +71,10 @@ namespace InsaworldTEST
         [TestMethod()]
         public void TestVictoryPoints()
         {
-            Assert.IsTrue(p.UnitsList != null & p.RacePlay.VictoryPoints() > 0);
+            Unit v = p.UnitsList.Keys.First();
+            Assert.IsTrue(p.UnitsList != null & p.RacePlay.VictoryPoints(v, ref g) > 0);
             p.UnitsList.Clear();
-            Assert.IsTrue(p.RacePlay.VictoryPoints() == 0);
+            Assert.IsTrue(p.RacePlay.VictoryPoints(v, ref g) == 0);
         }
     }
 }

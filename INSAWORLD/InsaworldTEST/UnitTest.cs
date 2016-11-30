@@ -17,6 +17,7 @@ namespace InsaworldTEST
         Race r;
         Player p1;
         Player p2;
+        Game g;
 
         [TestInitialize()]
         public void Setup()
@@ -28,7 +29,7 @@ namespace InsaworldTEST
             i = UnitsFactory.Instance.createUnit(r);
             p1 = new Player("Jean", 2, 6);
             p2 = new Player("Paul", 1, 6);
-
+            g = new Game(p1, p2);
         }
 
         /// <summary>
@@ -59,7 +60,7 @@ namespace InsaworldTEST
             p1.UnitsList[u1] = new Coord(0, 0);
             var u2 = p2.UnitsList.First();
             p2.UnitsList[u2.Key] = new Coord(0, 1);
-            bool b = p1.Attack(u1, u2);
+            bool b = p1.Attack(u1, u2, ref g);
             Assert.IsTrue(b && (u1.LifePoints < u1.Race.Life || u2.Key.LifePoints < u2.Key.Race.Life));
         } 
 
@@ -73,7 +74,7 @@ namespace InsaworldTEST
             p1.UnitsList[u1] = new Coord(0, 0);
             var u2 = p2.UnitsList.First();
             p2.UnitsList[u2.Key] = new Coord(5, 5);
-            bool b = p1.Attack(u1, u2);
+            bool b = p1.Attack(u1, u2, ref g);
             Assert.IsFalse(b && (u1.LifePoints == u1.Race.Life || u2.Key.LifePoints == u2.Key.Race.Life));
         }
 
@@ -99,7 +100,7 @@ namespace InsaworldTEST
             p1.UnitsList[u1] = new Coord(0, 0);
             var u2 = p2.UnitsList.First();
             p2.UnitsList[u2.Key] = new Coord(0, 1);
-            bool b = p1.Attack(u1, u2);
+            bool b = p1.Attack(u1, u2, ref g);
 
             Assert.IsTrue(u1.Played);
         }

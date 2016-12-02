@@ -8,6 +8,9 @@ namespace INSAWORLD
     public class LoadCommand : CommandMenu
     {
 
+        /// <summary>
+        /// load a saved game by reading a file from a save
+        /// </summary>
         public void Execute()
         {
             throw new NotImplementedException();

@@ -11,12 +11,15 @@ namespace INSAWORLD
         private Player player2; //join the game
         private GameMap map; //board
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="p1">Joueur 1</param>
+        /// <param name="p2">Joueur 2</param>
         public Game(Player p1, Player p2)
         {
             player1 = p1;
             player2 = p2;
-            BuilderMap.Instance.BuildMap();
-            BuilderMap.Instance.FillMap();
         }
 
         public Player Player1
@@ -37,26 +40,36 @@ namespace INSAWORLD
             set { map = value; }
         }
 
-        //launch a game
+        /// <summary>
+        /// launch a game  : contain of the steps of the game
+        /// </summary>
         public void Launch()
         {
             throw new NotImplementedException();
         }
 
-        //create map and put units on it
-        //C++ dll call
+        /// <summary>
+        /// create map and put units on it
+        /// C++ dll call
+        /// </summary>
         public void Initialize()
         {
-            throw new NotImplementedException();
+            BuilderMap.Instance.BuildMap();
+            BuilderMap.Instance.FillMap();
         }
 
-        //verify end of the game
+        /// <summary>
+        /// verify end of the game
+        /// </summary>
+        /// <returns>true if the game is win by one of the player, false if not</returns>
         public bool EndGame()
         {
             throw new NotImplementedException();
         }
 
-        //after each attack remove units with no life points
+        /// <summary>
+        /// after each attack remove units with no life points
+        /// </summary>
         public void Cleaner()
         {
             throw new NotImplementedException();

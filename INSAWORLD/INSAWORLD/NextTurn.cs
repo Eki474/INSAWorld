@@ -7,21 +7,21 @@ namespace INSAWORLD
 {
     public class NextTurn : CommandMenu, ToCollect
     {
-        public void Execute()
-        {
-            throw new NotImplementedException();
-        }
+
+        private string state;
 
         public string State
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return state; }
+            set { state = value; }
+        }
+
+        /// <summary>
+        /// end the player turn and go to the next turn
+        /// </summary>
+        public void Execute()
+        {
+            throw new NotImplementedException();
         }
     }
 }

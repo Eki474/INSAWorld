@@ -8,6 +8,9 @@ namespace INSAWORLD
     public class LoadReplayCommand : CommandMenu
     {
 
+        /// <summary>
+        /// load a file for a replay
+        /// </summary>
         public void Execute()
         {
             throw new NotImplementedException();

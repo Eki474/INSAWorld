@@ -13,7 +13,7 @@ namespace INSAWORLD
         private int points; //points earned by the player 
         IDictionary<Unit, Coord> unitsList; //units of the player 
         private bool playing; //player currently playing
-        private int tailleMap;
+        private int tailleMap; //taille de la map
 
         /// <summary>
         /// constructor

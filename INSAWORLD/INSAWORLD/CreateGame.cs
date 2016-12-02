@@ -7,30 +7,24 @@ namespace INSAWORLD
 {
     public class NewGameCommand : CommandMenu, ToCollect
     {
+        private string initState;
+        private string state;
+
         public string InitState
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get { return initState; }
+            set { initState = value; }
         }
 
         public string State
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get { return state; }
+            set { state = value; }
         }
 
+        /// <summary>
+        /// create a new game
+        /// </summary>
         public void Execute()
         {
             throw new NotImplementedException();

@@ -7,17 +7,17 @@ namespace INSAWORLD
 {
     public class AttackUnit : CommandMenu, ToCollect
     {
+        private string state;
+
         public string State
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get { return state; }
+            set { state = value; }
         }
     
+        /// <summary>
+        /// a unit attack an other unit
+        /// </summary>
         public void Execute()
         {
             throw new NotImplementedException();

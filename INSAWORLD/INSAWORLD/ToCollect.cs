@@ -7,6 +7,8 @@ namespace INSAWORLD
 {
     public interface ToCollect
     {
+        //action collector for replay
+
         string State
         {
             get;

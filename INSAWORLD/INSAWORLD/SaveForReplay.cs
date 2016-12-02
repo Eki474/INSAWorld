@@ -7,18 +7,17 @@ namespace INSAWORLD
 {
     public class SaveReplayCommand : CommandMenu
     {
+        private ReplayCollector replayCollector;
 
         public ReplayCollector ReplayCollector
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get { return replayCollector; }
+            set { replayCollector = value; }
         }
 
+        /// <summary>
+        /// save all the state of the game in a file
+        /// </summary>
         public void Execute()
         {
             throw new NotImplementedException();

@@ -9,11 +9,22 @@ namespace INSAWORLD
 
         private UnitsFactory() {}
 
+        /// <summary>
+        /// crée une unité de la race demandéé (r)
+        /// </summary>
+        /// <param name="r">race de l'unité</param>
+        /// <returns>retourne l'unité créée</returns>
         public Unit createUnit(Race r)
         {   
             return new Unit(r);
         }
 
+        /// <summary>
+        /// crée une liste d'unité
+        /// </summary>
+        /// <param name="r">race des unités de la liste</param>
+        /// <param name="taille">taille de la map qui détermine le nombre d'unités créées</param>
+        /// <returns>la liste créée</returns>
         public IDictionary<Unit, Coord> createUnits(Race r, int taille)
         {
             var dico = new Dictionary<Unit, Coord>();

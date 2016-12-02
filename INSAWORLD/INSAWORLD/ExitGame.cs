@@ -8,6 +8,9 @@ namespace INSAWORLD
     public class Exit : CommandMenu
     {
 
+        /// <summary>
+        /// quit the game 
+        /// </summary>
         public void Execute()
         {
             throw new NotImplementedException();

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace INSAWORLD
 {
-    //strategy : several implementations of VictoryPoints in function of the race
+    //strategy : several implementations of VictoryPoints function of the race
     public interface Race
     {
 

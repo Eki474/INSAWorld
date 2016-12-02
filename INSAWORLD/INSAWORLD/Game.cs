@@ -52,10 +52,10 @@ namespace INSAWORLD
         /// create map and put units on it
         /// C++ dll call
         /// </summary>
-        public void Initialize()
+        public void Initialize(int type)
         {
-            BuilderMap.Instance.BuildMap();
-            BuilderMap.Instance.FillMap();
+            BuilderMap.Instance.BuildMap(type);
+            BuilderMap.Instance.FillMap(map.Taille);
         }
 
         /// <summary>

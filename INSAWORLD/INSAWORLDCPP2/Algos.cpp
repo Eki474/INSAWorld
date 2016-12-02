@@ -88,6 +88,7 @@ vector<string> Algos::suggestMoveNormal(int tableTile[7][7], int moveP, string c
 
 }
 
+//oob = out of bounds
 vector<string> Algos::suggestMoveCentaur(int tableTile[7][7], int moveP, string cheminActuel, vector<string> resultat, int posX, int posY) {
 	if (tableTile[posX][posY] = 1) moveP += 0.5;
 	// cas d'arrêt: case déjà visitée/occupée/plus de points/oob

@@ -30,8 +30,12 @@ public:
 // export all C++ class/methods as friendly C functions to be consumed by external component in a portable way
 ///
 
-EXPORTCDECL bool Algos_fillMap(Algos* Algos, TileType map[], int size) {
-	return Algos->fillMap(map, size);
+EXPORTCDECL void Algos_fillMap(Algos* algos, TileType map[], int size) {
+	return algos->fillMap(map, size);
+}
+
+EXPORTCDECL vector<string> Algos_suggestMove(Algos* algos, int tableTile[7][7], bool race, int moveP) {
+	return algos->suggestMove(tableTile, race, moveP);
 }
 
 EXPORTCDECL Algos* Algos_new() {

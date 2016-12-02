@@ -8,15 +8,27 @@
 
 using namespace std;
 
-
-
-bool Algos::fillMap(TileType map[], int size)
+//Plain = 0, Swamp = 1, Volcano = 2, Desert = 3
+//generate a map with random tile 
+//A new map shall be generated for each game.A map shall contain the same number of tiles of each type.
+void Algos::fillMap(TileType map[], int size)
 {
-	//TODO : init map tiles with a better algorithm
-	for (int i = 0; i < size; i++)
-		map[i] = (TileType)(i % 4);
-
-	return true;
+	int cpt[4];
+	for (int j : cpt) {
+		j = size / 4;
+	}
+	int tile = rand() % 4;
+	for (int i = 0; i < size; i++){
+		if (cpt[tile] != 0) {
+			map[i] = (TileType)(tile);
+			cpt[tile]--;
+		}
+		else {
+			tile = rand() % 4;
+			i--;
+		}
+		tile = rand() % 4;
+	}
 }
 
 // action suggest a move of a unit

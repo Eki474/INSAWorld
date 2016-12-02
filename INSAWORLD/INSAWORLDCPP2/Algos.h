@@ -2,9 +2,9 @@
 
 enum TileType {
 	Plain = 0,
-	Moutain = 1,
-	Forest = 2,
-	Water = 3
+	Swamp = 1,
+	Volcano = 2,
+	Desert = 3
 };
 
 class Algos {
@@ -14,7 +14,7 @@ public:
 	~Algos() {}
 
 	// You can change the return type and the parameters according to your needs.
-	bool fillMap(TileType map[], int size);
+	void fillMap(TileType map[], int size);
 
 	// action suggest a move of a unit
 	vector<string> suggestMove(int tableTile[7][7], bool race, int moveP);

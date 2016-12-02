@@ -17,7 +17,11 @@ public:
 	bool fillMap(TileType map[], int size);
 
 	// action suggest a move of a unit
-	bool suggestMove(int tableTile[7][7], bool race, int moveP);
+	vector<string> suggestMove(int tableTile[7][7], bool race, int moveP);
+	void split(const std::string &s, char delim, std::vector<std::string> &elems);
+	vector<string> suggestMoveNormal(int tableTile[7][7], int moveP, string cheminActuel, vector<string> resultat, int posX, int posY);
+	vector<string> suggestMoveCentaur(int tableTile[7][7], int moveP, string cheminActuel, vector<string> resultat, int posX, int posY);
+	vector<string> setMaximumVector(vector<string> resultat, string cheminActuel);
 };
 
 

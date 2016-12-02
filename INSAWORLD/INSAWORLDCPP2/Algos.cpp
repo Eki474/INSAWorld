@@ -34,12 +34,13 @@ vector<string> Algos::suggestMove(int tableTile[7][7], bool race, int moveP)
 	}
 	else {
 
-		result = suggestMoveCentaur(tableTile[7][7], moveP, 4, 4);
+		result = suggestMoveCentaur(tableTile, moveP, "", result, 4, 4);
 	}
 	return result;
 }
 
-void split(const std::string &s, char delim, std::vector<std::string> &elems) {
+void Algos::split(const std::string &s, char delim, std::vector<std::string> &elems) 
+{
 	std::stringstream ss;
 	ss.str(s);
 	std::string item;
@@ -48,7 +49,7 @@ void split(const std::string &s, char delim, std::vector<std::string> &elems) {
 	}
 }
 
-vector<string> suggestMoveNormal(int tableTile[7][7], int moveP, string cheminActuel, vector<string> resultat, int posX, int posY) {
+vector<string> Algos::suggestMoveNormal(int tableTile[7][7], int moveP, string cheminActuel, vector<string> resultat, int posX, int posY) {
 	// cas d'arrêt: case déjà visitée/occupée/plus de points/oob
 	if (moveP == 0 || tableTile[posX][posY] == 2 || tableTile[posX][posY] == 3 || tableTile[posX][posY] == -1) {
 		return setMaximumVector(resultat, cheminActuel);
@@ -75,7 +76,7 @@ vector<string> suggestMoveNormal(int tableTile[7][7], int moveP, string cheminAc
 
 }
 
-vector<string> suggestMoveCentaur(int tableTile[7][7], int moveP, string cheminActuel, vector<string> resultat, int posX, int posY) {
+vector<string> Algos::suggestMoveCentaur(int tableTile[7][7], int moveP, string cheminActuel, vector<string> resultat, int posX, int posY) {
 	if (tableTile[posX][posY] = 1) moveP += 0.5;
 	// cas d'arrêt: case déjà visitée/occupée/plus de points/oob
 	if (moveP == 0 || tableTile[posX][posY] == 2 || tableTile[posX][posY] == 3 || tableTile[posX][posY] == -1) {
@@ -105,7 +106,7 @@ vector<string> suggestMoveCentaur(int tableTile[7][7], int moveP, string cheminA
 
 
 // sert à remplir le vecteur par les trois meilleurs chemins
-vector<string> setMaximumVector(vector<string> resultat, string cheminActuel) {
+vector<string> Algos::setMaximumVector(vector<string> resultat, string cheminActuel) {
 	int mini = 0;
 	int tailleMin = 100;
 	cheminActuel.pop_back;

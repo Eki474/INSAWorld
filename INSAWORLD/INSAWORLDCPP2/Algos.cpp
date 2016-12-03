@@ -18,7 +18,7 @@ void Algos::fillMap(TileType map[], int size)
 		j = size / 4;
 	}
 	int tile = rand() % 4;
-	for (int i = 0; i < size; i++){
+	for (int i = 0; i < size; i++) {
 		if (cpt[tile] != 0) {
 			map[i] = (TileType)(tile);
 			cpt[tile]--;
@@ -36,22 +36,16 @@ void Algos::fillMap(TileType map[], int size)
 // tableFile: 0 pour case "normale", 1 pour case plaine, 2 pour case occupée, 3 pour case visitée, -1 pour oob
 vector<string> Algos::suggestMove(int tableTile[7][7], bool race, int moveP)
 {
-	vector<string> result;
+	vector<std::string> result;
 	// retour: stocke les chemins sous la forme {déplacementX déplacementY,} ex: "0,1,3"
 	// déplacement: 0 -> 1 <- 2 î 3 V
-	if (!race) {
-		// /!\ il faut déjà avoir la case actuelle à 3 pour ne pas retourner 
 
-		result = suggestMoveNormal(tableTile, moveP, "", result, 4, 4);
-	}
-	else {
+	result = suggestMoveAlgo(tableTile, moveP, race, "", result, 4, 4);
 
-		result = suggestMoveCentaur(tableTile, moveP, "", result, 4, 4);
-	}
 	return result;
 }
 
-void Algos::split(const std::string &s, char delim, std::vector<std::string> &elems) 
+void Algos::split(const std::string &s, char delim, std::vector<std::string> &elems)
 {
 	std::stringstream ss;
 	ss.str(s);
@@ -61,55 +55,29 @@ void Algos::split(const std::string &s, char delim, std::vector<std::string> &el
 	}
 }
 
-vector<string> Algos::suggestMoveNormal(int tableTile[7][7], int moveP, string cheminActuel, vector<string> resultat, int posX, int posY) {
-	// cas d'arrêt: case déjà visitée/occupée/plus de points/oob
-	if (moveP == 0 || tableTile[posX][posY] == 2 || tableTile[posX][posY] == 3 || tableTile[posX][posY] == -1) {
-		return setMaximumVector(resultat, cheminActuel);
-	}
-	tableTile[posX][posY] = 3;
-	vector<string> tmpvector;
-	if (posX + 1 < 7) tmpvector = suggestMoveNormal(tableTile, moveP - 1, cheminActuel + "0,", resultat, posX + 1, posY);
-	for (int i = 0; i < tmpvector.size; i++) {
-		resultat = setMaximumVector(resultat, tmpvector[i]);
-	}
-	if (posX - 1 > 0) suggestMoveNormal(tableTile, moveP - 1, cheminActuel + "1,", resultat, posX - 1, posY);
-	for (int i = 0; i < tmpvector.size; i++) {
-		resultat = setMaximumVector(resultat, tmpvector[i]);
-	}
-	if (posY + 1 < 7) suggestMoveNormal(tableTile, moveP - 1, cheminActuel + "2,", resultat, posX, posY + 1);
-	for (int i = 0; i < tmpvector.size; i++) {
-		resultat = setMaximumVector(resultat, tmpvector[i]);
-	}
-	if (posY - 1 > 0) suggestMoveNormal(tableTile, moveP - 1, cheminActuel + "3,", resultat, posX, posY - 1);
-	for (int i = 0; i < tmpvector.size; i++) {
-		resultat = setMaximumVector(resultat, tmpvector[i]);
-	}
-	return resultat;
-
-}
 
 //oob = out of bounds
-vector<string> Algos::suggestMoveCentaur(int tableTile[7][7], int moveP, string cheminActuel, vector<string> resultat, int posX, int posY) {
-	if (tableTile[posX][posY] = 1) moveP += 0.5;
+vector<string> Algos::suggestMoveAlgo(int tableTile[7][7], int moveP, bool race, string cheminActuel, vector<string> resultat, int posX, int posY) {
+	if (tableTile[posX][posY] = 1 && race) moveP += 0.5;
 	// cas d'arrêt: case déjà visitée/occupée/plus de points/oob
-	if (moveP == 0 || tableTile[posX][posY] == 2 || tableTile[posX][posY] == 3 || tableTile[posX][posY] == -1) {
+	if (moveP - 1 < 0 || tableTile[posX][posY] == 2 || tableTile[posX][posY] == 3 || tableTile[posX][posY] == -1) {
 		return setMaximumVector(resultat, cheminActuel);
 	}
 	tableTile[posX][posY] = 3;
 	vector<string> tmpvector;
-	if (posX + 1 < 7) tmpvector = suggestMoveNormal(tableTile, moveP - 1, cheminActuel + "0,", resultat, posX + 1, posY);
+	if (posX + 1 < 7) tmpvector = suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "0,", resultat, posX + 1, posY);
 	for (int i = 0; i < tmpvector.size; i++) {
 		resultat = setMaximumVector(resultat, tmpvector[i]);
 	}
-	if (posX - 1 > 0) suggestMoveNormal(tableTile, moveP - 1, cheminActuel + "1,", resultat, posX - 1, posY);
+	if (posX - 1 > 0) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "1,", resultat, posX - 1, posY);
 	for (int i = 0; i < tmpvector.size; i++) {
 		resultat = setMaximumVector(resultat, tmpvector[i]);
 	}
-	if (posY + 1 < 7) suggestMoveNormal(tableTile, moveP - 1, cheminActuel + "2,", resultat, posX, posY + 1);
+	if (posY + 1 < 7) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "2,", resultat, posX, posY + 1);
 	for (int i = 0; i < tmpvector.size; i++) {
 		resultat = setMaximumVector(resultat, tmpvector[i]);
 	}
-	if (posY - 1 > 0) suggestMoveNormal(tableTile, moveP - 1, cheminActuel + "3,", resultat, posX, posY - 1);
+	if (posY - 1 > 0) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "3,", resultat, posX, posY - 1);
 	for (int i = 0; i < tmpvector.size; i++) {
 		resultat = setMaximumVector(resultat, tmpvector[i]);
 	}
@@ -118,10 +86,12 @@ vector<string> Algos::suggestMoveCentaur(int tableTile[7][7], int moveP, string 
 }
 
 
-// sert à remplir le vecteur par les trois meilleurs chemins
-vector<string> Algos::setMaximumVector(vector<string> resultat, string cheminActuel) {
+// sert à remplir le vecteur par les trois meilleurs chemins == les trois chemins les plus longs
+vector<string> Algos::setMaximumVector(vector<std::string> resultat, std::string cheminActuel) {
 	int mini = 0;
 	int tailleMin = 100;
+	if (cheminActuel == "") return resultat;
+	//vire la dernière virgule
 	cheminActuel.pop_back;
 	std::vector<std::string> tmp;
 	//si on n'a pas encore le nombre de chemins requis
@@ -130,7 +100,7 @@ vector<string> Algos::setMaximumVector(vector<string> resultat, string cheminAct
 	}
 	else {
 		for (int i = 0; i < 3; i++) {
-			string actual = resultat[i];
+			std::string actual = resultat[i];
 			split(actual, ',', tmp);
 			if (tmp.size < tailleMin) { tailleMin = tmp.size; mini = i; }
 

@@ -77,7 +77,7 @@ namespace INSAWORLD
         extern static void Algo_fillMap(IntPtr algo, TileType[] tiles, int nbTiles);
 
         [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static vector<string> Algos_suggestMove(IntPtr algos, int tableTile[7][7], bool race, int moveP);
+        extern static List<string> Algos_suggestMove(IntPtr algos, int[,] tableTile, bool race, int moveP);
         
         [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
         extern static IntPtr Algo_new();

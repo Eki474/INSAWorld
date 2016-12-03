@@ -19,8 +19,7 @@ public:
 	// action suggest a move of a unit
 	vector<string> suggestMove(int tableTile[7][7], bool race, int moveP);
 	void split(const std::string &s, char delim, std::vector<std::string> &elems);
-	vector<string> suggestMoveNormal(int tableTile[7][7], int moveP, string cheminActuel, vector<string> resultat, int posX, int posY);
-	vector<string> suggestMoveCentaur(int tableTile[7][7], int moveP, string cheminActuel, vector<string> resultat, int posX, int posY);
+	vector<string> suggestMoveAlgo(int tableTile[7][7], int moveP, bool race, string cheminActuel, vector<string> resultat, int posX, int posY);
 	vector<string> setMaximumVector(vector<string> resultat, string cheminActuel);
 };
 
@@ -34,7 +33,7 @@ EXPORTCDECL void Algos_fillMap(Algos* algos, TileType map[], int size) {
 	return algos->fillMap(map, size);
 }
 
-EXPORTCDECL vector<string> Algos_suggestMove(Algos* algos, int tableTile[7][7], bool race, int moveP) {
+EXPORTCDECL vector<std::string> Algos_suggestMove(Algos* algos, int tableTile[7][7], bool race, int moveP) {
 	return algos->suggestMove(tableTile, race, moveP);
 }
 

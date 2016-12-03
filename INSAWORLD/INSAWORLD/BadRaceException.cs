@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace INSAWORLD
 {
     [Serializable]
-    internal class BadRaceException : Exception
+    public class BadRaceException : Exception
     {
 
         public BadRaceException()

@@ -32,7 +32,7 @@ namespace InsaworldTEST
         [TestMethod()]
         public void TestLaunch()
         {
-            g.Initialize();
+            g.Initialize(0);
             g.Launch();
             Assert.IsTrue(g.Player1.Playing);
         }
@@ -43,7 +43,7 @@ namespace InsaworldTEST
         [TestMethod()]
         public void TestInitialize()
         {
-            g.Initialize();
+            g.Initialize(0);
             Assert.IsNotNull(g.Map);
         }
 

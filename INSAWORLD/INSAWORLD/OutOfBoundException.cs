@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace INSAWORLD
 {
     [Serializable]
-    internal class OutOfBoundException : Exception
+    public class OutOfBoundException : Exception
     {
         public OutOfBoundException()
         {

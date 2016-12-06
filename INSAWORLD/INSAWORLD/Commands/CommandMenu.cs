@@ -8,6 +8,6 @@ namespace INSAWORLD
     public interface CommandMenu
     {
 
-        void Execute();
+        Array Execute();
     }
 }

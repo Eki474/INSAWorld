@@ -11,7 +11,7 @@ namespace INSAWORLD
         private string name; //name of the player 
         private Race racePlay; //race choosen by the player 
         private int points; //points earned by the player 
-        IDictionary<Unit, Coord> unitsList; //units of the player 
+        List<Unit> unitsList; //units of the player 
         private bool playing; //player currently playing
         private int tailleMap; //taille de la map
 
@@ -60,45 +60,56 @@ namespace INSAWORLD
             set { playing = value; }
         }
 
-        public IDictionary<Unit, Coord> UnitsList
+        public List<Unit> UnitsList
         {
             get { return unitsList; }
             set{ unitsList = value; }
         }
 
         /// <summary>
-        /// check difference between points
+        /// check if unitsList is empty
         /// </summary>
         /// <returns>true if the game is lost by the player false if not</returns>
         public bool Lost()
-        {            
-            throw new System.NotImplementedException();
+        {
+            return unitsList.Count == 0;
         }
 
         /// <summary>
         /// End the turn of the player : playing = false for the current player (while the other is on true thanks to StartTurn)
         /// </summary>
         /// <returns>true if the turn can be ended false if not</returns>
-        public bool EndTurn()
+        public bool EndTurn(ref GameMap map)
         {
-            throw new System.NotImplementedException();
+            foreach(Unit u in unitsList)
+            {
+                if(!(u.Played && racePlay.NoMoreMoves(u, ref map)))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>
         /// begin the turn of a player : playing = true for the current player (while the other is on false thanks to EndTurn)
         /// </summary>
         /// <returns>true if the turn can be started false if not</returns>
-        public bool StartTurn()
+        public void StartTurn()
         {
-            throw new System.NotImplementedException();
+            playing = true;
         }
 
         /// <summary>
-        /// method compute points earned by the player this turn and add the result to global count (attribute points)
+        /// method compute points earned by the player this turn (attribute points)
         /// </summary>
-        public void ComputePoints()
+        public void ComputePoints(ref Game game)
         {
-            throw new System.NotImplementedException();
+            points = 0;
+            foreach(Unit u in unitsList)
+            {
+                points += racePlay.VictoryPoints(u, ref game);
+            }
         }
 
         /// <summary>
@@ -108,20 +119,20 @@ namespace INSAWORLD
         /// <param name="d">pair of unit/coord of the attacked unit</param>
         /// <param name="myGame">reference to the game to obtain the map</param>
         /// <returns>true if the attack has been done false if not</returns>
-        public bool Attack(Unit u, KeyValuePair<Unit, Coord> d, ref Game myGame)
+        public bool Attack(Unit u, Unit d, ref Game myGame)
         {
             bool success = false;
             //use attack of unit
-            int lostLife = u.Attack(d.Value, d.Key, ref myGame);
+            int lostLife = u.Attack(d.C, d, ref myGame);
             if(lostLife > 0) //defender lost points
             {
-                if (d.Key.LifePoints < lostLife)
+                if (d.LifePoints < lostLife)
                 {
-                    d.Key.LifePoints = 0;
+                    d.LifePoints = 0;
                     myGame.Cleaner();
                     u.Race.MoveOverride(u, d, ref myGame);
                 }
-                else { d.Key.LifePoints -= lostLife; }
+                else { d.LifePoints -= lostLife; }
                 success = true;
             }
             else if (lostLife < 0) //attacker lost points

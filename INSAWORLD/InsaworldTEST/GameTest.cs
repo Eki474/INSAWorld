@@ -8,13 +8,15 @@ namespace InsaworldTEST
     public class GameTest
     {
         Game g;
+        GameMap m;
         
         [TestInitialize()]
         public void Setup()
         {
             Player p1 = new Player("Michel", 0, 6);
             Player p2 = new Player("Jean", 1, 6);
-            g = new Game(p1, p2);
+            g = new Game(ref p1, ref p2);
+            m = g.Map;
         }
 
         /// <summary>
@@ -56,8 +58,8 @@ namespace InsaworldTEST
         {
             for(int i=0; i<5; i++)
             {
-                g.Player1.EndTurn();
-                g.Player2.EndTurn();
+                g.Player1.EndTurn(ref m);
+                g.Player2.EndTurn(ref m);
             }
             Assert.IsTrue(g.EndGame());
         }

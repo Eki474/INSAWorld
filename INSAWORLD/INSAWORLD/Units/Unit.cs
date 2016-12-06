@@ -7,13 +7,14 @@ namespace INSAWORLD
         private float movePoints; // number of tile the unit can ActionMove on
         private int lifePoints; // number of points before the unit dies
         private bool played; // true if the unit as been played this turn, false if not
-        private Race race;
-        private Coord c;
+        private Race race; // unit race
+        private Coord c; // unit coordinates on the map
 
         /// <summary>
         /// constructor
         /// </summary>
         /// <param name="r">race of the unit</param>
+        /// <param name="co">coordinates of the unit</param>
         public Unit(ref Race r, ref Coord co)
         {
             race = r;

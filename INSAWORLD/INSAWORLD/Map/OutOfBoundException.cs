@@ -6,6 +6,8 @@ namespace INSAWORLD
     [Serializable]
     public class OutOfBoundException : Exception
     {
+        //when something go off map
+
         public OutOfBoundException()
         {
         }

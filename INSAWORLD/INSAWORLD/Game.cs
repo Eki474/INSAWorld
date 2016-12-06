@@ -50,7 +50,6 @@ namespace INSAWORLD
 
         /// <summary>
         /// create map and put units on it
-        /// C++ dll call
         /// </summary>
         public void Initialize(int type)
         {

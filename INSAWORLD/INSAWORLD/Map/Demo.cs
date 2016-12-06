@@ -18,7 +18,6 @@ namespace INSAWORLD
         {
             taille = 6;
             nbTurn = 5;
-            //casesJoueur.generate(); in the C++ part ???
         }
 
         public int Taille

@@ -6,6 +6,7 @@ namespace INSAWORLD
     [Serializable]
     public class BadTypeException : Exception
     {
+        //when a proposed type (int) doesn't correspond to a true tile type (Plain 0, Swamp 1, Volcano 2, Desert 3)
         public BadTypeException()
         {
         }

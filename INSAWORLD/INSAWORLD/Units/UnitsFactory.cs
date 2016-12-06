@@ -10,21 +10,22 @@ namespace INSAWORLD
         private UnitsFactory() {}
 
         /// <summary>
-        /// crée une unité de la race demandéé (r)
+        /// create a unit of asked race (r) and coordinates (c)
         /// </summary>
-        /// <param name="r">race de l'unité</param>
-        /// <returns>retourne l'unité créée</returns>
+        /// <param name="c">unit coordinates</param>
+        /// <param name="r">unit race</param>
+        /// <returns>unit</returns>
         public Unit createUnit(ref Race r, ref Coord c)
         {   
             return new Unit(ref r, ref c);
         }
 
         /// <summary>
-        /// crée une liste d'unité
+        /// create a units list
         /// </summary>
-        /// <param name="r">race des unités de la liste</param>
-        /// <param name="taille">taille de la map qui détermine le nombre d'unités créées</param>
-        /// <returns>la liste créée</returns>
+        /// <param name="r">race of the units in the list</param>
+        /// <param name="taille">size of the map (to know how many units have to be created)</param>
+        /// <returns>units list</returns>
         public List<Unit> createUnits(Race r, int taille)
         {
             var dico = new List<Unit>();

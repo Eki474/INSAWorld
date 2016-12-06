@@ -29,10 +29,11 @@ namespace INSAWORLD
             get;
         }
 
-        
         /// <summary>
         /// compute victory points earn by one unit
         /// </summary>
+        /// <param name="u">target unit</param>
+        /// <param name="myGame">reference to the game (to access game objects)</param>
         /// <returns>depend on the implementation</returns>
         int VictoryPoints(Unit u, ref Game myGame);
 
@@ -41,6 +42,7 @@ namespace INSAWORLD
         /// </summary>
         /// <param name="u">unit to move</param>
         /// <param name="c">coord to move on</param>
+        /// <param name="myGame">reference to the game (to access game objects)</param>
         /// <returns>true if the unit can move on the tile, false if not</returns>
         bool ActionMove(Unit u, Coord c, ref Game myGame);
 
@@ -49,7 +51,15 @@ namespace INSAWORLD
         /// </summary>
         /// <param name="u">unit to move</param>
         /// <param name="d">unit killed and his coord</param>
+        /// <param name="map">reference to the map</param>
         void MoveOverride(Unit u, Unit d, ref Game myGame);
+
+        /// <summary>
+        /// verifies if a unit can still move or if it has no move points remaining
+        /// </summary>
+        /// <param name="u">target unit</param>
+        /// <param name="map">reference to the map</param>
+        /// <returns>true if the unit can't move, false if if do</returns>
         bool NoMoreMoves(Unit u, ref GameMap map);
     }
 }

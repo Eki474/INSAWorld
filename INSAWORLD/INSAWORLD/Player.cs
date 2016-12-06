@@ -78,6 +78,7 @@ namespace INSAWORLD
         /// <summary>
         /// End the turn of the player : playing = false for the current player (while the other is on true thanks to StartTurn)
         /// </summary>
+        /// <param name="map">reference to the map</param>
         /// <returns>true if the turn can be ended false if not</returns>
         public bool EndTurn(ref GameMap map)
         {
@@ -103,6 +104,7 @@ namespace INSAWORLD
         /// <summary>
         /// method compute points earned by the player this turn (attribute points)
         /// </summary>
+        /// <param name="map">reference to the map</param>
         public void ComputePoints(ref Game game)
         {
             points = 0;

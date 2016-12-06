@@ -50,6 +50,8 @@ namespace INSAWORLD
         /// <summary>
         /// compute victory points earn by one unit
         /// </summary>
+        /// <param name="u">target unit</param>
+        /// <param name="myGame">reference to the game (to access game objects)</param>
         /// <returns>3 on desert, 2 on plain, 1 on volcano, 0 on swamp</returns>
         public int VictoryPoints(Unit u, ref Game myGame)
         {
@@ -70,6 +72,7 @@ namespace INSAWORLD
         /// </summary>
         /// <param name="u">unit to move</param>
         /// <param name="c">coord to move on</param>
+        /// <param name="myGame">reference to the game (to access game objects)</param>
         /// <returns>true if the unit can move on the tile, false if not</returns>
         public bool ActionMove(Unit u, Coord c, ref Game myGame)
         {
@@ -81,7 +84,8 @@ namespace INSAWORLD
         /// move the unit on the tile of the killed unit if no other units on this tile
         /// </summary>
         /// <param name="u">unit to move</param>
-        /// <param name="c">move on those coord</param>
+        /// <param name="d">unit killed and his coord</param>
+        /// <param name="map">reference to the map</param>
         public void MoveOverride(Unit u, Unit d, ref Game myGame)
         {
             bool movement = true;
@@ -104,6 +108,12 @@ namespace INSAWORLD
             if (movement) { u.C = d.C; }
         }
 
+        /// <summary>
+        /// verifies if a unit can still move or if it has no move points remaining
+        /// </summary>
+        /// <param name="u">target unit</param>
+        /// <param name="map">reference to the map</param>
+        /// <returns>true if the unit can't move, false if if do</returns>
         public bool NoMoreMoves(Unit u, ref GameMap map)
         {
             return u.MovePoints == 0;

@@ -6,6 +6,8 @@ namespace INSAWORLD
     [Serializable]
     public class BadMapException : Exception
     {
+        //when a proposed type (int) doesn't correspond to a true type map (Demo 0, Small 1, Standard 2)
+
         public BadMapException()
         {
         }

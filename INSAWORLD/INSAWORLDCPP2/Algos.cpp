@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <time.h>
+#include <stdlib.h>
 #include <math.h> 
 #include <vector>
 #include <sstream>
@@ -85,6 +86,12 @@ vector<std::string> Algos::suggestMoveAlgo(int tableTile[7][7], int moveP, bool 
 
 }
 
+int * Algos::placeUnits(int taille) {
+	int x = rand() % taille;
+	int y = rand() % taille;
+	int result[2] = { x, y };
+	return result;
+}
 
 // sert à remplir le vecteur par les trois meilleurs chemins == les trois chemins les plus longs
 vector<std::string> Algos::setMaximumVector(vector<std::string> resultat, std::string cheminActuel) {
@@ -113,3 +120,4 @@ vector<std::string> Algos::setMaximumVector(vector<std::string> resultat, std::s
 	}
 	return resultat;
 }
+

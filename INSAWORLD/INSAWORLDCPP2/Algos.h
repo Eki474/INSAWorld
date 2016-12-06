@@ -21,6 +21,7 @@ public:
 	void split(const std::string &s, char delim, std::vector<std::string> &elems);
 	vector<string> suggestMoveAlgo(int tableTile[7][7], int moveP, bool race, string cheminActuel, vector<string> resultat, int posX, int posY);
 	vector<string> setMaximumVector(vector<string> resultat, string cheminActuel);
+	int * Algos::placeUnits(int taille);
 };
 
 
@@ -33,9 +34,15 @@ EXPORTCDECL void Algos_fillMap(Algos* algos, TileType map[], int size) {
 	return algos->fillMap(map, size);
 }
 
+EXPORTCDECL int* Algos_placeUnits(Algos* algos, int taille) {
+	return algos->placeUnits(taille);
+}
+
 EXPORTCDECL vector<std::string> Algos_suggestMove(Algos* algos, int tableTile[7][7], bool race, int moveP) {
 	return algos->suggestMove(tableTile, race, moveP);
 }
+
+
 
 EXPORTCDECL Algos* Algos_new() {
 	return new Algos();
@@ -44,3 +51,6 @@ EXPORTCDECL Algos* Algos_new() {
 EXPORTCDECL void Algos_delete(Algos* Algos) {
 	delete Algos;
 }
+
+
+

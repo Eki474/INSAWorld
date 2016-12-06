@@ -55,6 +55,7 @@ namespace INSAWORLD
         {
             BuilderMap.Instance.BuildMap(type);
             BuilderMap.Instance.FillMap(ref map);
+            BuilderMap.Instance.setJoueurs(ref player1, ref player2, map.Taille);
         }
 
         /// <summary>

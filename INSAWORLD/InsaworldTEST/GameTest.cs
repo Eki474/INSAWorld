@@ -56,11 +56,7 @@ namespace InsaworldTEST
         [TestMethod()]
         public void TestEndGame()
         {
-            for(int i=0; i<5; i++)
-            {
-                g.Player1.EndTurn(ref m);
-                g.Player2.EndTurn(ref m);
-            }
+            g.Player1.UnitsList.Clear();
             Assert.IsTrue(g.EndGame());
         }
 

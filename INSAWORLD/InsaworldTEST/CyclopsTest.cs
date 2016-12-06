@@ -76,5 +76,32 @@ namespace InsaworldTEST
             p.UnitsList.Clear();
             Assert.IsTrue(p.RacePlay.VictoryPoints(v, ref g) == 0);
         }
+
+        /// <summary>
+        /// test if, with no more movePoints, the unit can still move with this method
+        /// </summary>
+        [TestMethod()]
+        public void TestMoveOverride()
+        {
+            Unit u = p.UnitsList.First();
+            u.MovePoints = 0;
+            Coord temp = new Coord(u.C.X + 1, u.C.Y);
+            Race r = RaceFactory.Instance.createRace(1);
+            Unit d = UnitsFactory.Instance.createUnit(ref r, ref temp);
+            p.RacePlay.MoveOverride(u, d, ref g);
+            Assert.AreEqual(temp, u.C);
+        }
+
+        /// <summary>
+        /// test if a unit with no life points can't move 
+        /// </summary>
+        [TestMethod()]
+        public void TestNoMoreMoves()
+        {
+            Unit u = p.UnitsList.First();
+            u.MovePoints = 0;
+            GameMap m = g.Map;
+            Assert.IsTrue(p.RacePlay.NoMoreMoves(u, ref m));
+        }
     }
 }

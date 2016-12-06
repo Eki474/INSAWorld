@@ -17,6 +17,8 @@ namespace InsaworldTEST
             p = new Player("Michel", 0, 6);
             Player temp = new Player("Jean", 1, 6);
             g = new Game(ref p, ref temp);
+            p.UnitsList.First().C = new Coord(0, 0);
+            //g.Initialize(0);
         }
 
         /// <summary>
@@ -87,7 +89,8 @@ namespace InsaworldTEST
             u.MovePoints = 0;
             Coord temp = new Coord(u.C.X + 1, u.C.Y);
             Race r = RaceFactory.Instance.createRace(1);
-            Unit d = UnitsFactory.Instance.createUnit(ref r, ref temp);
+            Unit d = UnitsFactory.Instance.createUnit(ref r);
+            d.C= temp;
             p.RacePlay.MoveOverride(u, d, ref g);
             Assert.AreEqual(temp, u.C);
         }

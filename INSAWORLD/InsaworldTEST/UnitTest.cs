@@ -28,12 +28,16 @@ namespace InsaworldTEST
             Coord c3 = new Coord(1, 1);
             race = RaceFactory.Instance.createRace(0);
             r = RaceFactory.Instance.createRace(1);
-            u = UnitsFactory.Instance.createUnit(ref race, ref c1);
-            n = UnitsFactory.Instance.createUnit(ref race, ref c2);
-            i = UnitsFactory.Instance.createUnit(ref r, ref c3);
+            u = UnitsFactory.Instance.createUnit(ref race);
+            u.C= c1;
+            n = UnitsFactory.Instance.createUnit(ref race);
+            n.C = c2;
+            i = UnitsFactory.Instance.createUnit(ref r);
+            i.C = c3;
             p1 = new Player("Jean", 2, 6);
             p2 = new Player("Paul", 1, 6);
             g = new Game(ref p1, ref p2);
+           g.Initialize(0);
         }
 
         /// <summary>

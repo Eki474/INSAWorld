@@ -15,15 +15,24 @@ namespace INSAWORLD
         /// </summary>
         /// <param name="r">race of the unit</param>
         /// <param name="co">coordinates of the unit</param>
-        public Unit(ref Race r, ref Coord co)
+        /// 
+        //TODO virer? ou utile pour les tests?
+       /* public Unit(ref Race r, ref Coord co)
         {
             race = r;
             movePoints = r.Move;
             lifePoints = r.Life;
             played = false;
             c = co;
+        }*/
+        public Unit(ref Race r)
+        {
+            race = r;
+            movePoints = r.Move;
+            lifePoints = r.Life;
+            played = false;
         }
-           
+
 
         public float MovePoints
         {

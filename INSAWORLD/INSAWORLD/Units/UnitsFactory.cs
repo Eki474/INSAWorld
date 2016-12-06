@@ -15,9 +15,9 @@ namespace INSAWORLD
         /// <param name="c">unit coordinates</param>
         /// <param name="r">unit race</param>
         /// <returns>unit</returns>
-        public Unit createUnit(ref Race r, ref Coord c)
+        public Unit createUnit(ref Race r)
         {   
-            return new Unit(ref r, ref c);
+            return new Unit(ref r);
         }
 
         /// <summary>
@@ -26,13 +26,10 @@ namespace INSAWORLD
         /// <param name="r">race of the units in the list</param>
         /// <param name="taille">size of the map (to know how many units have to be created)</param>
         /// <returns>units list</returns>
-        public List<Unit> createUnits(Race r, int taille)
+        public List<Unit> createUnits(Race r , int taille)
         {
             var dico = new List<Unit>();
-            //TODO units placement must be handled by C++ librairy
-            Random rnd = new Random();
-            var coord = new Coord(rnd.Next(0,taille), rnd.Next(0, taille));
-            //TODO check if no unit on coord
+            
             int nbUnit;
             switch (taille)
             {
@@ -44,7 +41,7 @@ namespace INSAWORLD
 
             for(;nbUnit>=0;nbUnit--)
             {
-                Unit u = createUnit(ref r, ref coord);
+                Unit u = createUnit(ref r);
                 dico.Add(u);
             }
    

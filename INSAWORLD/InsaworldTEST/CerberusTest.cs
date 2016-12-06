@@ -86,7 +86,8 @@ namespace InsaworldTEST
             u.MovePoints = 0;
             Coord temp = new Coord(u.C.X + 1, u.C.Y);
             Race r = RaceFactory.Instance.createRace(1);
-            Unit d = UnitsFactory.Instance.createUnit(ref r, ref temp);
+            Unit d = UnitsFactory.Instance.createUnit(ref r);
+            d.C = temp;
             p.RacePlay.MoveOverride(u, d, ref g);
             Assert.AreEqual(temp, u.C);
         }

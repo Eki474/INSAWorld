@@ -1,4 +1,11 @@
 #pragma once
+#include <iostream>
+#include <algorithm>
+#include <time.h>
+#include <stdlib.h>
+#include <math.h> 
+#include <sstream>
+#include<vector>
 
 enum TileType {
 	Plain = 0,
@@ -17,10 +24,11 @@ public:
 	void fillMap(TileType map[], int size);
 
 	// action suggest a move of a unit
-	vector<string> suggestMove(int tableTile[7][7], bool race, int moveP);
+	
+	std::string * Algos::suggestMove(int tableTile[7][7], bool race, double moveP);
 	void split(const std::string &s, char delim, std::vector<std::string> &elems);
-	vector<string> suggestMoveAlgo(int tableTile[7][7], int moveP, bool race, string cheminActuel, vector<string> resultat, int posX, int posY);
-	vector<string> setMaximumVector(vector<string> resultat, string cheminActuel);
+	std::vector<std::string> suggestMoveAlgo(int tableTile[7][7], double moveP, bool race, std::string cheminActuel, std::vector<std::string> resultat, int posX, int posY);
+	std::vector<std::string> setMaximumvector(std::vector<std::string> resultat, std::string cheminActuel);
 	int * Algos::placeUnits(int taille);
 };
 
@@ -38,7 +46,7 @@ EXPORTCDECL int* Algos_placeUnits(Algos* algos, int taille) {
 	return algos->placeUnits(taille);
 }
 
-EXPORTCDECL vector<std::string> Algos_suggestMove(Algos* algos, int tableTile[7][7], bool race, int moveP) {
+EXPORTCDECL std::string * Algos_suggestMove(Algos* algos, int tableTile[7][7], bool race, double moveP) {
 	return algos->suggestMove(tableTile, race, moveP);
 }
 

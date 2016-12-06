@@ -16,7 +16,7 @@ namespace INSAWORLD
         /// </summary>
         /// <param name="p1">Joueur 1</param>
         /// <param name="p2">Joueur 2</param>
-        public Game(Player p1, Player p2)
+        public Game(ref Player p1, ref Player p2)
         {
             player1 = p1;
             player2 = p2;
@@ -55,7 +55,7 @@ namespace INSAWORLD
         public void Initialize(int type)
         {
             BuilderMap.Instance.BuildMap(type);
-            BuilderMap.Instance.FillMap(map.Taille);
+            BuilderMap.Instance.FillMap(ref map);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace INSAWORLD
         /// <returns>true if the game is win by one of the player, false if not</returns>
         public bool EndGame()
         {
-            throw new NotImplementedException();
+            return player1.Lost() || player2.Lost() || map.NbTurn == 0;
         }
 
         /// <summary>
@@ -72,7 +72,20 @@ namespace INSAWORLD
         /// </summary>
         public void Cleaner()
         {
-            throw new NotImplementedException();
+            foreach(Unit u in player1.UnitsList)
+            {
+                if (u.LifePoints == 0)
+                {
+                    player1.UnitsList.Remove(u);
+                }
+            }
+            foreach(Unit u in player2.UnitsList)
+            {
+                if (u.LifePoints == 0)
+                {
+                    player2.UnitsList.Remove(u);
+                }
+            }
         }
     }
 }

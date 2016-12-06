@@ -16,7 +16,7 @@ namespace InsaworldTEST
         {
             p = new Player("Michel", 0, 6);
             Player temp = new Player("Jean", 1, 6);
-            g = new Game(p, temp);
+            g = new Game(ref p, ref temp);
         }
 
         /// <summary>
@@ -46,9 +46,9 @@ namespace InsaworldTEST
         public void TestActionMove()
         {
             var u = p.UnitsList.First();
-            Coord changed = new Coord(u.Value.X + 1, u.Value.Y + 1);
-            p.RacePlay.ActionMove(u.Key, changed, ref g);
-            Coord n = p.UnitsList.First().Value;
+            Coord changed = new Coord(u.C.X + 1, u.C.Y + 1);
+            p.RacePlay.ActionMove(u, changed, ref g);
+            Coord n = p.UnitsList.First().C;
             Assert.AreEqual(changed, n);
         }
 
@@ -60,8 +60,8 @@ namespace InsaworldTEST
         public void TestActionMoveFail()
         {
             var u = p.UnitsList.First();
-            Coord changed = new Coord(u.Value.X + 10, u.Value.Y + 10);
-            p.RacePlay.ActionMove(u.Key, changed, ref g);
+            Coord changed = new Coord(u.C.X + 10, u.C.Y + 10);
+            p.RacePlay.ActionMove(u, changed, ref g);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace InsaworldTEST
         [TestMethod()]
         public void TestVictoryPoints()
         {
-            Unit v = p.UnitsList.Keys.First();
+            Unit v = p.UnitsList.First();
             Assert.IsTrue(p.UnitsList != null & p.RacePlay.VictoryPoints(v, ref g) > 0);
             p.UnitsList.Clear();
             Assert.IsTrue(p.RacePlay.VictoryPoints(v, ref g) == 0);

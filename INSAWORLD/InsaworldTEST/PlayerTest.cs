@@ -8,6 +8,8 @@ namespace InsaworldTEST
     public class PlayerTest
     {
 
+        Game g;
+        GameMap m;
         Player p;
         Player l;
 
@@ -16,6 +18,8 @@ namespace InsaworldTEST
         {
             p = new Player("Bob", 0, 6);
             l = new Player("Jean", 1, 6);
+            g = new Game(ref p, ref l);
+            m = g.Map;
         }
 
         /// <summary>
@@ -43,18 +47,18 @@ namespace InsaworldTEST
         [TestMethod()]
         public void TestEndTurn()
         {
-            p.EndTurn();
+            p.EndTurn(ref m);
             Assert.IsFalse(p.Playing);
         }
 
         /// <summary>
-        /// test if when a player has less points than the other, he lost
+        /// test if when a player has no units left, he loses
         /// </summary>
         [TestMethod()]
         public void TestLost()
         {
-            p.ComputePoints();
-            l.ComputePoints();
+            //TODO tester correctement
+            
             bool temp = p.Points < l.Points;
             Assert.AreEqual(p.Lost(), temp);
         }
@@ -66,7 +70,7 @@ namespace InsaworldTEST
         public void TestComputePoints()
         {
             int temp = p.Points;
-            p.ComputePoints();
+            p.ComputePoints(ref g);
             Assert.IsTrue(temp <= p.Points);
         }
     }

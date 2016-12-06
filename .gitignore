@@ -196,3 +196,4 @@ packages/
 BundleArtifacts/
 BundleArtifacts/
 *.appx
+/INSAWORLD/INSAWORLD.VC.db

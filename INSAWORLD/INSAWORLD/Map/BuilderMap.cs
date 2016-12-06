@@ -17,6 +17,18 @@ namespace INSAWORLD
     //singleton and builder for GameMap
     public class BuilderMap : IDisposable
     {
+        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
+        extern static void Algos_fillMap(IntPtr algo, TileType[] tiles, int nbTiles);
+
+        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
+        extern static List<string> Algos_suggestMove(IntPtr algos, int[,] tableTile, bool race, int moveP);
+
+        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
+        extern static IntPtr Algos_new();
+
+        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
+        extern static IntPtr Algos_delete(IntPtr algo);
+
         private static BuilderMap instance;
         private bool disposed = false;
         private IntPtr nativeAlgo;
@@ -32,7 +44,7 @@ namespace INSAWORLD
         ~BuilderMap()
         {
             Dispose(false);
-            Algos_delete(nativeAlgo);
+            //Algos_delete(nativeAlgo);
         }
 
         public static BuilderMap Instance
@@ -109,16 +121,6 @@ namespace INSAWORLD
             disposed = true;
         }
 
-        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static void Algos_fillMap(IntPtr algo, TileType[] tiles, int nbTiles);
-
-        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static List<string> Algos_suggestMove(IntPtr algos, int[,] tableTile, bool race, int moveP);
-
-        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static IntPtr Algos_new();
-
-        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static IntPtr Algos_delete(IntPtr algo);
+      
     }
 }

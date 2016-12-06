@@ -73,23 +73,12 @@ namespace INSAWORLD
             int taille = map.Taille;
             var tiles = new TileType[taille * taille];
             Algos_fillMap(nativeAlgo, tiles, taille * taille);
-            for(int i=0; i<tiles.Length; i++)
+            for (int i = 0; i < tiles.Length; i++)
             {
-                map.CasesJoueur.Add(new Coord(i / taille, i % taille), convertType((int) tiles[i]));
+                map.CasesJoueur.Add(new Coord(i / taille, i % taille), convertType((int)tiles[i]));
             }
         }
 
-        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static void Algo_fillMap(IntPtr algo, TileType[] tiles, int nbTiles);
-
-        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static List<string> Algos_suggestMove(IntPtr algos, int[,] tableTile, bool race, int moveP);
-        
-        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static IntPtr Algo_new();
-
-        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static IntPtr Algo_delete(IntPtr algo);
         private Tile convertType(int type)
         {
             switch (type)
@@ -102,4 +91,34 @@ namespace INSAWORLD
                     throw new BadTypeException("Bad Tile Type");
             }
         }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+            if (disposing)
+            {
+                Algos_delete(nativeAlgo);
+            }
+            disposed = true;
+        }
+
+        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
+        extern static void Algos_fillMap(IntPtr algo, TileType[] tiles, int nbTiles);
+
+        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
+        extern static List<string> Algos_suggestMove(IntPtr algos, int[,] tableTile, bool race, int moveP);
+
+        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
+        extern static IntPtr Algos_new();
+
+        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
+        extern static IntPtr Algos_delete(IntPtr algo);
+    }
 }

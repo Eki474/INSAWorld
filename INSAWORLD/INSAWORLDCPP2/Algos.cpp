@@ -34,7 +34,7 @@ void Algos::fillMap(TileType map[], int size)
 // action suggest a move of a unit
 // race: true si centaure, false sinon
 // tableFile: 0 pour case "normale", 1 pour case plaine, 2 pour case occupée, 3 pour case visitée, -1 pour oob
-vector<string> Algos::suggestMove(int tableTile[7][7], bool race, int moveP)
+vector<std::string> Algos::suggestMove(int tableTile[7][7], bool race, int moveP)
 {
 	vector<std::string> result;
 	// retour: stocke les chemins sous la forme {déplacementX déplacementY,} ex: "0,1,3"
@@ -57,14 +57,14 @@ void Algos::split(const std::string &s, char delim, std::vector<std::string> &el
 
 
 //oob = out of bounds
-vector<string> Algos::suggestMoveAlgo(int tableTile[7][7], int moveP, bool race, string cheminActuel, vector<string> resultat, int posX, int posY) {
+vector<std::string> Algos::suggestMoveAlgo(int tableTile[7][7], int moveP, bool race, std::string cheminActuel, vector<std::string> resultat, int posX, int posY) {
 	if (tableTile[posX][posY] = 1 && race) moveP += 0.5;
 	// cas d'arrêt: case déjà visitée/occupée/plus de points/oob
 	if (moveP - 1 < 0 || tableTile[posX][posY] == 2 || tableTile[posX][posY] == 3 || tableTile[posX][posY] == -1) {
 		return setMaximumVector(resultat, cheminActuel);
 	}
 	tableTile[posX][posY] = 3;
-	vector<string> tmpvector;
+	vector<std::string> tmpvector;
 	if (posX + 1 < 7) tmpvector = suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "0,", resultat, posX + 1, posY);
 	for (int i = 0; i < tmpvector.size; i++) {
 		resultat = setMaximumVector(resultat, tmpvector[i]);
@@ -87,7 +87,7 @@ vector<string> Algos::suggestMoveAlgo(int tableTile[7][7], int moveP, bool race,
 
 
 // sert à remplir le vecteur par les trois meilleurs chemins == les trois chemins les plus longs
-vector<string> Algos::setMaximumVector(vector<std::string> resultat, std::string cheminActuel) {
+vector<std::string> Algos::setMaximumVector(vector<std::string> resultat, std::string cheminActuel) {
 	int mini = 0;
 	int tailleMin = 100;
 	if (cheminActuel == "") return resultat;

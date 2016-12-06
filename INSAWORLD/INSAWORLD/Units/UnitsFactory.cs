@@ -39,7 +39,7 @@ namespace INSAWORLD
                 case 6: nbUnit = 4; break;
                 case 10: nbUnit = 6; break;
                 case 14: nbUnit = 8; break;
-                default: throw new Exception("size not valid"); 
+                default: throw new Exception("size not valid");
             }
 
             for(;nbUnit>=0;nbUnit--)

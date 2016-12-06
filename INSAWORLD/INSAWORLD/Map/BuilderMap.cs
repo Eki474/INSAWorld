@@ -26,8 +26,8 @@ namespace INSAWORLD
         [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
         extern static IntPtr Algos_new();
 
-        //[DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        //extern static IntPtr Algos_delete(IntPtr algo);
+        [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
+        extern static IntPtr Algos_delete(IntPtr algo);
 
         private static BuilderMap instance;
         private bool disposed = false;

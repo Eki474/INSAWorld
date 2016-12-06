@@ -57,10 +57,8 @@ namespace InsaworldTEST
         [TestMethod()]
         public void TestLost()
         {
-            //TODO tester correctement
-            
-            bool temp = p.Points < l.Points;
-            Assert.AreEqual(p.Lost(), temp);
+            p.UnitsList.Clear();
+            Assert.IsTrue(p.Lost());
         }
 
         /// <summary>

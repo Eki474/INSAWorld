@@ -29,7 +29,7 @@ void Algos::fillMap(TileType map[], int size)
 // action suggest a move of a unit
 // race: true si centaure, false sinon
 // tableFile: 0 pour case "normale", 1 pour case plaine, 2 pour case occupée, 3 pour case visitée, -1 pour oob
-std::string * Algos::suggestMove(int tableTile[7][7], bool race, double moveP)
+void Algos::suggestMove(int tableTile[7][7], string retour[], bool race, double moveP)
 {
 	std::vector<std::string> result;
 	// retour: stocke les chemins sous la forme {déplacementX déplacementY,} ex: "0,1,3"
@@ -37,9 +37,13 @@ std::string * Algos::suggestMove(int tableTile[7][7], bool race, double moveP)
 
 	result = suggestMoveAlgo(tableTile, moveP, race, "", result, 4, 4);
 
-	std::string tmp[3] = { result[0], result[1], result[2] };
-	return tmp;
-}
+	retour[0] = result[0];
+	retour[1] = result[1];
+	retour[2] = result[2];
+
+};
+
+
 
 void Algos::split(const std::string &s, char delim, std::vector<std::string> &elems)
 {
@@ -81,11 +85,11 @@ std::vector<std::string> Algos::suggestMoveAlgo(int tableTile[7][7], double move
 
 }
 
-int * Algos::placeUnits(int taille) {
+void Algos::placeUnits(int retour[], int taille) {
 	int x = rand() % taille;
 	int y = rand() % taille;
-	int result[2] = { x, y };
-	return result;
+	retour[0] = x;
+	retour[1] = y;
 }
 
 // sert à remplir le vecteur par les trois meilleurs chemins == les trois chemins les plus longs

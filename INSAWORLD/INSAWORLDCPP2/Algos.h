@@ -25,11 +25,11 @@ public:
 
 	// action suggest a move of a unit
 	
-	std::string * Algos::suggestMove(int tableTile[7][7], bool race, double moveP);
+	void Algos::suggestMove(int tableTile[7][7], std::string retour[], bool race, double moveP);
 	void split(const std::string &s, char delim, std::vector<std::string> &elems);
 	std::vector<std::string> suggestMoveAlgo(int tableTile[7][7], double moveP, bool race, std::string cheminActuel, std::vector<std::string> resultat, int posX, int posY);
 	std::vector<std::string> setMaximumvector(std::vector<std::string> resultat, std::string cheminActuel);
-	int * Algos::placeUnits(int taille);
+	void Algos::placeUnits(int retour[], int taille);
 };
 
 
@@ -42,12 +42,12 @@ EXPORTCDECL void Algos_fillMap(Algos* algos, TileType map[], int size) {
 	return algos->fillMap(map, size);
 }
 
-EXPORTCDECL int* Algos_placeUnits(Algos* algos, int taille) {
-	return algos->placeUnits(taille);
+EXPORTCDECL void Algos_placeUnits(Algos* algos, int retour[],int taille) {
+	return algos->placeUnits(retour, taille);
 }
 
-EXPORTCDECL std::string* Algos_suggestMove(Algos* algos, int tableTile[7][7], bool race, double moveP) {
-	return algos->suggestMove(tableTile, race, moveP);
+EXPORTCDECL void Algos_suggestMove(Algos* algos, int tableTile[7][7], std::string retour[], bool race, double moveP) {
+	return algos->suggestMove(tableTile, retour, race, moveP);
 }
 
 

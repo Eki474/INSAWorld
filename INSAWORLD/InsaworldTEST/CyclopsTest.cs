@@ -48,7 +48,7 @@ namespace InsaworldTEST
         public void TestActionMove()
         {
             var u = p.UnitsList.First();
-            Coord changed = new Coord(u.C.X + 1, u.C.Y + 1);
+            Coord changed = new Coord(u.C.X + 1, u.C.Y);
             p.RacePlay.ActionMove(u, changed, ref g);
             Coord n = p.UnitsList.First().C;
             Assert.AreEqual(changed, n);

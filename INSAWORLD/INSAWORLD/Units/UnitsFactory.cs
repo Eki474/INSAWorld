@@ -5,7 +5,20 @@ namespace INSAWORLD
 {
     public class UnitsFactory
     {
-        public static UnitsFactory Instance { get; } = new UnitsFactory();
+        private static UnitsFactory instance;
+        public static UnitsFactory Instance
+        {
+
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new UnitsFactory();
+                }
+                return instance;
+            }
+        }
+
 
         private UnitsFactory() {}
 

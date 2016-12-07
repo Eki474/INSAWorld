@@ -4,7 +4,20 @@ namespace INSAWORLD
 {
     public class RaceFactory
     {
-        public static RaceFactory Instance { get; } = new RaceFactory();
+        private static RaceFactory instance;
+        public static RaceFactory Instance
+        {
+
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RaceFactory();
+                }
+                return instance;
+            }
+        }
+
         private RaceFactory()  { }
 
         /// <summary>

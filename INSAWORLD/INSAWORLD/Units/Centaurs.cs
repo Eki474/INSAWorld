@@ -84,7 +84,8 @@ namespace INSAWORLD
             if (u.MovePoints < 1 || !(u.MovePoints > 0 && t.getType().Equals("plain"))){
                 return false;
             }
-            
+
+            //return true;
             //myGame.Player1.UnitsList.Contains
 
 

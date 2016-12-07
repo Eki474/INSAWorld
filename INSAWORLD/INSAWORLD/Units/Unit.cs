@@ -33,6 +33,22 @@ namespace INSAWORLD
             played = false;
         }
 
+        public Unit(Unit u){
+            movePoints = u.movePoints;
+            lifePoints = u.lifePoints;
+            played = u.played;
+            race = u.race;
+            c = u.c;
+        }
+        public Unit(ref Unit u)
+        {
+            movePoints = u.movePoints;
+            lifePoints = u.lifePoints;
+            played = u.played;
+            race = u.race;
+            c = u.c;
+        }
+
 
         public float MovePoints
         {

@@ -21,5 +21,10 @@ namespace INSAWORLD
                 return instance;
             }
         }
+
+        public string getType()
+        {
+            return "desert";
+        }
     }
 }

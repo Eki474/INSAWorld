@@ -18,7 +18,7 @@ namespace InsaworldTEST
             Player temp = new Player("Jean", 1, 6);
             g = new Game(ref p, ref temp);
             p.UnitsList.First().C = new Coord(0, 0);
-            //g.Initialize(0);
+            g.Initialize(0);
         }
 
         /// <summary>

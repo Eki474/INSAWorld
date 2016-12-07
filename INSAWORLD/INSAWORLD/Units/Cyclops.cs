@@ -89,17 +89,29 @@ namespace INSAWORLD
         public void MoveOverride(Unit u, Unit d, ref Game myGame)
         {
             bool movement = true;
-            List<Unit> list1;
-            List<Unit> list2;
+            List<Unit> list1 = new List<Unit>();
+            List<Unit> list2 = new List<Unit>();
             if (myGame.Player1.UnitsList.Contains(d))
             {
-                list1 = myGame.Player1.UnitsList;
-                list2 = myGame.Player2.UnitsList;
+                foreach (Unit unit in myGame.Player1.UnitsList)
+                {
+                    list1.Add(unit);
+                }
+                foreach (Unit unit in myGame.Player2.UnitsList)
+                {
+                    list2.Add(unit);
+                }
             }
             else
             {
-                list1 = myGame.Player2.UnitsList;
-                list2 = myGame.Player1.UnitsList;
+                foreach (Unit unit in myGame.Player1.UnitsList)
+                {
+                    list2.Add(unit);
+                }
+                foreach (Unit unit in myGame.Player2.UnitsList)
+                {
+                    list1.Add(unit);
+                }
             }
             foreach (Unit t in list1)
             {

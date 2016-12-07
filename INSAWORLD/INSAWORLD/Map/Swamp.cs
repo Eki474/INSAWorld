@@ -20,5 +20,9 @@ namespace INSAWORLD
                 return instance;
             }
         }
+        public string getType()
+        {
+            return "swamp";
+        }
     }
 }

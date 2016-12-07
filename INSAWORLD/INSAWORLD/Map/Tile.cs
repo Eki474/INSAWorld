@@ -8,5 +8,6 @@ namespace INSAWORLD
     //flyweight
     public interface Tile
     {
+        public string getType();
     }
 }

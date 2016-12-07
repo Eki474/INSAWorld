@@ -18,7 +18,7 @@ namespace INSAWORLD
         {
             taille = 10;
             nbTurn = 20;
-            //casesJoueur.generate(); in the C++ part ???
+            casesJoueur = new Dictionary<Coord, Tile>();
         }
 
         public int Taille

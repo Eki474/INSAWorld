@@ -37,7 +37,7 @@ namespace InsaworldTEST
             p1 = new Player("Jean", 2, 6);
             p2 = new Player("Paul", 1, 6);
             g = new Game(ref p1, ref p2);
-           g.Initialize(0);
+            g.Initialize(0);
         }
 
         /// <summary>

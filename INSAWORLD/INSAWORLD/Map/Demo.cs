@@ -18,6 +18,7 @@ namespace INSAWORLD
         {
             taille = 6;
             nbTurn = 5;
+            casesJoueur = new Dictionary<Coord,Tile>();
         }
 
         public int Taille

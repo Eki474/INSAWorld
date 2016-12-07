@@ -9,7 +9,7 @@ namespace INSAWORLD
     {
         private int taille; //size of the board
         private Dictionary<Coord, Tile> casesJoueur; //to stock the tile
-        private int nbTurn; // number of maximum turns before the game ends
+        private double nbTurn; // number of maximum turns before the game ends
 
         /// <summary>
         /// constructor
@@ -27,7 +27,7 @@ namespace INSAWORLD
             set { taille = value; }
         }
 
-        public int NbTurn
+        public double NbTurn
         {
             get { return nbTurn; }
             set { nbTurn = value; }
@@ -45,7 +45,9 @@ namespace INSAWORLD
         /// <returns>true if nbTurn inferior to 0 false if equals to 0</returns>
         public bool TurnPlayed()
         {
-            throw new NotImplementedException();
+            nbTurn -= 0.5;
+            if (nbTurn < 0) return true;
+            else return false;
         }
     }
 }

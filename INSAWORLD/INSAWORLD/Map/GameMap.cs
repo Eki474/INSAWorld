@@ -8,7 +8,7 @@ namespace INSAWORLD
     public interface GameMap
     {
 
-        int NbTurn
+        double NbTurn
         {
             get;
             set;

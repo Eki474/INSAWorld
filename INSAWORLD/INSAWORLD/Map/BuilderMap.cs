@@ -94,6 +94,11 @@ namespace INSAWORLD
             }
         }
 
+        /// <summary>
+        /// convert a TileType into a real Tile
+        /// </summary>
+        /// <param name="type">0 Plain - 1 Swamp - 2 Volcano - 3 Desert</param>
+        /// <returns>Tile created</returns>
         private Tile convertType(int type)
         {
             switch (type)
@@ -107,6 +112,12 @@ namespace INSAWORLD
             }
         }
 
+        /// <summary>
+        /// give coordinates to players units
+        /// </summary>
+        /// <param name="p1">player 1</param>
+        /// <param name="p2">player 2</param>
+        /// <param name="taille">size of the map</param>
         public void setJoueurs(ref Player p1, ref Player p2, int taille)
         {
             int[] coord = new int[2];

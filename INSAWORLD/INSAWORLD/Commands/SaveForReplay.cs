@@ -18,7 +18,7 @@ namespace INSAWORLD
         /// <summary>
         /// save all the state of the game in a file
         /// </summary>
-        public void Execute()
+        public Array Execute()
         {
             throw new NotImplementedException();
         }

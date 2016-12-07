@@ -11,7 +11,7 @@ namespace INSAWORLD
         /// <summary>
         /// load a saved game by reading a file from a save
         /// </summary>
-        public void Execute()
+        public Array Execute()
         {
             throw new NotImplementedException();
         }

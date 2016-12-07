@@ -46,7 +46,7 @@ EXPORTCDECL int* Algos_placeUnits(Algos* algos, int taille) {
 	return algos->placeUnits(taille);
 }
 
-EXPORTCDECL std::string * Algos_suggestMove(Algos* algos, int tableTile[7][7], bool race, double moveP) {
+EXPORTCDECL std::string* Algos_suggestMove(Algos* algos, int tableTile[7][7], bool race, double moveP) {
 	return algos->suggestMove(tableTile, race, moveP);
 }
 

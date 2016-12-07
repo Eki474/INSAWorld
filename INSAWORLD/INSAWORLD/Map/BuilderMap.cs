@@ -21,13 +21,13 @@ namespace INSAWORLD
         extern static void Algos_fillMap(IntPtr algo, TileType[] tiles, int nbTiles);
 
         [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static string [] Algos_suggestMove(IntPtr algos, int[,] tableTile, bool race, int moveP);
+        extern static string [] Algos_suggestMove(IntPtr algos, int[,] tableTile, bool race, double moveP);
 
         [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
         extern static IntPtr Algos_new();
 
         [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static IntPtr Algos_delete(IntPtr algo);
+        extern static void Algos_delete(IntPtr algo);
 
         [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
         extern static int [] Algos_placeUnits(IntPtr algo, int taille);
@@ -47,7 +47,7 @@ namespace INSAWORLD
         ~BuilderMap()
         {
             Dispose(false);
-            //Algos_delete(nativeAlgo);
+            Algos_delete(nativeAlgo);
         }
 
         public static BuilderMap Instance
@@ -82,7 +82,7 @@ namespace INSAWORLD
         /// <summary>
         /// fill the Tile of the GameMap using c++ dll
         /// </summary>
-        /// <returns>created GameMap full</returns>
+        /// <param name="map">GameMap to be fill</param>
         public void FillMap(ref GameMap map)
         {
             int taille = map.Taille;
@@ -107,23 +107,6 @@ namespace INSAWORLD
             }
         }
 
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposed)
-                return;
-            if (disposing)
-            {
-                Algos_delete(nativeAlgo);
-            }
-            disposed = true;
-        }
-
         public void setJoueurs(ref Player p1, ref Player p2, int taille)
         {
             int[] coord = new int[2];
@@ -140,6 +123,21 @@ namespace INSAWORLD
             }
         }
 
-      
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+            if (disposing)
+            {
+                Algos_delete(nativeAlgo);
+            }
+            disposed = true;
+        }
     }
 }

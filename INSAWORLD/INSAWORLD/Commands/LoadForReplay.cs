@@ -11,7 +11,7 @@ namespace INSAWORLD
         /// <summary>
         /// load a file for a replay
         /// </summary>
-        public void Execute()
+        public Array Execute()
         {
             throw new NotImplementedException();
         }

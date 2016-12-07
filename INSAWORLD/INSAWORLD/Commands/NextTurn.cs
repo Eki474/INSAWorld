@@ -19,7 +19,7 @@ namespace INSAWORLD
         /// <summary>
         /// end the player turn and go to the next turn
         /// </summary>
-        public void Execute()
+        public Array Execute()
         {
             throw new NotImplementedException();
         }

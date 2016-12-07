@@ -11,7 +11,7 @@ namespace INSAWORLD
         /// <summary>
         /// quit the game 
         /// </summary>
-        public void Execute()
+        public Array Execute()
         {
             throw new NotImplementedException();
         }

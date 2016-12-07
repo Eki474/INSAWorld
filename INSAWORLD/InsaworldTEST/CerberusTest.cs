@@ -16,6 +16,7 @@ namespace InsaworldTEST
             p = new Player("Michel", 1, 6);
             Player temp = new Player("Jean", 2, 6);
             g = new Game(ref p, ref temp);
+            g.Initialize(0);
         }
 
         /// <summary>

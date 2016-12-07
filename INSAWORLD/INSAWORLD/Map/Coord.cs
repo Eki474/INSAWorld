@@ -33,5 +33,11 @@ namespace INSAWORLD
             x = cx;
             y = cy;
         }
+
+        public bool Equals(Coord c)
+        {
+            if (c.X == x && c.Y == y) return true;
+            return false;
+        }
     }
 }

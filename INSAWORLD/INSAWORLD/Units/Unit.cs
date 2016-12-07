@@ -4,7 +4,7 @@ namespace INSAWORLD
 {
     public class Unit
     {
-        private float movePoints; // number of tile the unit can ActionMove on
+        private double movePoints; // number of tile the unit can ActionMove on
         private int lifePoints; // number of points before the unit dies
         private bool played; // true if the unit as been played this turn, false if not
         private Race race; // unit race
@@ -50,7 +50,7 @@ namespace INSAWORLD
         }
 
 
-        public float MovePoints
+        public double MovePoints
         {
             get { return movePoints; }
             set { movePoints = value; }

@@ -46,22 +46,24 @@ namespace InsaworldTEST
         public void TestActionMove()
         {
             var u = p.UnitsList.First();
-            Coord changed = new Coord(u.C.X + 1, u.C.Y + 1);
+            Coord changed = new Coord(u.C.X + 1, u.C.Y);
             p.RacePlay.ActionMove(u, changed, ref g);
             Coord n = p.UnitsList.First().C;
             Assert.AreEqual(changed, n);
         }
 
         /// <summary>
-        /// test if when the unit is asked to move too far, it rise an exception
+        /// test if when the unit is asked to move too far, it returns false
         /// </summary>
         [TestMethod()]
-        [ExpectedException(typeof(OutOfBoundException))]
+        //[ExpectedException(typeof(OutOfBoundException))]
         public void TestActionMoveFail()
         {
             var u = p.UnitsList.First();
             Coord changed = new Coord(u.C.X + 10, u.C.Y + 10);
-            p.RacePlay.ActionMove(u, changed, ref g);
+            bool test = p.RacePlay.ActionMove(u, changed, ref g);
+            Assert.IsFalse(test);
+            
         }
 
         /// <summary>

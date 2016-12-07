@@ -76,8 +76,36 @@ namespace INSAWORLD
         /// <returns>true if the unit can move on the tile, false if not</returns>
         public bool ActionMove(Unit u, Coord c, ref Game myGame)
         {
-            
-            throw new NotImplementedException();
+            if (u.C.Equals(c) || (Math.Abs(u.C.X - c.X) + Math.Abs(u.C.Y - c.Y)) > 1)
+
+            {
+                return false;
+            }
+
+
+            List<Unit> opponentList;
+            if (myGame.Player1.UnitsList.Contains(u))
+            {
+                opponentList = myGame.Player2.UnitsList;
+            }
+            else
+            {
+                opponentList = myGame.Player1.UnitsList;
+            }
+
+            foreach (Unit unit in opponentList)
+            {
+                if (unit.C.Equals(u.C))
+                {
+                    return false;
+                }
+            }
+
+            u.C = c;
+            u.MovePoints--;
+            return true;
+
+
         }
 
         /// <summary>

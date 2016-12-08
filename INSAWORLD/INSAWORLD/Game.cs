@@ -40,13 +40,7 @@ namespace INSAWORLD
             set { map = value; }
         }
 
-        /// <summary>
-        /// launch a game  : contain of the steps of the game
-        /// </summary>
-        public void Launch()
-        {
-            throw new NotImplementedException();
-        }
+        //TODO nextturn verifier endgame
 
         /// <summary>
         /// create map and put units on it

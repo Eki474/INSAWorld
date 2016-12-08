@@ -97,6 +97,9 @@ namespace INSAWORLD
 
             u.C = c;
             u.MovePoints--;
+
+            new MoveUnit(u, c).Execute();
+
             return true;
 
 

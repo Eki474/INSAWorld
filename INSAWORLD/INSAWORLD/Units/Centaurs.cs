@@ -100,6 +100,9 @@ namespace INSAWORLD
             Tile t = myGame.Map.CasesJoueur[u.C];
             if (!t.getType().Equals("plain")) u.MovePoints--;
             else u.MovePoints -= 0.5;
+
+            new MoveUnit(u, c).Execute();
+
             return true;
 
 

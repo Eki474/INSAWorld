@@ -1,10 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace INSAWORLD
 {
     public class MoveUnit : CommandMenu, ToCollect
     {
         private string state;
+
+        private Unit unit;
+        private Coord dest;
+
+        public MoveUnit(Unit u, Coord c)
+        {
+            unit = u;
+            dest = c;
+        }
 
         public string State
         {
@@ -17,12 +28,12 @@ namespace INSAWORLD
         /// </summary>
         public void Execute()
         {
-            throw new NotImplementedException();
+            ReplayCollector.Instance.AddStep(this);
         }
 
         public bool CanExecute()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

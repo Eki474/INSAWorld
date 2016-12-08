@@ -76,10 +76,10 @@ namespace INSAWORLD
         }
 
         /// <summary>
-        /// End the turn of the player : playing = false for the current player (while the other is on true thanks to StartTurn)
+        /// Check if the player still has playing options 
         /// </summary>
         /// <param name="map">reference to the map</param>
-        /// <returns>true if the turn can be ended false if not</returns>
+        /// <returns>true if the turn has to be ended false if not</returns>
         public bool EndTurn(ref GameMap map)
         {
             foreach(Unit u in unitsList)
@@ -99,6 +99,11 @@ namespace INSAWORLD
         public void StartTurn()
         {
             playing = true;
+        }
+
+        public void NextTurn(ref Game g)
+        {
+            new NextTurn(g).Execute();
         }
 
         /// <summary>
@@ -128,7 +133,7 @@ namespace INSAWORLD
         /// <returns>true if the attack has been done false if not</returns>
         public bool Attack(Unit u, Unit d, ref Game myGame)
         {
-            var cmd = new AttackUnit(ref u, ref d, ref myGame);
+            var cmd = new AttackUnit(u, d, ref myGame);
             if (!cmd.CanExecute()) return false;
             cmd.Execute();
             return true;

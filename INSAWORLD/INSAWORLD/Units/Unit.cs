@@ -130,6 +130,7 @@ namespace INSAWORLD
         /// </summary>
         public void Reset()
         {
+            if (!played && movePoints == race.Move && lifePoints<race.Life) lifePoints++; //life regen
             lifePoints = race.Life;
             movePoints = race.Move;
             played = false;

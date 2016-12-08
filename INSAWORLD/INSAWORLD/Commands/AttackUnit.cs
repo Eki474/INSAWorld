@@ -12,15 +12,15 @@ namespace INSAWORLD
         /// <param name="u">unit which attack</param>
         /// <param name="d">pair of unit/coord of the attacked unit</param>
         /// <param name="game">reference to the game to obtain the map</param>
-        private Unit u;
-        private Unit d;
+        private Unit unit;
+        private Unit def;
         private int lostLifeSave;
         private Game game;
 
-        public AttackUnit(ref Unit u, ref Unit d, ref Game g)
+        public AttackUnit(Unit u, Unit d, ref Game g)
         {
-            this.u = u;
-            this.d = d;
+            unit = u;
+            def = d;
             game = g;
         }
 
@@ -32,7 +32,7 @@ namespace INSAWORLD
 
         public bool CanExecute()
         {
-            return u.Race.TryMove(u, d.C, ref game);
+            return unit.Race.TryMove(unit, def.C, ref game);
         }
 
         /// <summary>
@@ -42,27 +42,27 @@ namespace INSAWORLD
         public void Execute()
         {
             //use attack of unit
-            int lostLife = u.Attack(d.C, d, ref game);
+            int lostLife = unit.Attack(def.C, def, ref game);
             lostLifeSave = lostLife;
             if (lostLife > 0) //defender lost points
             {
-                if (d.LifePoints < lostLife)
+                if (def.LifePoints < lostLife)
                 {
-                    d.LifePoints = 0;
+                    def.LifePoints = 0;
                     game.Cleaner();
-                    u.Race.ActionMove(u, d.C, ref game);
+                    unit.Race.ActionMove(unit, def.C, ref game);
                 }
-                else { d.LifePoints -= lostLife; }
+                else { def.LifePoints -= lostLife; }
             }
             else if (lostLife < 0) //attacker lost points
             {
                 lostLife = -lostLife;
-                if (u.LifePoints < lostLife)
+                if (unit.LifePoints < lostLife)
                 {
-                    u.LifePoints = 0;
+                    unit.LifePoints = 0;
                     game.Cleaner();
                 }
-                else { u.LifePoints -= lostLife; }
+                else { unit.LifePoints -= lostLife; }
             }
 
             ReplayCollector.Instance.AddStep(this);

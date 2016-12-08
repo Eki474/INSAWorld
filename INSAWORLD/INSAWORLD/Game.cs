@@ -53,9 +53,8 @@ namespace INSAWORLD
         /// </summary>
         public void Initialize(int type)
         {
-            map = BuilderMap.Instance.BuildMap(type);
-            BuilderMap.Instance.FillMap(ref map);
-            BuilderMap.Instance.setJoueurs(ref player1, ref player2, map.Taille);
+            new NewGameCommand(this, type).Execute();
+            
         }
 
         /// <summary>

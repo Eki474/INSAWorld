@@ -49,11 +49,10 @@
     <Compile Include="Units\Cerberus.cs" />
     <Compile Include="Commands\CommandMenu.cs" />
     <Compile Include="Map\Coord.cs" />
-    <Compile Include="Commands\CreateGame.cs" />
+    <Compile Include="Commands\NewGameCommand.cs" />
     <Compile Include="Units\Cyclops.cs" />
     <Compile Include="Map\Demo.cs" />
     <Compile Include="Map\Desert.cs" />
-    <Compile Include="Commands\ExitGame.cs" />
     <Compile Include="Map\OutOfBoundException.cs" />
     <Compile Include="Units\RaceFactory.cs" />
     <Compile Include="Units\UnitsFactory.cs" />

@@ -30,17 +30,6 @@ namespace InsaworldTEST
         }
 
         /// <summary>
-        /// test if Launch method, start the game by making play a player
-        /// </summary>
-        [TestMethod()]
-        public void TestLaunch()
-        {
-            g.Initialize(0);
-            g.Launch();
-            Assert.IsTrue(g.Player1.Playing);
-        }
-
-        /// <summary>
         /// test if the map is created
         /// </summary>
         [TestMethod()]

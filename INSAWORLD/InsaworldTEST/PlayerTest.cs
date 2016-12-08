@@ -43,13 +43,39 @@ namespace InsaworldTEST
         }
 
         /// <summary>
-        /// test if when a player finish his turn, he is not playing anymore
+        /// test if a player can still play
         /// </summary>
         [TestMethod()]
         public void TestEndTurn()
         {
-            p.EndTurn(ref m);
-            Assert.IsFalse(p.Playing);
+            
+            Assert.IsFalse(p.EndTurn(ref m));
+        }
+
+        /// <summary>
+        /// test if a player can still play
+        /// </summary>
+        [TestMethod()]
+        public void TestEndTurnFail()
+        {
+            Player p1 = g.Player1;
+            Coord c = p1.UnitsList.First().C;
+            Coord d = new Coord(c.X + 3, c.Y);
+            Coord e = new Coord(c.X + 1, c.Y);
+
+            Coord f = new Coord(c.X + 2, c.Y);
+            foreach (Unit u in g.Player2.UnitsList)
+            {
+                u.C = d;
+            }
+            foreach(Unit u in p1.UnitsList)
+            {
+                p1.RacePlay.ActionMove(u, e, ref g);
+                p1.RacePlay.ActionMove(u, f, ref g);
+                p1.Attack(u, g.Player1.FindDefender(d, ref g), ref g);
+                u.MovePoints = 0;
+            }
+            Assert.IsTrue(p1.EndTurn(ref m));
         }
 
         /// <summary>

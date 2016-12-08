@@ -45,6 +45,8 @@ namespace INSAWORLD
                     unit.Race.ActionMove(unit, def.C, ref game);
                 }
                 else { def.LifePoints -= lostLife; }
+
+                unit.Played = true;
             }
             else if (lostLife < 0) //attacker lost points
             {
@@ -54,9 +56,9 @@ namespace INSAWORLD
                     unit.LifePoints = 0;
                     game.Cleaner();
                 }
-                else { unit.LifePoints -= lostLife; }
+                else { unit.LifePoints -= lostLife; 
+                unit.Played = true;}
             }
-
             ReplayCollector.Instance.AddStep(this);
         }
 

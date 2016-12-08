@@ -67,5 +67,11 @@ namespace INSAWORLD
 
             ReplayCollector.Instance.AddStep(this);
         }
+
+        public string toString()
+        {
+            return "attack,"+unit.Id+","+def.Id+","+lostLifeSave;
+        }
+
     }
 }

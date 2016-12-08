@@ -7,25 +7,25 @@ namespace INSAWORLD
 {
     public class SaveReplayCommand : CommandMenu
     {
-        private ReplayCollector replayCollector;
-
-        public ReplayCollector ReplayCollector
-        {
-            get { return replayCollector; }
-            set { replayCollector = value; }
-        }
+        private string name;
 
         /// <summary>
         /// save all the state of the game in a file
         /// </summary>
         public void Execute()
         {
-            throw new NotImplementedException();
+            string text = ReplayCollector.Instance.ToString();
+
+            System.IO.File.WriteAllText(@Environment.CurrentDirectory + @"\Replay\" + DateTime.Today + "-" + name + ".Game.txt", text);
+
+            string textMap = ReplayCollector.Instance.ToStringMap();
+
+            System.IO.File.WriteAllText(@Environment.CurrentDirectory + @"\Replay\" + DateTime.Today + "-" + name + ".Map.txt", textMap);
         }
 
         public bool CanExecute()
         {
-            throw new NotImplementedException();
+            return ReplayCollector.Instance.InitState != null;
         }
     }
 }

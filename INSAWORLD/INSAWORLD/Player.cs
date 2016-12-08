@@ -138,5 +138,38 @@ namespace INSAWORLD
             cmd.Execute();
             return true;
         }
+
+        public Unit FindDefender(Coord c, ref Game myGame)
+        {
+            string n = this.name;
+            Player o;
+            if (myGame.Player1.Name != n) o = myGame.Player1;
+            else o = myGame.Player2;
+            int max = 0;
+            Unit maxUnit = null;
+            foreach(Unit u in o.UnitsList)
+            {
+                if (u.C.Equals(c))
+                {
+                    if(u.LifePoints>max)
+                    {
+                        maxUnit = u;
+                        max = u.LifePoints;
+                    }
+                }
+            }
+            return maxUnit;
+        }
+
+        public bool Move(Unit u, Coord c, ref Game myGame)
+        {
+            var cmd = new MoveUnit(u, c, ref myGame);
+            if (cmd.CanExecute())
+            {
+                cmd.Execute();
+                return true;
+            }
+            return false;
+        }
     }
 }

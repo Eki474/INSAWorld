@@ -7,21 +7,12 @@ namespace INSAWORLD
 {
     public class NextTurn : CommandMenu, ToCollect
     {
-
-        private string state;
-
         private Game game;
         private bool nbTurn;
 
         public NextTurn(Game g)
         {
             game=g;
-        }
-
-        public string State
-        {
-            get { return state; }
-            set { state = value; }
         }
 
         /// <summary>
@@ -44,11 +35,18 @@ namespace INSAWORLD
             }
             foreach (Unit u in p.UnitsList) u.Reset();
             nbTurn = game.Map.TurnPlayed();
+            ReplayCollector.Instance.AddStep(this);
         }
 
         public bool CanExecute()
         {
             return true;
+        }
+
+        override
+        public string ToString()
+        {
+            return "next";
         }
     }
 }

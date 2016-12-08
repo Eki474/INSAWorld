@@ -29,6 +29,11 @@ namespace INSAWORLD
             get;
         }
 
+        string Type
+        {
+            get;
+        }
+
         /// <summary>
         /// compute victory points earn by one unit
         /// </summary>
@@ -44,7 +49,7 @@ namespace INSAWORLD
         /// <param name="c">coord to move on</param>
         /// <param name="myGame">reference to the game (to access game objects)</param>
         /// <returns>true if the unit can move on the tile, false if not</returns>
-        bool ActionMove(Unit u, Coord c, ref Game myGame);
+        void ActionMove(Unit u, Coord c, ref Game myGame);
 
         /// <summary>
         /// move the unit on the tile of the killed unit if no other units on this tile

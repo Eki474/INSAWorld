@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using INSAWORLD;
 
@@ -71,6 +71,19 @@ namespace InsaworldTEST
             int temp = p.Points;
             p.ComputePoints(ref g);
             Assert.IsTrue(temp <= p.Points);
+        }
+
+        /// <summary>
+        /// test if the method return the higher def unit
+        /// </summary>
+        [TestMethod()]
+        public void TestFindDefender()
+        {
+            Unit u = l.UnitsList.First();
+            u.LifePoints -= 2;
+            Unit res = p.FindDefender(u.C, ref g);
+            Assert.IsNotNull(res);
+            Assert.AreNotEqual(u, res);
         }
     }
 }

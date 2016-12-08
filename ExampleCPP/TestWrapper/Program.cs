@@ -12,7 +12,7 @@ namespace TestWrapper
         static void Main(string[] args)
         {
             var algo = new Algo();
-            var res = algo.CreateMap(42);
+            var res = algo.CreateMap(36);
             foreach (var tile in res.Tiles)
                 Console.WriteLine(tile); 
             Console.ReadLine();

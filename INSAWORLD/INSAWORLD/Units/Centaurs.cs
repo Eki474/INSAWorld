@@ -13,6 +13,7 @@ namespace INSAWORLD
         private int defense;
         private int life;
         private int move;
+        private const string type = "Centaurs";
 
         public Centaurs()
         {
@@ -46,6 +47,11 @@ namespace INSAWORLD
             set { move = value; }
         }
 
+        public string Type
+        {
+            get { return type; }
+        }
+
         /// <summary>
         /// compute victory points earn by one unit
         /// </summary>
@@ -73,39 +79,12 @@ namespace INSAWORLD
         /// <param name="c">coord to move on</param>
         /// <param name="myGame">reference to the game (to access game objects)</param>
         /// <returns>true if the unit can move on the tile, false if not</returns>
-        public bool ActionMove(Unit u, Coord c, ref Game myGame)
+        public void ActionMove(Unit u, Coord c, ref Game myGame)
         {
-            
-
-            if ( !TryMove(u, c, ref myGame)) return false;
-            List<Unit> opponentList;
-            if (myGame.Player1.UnitsList.Contains(u))
-            {
-                opponentList = myGame.Player2.UnitsList;
-            }
-            else
-            { 
-                opponentList = myGame.Player1.UnitsList;
-            }
-
-            foreach(Unit unit in opponentList)
-            {
-                if (unit.C.Equals(c))
-                {
-                    return false;
-                }
-            }
-
             u.C = c;
             Tile t = myGame.Map.CasesJoueur[u.C];
             if (!t.getType().Equals("plain")) u.MovePoints--;
             else u.MovePoints -= 0.5;
-
-            new MoveUnit(u, c).Execute();
-
-            return true;
-
-
         }
 
         /// <summary>

@@ -43,6 +43,19 @@ namespace INSAWORLD
             step.Add(c);
         }
 
+        override
+        public string ToString()
+        {
+            string res = initState.ToString();
+            foreach(ToCollect tc in step) res += "\n" + tc.ToString();
+            return res;
+        }
+
+        public string ToStringMap()
+        {
+            return ((NewGameCommand) initState).ToStringMap();
+        }
+
 
     }
 }

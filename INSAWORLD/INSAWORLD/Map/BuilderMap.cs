@@ -127,7 +127,7 @@ namespace INSAWORLD
             {
                 u.C = coordonnee;
             }
-            coordonnee = new Coord(coord[1], coord[0]);
+            coordonnee = new Coord(taille - coord[0], taille - coord[1]);
             foreach (Unit u in p2.UnitsList)
             {
                 u.C = coordonnee;

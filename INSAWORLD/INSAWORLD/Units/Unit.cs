@@ -4,6 +4,8 @@ namespace INSAWORLD
 {
     public class Unit
     {
+        public static int idGlob = 0;
+        private int id; //identifiant unique d'une unité
         private double movePoints; // number of tile the unit can ActionMove on
         private int lifePoints; // number of points before the unit dies
         private bool played; // true if the unit as been played this turn, false if not
@@ -14,23 +16,14 @@ namespace INSAWORLD
         /// constructor
         /// </summary>
         /// <param name="r">race of the unit</param>
-        /// <param name="co">coordinates of the unit</param>
-        /// 
-        //TODO virer? ou utile pour les tests?
-        /* public Unit(ref Race r, ref Coord co)
-         {
-             race = r;
-             movePoints = r.Move;
-             lifePoints = r.Life;
-             played = false;
-             c = co;
-         }*/
         public Unit(ref Race r)
         {
             race = r;
             movePoints = r.Move;
             lifePoints = r.Life;
             played = false;
+            id = idGlob;
+            idGlob++;
         }
 
         public Unit(Unit u)
@@ -55,6 +48,12 @@ namespace INSAWORLD
         {
             get { return movePoints; }
             set { movePoints = value; }
+        }
+
+        public int Id
+        {
+            get { return id; }
+            private set { id = value; }
         }
 
         public int LifePoints

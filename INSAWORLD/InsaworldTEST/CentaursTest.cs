@@ -62,7 +62,7 @@ namespace InsaworldTEST
         {
             var u = p.UnitsList.First();
             Coord changed = new Coord(u.C.X + 10, u.C.Y + 10);
-            Assert.IsFalse(p.RacePlay.ActionMove(u, changed, ref g));
+            Assert.IsFalse(p.Move(u, changed, ref g));
         }
 
         /// <summary>

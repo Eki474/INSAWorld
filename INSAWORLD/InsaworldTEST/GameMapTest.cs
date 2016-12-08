@@ -38,6 +38,25 @@ namespace InsaworldTEST
         }
 
         [TestMethod]
+        public void TestFillMapEkitable()
+        {
+            BuilderMap.Instance.FillMap(ref map);
+            var cpt = new int[4];
+            for(int i = 0; i < 4; i++) cpt[0] = 0;
+            foreach(Tile t in map.CasesJoueur.Values)
+            {
+                switch (t.getType())
+                {
+                    case "plain": cpt[0] += 1; break;
+                    case "volcano": cpt[1] += 1; break;
+                    case "swamp": cpt[2] += 1; break;
+                    case "desert": cpt[3] += 1; break;
+                }
+            }
+            Assert.IsTrue(cpt[0] == cpt[1] && cpt[0] == cpt[2] && cpt[0] == cpt[3]);
+        }
+
+        [TestMethod]
         public void TestSetJoueurs()
         {
             var p1 = new Player("Jacques", 0, 6);

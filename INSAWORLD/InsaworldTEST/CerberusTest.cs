@@ -74,9 +74,10 @@ namespace InsaworldTEST
         public void TestVictoryPoints()
         {
             Unit v = p.UnitsList.First();
-            Assert.IsTrue(p.UnitsList != null & p.RacePlay.VictoryPoints(v, ref g) > 0);
-            p.UnitsList.Clear();
-            Assert.IsTrue(p.RacePlay.VictoryPoints(v, ref g) == 0);
+            if (g.Map.CasesJoueur[v.C].getType().Equals("plain")) Assert.AreEqual(p.RacePlay.VictoryPoints(v, ref g), 0);
+            else Assert.AreNotEqual(p.RacePlay.VictoryPoints(v, ref g), 0);
+
+
         }
 
         /// <summary>

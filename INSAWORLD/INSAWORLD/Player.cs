@@ -108,9 +108,14 @@ namespace INSAWORLD
         public void ComputePoints(ref Game game)
         {
             points = 0;
+            var buf = new List<Coord>();
             foreach(Unit u in unitsList)
             {
-                points += racePlay.VictoryPoints(u, ref game);
+                if (!buf.Contains(u.C))
+                {
+                    points += racePlay.VictoryPoints(u, ref game);
+                    buf.Add(u.C);
+                }
             }
         }
 

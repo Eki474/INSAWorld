@@ -20,6 +20,7 @@ namespace InsaworldTEST
             l = new Player("Jean", 1, 6);
             g = new Game(ref p, ref l);
             m = g.Map;
+            g.Initialize(0);
         }
 
         /// <summary>

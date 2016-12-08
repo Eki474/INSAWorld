@@ -57,12 +57,12 @@ namespace INSAWORLD
         {
             Coord c = u.C;
             Tile t = myGame.Map.CasesJoueur[c];
-            switch (t.GetType().ToString())
+            switch (t.getType())
             {
-                case "Volcano": return 3;
-                case "Swamp": return 2;
-                case "Desert": return 1;
-                case "Plain": return 0;
+                case "volcano": return 3;
+                case "swamp": return 2;
+                case "desert": return 1;
+                case "plain": return 0;
                 default: return 0;
             }
         }

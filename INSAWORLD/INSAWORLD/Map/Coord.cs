@@ -6,7 +6,7 @@ using System.Text;
 namespace INSAWORLD
 {
     //this class permtis to save coordinates of each cases of the map
-    public class Coord 
+    public struct Coord 
     {
         private int x; //vertical coordinate of the map
         private int y; //horizontal coordinate of the map
@@ -38,6 +38,14 @@ namespace INSAWORLD
         {
             if (c.X == x && c.Y == y) return true;
             return false;
+        }
+
+        public static bool operator ==(Coord c, Coord d){
+            return c.Equals(d);
+        }
+        public static bool operator !=(Coord c, Coord d)
+        {
+            return !c.Equals(d);
         }
     }
 }

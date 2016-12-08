@@ -56,12 +56,12 @@ namespace INSAWORLD
         {
             Coord c = u.C;
             Tile t = myGame.Map.CasesJoueur[c];
-            switch (t.GetType().ToString())
+            switch (t.getType())
             {
-                case "Plain": return 3;
-                case "Desert": return 2;
-                case "Swamp": return 1;
-                case "Volcano": return 0;
+                case "plain": return 3;
+                case "desert": return 2;
+                case "swamp": return 1;
+                case "volcano": return 0;
                 default: return 0;
             }
         }
@@ -80,9 +80,10 @@ namespace INSAWORLD
             {
                 return false;
             }
+            bool b = myGame.Map.CasesJoueur.ContainsKey(u.C);
             Tile t = myGame.Map.CasesJoueur[u.C];
 
-            if (u.MovePoints < 1 || !(u.MovePoints > 0 && t.getType().Equals("plain"))){
+            if (u.MovePoints < 1 || (u.MovePoints <= 0.5 && !t.getType().Equals("plain"))){
                 return false;
             }
             List<Unit> opponentList;

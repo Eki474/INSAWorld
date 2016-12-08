@@ -58,12 +58,11 @@ namespace InsaworldTEST
         /// test if when the unit is asked to move too far, it rise an exception
         /// </summary>
         [TestMethod()]
-        [ExpectedException(typeof(OutOfBoundException))]
         public void TestActionMoveFail()
         {
             var u = p.UnitsList.First();
             Coord changed = new Coord(u.C.X + 10, u.C.Y + 10);
-            p.RacePlay.ActionMove(u, changed, ref g);
+            Assert.IsFalse(p.RacePlay.ActionMove(u, changed, ref g));
         }
 
         /// <summary>
@@ -74,9 +73,10 @@ namespace InsaworldTEST
         public void TestVictoryPoints()
         {
             Unit v = p.UnitsList.First();
-            Assert.IsTrue(p.UnitsList != null & p.RacePlay.VictoryPoints(v, ref g) > 0);
-            p.UnitsList.Clear();
-            Assert.IsTrue(p.RacePlay.VictoryPoints(v, ref g) == 0);
+            if (g.Map.CasesJoueur[v.C].getType().Equals("swamp")) Assert.AreEqual(p.RacePlay.VictoryPoints(v, ref g), 0);
+            else Assert.AreNotEqual(p.RacePlay.VictoryPoints(v, ref g), 0);
+
+            
         }
 
         /// <summary>

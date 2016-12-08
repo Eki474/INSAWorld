@@ -55,14 +55,13 @@ namespace INSAWORLD
         /// <returns>3 on desert, 2 on plain, 1 on volcano, 0 on swamp</returns>
         public int VictoryPoints(Unit u, ref Game myGame)
         {
-            Coord c = u.C;
-            Tile t = myGame.Map.CasesJoueur[c];
-            switch (t.GetType().ToString())
+            Tile t = myGame.Map.CasesJoueur[u.C];
+            switch (t.getType())
             {
-                case "Desert": return 3;
-                case "Plain": return 2;
-                case "Volcano": return 1;
-                case "Swamp": return 0;
+                case "desert": return 3;
+                case "plain": return 2;
+                case "volcano": return 1;
+                case "swamp": return 0;
                 default: return 0;
             }
         }

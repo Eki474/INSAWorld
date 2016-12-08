@@ -58,8 +58,8 @@
     <Compile Include="Units\UnitsFactory.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Map\GameMap.cs" />
-    <Compile Include="Commands\LoadForReplay.cs" />
-    <Compile Include="Commands\LoadGame.cs" />
+    <Compile Include="Commands\LoadReplayCommand.cs" />
+    <Compile Include="Commands\LoadCommand.cs" />
     <Compile Include="Commands\MoveUnit.cs" />
     <Compile Include="Commands\NextTurn.cs" />
     <Compile Include="Map\Plain.cs" />
@@ -67,8 +67,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Units\Race.cs" />
     <Compile Include="Commands\ReplayCollector.cs" />
-    <Compile Include="Commands\SaveForReplay.cs" />
-    <Compile Include="Commands\SaveGame.cs" />
+    <Compile Include="Commands\SaveReplayCommand.cs" />
+    <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="Map\Small.cs" />
     <Compile Include="Map\Standard.cs" />
     <Compile Include="Map\Swamp.cs" />

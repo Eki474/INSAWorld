@@ -20,6 +20,9 @@ namespace INSAWORLD
         {
             player1 = p1;
             player2 = p2;
+            Random rdn = new Random();
+            if (rdn.Next(1, 3) == 1) player1.Playing = true;
+            else player2.Playing = true;
         }
 
         public Player Player1

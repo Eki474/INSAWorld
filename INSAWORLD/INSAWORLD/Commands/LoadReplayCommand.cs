@@ -7,6 +7,18 @@ namespace INSAWORLD
 {
     public class LoadReplayCommand : CommandMenu
     {
+        private string name;
+
+        public LoadReplayCommand(string n)
+        {
+            name = n;
+        }
+
+        public string Name
+        {
+            get { return name; }
+            private set { name = value; }
+        }
 
         /// <summary>
         /// load a file for a replay

@@ -9,6 +9,17 @@ namespace INSAWORLD
     {
         private string name;
 
+        public SaveReplayCommand(string n)
+        {
+            name = n;
+        }
+
+        public string Name
+        {
+            get { return name; }
+            private set { name = value; }
+        }
+
         /// <summary>
         /// save all the state of the game in a file
         /// </summary>

@@ -6,8 +6,6 @@ namespace INSAWORLD
 {
     public class MoveUnit : CommandMenu, ToCollect
     {
-        private string state;
-
         private Unit unit;
         private Coord dest;
         private Game game;
@@ -17,12 +15,6 @@ namespace INSAWORLD
             unit = u;
             dest = c;
             game = g;
-        }
-
-        public string State
-        {
-            get { return state; }
-            set { state = value; }
         }
     
         /// <summary>

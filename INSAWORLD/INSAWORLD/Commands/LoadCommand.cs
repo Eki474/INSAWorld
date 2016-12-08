@@ -7,6 +7,18 @@ namespace INSAWORLD
 {
     public class LoadCommand : CommandMenu
     {
+        private string name;
+
+        public LoadCommand(string n)
+        {
+            name = n;
+        }
+
+        public string Name
+        {
+            get { return name; }
+            private set { name = value; }
+        }
 
         /// <summary>
         /// load a saved game by reading a file from a save

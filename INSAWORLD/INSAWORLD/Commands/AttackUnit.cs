@@ -7,8 +7,6 @@ namespace INSAWORLD
 {
     public class AttackUnit : CommandMenu, ToCollect
     {
-        private string state;
-
         /// <param name="u">unit which attack</param>
         /// <param name="d">pair of unit/coord of the attacked unit</param>
         /// <param name="game">reference to the game to obtain the map</param>
@@ -22,12 +20,6 @@ namespace INSAWORLD
             unit = u;
             def = d;
             game = g;
-        }
-
-        public string State
-        {
-            get { return state; }
-            set { state = value; }
         }
 
         public bool CanExecute()

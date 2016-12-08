@@ -11,9 +11,16 @@ namespace INSAWORLD
         private Game game;
         private string name;
 
-        public SaveCommand(ref Game g, string name)
+        public SaveCommand(ref Game g, string n)
         {
             game = g;
+            name = n;
+        }
+
+        public string Name
+        {
+            get { return name; }
+            private set { name = value; }
         }
 
         /// <summary>

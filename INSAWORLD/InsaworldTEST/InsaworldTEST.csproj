@@ -62,6 +62,9 @@
     <Compile Include="CerberusTest.cs" />
     <Compile Include="CyclopsTest.cs" />
     <Compile Include="GameMapTest.cs" />
+    <Compile Include="ReplayTest.cs" />
+    <Compile Include="NextTurnTest.cs" />
+    <Compile Include="SaveTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\INSAWORLD\INSAWORLD.csproj">

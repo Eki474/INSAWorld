@@ -19,7 +19,12 @@ namespace INSAWORLD
         /// <summary>
         /// end the player turn and go to the next turn
         /// </summary>
-        public Array Execute()
+        public void Execute()
+        {//TODO life regen
+            throw new NotImplementedException();
+        }
+
+        public bool CanExecute()
         {
             throw new NotImplementedException();
         }

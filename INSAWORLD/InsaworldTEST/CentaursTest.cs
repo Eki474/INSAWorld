@@ -80,20 +80,17 @@ namespace InsaworldTEST
         }
 
         /// <summary>
-        /// test if, with no more movePoints, the unit can still move with this method
+        /// test if the unit can move with this method
         /// </summary>
         [TestMethod()]
-        public void TestMoveOverride()
+        public void TestTryMove()
         {
             Unit u = p.UnitsList.First();
-            u.C = new Coord(0, 0);
-            u.MovePoints = 0;
             Coord temp = new Coord(u.C.X + 1, u.C.Y);
-            Race r = RaceFactory.Instance.createRace(1);
-            Unit d = UnitsFactory.Instance.createUnit(ref r);
-            d.C = temp;
-            p.RacePlay.MoveOverride(u, d, ref g);
-            Assert.AreEqual(temp, u.C);
+            Assert.IsTrue(p.RacePlay.TryMove(u, temp, ref g));
+
+            u.MovePoints = 0;
+            Assert.IsFalse(p.RacePlay.TryMove(u, temp, ref g));
         }
 
         /// <summary>

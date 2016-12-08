@@ -128,32 +128,10 @@ namespace INSAWORLD
         /// <returns>true if the attack has been done false if not</returns>
         public bool Attack(Unit u, Unit d, ref Game myGame)
         {
-            bool success = false;
-            //use attack of unit
-            int lostLife = u.Attack(d.C, d, ref myGame);
-            if(lostLife > 0) //defender lost points
-            {
-                if (d.LifePoints < lostLife)
-                {
-                    d.LifePoints = 0;
-                    myGame.Cleaner();
-                    u.Race.MoveOverride(u, d, ref myGame);
-                }
-                else { d.LifePoints -= lostLife; }
-                success = true;
-            }
-            else if (lostLife < 0) //attacker lost points
-            {
-                lostLife = -lostLife;
-                if (u.LifePoints < lostLife)
-                {
-                    u.LifePoints = 0;
-                    myGame.Cleaner();
-                }
-                else { u.LifePoints -= lostLife; }
-                success = true;
-            }
-            return success;
+            var cmd = new AttackUnit(ref u, ref d, ref myGame);
+            if (!cmd.CanExecute()) return false;
+            cmd.Execute();
+            return true;
         }
     }
 }

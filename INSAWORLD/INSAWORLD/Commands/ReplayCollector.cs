@@ -7,10 +7,22 @@ namespace INSAWORLD
 {
     public class ReplayCollector
     {
+        private static ReplayCollector instance; 
         //collect actions for replay
-        private ICollection<ToCollect> step;
+        private ICollection<ToCollect> step = new List<ToCollect>();
         private ToCollect initState;
 
+        public static ReplayCollector Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ReplayCollector();
+                }
+                return instance;
+            }
+        }
         public ICollection<ToCollect> Step
         {
             get { return step; }
@@ -26,10 +38,11 @@ namespace INSAWORLD
         /// <summary>
         /// add a step to collect
         /// </summary>
-        /// <returns>true if the step can be added, false if not</returns>
-        public bool AddStep()
+        public void AddStep(ToCollect c)
         {
-            throw new NotImplementedException();
+            step.Add(c);
         }
+
+
     }
 }

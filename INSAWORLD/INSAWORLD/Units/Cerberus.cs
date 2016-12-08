@@ -76,10 +76,7 @@ namespace INSAWORLD
         /// <returns>true if the unit can move on the tile, false if not</returns>
         public bool ActionMove(Unit u, Coord c, ref Game myGame)
         {
-            if (u.C.Equals(c) || (Math.Abs(u.C.X - c.X) + Math.Abs(u.C.Y - c.Y)) > 1)
-            {
-                return false;
-            }
+            if (!TryMove(u, c, ref myGame)) return false;
 
 
             List<Unit> opponentList;
@@ -94,7 +91,7 @@ namespace INSAWORLD
 
             foreach (Unit unit in opponentList)
             {
-                if (unit.C.Equals(u.C))
+                if (unit.C.Equals(c))
                 {
                     return false;
                 }
@@ -113,27 +110,15 @@ namespace INSAWORLD
         /// <param name="u">unit to move</param>
         /// <param name="d">unit killed and his coord</param>
         /// <param name="map">reference to the map</param>
-        public void MoveOverride(Unit u, Unit d, ref Game myGame)
+        public bool TryMove(Unit u, Coord c, ref Game myGame)
         {
-            bool movement = true;
-            List<Unit> list1;
-            List<Unit> list2;
-            if (myGame.Player1.UnitsList.Contains(d))
+            if (u.C.Equals(c) || (Math.Abs(u.C.X - c.X) + Math.Abs(u.C.Y - c.Y)) > 1 || u.MovePoints < 1)
             {
-                list1 = myGame.Player1.UnitsList;
-                list2 = myGame.Player2.UnitsList;
+                return false;
             }
-            else
-            {
-                list1 = myGame.Player2.UnitsList;
-                list2 = myGame.Player1.UnitsList;
-            }
-            foreach (Unit t in list1)
-            {
-                if (t.C.Equals(d.C) & !t.Equals(d)) { movement = false; }
-            }
-            if (movement) { u.C = d.C; }
-        }
+
+            return true;
+        } 
 
         /// <summary>
         /// verifies if a unit can still move or if it has no move points remaining

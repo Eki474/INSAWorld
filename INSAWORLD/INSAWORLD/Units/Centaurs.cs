@@ -75,17 +75,9 @@ namespace INSAWORLD
         /// <returns>true if the unit can move on the tile, false if not</returns>
         public bool ActionMove(Unit u, Coord c, ref Game myGame)
         {
-            if (u.C.Equals(c) || (Math.Abs(u.C.X - c.X) + Math.Abs(u.C.Y - c.Y)) > 1)
+            
 
-            {
-                return false;
-            }
-            bool b = myGame.Map.CasesJoueur.ContainsKey(u.C);
-            Tile t = myGame.Map.CasesJoueur[u.C];
-
-            if (u.MovePoints < 1 || (u.MovePoints <= 0.5 && !t.getType().Equals("plain"))){
-                return false;
-            }
+            if ( !TryMove(u, c, ref myGame)) return false;
             List<Unit> opponentList;
             if (myGame.Player1.UnitsList.Contains(u))
             {
@@ -98,13 +90,14 @@ namespace INSAWORLD
 
             foreach(Unit unit in opponentList)
             {
-                if (unit.C.Equals(u.C))
+                if (unit.C.Equals(c))
                 {
                     return false;
                 }
             }
 
             u.C = c;
+            Tile t = myGame.Map.CasesJoueur[u.C];
             if (!t.getType().Equals("plain")) u.MovePoints--;
             else u.MovePoints -= 0.5;
             return true;
@@ -113,32 +106,21 @@ namespace INSAWORLD
         }
 
         /// <summary>
-        /// move the unit on the tile of the killed unit if no other units on this tile
+        /// Essaye de se deplacer de une case
         /// </summary>
         /// <param name="u">unit to move</param>
-        /// <param name="d">unit killed and his coord</param>
-        /// <param name="map">reference to the map</param>
-        public void MoveOverride(Unit u, Unit d, ref Game myGame)
+        /// <param name="c">coord to move on</param>
+        /// <param name="myGame">reference to the game (to access game objects)</param>
+        /// <returns>true if the unit can move on the tile, false if not</returns>
+        public bool TryMove(Unit u, Coord c, ref Game myGame)
         {
-            bool movement = true;
-            List<Unit> list1;
-            List<Unit> list2;
-            if (myGame.Player1.UnitsList.Contains(d))
+            if (u.C.Equals(c) || (Math.Abs(u.C.X - c.X) + Math.Abs(u.C.Y - c.Y)) > 1 || u.MovePoints==0 || (u.MovePoints<=0.5 && !myGame.Map.CasesJoueur[c].getType().Equals("plain")))
             {
-                list1 = myGame.Player1.UnitsList;
-                list2 = myGame.Player2.UnitsList;
+                return false;
             }
-            else
-            {
-                list1 = myGame.Player2.UnitsList;
-                list2 = myGame.Player1.UnitsList;
-            }
-            foreach (Unit t in list1)
-            {
-                if (t.C.Equals(d.C) & !t.Equals(d)) { movement = false; }
-            }
-            if (movement) { u.C = d.C; }
-        }
+
+            return true;
+        } 
 
         /// <summary>
         /// verifies if a unit can still move or if it has no move points remaining

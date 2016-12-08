@@ -25,7 +25,12 @@ namespace INSAWORLD
         /// <summary>
         /// create a new game
         /// </summary>
-        public Array Execute()
+        public void Execute()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CanExecute()
         {
             throw new NotImplementedException();
         }

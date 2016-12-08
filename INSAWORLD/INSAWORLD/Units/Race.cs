@@ -52,7 +52,7 @@ namespace INSAWORLD
         /// <param name="u">unit to move</param>
         /// <param name="d">unit killed and his coord</param>
         /// <param name="map">reference to the map</param>
-        void MoveOverride(Unit u, Unit d, ref Game myGame);
+        bool TryMove(Unit u, Coord c, ref Game myGame);
 
         /// <summary>
         /// verifies if a unit can still move or if it has no move points remaining

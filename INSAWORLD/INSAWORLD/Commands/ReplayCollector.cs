@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace INSAWORLD
 {
     public class ReplayCollector
     {
-        private static ReplayCollector instance; 
+        private static ReplayCollector instance; //singleton
         //collect actions for replay
-        private ICollection<ToCollect> step = new List<ToCollect>();
-        private ToCollect initState;
+        private ICollection<ToCollect> step = new List<ToCollect>(); //list of step
+        private ToCollect initState; //creation of the game
 
         public static ReplayCollector Instance
         {
@@ -23,6 +24,14 @@ namespace INSAWORLD
                 return instance;
             }
         }
+
+        public ReplayCollector()
+        {
+            step = new List<ToCollect>();
+            Directory.CreateDirectory(@Environment.CurrentDirectory + @"\Save");
+            Directory.CreateDirectory(@Environment.CurrentDirectory + @"\Replay");
+        }
+
         public ICollection<ToCollect> Step
         {
             get { return step; }
@@ -36,21 +45,29 @@ namespace INSAWORLD
         }
 
         /// <summary>
-        /// add a step to collect
+        /// collect a step
         /// </summary>
         public void AddStep(ToCollect c)
         {
             step.Add(c);
         }
 
+        /// <summary>
+        /// generate the text to save for the replay
+        /// </summary>
+        /// <returns>concat all string seen in ToCollect implem</returns>
         override
         public string ToString()
         {
-            string res = initState.ToString();
-            foreach(ToCollect tc in step) res += "\n" + tc.ToString();
+            string res = initState.ToString(); //NewGameCommand string
+            foreach(ToCollect tc in step) res += "\n" + tc.ToString(); //MoveUnit - AttackUnit - NextTurn strings
             return res;
         }
 
+        /// <summary>
+        /// generate text for the map
+        /// </summary>
+        /// <returns>same string as in NewGameCommand.ToStringMap</returns>
         public string ToStringMap()
         {
             return ((NewGameCommand) initState).ToStringMap();

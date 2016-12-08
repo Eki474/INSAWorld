@@ -22,6 +22,10 @@ namespace INSAWORLD
             }
         }
 
+        /// <summary>
+        /// return the string corresponding to the type
+        /// </summary>
+        /// <returns>desert</returns>
         public string getType()
         {
             return "desert";

@@ -7,9 +7,13 @@ namespace INSAWORLD
 {
     public class NextTurn : CommandMenu, ToCollect
     {
-        private Game game;
-        private bool nbTurn;
+        private Game game; //game
+        private bool nbTurn; //true if game win by a player false if not
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="g">game</param>
         public NextTurn(Game g)
         {
             game=g;
@@ -17,6 +21,7 @@ namespace INSAWORLD
 
         /// <summary>
         /// end the player turn and go to the next turn
+        /// verify if the game is finished
         /// </summary>
         public void Execute()
         {
@@ -38,11 +43,19 @@ namespace INSAWORLD
             ReplayCollector.Instance.AddStep(this);
         }
 
+        /// <summary>
+        /// do nothing, don't use
+        /// </summary>
+        /// <returns>true</returns>
         public bool CanExecute()
         {
             return true;
         }
 
+        /// <summary>
+        /// for ReplayCollector
+        /// </summary>
+        /// <returns>next</returns>
         override
         public string ToString()
         {

@@ -7,14 +7,21 @@ namespace INSAWORLD
 {
     public class AttackUnit : CommandMenu, ToCollect
     {
-        /// <param name="u">unit which attack</param>
-        /// <param name="d">pair of unit/coord of the attacked unit</param>
-        /// <param name="game">reference to the game to obtain the map</param>
+        /// <param name="unit">unit which attack</param>
         private Unit unit;
+        /// <param name="def">attacked unit</param>
         private Unit def;
+        /// <param name="lostLifeSave">how many life points the unit loses</param>
         private int lostLifeSave;
+        /// <param name="game">reference to the game</param>
         private Game game;
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="u">unit which attack</param>
+        /// <param name="d">attacked unit</param>
+        /// <param name="g">reference to the game</param>
         public AttackUnit(Unit u, Unit d, ref Game g)
         {
             unit = u;
@@ -22,6 +29,10 @@ namespace INSAWORLD
             game = g;
         }
 
+        /// <summary>
+        /// verify if the unit whick attacks can move to the target unit
+        /// </summary>
+        /// <returns>true if yes, false if not</returns>
         public bool CanExecute()
         {
             return unit.Race.TryMove(unit, def.C, ref game);
@@ -30,7 +41,6 @@ namespace INSAWORLD
         /// <summary>
         /// call unit attack method and remove life points
         /// </summary>
-        /// <returns>true if the attack has been done false if not</returns>
         public void Execute()
         {
             //use attack of unit
@@ -62,6 +72,10 @@ namespace INSAWORLD
             ReplayCollector.Instance.AddStep(this);
         }
 
+        /// <summary>
+        /// for ReplayCollector
+        /// </summary>
+        /// <returns>attack,unit.Id,def.Id,lostLifeSave</returns>
         public string toString()
         {
             return "attack,"+unit.Id+","+def.Id+","+lostLifeSave;

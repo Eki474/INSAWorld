@@ -20,31 +20,28 @@ namespace InsaworldTEST
             g.Initialize(0);
         }
 
+        /// <summary>
+        /// test if when a player end his turn the playing attributes exchange values (true - false)
+        /// test if number of turn are well decremented in the GameMap object
+        /// </summary>
         [TestMethod]
         public void TestNextTurnCommand()
         {
-            var rdn = new Random();
-            var l1 = g.Player1.UnitsList;
-            var l2 = g.Player2.UnitsList;
+            bool b1 = g.Player1.Playing;
+            bool b2 = g.Player2.Playing;
+            double turn = g.Map.NbTurn;
+
             if (g.Player1.Playing)
             {
-                int nb = rdn.Next(0, l1.Count);
-                Unit u = l1[nb];
-                Coord c = u.C;
-                g.Player1.Move(l1.First(), c, ref g);
-                g.Player1.ComputePoints(ref g);
                 new NextTurn(g).Execute();
             }
             else
             {
-                int nb = rdn.Next(0, l2.Count);
-                Unit u = l2[nb];
-                Coord c = u.C;
-                g.Player2.Move(l2.First(), c, ref g);
-                g.Player2.ComputePoints(ref g);
                 new NextTurn(g).Execute();
             }
-            Assert.IsFalse(true);
+            Assert.IsTrue(g.Map.NbTurn < turn);
+            Assert.IsFalse(g.Player1.Playing && b1);
+            Assert.IsFalse(g.Player2.Playing && b2);
         }
     }
 }

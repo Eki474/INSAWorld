@@ -7,9 +7,14 @@ namespace INSAWORLD
 {
     public class NewGameCommand : CommandMenu, ToCollect
     {
-        private Game game;
-        private int type;
+        private Game game; //game
+        private int type; //map type
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="g">game</param>
+        /// <param name="t">map type</param>
         public NewGameCommand(Game g, int t)
         {
             game = g;
@@ -31,11 +36,19 @@ namespace INSAWORLD
             ReplayCollector.Instance.InitState = this;
         }
 
+        /// <summary>
+        /// do nothing, don't use
+        /// </summary>
+        /// <returns>true</returns>
         public bool CanExecute()
         {
             return true;
         }
 
+        /// <summary>
+        /// for ReplayCollector
+        /// </summary>
+        /// <returns>init,name(player1),race,coordX,coordY,name(player2),race,coordX,coordY,map_taille</returns>
         override
         public string ToString()
         {
@@ -46,6 +59,10 @@ namespace INSAWORLD
                 game.Map.Taille;
         }
 
+        /// <summary>
+        /// for ReplayCollector
+        /// </summary>
+        /// <returns>tiles types with , as separator of columns and \n for the lines</returns>
         public string ToStringMap()
         {
             string res = "";

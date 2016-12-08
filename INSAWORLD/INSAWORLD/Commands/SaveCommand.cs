@@ -8,9 +8,14 @@ namespace INSAWORLD
     public class SaveCommand : CommandMenu
     {
 
-        private Game game;
-        private string name;
+        private Game game; //current game
+        private string name; //name of the save - to create the file
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="g">current game</param>
+        /// <param name="n">name of the save</param>
         public SaveCommand(ref Game g, string n)
         {
             game = g;
@@ -65,9 +70,13 @@ namespace INSAWORLD
                 text += t.getType() + "\n";
             }
 
-            System.IO.File.WriteAllText(@Environment.CurrentDirectory+@"\Save\"+DateTime.Today+"-"+name+".txt", text);
+            System.IO.File.WriteAllText(@Environment.CurrentDirectory+@"\Save\"+name+".txt", text);
         }
 
+        /// <summary>
+        /// verify the game has been created
+        /// </summary>
+        /// <returns>true if the game is not null, false if it does</returns>
         public bool CanExecute()
         {
             return ReplayCollector.Instance.InitState != null;

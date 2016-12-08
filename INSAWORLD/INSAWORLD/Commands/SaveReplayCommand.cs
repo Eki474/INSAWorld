@@ -7,8 +7,12 @@ namespace INSAWORLD
 {
     public class SaveReplayCommand : CommandMenu
     {
-        private string name;
+        private string name; //name of the save - to create the file
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="n">name of the save</param>
         public SaveReplayCommand(string n)
         {
             name = n;
@@ -27,13 +31,17 @@ namespace INSAWORLD
         {
             string text = ReplayCollector.Instance.ToString();
 
-            System.IO.File.WriteAllText(@Environment.CurrentDirectory + @"\Replay\" + DateTime.Today + "-" + name + ".Game.txt", text);
+            System.IO.File.WriteAllText(@Environment.CurrentDirectory + @"\Replay\" + name + ".Game.txt", text);
 
             string textMap = ReplayCollector.Instance.ToStringMap();
 
-            System.IO.File.WriteAllText(@Environment.CurrentDirectory + @"\Replay\" + DateTime.Today + "-" + name + ".Map.txt", textMap);
+            System.IO.File.WriteAllText(@Environment.CurrentDirectory + @"\Replay\" + name + ".Map.txt", textMap);
         }
 
+        /// <summary>
+        /// verify the game has been created
+        /// </summary>
+        /// <returns>true if the game is not null, false if it does</returns>
         public bool CanExecute()
         {
             return ReplayCollector.Instance.InitState != null;

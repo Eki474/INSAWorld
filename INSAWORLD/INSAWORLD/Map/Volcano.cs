@@ -20,6 +20,11 @@ namespace INSAWORLD
                 return instance;
             }
         }
+
+        /// <summary>
+        /// return the string corresponding to the type
+        /// </summary>
+        /// <returns>volcano</returns>
         public string getType()
         {
             return "volcano";

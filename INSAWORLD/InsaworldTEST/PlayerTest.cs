@@ -46,7 +46,7 @@ namespace InsaworldTEST
         /// test if a player can still play
         /// </summary>
         [TestMethod()]
-        public void TestEndTurn()
+        public void TestEndTurnFail()
         {
             
             Assert.IsFalse(p.EndTurn(ref m));
@@ -56,7 +56,7 @@ namespace InsaworldTEST
         /// test if a player can still play
         /// </summary>
         [TestMethod()]
-        public void TestEndTurnFail()
+        public void TestEndTurn()
         {
             Player p1 = g.Player1;
             Coord c = p1.UnitsList.First().C;

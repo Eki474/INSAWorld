@@ -34,12 +34,23 @@ namespace INSAWORLD
             y = cy;
         }
 
+        /// <summary>
+        /// Equals override to compare coordinates and not references
+        /// </summary>
+        /// <param name="c">coord to compare to</param>
+        /// <returns>true if same coord, false if not</returns>
         public bool Equals(Coord c)
         {
             if (c.X == x && c.Y == y) return true;
             return false;
         }
 
+        /// <summary>
+        /// == override to compare coordinates and not references
+        /// </summary>
+        /// <param name="c">coord to compare</param>
+        /// <param name="d">coord to compare</param>
+        /// <returns>true if same coord, false if not</returns>
         public static bool operator ==(Coord c, Coord d){
             return c.Equals(d);
         }

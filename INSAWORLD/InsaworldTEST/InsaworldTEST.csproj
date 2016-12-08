@@ -65,6 +65,7 @@
     <Compile Include="ReplayTest.cs" />
     <Compile Include="NextTurnTest.cs" />
     <Compile Include="SaveTest.cs" />
+    <Compile Include="ReplayCollectorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\INSAWORLD\INSAWORLD.csproj">
@@ -99,8 +100,8 @@
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>taskkill /f /im vstest.*
- exit 0</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

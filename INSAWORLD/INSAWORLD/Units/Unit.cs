@@ -125,12 +125,11 @@ namespace INSAWORLD
         }
 
         /// <summary>
-        /// All points are resetted
+        /// All points are resetted + life regen 
         /// </summary>
         public void Reset()
         {
             if (!played && movePoints == race.Move && lifePoints<race.Life) lifePoints++; //life regen
-            lifePoints = race.Life;
             movePoints = race.Move;
             played = false;
         }

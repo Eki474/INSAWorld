@@ -73,7 +73,7 @@ namespace InsaworldTEST
         } 
 
         /// <summary>
-        /// test of attack on another unit, when the units are too far from each other
+        /// test of attack on another unit, when the units are too far from each other --> no attack
         /// </summary>
         [TestMethod()]
         public void TestAttackFail()
@@ -87,14 +87,26 @@ namespace InsaworldTEST
         }
 
         /// <summary>
-        /// test if the unit goes back to its initial state after reset
+        /// test if the unit goes back to its initial state after reset and if life regen when the unit has not been played
         /// </summary>
         [TestMethod()]
         public void TestReset()
         {
             u.MovePoints = 0;
             u.Reset();
-            Assert.IsTrue(u.LifePoints != 0);
+            Assert.IsTrue(u.MovePoints == 3);
+            u.MovePoints = 3;
+            u.Played = true;
+            u.LifePoints -= 3;
+            u.Reset();
+            Assert.IsTrue(u.LifePoints != race.Life);
+            u.Played = false;
+            u.MovePoints = 0;
+            u.Reset();
+            Assert.IsTrue(u.LifePoints != race.Life);
+            u.MovePoints = 3;
+            u.Reset();
+            Assert.IsTrue(u.LifePoints == (race.Life - 2));
         }
 
         /// <summary>

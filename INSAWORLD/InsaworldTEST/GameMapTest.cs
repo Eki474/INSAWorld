@@ -16,12 +16,18 @@ namespace InsaworldTEST
             map = BuilderMap.Instance.BuildMap(0);
         }
 
+        /// <summary>
+        /// test constructor of GameMap via Builder
+        /// </summary>
         [TestMethod]
         public void TestBuildMap()
         {
             Assert.IsNotNull(map);
         }
 
+        /// <summary>
+        /// test if a wrong type given to the constructor, the object not created --> Exception threw
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(BadMapException))]
         public void TestBuildMapFail()
@@ -29,6 +35,9 @@ namespace InsaworldTEST
             GameMap fail = BuilderMap.Instance.BuildMap(3);
         }
 
+        /// <summary>
+        /// test if the map is filled with Tiles 
+        /// </summary>
         [TestMethod]
         public void TestFillMap()
         {
@@ -37,6 +46,9 @@ namespace InsaworldTEST
             Assert.IsNotNull(map.CasesJoueur.Keys.First());
         }
 
+        /// <summary>
+        /// test if The map is filled with the same number of each tile type
+        /// </summary>
         [TestMethod]
         public void TestFillMapEkitable()
         {
@@ -56,6 +68,9 @@ namespace InsaworldTEST
             Assert.IsTrue(cpt[0] == cpt[1] && cpt[0] == cpt[2] && cpt[0] == cpt[3]);
         }
 
+        /// <summary>
+        /// test if the unit have their beginning coordinates
+        /// </summary>
         [TestMethod]
         public void TestSetJoueurs()
         {
@@ -66,6 +81,9 @@ namespace InsaworldTEST
             Assert.IsNotNull(p2.UnitsList.First().C);
         }
 
+        /// <summary>
+        /// test if the number of turn is decremented
+        /// </summary>
         [TestMethod]
         public void TestTurnPlayed()
         {

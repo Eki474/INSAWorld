@@ -39,7 +39,7 @@ void Algos::suggestMove(int tableTile[7][7], string retour[], bool race, double 
 };
 
 
-
+//string traitement : split on ,
 void Algos::split(const std::string &s, char delim, std::vector<std::string> &elems)
 {
 	std::stringstream ss;
@@ -50,7 +50,7 @@ void Algos::split(const std::string &s, char delim, std::vector<std::string> &el
 	}
 }
 
-
+//suggest the 3 best move to the player : algo logic
 //oob = out of bounds
 std::vector<std::string> Algos::suggestMoveAlgo(int tableTile[7][7], double moveP, bool race, std::string cheminActuel, std::vector<std::string> resultat, int posX, int posY) {
 	if (tableTile[posX][posY] = 1 && race) moveP += 0.5;
@@ -80,6 +80,7 @@ std::vector<std::string> Algos::suggestMoveAlgo(int tableTile[7][7], double move
 
 }
 
+//place unit on game start : the first player random, the other as far as possible
 void Algos::placeUnits(int retour[], int taille) {
 	int x = rand() % taille;
 	int y = rand() % taille;

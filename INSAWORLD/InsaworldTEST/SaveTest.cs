@@ -2,6 +2,7 @@
 using System.Linq;
 using INSAWORLD;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
 
 namespace InsaworldTEST
 {
@@ -20,20 +21,32 @@ namespace InsaworldTEST
             g.Initialize(0);
         }
 
+        /// <summary>
+        /// test if a file is created for the save and if it is not empty
+        /// </summary>
         [TestMethod]
         public void TestSaveCommand()
         {
             var cmd = new SaveCommand(ref g, "holo");
             if (cmd.CanExecute()) cmd.Execute();
-            Assert.IsFalse(true);
+
+            Assert.IsTrue(File.Exists(@Environment.CurrentDirectory + @"\Save\holo.txt"));
+
+            StreamReader file = new StreamReader(@Environment.CurrentDirectory + @"\Save\holo.txt");
+            string text = file.ToString();
+            Assert.IsNotNull(text);
         }
 
+        /// <summary>
+        /// test if the state of the game retrieve is the same as the one saved
+        /// </summary>
         [TestMethod]
         public void TestLoadCommand()
         {
             var cmd = new LoadCommand("holo");
             if (cmd.CanExecute()) cmd.Execute();
-            Assert.IsFalse(true);
+
+            Assert.AreSame(g, cmd.Game);
         }
     }
 }

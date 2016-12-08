@@ -25,7 +25,6 @@ namespace INSAWORLD
         /// <summary>
         /// create a unit of asked race (r) and coordinates (c)
         /// </summary>
-        /// <param name="c">unit coordinates</param>
         /// <param name="r">unit race</param>
         /// <returns>unit</returns>
         public Unit createUnit(ref Race r)

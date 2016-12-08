@@ -20,6 +20,11 @@ namespace INSAWORLD
                 return instance;
             }
         }
+
+        /// <summary>
+        /// return the string corresponding to the type
+        /// </summary>
+        /// <returns>swamp</returns>
         public string getType()
         {
             return "swamp";

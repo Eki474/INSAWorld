@@ -63,12 +63,12 @@ namespace INSAWORLD
         }
 
         /// <summary>
-        /// do nothing, don't use
+        /// verify the end of the game
         /// </summary>
-        /// <returns>true</returns>
+        /// <returns>true if the game is finished, else if not</returns>
         public bool CanExecute()
         {
-            return true;
+            return game.EndGame();
         }
 
         /// <summary>

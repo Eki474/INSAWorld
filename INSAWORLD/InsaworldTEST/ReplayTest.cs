@@ -23,7 +23,8 @@ namespace InsaworldTEST
             var l2 = g.Player2.UnitsList;
             while (!g.EndGame())
             {
-                new NextTurn(g).Execute();
+                var cmd = new NextTurn(g);
+                if (cmd.CanExecute()) cmd.Execute();
             }
         }
 

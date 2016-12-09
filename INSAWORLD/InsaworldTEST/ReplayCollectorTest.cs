@@ -26,7 +26,8 @@ namespace InsaworldTEST
         [TestMethod]
         public void TestAddStep()
         {
-            new NextTurn(g).Execute();
+            var cmd = new NextTurn(g);
+            if (cmd.CanExecute()) cmd.Execute();
             Assert.IsTrue(g.Rpz.Step.Count() > 0);
             Assert.IsNotNull(g.Rpz.Step.First());
         }

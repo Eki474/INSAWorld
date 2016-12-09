@@ -30,15 +30,9 @@ namespace InsaworldTEST
             bool b1 = g.Player1.Playing;
             bool b2 = g.Player2.Playing;
             double turn = g.Map.NbTurn;
-
-            if (g.Player1.Playing)
-            {
-                new NextTurn(g).Execute();
-            }
-            else
-            {
-                new NextTurn(g).Execute();
-            }
+            var cmd = new NextTurn(g);
+            if (cmd.CanExecute()) cmd.Execute();
+            
             Assert.IsTrue(g.Map.NbTurn < turn);
             Assert.IsFalse(g.Player1.Playing && b1);
             Assert.IsFalse(g.Player2.Playing && b2);

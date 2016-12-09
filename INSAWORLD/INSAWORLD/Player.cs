@@ -129,7 +129,8 @@ namespace INSAWORLD
 
         public void NextTurn(ref Game g)
         {
-            new NextTurn(g).Execute();
+            var cmd = new NextTurn(g);
+            if (cmd.CanExecute()) cmd.Execute();
         }
 
         /// <summary>

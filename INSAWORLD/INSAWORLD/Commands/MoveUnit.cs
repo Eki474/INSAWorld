@@ -22,6 +22,22 @@ namespace INSAWORLD
             dest = c;
             game = g;
         }
+
+        // move,unit.Id,dest.X,dest.Y
+        public MoveUnit(string[] s, ref Game g)
+        {
+            int ida = int.Parse(s[1]);
+            var l1 = g.Player1.UnitsList;
+            var l2 = g.Player2.UnitsList;
+            foreach (Unit u in l1.Concat(l2))
+            {
+                if (u.Id == ida) { unit = u; break; }
+            }
+            int cx = int.Parse(s[2]);
+            int cy = int.Parse(s[3]);
+            dest = new Coord(cx, cy);
+            game = g;
+        }
     
         /// <summary>
         /// move a unit
@@ -30,6 +46,11 @@ namespace INSAWORLD
         {
             unit.Race.ActionMove(unit, dest, ref game);
             game.Rpz.AddStep(this);
+        }
+
+        public void ExecuteReplay()
+        {
+            unit.Race.ActionMove(unit, dest, ref game);
         }
 
         /// <summary>
@@ -63,11 +84,11 @@ namespace INSAWORLD
         /// <summary>
         /// for ReplayCollector
         /// </summary>
-        /// <returns>move,unit.Id,dest</returns>
+        /// <returns>move,unit.Id,dest.X,dest.Y</returns>
         override
         public string ToString()
         {
-            return "move," + unit.Id + "," + dest;
+            return "move," + unit.Id + "," + dest.X + "," + dest.Y;
         }
     }
 }

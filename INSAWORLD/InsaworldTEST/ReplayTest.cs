@@ -60,7 +60,7 @@ namespace InsaworldTEST
             var cmd2 = new LoadReplayCommand("fancy");
             if (cmd2.CanExecute()) cmd2.Execute();
 
-            Assert.AreEqual(g, cmd2.Game);
+            Assert.IsTrue(g.Equals(cmd2.Game));
         }
     }
 }

@@ -87,7 +87,7 @@ namespace INSAWORLD
         /// <returns>return true if file exists, false if not</returns>
         public bool CanExecute()
         {
-            if (File.Exists(@Environment.CurrentDirectory + @"\Save\" + name + ".txt"))
+            if (File.Exists(@Environment.CurrentDirectory + @"\Save\" + name + ".Game.txt"))
             {
                 return true;
             }

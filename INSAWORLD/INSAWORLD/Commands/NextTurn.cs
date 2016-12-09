@@ -43,6 +43,25 @@ namespace INSAWORLD
             game.Rpz.AddStep(this);
         }
 
+        public void ExecuteReplay()
+        {
+            Player p;
+            if (game.Player1.Playing)
+            {
+                p = game.Player1;
+                game.Player2.StartTurn();
+                game.Player1.Playing = false;
+            }
+            else
+            {
+                p = game.Player2;
+                game.Player1.StartTurn();
+                game.Player2.Playing = false;
+            }
+            foreach (Unit u in p.UnitsList) u.Reset();
+            nbTurn = game.Map.TurnPlayed();
+        }
+
         /// <summary>
         /// do nothing, don't use
         /// </summary>

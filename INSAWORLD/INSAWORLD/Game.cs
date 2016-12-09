@@ -57,7 +57,7 @@ namespace INSAWORLD
         public ReplayCollector Rpz
         {
             get { return rpz; }
-            private set { rpz = value; }
+            set { rpz = value; }
         }
 
 

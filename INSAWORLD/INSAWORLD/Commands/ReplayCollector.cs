@@ -62,6 +62,12 @@ namespace INSAWORLD
             return ((NewGameCommand) initState).ToStringMap();
         }
 
-
+        public void Replay()
+        {
+            foreach(ToCollect cmd in step)
+            {
+                cmd.ExecuteReplay();
+            }
+        }
     }
 }

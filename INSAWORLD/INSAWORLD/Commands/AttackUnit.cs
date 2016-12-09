@@ -29,6 +29,22 @@ namespace INSAWORLD
             game = g;
         }
 
+        // attack,unit.Id,def.Id,lostLifeSave
+        public AttackUnit(string[] s, ref Game g)
+        {
+            lostLifeSave = int.Parse(s[3]);
+            int ida = int.Parse(s[1]);
+            int idd = int.Parse(s[2]);
+            var l1 = g.Player1.UnitsList;
+            var l2 = g.Player2.UnitsList;
+            foreach (Unit u in l1.Concat(l2))
+            {
+                if (u.Id == ida) { unit = u; }
+                if (u.Id == idd) { unit = u; }
+            }
+            game = g;
+        }
+
         /// <summary>
         /// verify if the unit whick attacks can move to the target unit
         /// </summary>
@@ -68,6 +84,39 @@ namespace INSAWORLD
                 }
                 else { unit.LifePoints -= lostLife; 
                 unit.Played = true;}
+            }
+            game.Rpz.AddStep(this);
+        }
+
+        public void ExecuteReplay()
+        {
+            //use attack of unit
+            int lostLife = lostLifeSave;
+            if (lostLife > 0) //defender lost points
+            {
+                if (def.LifePoints < lostLife)
+                {
+                    def.LifePoints = 0;
+                    game.Cleaner();
+                    unit.Race.ActionMove(unit, def.C, ref game);
+                }
+                else { def.LifePoints -= lostLife; }
+
+                unit.Played = true;
+            }
+            else if (lostLife < 0) //attacker lost points
+            {
+                lostLife = -lostLife;
+                if (unit.LifePoints < lostLife)
+                {
+                    unit.LifePoints = 0;
+                    game.Cleaner();
+                }
+                else
+                {
+                    unit.LifePoints -= lostLife;
+                    unit.Played = true;
+                }
             }
             game.Rpz.AddStep(this);
         }

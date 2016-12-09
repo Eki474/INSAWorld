@@ -42,7 +42,19 @@ namespace INSAWORLD
             {
                 unitsList.Add(new Unit(n[i], n[i + 1], n[i + 2], n[i + 3], n[i + 4], racePlay));
             }
+        }
 
+        public Player(string n, string r, string x, string y, string tm)
+        {
+            name = n;
+            racePlay = RaceFactory.Instance.createRace(r);
+            int cx = int.Parse(x);
+            int cy = int.Parse(y);
+            Coord c = new Coord(cx, cy);
+            tailleMap = int.Parse(tm);
+            unitsList = UnitsFactory.Instance.createUnits(racePlay, tailleMap, c);
+            points = 0;
+            playing = false;
         }
 
         public string Name

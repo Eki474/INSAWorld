@@ -37,6 +37,11 @@ namespace INSAWORLD
         }
 
         /// <summary>
+        /// Do nothing
+        /// </summary>
+        public void ExecuteReplay() { }
+
+        /// <summary>
         /// do nothing, don't use
         /// </summary>
         /// <returns>true</returns>

@@ -9,5 +9,6 @@ namespace INSAWORLD
     {
         //action collector for replay
         string ToString();
+        void ExecuteReplay();
     }
 }

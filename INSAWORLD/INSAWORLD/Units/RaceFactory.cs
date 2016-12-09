@@ -36,6 +36,11 @@ namespace INSAWORLD
             }
         }
 
+        /// <summary>
+        /// create a race from a string
+        /// </summary>
+        /// <param name="i">string designing a race</param>
+        /// <returns></returns>
         public Race createRace(string i)
         {
             switch (i)

@@ -31,10 +31,21 @@ namespace INSAWORLD
             playing = false;
         }
 
+        /// <summary>
+        /// constructor for SaveCommand
+        /// </summary>
+        /// <param name="n">table of parameters
+        ///     0 : don't use, tag
+        ///     1 : name
+        ///     2 : tailleMap
+        ///     3 : playing
+        ///     4 - end : units' strings
+        /// </param>
         public Player(string [] n)
         {
             unitsList = new List<Unit>();
             name = n[1];
+            tailleMap = int.Parse(n[2]);
             racePlay = RaceFactory.Instance.createRace(n[2]);
             points = 0;
             playing = "True".Equals(n[3]);
@@ -44,6 +55,14 @@ namespace INSAWORLD
             }
         }
 
+        /// <summary>
+        /// constructor for replay
+        /// </summary>
+        /// <param name="n">name</param>
+        /// <param name="r">race</param>
+        /// <param name="x">def coord X</param>
+        /// <param name="y">def coord Y</param>
+        /// <param name="tm">taille map</param>
         public Player(string n, string r, string x, string y, string tm)
         {
             name = n;
@@ -166,6 +185,12 @@ namespace INSAWORLD
             return true;
         }
 
+        /// <summary>
+        /// return the best defenser of the tile on target coord
+        /// </summary>
+        /// <param name="c">target coord</param>
+        /// <param name="myGame">reference vers game</param>
+        /// <returns></returns>
         public Unit FindDefender(Coord c, ref Game myGame)
         {
             string n = this.name;
@@ -188,6 +213,13 @@ namespace INSAWORLD
             return maxUnit;
         }
 
+        /// <summary>
+        /// move a unit on target coord
+        /// </summary>
+        /// <param name="u">moving unit</param>
+        /// <param name="c">target coord</param>
+        /// <param name="myGame">reference to game</param>
+        /// <returns></returns>
         public bool Move(Unit u, Coord c, ref Game myGame)
         {
             var cmd = new MoveUnit(u, c, ref myGame);
@@ -199,6 +231,10 @@ namespace INSAWORLD
             return false;
         }
 
+
+        /// <summary>
+        /// operators override
+        /// </summary>
 
         public bool Equals(Player p)
         {

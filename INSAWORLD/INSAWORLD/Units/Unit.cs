@@ -26,6 +26,15 @@ namespace INSAWORLD
             idGlob++;
         }
 
+        /// <summary>
+        /// copnstructor for SaveCommand
+        /// </summary>
+        /// <param name="id">id unit</param>
+        /// <param name="coordX">coord X for a unit</param>
+        /// <param name="coordY">coord Y for a unit</param>
+        /// <param name="movePoint">move points remaining</param>
+        /// <param name="lifePoint">life points remaining</param>
+        /// <param name="r">race</param>
         public Unit(string id, string coordX, string coordY, string movePoint, string lifePoint, Race r)
         {
             this.id = int.Parse(id);
@@ -35,6 +44,11 @@ namespace INSAWORLD
             race = r;
         }
 
+        /// <summary>
+        /// constructor for SaveReplayCommand
+        /// </summary>
+        /// <param name="r">race</param>
+        /// <param name="co">coord</param>
         public Unit(ref Race r, ref Coord co)
         {
             race = r;
@@ -46,6 +60,10 @@ namespace INSAWORLD
             idGlob++;
         }
 
+        /// <summary>
+        /// copy
+        /// </summary>
+        /// <param name="u"></param>
         public Unit(Unit u)
         {
             movePoints = u.movePoints;
@@ -54,6 +72,11 @@ namespace INSAWORLD
             race = u.race;
             c = u.c;
         }
+
+        /// <summary>
+        /// copy by ref
+        /// </summary>
+        /// <param name="u"></param>
         public Unit(ref Unit u)
         {
             movePoints = u.movePoints;

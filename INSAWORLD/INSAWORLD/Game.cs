@@ -27,6 +27,13 @@ namespace INSAWORLD
             else player2.Playing = true;
             rpz = new ReplayCollector();
         }
+
+        /// <summary>
+        /// constructor for SaveCommand
+        /// </summary>
+        /// <param name="p1">Player 1</param>
+        /// <param name="p2">Player 2</param>
+        /// <param name="map">Map</param>
         public Game(ref Player p1, ref Player p2, ref GameMap map)
         {
             Unit.idGlob = 0;
@@ -60,9 +67,6 @@ namespace INSAWORLD
             set { rpz = value; }
         }
 
-
-        //TODO nextturn verifier endgame
-
         /// <summary>
         /// create map and put units on it
         /// </summary>
@@ -80,6 +84,10 @@ namespace INSAWORLD
         {
             return player1.Lost() || player2.Lost() || map.NbTurn == 0;
         }
+
+        /// <summary>
+        /// operators re-definition
+        /// </summary>
 
         public bool Equals(Game g)
         {

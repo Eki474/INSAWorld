@@ -88,6 +88,9 @@ namespace INSAWORLD
             game.Rpz.AddStep(this);
         }
 
+        /// <summary>
+        /// execute without stocking into step and without re-doing the proba attack (for replay only)
+        /// </summary>
         public void ExecuteReplay()
         {
             //use attack of unit

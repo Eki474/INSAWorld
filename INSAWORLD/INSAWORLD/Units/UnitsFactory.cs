@@ -60,6 +60,13 @@ namespace INSAWORLD
             return dico;
          }
 
+        /// <summary>
+        /// create a units list
+        /// </summary>
+        /// <param name="r">race of the units in the list</param>
+        /// <param name="taille">size of the map (to know how many units have to be created)</param>
+        /// <param name="co">starting coord for all unit</param>
+        /// <returns>units list</returns>
         public List<Unit> createUnits(Race r, int taille, Coord co)
         {
             var dico = new List<Unit>();

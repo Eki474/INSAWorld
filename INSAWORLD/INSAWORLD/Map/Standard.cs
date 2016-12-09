@@ -43,7 +43,6 @@ namespace INSAWORLD
         /// decrement nbTurn when a turn is finished. -0.5 for a turn in a two-players game. 
         /// </summary>
         /// <returns>true if nbTurn inferior to 0 false if equals to 0</returns>
-        
         public bool TurnPlayed()
         {
             nbTurn -= 0.5;

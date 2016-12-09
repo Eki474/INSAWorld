@@ -79,6 +79,11 @@ namespace INSAWORLD
             }
         }
 
+        /// <summary>
+        /// give type of the map in exchange of size
+        /// </summary>
+        /// <param name="i">size of the map</param>
+        /// <returns>type int of the map</returns>
         public int getType(int i)
         {
             switch (i)

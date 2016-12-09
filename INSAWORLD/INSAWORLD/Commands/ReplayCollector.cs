@@ -62,6 +62,9 @@ namespace INSAWORLD
             return ((NewGameCommand) initState).ToStringMap();
         }
 
+        /// <summary>
+        /// execute all steps contained in step
+        /// </summary>
         public void Replay()
         {
             foreach(ToCollect cmd in step)

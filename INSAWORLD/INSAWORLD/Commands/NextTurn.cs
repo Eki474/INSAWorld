@@ -43,6 +43,9 @@ namespace INSAWORLD
             game.Rpz.AddStep(this);
         }
 
+        /// <summary>
+        /// execute without stocking into step (for replay only)
+        /// </summary>
         public void ExecuteReplay()
         {
             Player p;

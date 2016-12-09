@@ -36,5 +36,17 @@ namespace INSAWORLD
             }
         }
 
+        public Race createRace(string i)
+        {
+            switch (i)
+            {
+                case "Cyclops": return new Cyclops();
+                case "Cerberus": return new Cerberus();
+                case "Centaurs": return new Centaurs();
+                default:
+                    throw new BadRaceException("Bad Race Initialization");
+            }
+        }
+
     }
 }

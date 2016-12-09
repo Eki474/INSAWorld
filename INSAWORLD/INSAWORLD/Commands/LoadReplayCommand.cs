@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace INSAWORLD
 {
@@ -36,7 +37,18 @@ namespace INSAWORLD
         /// </summary>
         public void Execute()
         {
-            throw new NotImplementedException();
+            string line;
+            string[] linesplit;
+
+            // Read the file and display it line by line.
+            System.IO.StreamReader file =
+               new System.IO.StreamReader(@Environment.CurrentDirectory + @"\Replay\" + name + ".Game.txt");
+
+            line = file.ReadLine();
+            linesplit = line.Split(',');
+            Player p1 = new Player(linesplit[1], linesplit[2], linesplit[3], linesplit[4]);
+
+
         }
 
         /// <summary>
@@ -45,7 +57,11 @@ namespace INSAWORLD
         /// <returns>return true if file exists, false if not</returns>
         public bool CanExecute()
         {
-            throw new NotImplementedException();
+            if (File.Exists(@Environment.CurrentDirectory + @"\Replay\" + name + ".txt"))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

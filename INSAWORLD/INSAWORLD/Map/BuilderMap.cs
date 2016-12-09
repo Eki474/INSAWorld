@@ -79,6 +79,17 @@ namespace INSAWORLD
             }
         }
 
+        public int getType(int i)
+        {
+            switch (i)
+            {
+                case 6: return 0;
+                case 10: return 1;
+                case 14: return 2;
+                default: throw new BadMapException("Bad Map Type");
+            }
+        }
+
         /// <summary>
         /// fill the Tile of the GameMap using c++ dll
         /// </summary>

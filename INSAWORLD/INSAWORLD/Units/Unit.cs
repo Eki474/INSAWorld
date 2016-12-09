@@ -26,6 +26,26 @@ namespace INSAWORLD
             idGlob++;
         }
 
+        public Unit(string id, string coordX, string coordY, string movePoint, string lifePoint, Race r)
+        {
+            this.id = int.Parse(id);
+            this.c = new Coord(int.Parse(coordX), int.Parse(coordY));
+            this.movePoints = int.Parse(movePoint);
+            this.lifePoints = int.Parse(lifePoint);
+            race = r;
+        }
+
+        public Unit(ref Race r, ref Coord co)
+        {
+            race = r;
+            movePoints = r.Move;
+            lifePoints = r.Life;
+            played = false;
+            c=co;
+            id = idGlob;
+            idGlob++;
+        }
+
         public Unit(Unit u)
         {
             movePoints = u.movePoints;
@@ -133,5 +153,19 @@ namespace INSAWORLD
             movePoints = race.Move;
             played = false;
         }
+
+        public bool Equals(Unit u)
+        {
+            return u.C.Equals(c) && u.id == id && u.LifePoints == lifePoints && u.movePoints == movePoints;
+        }
+        public static bool operator ==(Unit u, Unit u2)
+        {
+            return u.Equals(u2);
+        }
+
+        public static bool operator !=(Unit u, Unit u2)
+        {
+            return !u.Equals(u2);
+        } 
     }
 }

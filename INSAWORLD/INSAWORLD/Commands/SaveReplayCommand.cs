@@ -8,14 +8,16 @@ namespace INSAWORLD
     public class SaveReplayCommand : CommandMenu
     {
         private string name; //name of the save - to create the file
+        private Game game;
 
         /// <summary>
         /// constructor
         /// </summary>
         /// <param name="n">name of the save</param>
-        public SaveReplayCommand(string n)
+        public SaveReplayCommand(string n, ref Game g)
         {
             name = n;
+            game = g; 
         }
 
         public string Name
@@ -29,11 +31,11 @@ namespace INSAWORLD
         /// </summary>
         public void Execute()
         {
-            string text = ReplayCollector.Instance.ToString();
+            string text = game.Rpz.ToString();
 
             System.IO.File.WriteAllText(@Environment.CurrentDirectory + @"\Replay\" + name + ".Game.txt", text);
 
-            string textMap = ReplayCollector.Instance.ToStringMap();
+            string textMap = game.Rpz.ToStringMap();
 
             System.IO.File.WriteAllText(@Environment.CurrentDirectory + @"\Replay\" + name + ".Map.txt", textMap);
         }
@@ -44,7 +46,7 @@ namespace INSAWORLD
         /// <returns>true if the game is not null, false if it does</returns>
         public bool CanExecute()
         {
-            return ReplayCollector.Instance.InitState != null;
+            return game.Rpz.InitState!=null;
         }
     }
 }

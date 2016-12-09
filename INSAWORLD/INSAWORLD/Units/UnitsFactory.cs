@@ -59,5 +59,27 @@ namespace INSAWORLD
    
             return dico;
          }
+
+        public List<Unit> createUnits(Race r, int taille, Coord co)
+        {
+            var dico = new List<Unit>();
+
+            int nbUnit;
+            switch (taille)
+            {
+                case 6: nbUnit = 4; break;
+                case 10: nbUnit = 6; break;
+                case 14: nbUnit = 8; break;
+                default: throw new Exception("size not valid");
+            }
+
+            for (; nbUnit >= 0; nbUnit--)
+            {
+                Unit u = new Unit(ref r, ref co);
+                dico.Add(u);
+            }
+
+            return dico;
+        }
     }
 }

@@ -25,9 +25,16 @@ namespace INSAWORLD
         /// return the string corresponding to the type
         /// </summary>
         /// <returns>plain</returns>
+        
         public string getType()
         {
             return "plain";
         }
+        public bool Equals(Tile t)
+        {
+            return getType().Equals(t.getType());
+        }
+
+
     }
 }

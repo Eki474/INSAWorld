@@ -9,5 +9,6 @@ namespace INSAWORLD
     public interface Tile
     {
         string getType();
+        bool Equals(Tile t);
     }
 }

@@ -114,5 +114,23 @@ namespace INSAWORLD
         {
             return u.MovePoints == 0 || (u.MovePoints == 0.5 && !map.CasesJoueur[u.C].Equals(Plain.Instance));
         }
+
+        public bool Equals(Centaurs c)
+        {
+            return c.Type.Equals(type);
+        }
+        public bool Equals(Race c)
+        {
+            return c.Type.Equals(type);
+        }
+        public static bool operator==(Centaurs c, Centaurs c2){
+            return c.Equals(c2);
+        }
+
+        public static bool operator !=(Centaurs c, Centaurs c2)
+        {
+            return !c.Equals(c2);
+        }
+
     }
 }

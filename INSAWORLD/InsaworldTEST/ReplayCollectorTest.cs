@@ -27,8 +27,8 @@ namespace InsaworldTEST
         public void TestAddStep()
         {
             new NextTurn(g).Execute();
-            Assert.IsTrue(ReplayCollector.Instance.Step.Count() > 0);
-            Assert.IsNotNull(ReplayCollector.Instance.Step.First());
+            Assert.IsTrue(g.Rpz.Step.Count() > 0);
+            Assert.IsNotNull(g.Rpz.Step.First());
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace InsaworldTEST
         [TestMethod]
         public void TestInitState()
         {
-            Assert.IsNotNull(ReplayCollector.Instance.InitState);
+            Assert.IsNotNull(g.Rpz.InitState);
         }
     }
 }

@@ -29,5 +29,10 @@ namespace INSAWORLD
         {
             return "swamp";
         }
+
+        public bool Equals(Tile t)
+        {
+            return getType().Equals(t.getType());
+        }
     }
 }

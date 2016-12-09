@@ -41,9 +41,9 @@ namespace INSAWORLD
             string text = "player1," + p1.Name + "," + p1.RacePlay.Type+","+p1.Playing+",";
             var l1 = p1.UnitsList;
             for (i= 0; i < l1.Count - 1; i++){
-                text += l1[i].Id + "," + l1[i].C.X + "," + l1[i].C.Y + ",";
+                text += l1[i].Id + "," + l1[i].C.X + "," + l1[i].C.Y + ","+l1[i].MovePoints+","+l1[i].LifePoints+",";
             }
-            if(l1.Count>0) text += l1[l1.Count-1].Id + "," + l1[l1.Count - 1].C.X + "," + l1[l1.Count - 1].C.Y + "\n";
+            if(l1.Count>0) text += l1[l1.Count-1].Id + "," + l1[l1.Count - 1].C.X + "," + l1[l1.Count - 1].C.Y +  ","+l1[i].MovePoints+","+l1[i].LifePoints + "\n";
 
             //Save player 2 state
             var p2 = game.Player2;
@@ -51,12 +51,13 @@ namespace INSAWORLD
             var l2 = p2.UnitsList;
             for (i = 0; i < l2.Count - 1; i++)
             {
-                text += l2[i].Id + "," + l2[i].C.X + "," + l2[i].C.Y + ",";
+                text += l2[i].Id + "," + l2[i].C.X + "," + l2[i].C.Y + "," +  l2[i].MovePoints + "," + l2[i].LifePoints + ",";
             }
-            if (l2.Count > 0) text += l2[l2.Count - 1].Id + "," + l2[l2.Count - 1].C.X + "," + l2[l2.Count - 1].C.Y + "\n";
+            if (l2.Count > 0) text += l2[l2.Count - 1].Id + "," + l2[l2.Count - 1].C.X + "," + l2[l2.Count - 1].C.Y + "," + l2[i].MovePoints + "," + l2[i].LifePoints + "\n";
 
             //Save map state
             text += "map," + game.Map.Taille + "\n";
+
 
             Tile t;
             for (i = 0; i < game.Map.Taille; i++)
@@ -79,7 +80,7 @@ namespace INSAWORLD
         /// <returns>true if the game is not null, false if it does</returns>
         public bool CanExecute()
         {
-            return ReplayCollector.Instance.InitState != null;
+            return game.Rpz.InitState != null;
         }
     }
 }

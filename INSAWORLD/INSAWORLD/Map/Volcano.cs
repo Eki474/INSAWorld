@@ -29,5 +29,9 @@ namespace INSAWORLD
         {
             return "volcano";
         }
+        public bool Equals(Tile t)
+        {
+            return getType().Equals(t.getType());
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace INSAWORLD
         public void Execute()
         {
             unit.Race.ActionMove(unit, dest, ref game);
-            ReplayCollector.Instance.AddStep(this);
+            game.Rpz.AddStep(this);
         }
 
         /// <summary>
@@ -50,9 +50,9 @@ namespace INSAWORLD
                 opponentList = game.Player1.UnitsList;
             }
 
-            foreach (Unit unit in opponentList)
+            foreach (Unit u in opponentList)
             {
-                if (unit.C.Equals(dest))
+                if (u.C.Equals(dest))
                 {
                     return false;
                 }

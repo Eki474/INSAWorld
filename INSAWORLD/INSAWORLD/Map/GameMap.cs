@@ -26,6 +26,8 @@ namespace INSAWORLD
             set;
         }
 
+        bool Equals(GameMap m);
+
         /// <summary>
         /// decrement nbTurn when a turn is finished. -0.5 for a turn in a two-players game. 
         /// </summary>

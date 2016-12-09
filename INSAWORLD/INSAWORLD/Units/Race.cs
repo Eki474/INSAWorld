@@ -66,5 +66,7 @@ namespace INSAWORLD
         /// <param name="map">reference to the map</param>
         /// <returns>true if the unit can't move, false if if do</returns>
         bool NoMoreMoves(Unit u, ref GameMap map);
+
+        bool Equals(Race u);
     }
 }

@@ -8,22 +8,11 @@ namespace INSAWORLD
 {
     public class ReplayCollector
     {
-        private static ReplayCollector instance; //singleton
         //collect actions for replay
         private ICollection<ToCollect> step = new List<ToCollect>(); //list of step
         private ToCollect initState; //creation of the game
 
-        public static ReplayCollector Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new ReplayCollector();
-                }
-                return instance;
-            }
-        }
+        
 
         public ReplayCollector()
         {

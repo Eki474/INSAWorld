@@ -43,10 +43,12 @@ namespace InsaworldTEST
         [TestMethod]
         public void TestLoadCommand()
         {
-            var cmd = new LoadCommand("holo");
-            if (cmd.CanExecute()) cmd.Execute();
+            var cmd1 = new SaveCommand(ref g, "holo");
+            if (cmd1.CanExecute()) cmd1.Execute();
+            var cmd2 = new LoadCommand("holo");
+            if (cmd2.CanExecute()) cmd2.Execute();
 
-            Assert.AreSame(g, cmd.Game);
+            Assert.IsTrue(g.Equals(cmd2.Game));
         }
     }
 }

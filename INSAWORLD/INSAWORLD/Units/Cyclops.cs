@@ -111,5 +111,23 @@ namespace INSAWORLD
         {
             return u.MovePoints == 0;
         }
+
+        public bool Equals(Cyclops c)
+        {
+            return c.Type.Equals(type);
+        }
+        public static bool operator ==(Cyclops c, Cyclops c2)
+        {
+            return c.Equals(c2);
+        }
+
+        public static bool operator !=(Cyclops c, Cyclops c2)
+        {
+            return !c.Equals(c2);
+        }
+        public bool Equals(Race c)
+        {
+            return c.Type.Equals(type);
+        }
     }
 }

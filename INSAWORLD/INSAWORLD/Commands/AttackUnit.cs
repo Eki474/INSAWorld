@@ -69,14 +69,15 @@ namespace INSAWORLD
                 else { unit.LifePoints -= lostLife; 
                 unit.Played = true;}
             }
-            ReplayCollector.Instance.AddStep(this);
+            game.Rpz.AddStep(this);
         }
 
         /// <summary>
         /// for ReplayCollector
         /// </summary>
         /// <returns>attack,unit.Id,def.Id,lostLifeSave</returns>
-        public string toString()
+        override
+        public string ToString()
         {
             return "attack,"+unit.Id+","+def.Id+","+lostLifeSave;
         }

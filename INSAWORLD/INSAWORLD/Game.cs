@@ -10,6 +10,7 @@ namespace INSAWORLD
         private Player player1; //launch the game
         private Player player2; //join the game
         private GameMap map; //board
+        private ReplayCollector rpz; //ReplayCollector
 
         /// <summary>
         /// constructor
@@ -18,11 +19,21 @@ namespace INSAWORLD
         /// <param name="p2">Joueur 2</param>
         public Game(ref Player p1, ref Player p2)
         {
+            Unit.idGlob = 0;
             player1 = p1;
             player2 = p2;
             Random rdn = new Random();
             if (rdn.Next(1, 3) == 1) player1.Playing = true;
             else player2.Playing = true;
+            rpz = new ReplayCollector();
+        }
+        public Game(ref Player p1, ref Player p2, ref GameMap map)
+        {
+            Unit.idGlob = 0;
+            player1 = p1;
+            player2 = p2;
+            this.map = map;
+            rpz = new ReplayCollector();
         }
 
         public Player Player1
@@ -43,6 +54,13 @@ namespace INSAWORLD
             set { map = value; }
         }
 
+        public ReplayCollector Rpz
+        {
+            get { return rpz; }
+            private set { rpz = value; }
+        }
+
+
         //TODO nextturn verifier endgame
 
         /// <summary>
@@ -62,6 +80,21 @@ namespace INSAWORLD
         {
             return player1.Lost() || player2.Lost() || map.NbTurn == 0;
         }
+
+        public bool Equals(Game g)
+        {
+            return player1.Equals(g.player1) && player2.Equals(g.player2) && map.Equals(g.map);
+        }
+
+        public static bool operator==(Game g, Game g2){
+            return g2.Equals(g);
+        }
+
+        public static bool operator !=(Game g, Game g2)
+        {
+            return !g2.Equals(g);
+        }
+
 
         /// <summary>
         /// after each attack remove units with no life points

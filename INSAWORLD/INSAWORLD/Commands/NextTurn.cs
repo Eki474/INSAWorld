@@ -40,7 +40,7 @@ namespace INSAWORLD
             }
             foreach (Unit u in p.UnitsList) u.Reset();
             nbTurn = game.Map.TurnPlayed();
-            ReplayCollector.Instance.AddStep(this);
+            game.Rpz.AddStep(this);
         }
 
         /// <summary>

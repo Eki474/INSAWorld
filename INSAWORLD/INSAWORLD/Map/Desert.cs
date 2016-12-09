@@ -30,5 +30,9 @@ namespace INSAWORLD
         {
             return "desert";
         }
+        public bool Equals(Tile t)
+        {
+            return getType().Equals(t.getType());
+        }
     }
 }

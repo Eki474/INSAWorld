@@ -31,6 +31,20 @@ namespace INSAWORLD
             playing = false;
         }
 
+        public Player(string [] n)
+        {
+            unitsList = new List<Unit>();
+            name = n[1];
+            racePlay = RaceFactory.Instance.createRace(n[2]);
+            points = 0;
+            playing = "True".Equals(n[3]);
+            for (int i = 4; i < n.Length; i+=5)
+            {
+                unitsList.Add(new Unit(n[i], n[i + 1], n[i + 2], n[i + 3], n[i + 4], racePlay));
+            }
+
+        }
+
         public string Name
         {
             get { return name; }
@@ -171,5 +185,31 @@ namespace INSAWORLD
             }
             return false;
         }
+
+
+        public bool Equals(Player p)
+        {
+            bool b = false;
+            foreach(Unit u in p.UnitsList){
+                foreach (Unit u2 in unitsList)
+                {
+                    if (u.Equals(u2)) { b = true; break; }
+                }
+                if (!b) return false;
+                b = false;
+            }
+            return p.Name.Equals(name) && p.RacePlay.Equals(racePlay);
+        }
+
+        public static bool operator ==(Player p1, Player p2)
+        {
+            return p1.Equals(p2);
+        }
+
+        public static bool operator !=(Player p1, Player p2)
+        {
+            return !p1.Equals(p2);
+        }
+
     }
 }

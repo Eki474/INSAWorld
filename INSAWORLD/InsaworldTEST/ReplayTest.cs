@@ -21,26 +21,9 @@ namespace InsaworldTEST
             g.Initialize(0);
             var l1 = g.Player1.UnitsList;
             var l2 = g.Player2.UnitsList;
-            while (g.EndGame())
+            while (!g.EndGame())
             {
-                if (g.Player1.Playing)
-                {
-                    int nb = rdn.Next(0, l1.Count);
-                    Unit u = l1[nb];
-                    Coord c = u.C;
-                    g.Player1.Move(l1.First(), c, ref g);
-                    g.Player1.ComputePoints(ref g);
-                    new NextTurn(g).Execute();
-                }
-                else
-                {
-                    int nb = rdn.Next(0, l2.Count);
-                    Unit u = l2[nb];
-                    Coord c = u.C;
-                    g.Player2.Move(l2.First(), c, ref g);
-                    g.Player2.ComputePoints(ref g);
-                    new NextTurn(g).Execute();
-                }
+                new NextTurn(g).Execute();
             }
         }
 
@@ -50,7 +33,7 @@ namespace InsaworldTEST
         [TestMethod]
         public void TestSaveReplayCommand()
         {
-            var cmd = new SaveReplayCommand("fancy");
+            var cmd = new SaveReplayCommand("fancy", ref g);
             if (cmd.CanExecute()) cmd.Execute();
 
             Assert.IsTrue(File.Exists(@Environment.CurrentDirectory + @"\Replay\fancy.Game.txt"));
@@ -71,10 +54,13 @@ namespace InsaworldTEST
         [TestMethod]
         public void TestLoadReplayCommand()
         {
-            var cmd = new LoadReplayCommand("fancy");
-            if (cmd.CanExecute()) cmd.Execute();
+            var cmd1 = new SaveReplayCommand("fancy", ref g);
+            if (cmd1.CanExecute()) cmd1.Execute();
 
-            Assert.AreSame(g, cmd.Game);
+            var cmd2 = new LoadReplayCommand("fancy");
+            if (cmd2.CanExecute()) cmd2.Execute();
+
+            Assert.AreEqual(g, cmd2.Game);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace INSAWORLD
             Player p2 = game.Player2;
             BuilderMap.Instance.setJoueurs(ref p1, ref p2, m.Taille);
             //TODO check la reference de la game
-            ReplayCollector.Instance.InitState = this;
+            game.Rpz.InitState = this;
         }
 
         /// <summary>

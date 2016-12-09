@@ -68,7 +68,7 @@ namespace INSAWORLD
         /// <returns>true if the game is finished, else if not</returns>
         public bool CanExecute()
         {
-            return game.EndGame();
+            return !game.EndGame();
         }
 
         /// <summary>

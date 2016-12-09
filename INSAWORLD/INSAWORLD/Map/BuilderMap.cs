@@ -21,7 +21,7 @@ namespace INSAWORLD
         extern static void Algos_fillMap(IntPtr algo, TileType[] tiles, int nbTiles);
 
         [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static void Algos_suggestMove(IntPtr algos, int[,] tableTile, string[] retour, bool race, double moveP);
+        extern static void Algos_suggestMove(IntPtr algos, int[] tableTile, string[] retour, bool race, double moveP);
 
         [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
         extern static IntPtr Algos_new();
@@ -30,7 +30,7 @@ namespace INSAWORLD
         extern static void Algos_delete(IntPtr algo);
 
         [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static void Algos_placeUnits(IntPtr algo, int [] retour, int taille);
+        extern static void Algos_placeUnits(IntPtr algo, int[] retour, int taille);
 
         private static BuilderMap instance;
         private bool disposed = false;
@@ -148,6 +148,74 @@ namespace INSAWORLD
             {
                 u.C = coordonnee;
             }
+        }
+        public List<string> suggestMove(ref Game game, Unit u)
+        {
+            int[,] tableTile = new int[7, 7];
+            int cXInit = u.C.X - 3;
+            int cYInit = u.C.Y - 3;
+            int cY = cYInit;
+            Player o;
+            if (game.Player1.UnitsList.Contains(u))
+            {
+                o = game.Player2;
+            }
+            else
+            {
+                o = game.Player1;
+            }
+            int taille = game.Map.Taille;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    if (cXInit < 0 || cY < 0 || cXInit > taille - 1 || cY > taille - 1)
+                    {
+                        tableTile[i, j] = -1;
+                    }
+                    else
+                    {
+                        bool b = false;
+                        Coord coord = new Coord(cXInit, cYInit);
+                        foreach (Unit unit in o.UnitsList)
+                        {
+                            if (unit.C.Equals(coord))
+                            {
+                                tableTile[i, j] = 2;
+                                b = true;
+                                break;
+                            }
+                        }
+                        if (!b)
+                        {
+                            if (game.Map.CasesJoueur[coord].getType().Equals("plain"))
+                            {
+                                tableTile[i, j] = 1;
+                            }
+                            else
+                            {
+                                tableTile[i, j] = 0;
+
+                            }
+                        }
+                    }
+                    cY++;
+                }
+                cXInit++; cY = cYInit;
+            }
+            int[] table = new int[49];
+            for (int i = 0; i < 49; i++)
+            {
+                table[i] = tableTile[i / 7, i % 7];
+            }
+            string[] retour = new string[3];
+            Algos_suggestMove(nativeAlgo, table, retour, u.Race.Type.Equals("Centaurs"), u.MovePoints);
+            List<string> result = new List<string>();
+            result.Add(retour[0]);
+            result.Add(retour[1]);
+            result.Add(retour[2]);
+            return result;
+
         }
 
         public void Dispose()

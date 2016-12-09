@@ -24,9 +24,9 @@ public:
 	void fillMap(TileType map[], int size);
 
 	// action suggest a move of a unit
-	
+
 	///fill map with random tiles, result contains same number of each tile type
-	void Algos::suggestMove(int tableTile[7][7], std::string retour[], bool race, double moveP);
+	void Algos::suggestMove(int tableTile[49], std::string retour[], bool race, double moveP);
 	///string traitement : split on ,
 	void split(const std::string &s, char delim, std::vector<std::string> &elems);
 	///suggest the 3 best move to the player
@@ -48,12 +48,12 @@ EXPORTCDECL void Algos_fillMap(Algos* algos, TileType map[], int size) {
 }
 
 ///place unit on game start : the first player random, the other as far as possible
-EXPORTCDECL void Algos_placeUnits(Algos* algos, int retour[],int taille) {
+EXPORTCDECL void Algos_placeUnits(Algos* algos, int retour[], int taille) {
 	return algos->placeUnits(retour, taille);
 }
 
 ///suggest the 3 best move to the player
-EXPORTCDECL void Algos_suggestMove(Algos* algos, int tableTile[7][7], std::string retour[], bool race, double moveP) {
+EXPORTCDECL void Algos_suggestMove(Algos* algos, int tableTile[49], std::string retour[], bool race, double moveP) {
 	return algos->suggestMove(tableTile, retour, race, moveP);
 }
 

@@ -24,13 +24,16 @@ void Algos::fillMap(TileType map[], int size)
 // action suggest a move of a unit
 // race: true si centaure, false sinon
 // tableFile: 0 pour case "normale", 1 pour case plaine, 2 pour case occupée, 3 pour case visitée, -1 pour oob
-void Algos::suggestMove(int tableTile[7][7], string retour[], bool race, double moveP)
+void Algos::suggestMove(int tableTile[49], string retour[], bool race, double moveP)
 {
-	std::vector<std::string> result;
+	std::vector<std::string> result(3);
 	// retour: stocke les chemins sous la forme {déplacementX déplacementY,} ex: "0,1,3"
 	// déplacement: 0 -> 1 <- 2 î 3 V
-
-	result = suggestMoveAlgo(tableTile, moveP, race, "", result, 4, 4);
+	int table[7][7];
+	for (int i = 0; i < 49; i++) {
+		table[i / 7][i % 7] = tableTile[i];
+	}
+	result = suggestMoveAlgo(table, moveP, race, "", result, 3, 3);
 
 	retour[0] = result[0];
 	retour[1] = result[1];
@@ -59,7 +62,7 @@ std::vector<std::string> Algos::suggestMoveAlgo(int tableTile[7][7], double move
 		return setMaximumvector(resultat, cheminActuel);
 	}
 	tableTile[posX][posY] = 3;
-	std::vector<std::string> tmpvector;
+	std::vector<std::string> tmpvector(3);
 	if (posX + 1 < 7) tmpvector = suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "0,", resultat, posX + 1, posY);
 	for (int i = 0; i < (int)(tmpvector.size()); i++) {
 		resultat = setMaximumvector(resultat, tmpvector[i]);
@@ -95,13 +98,13 @@ std::vector<std::string> Algos::setMaximumvector(std::vector<std::string> result
 	if (cheminActuel == "") return resultat;
 	//vire la dernière virgule
 	cheminActuel.pop_back();
-	std::vector<std::string> tmp;
+	std::vector<std::string> tmp(3);
 	//si on n'a pas encore le nombre de chemins requis
 	if ((int)(resultat.size()) < 3) {
 		resultat.push_back(cheminActuel);
 	}
 	else {
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < (int)resultat.size(); i++) {
 			std::string actual = resultat[i];
 			split(actual, ',', tmp);
 			if ((int)(tmp.size()) < tailleMin) { tailleMin = (int)(tmp.size()); mini = i; }

@@ -45,7 +45,6 @@ namespace INSAWORLD
         {
             unitsList = new List<Unit>();
             name = n[1];
-            tailleMap = int.Parse(n[2]);
             racePlay = RaceFactory.Instance.createRace(n[2]);
             points = 0;
             playing = "True".Equals(n[3]);

@@ -34,6 +34,7 @@ namespace InsaworldTEST
 
             StreamReader file = new StreamReader(@Environment.CurrentDirectory + @"\Save\holo.txt");
             string text = file.ToString();
+            file.Close();
             Assert.IsNotNull(text);
         }
 

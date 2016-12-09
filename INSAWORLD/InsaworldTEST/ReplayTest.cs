@@ -42,10 +42,12 @@ namespace InsaworldTEST
 
             StreamReader file1 = new StreamReader(@Environment.CurrentDirectory + @"\Replay\fancy.Game.txt");
             string text = file1.ToString();
+            file1.Close();
             Assert.IsNotNull(text);
 
             StreamReader file2 = new StreamReader(@Environment.CurrentDirectory + @"\Replay\fancy.Map.txt");
             string map = file2.ToString();
+            file2.Close();
             Assert.IsNotNull(map);
         }
 

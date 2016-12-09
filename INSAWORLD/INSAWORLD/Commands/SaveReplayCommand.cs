@@ -33,11 +33,23 @@ namespace INSAWORLD
         {
             string text = game.Rpz.ToString();
 
-            System.IO.File.WriteAllText(@Environment.CurrentDirectory + @"\Replay\" + name + ".Game.txt", text);
+            System.IO.StreamWriter file =
+               new System.IO.StreamWriter(@Environment.CurrentDirectory + @"\Replay\" + name + ".Game.txt");
+
+            file.Write(text);
+
+            file.Flush();
+            file.Close();
 
             string textMap = game.Rpz.ToStringMap();
 
-            System.IO.File.WriteAllText(@Environment.CurrentDirectory + @"\Replay\" + name + ".Map.txt", textMap);
+            file =
+               new System.IO.StreamWriter(@Environment.CurrentDirectory + @"\Replay\" + name + ".Map.txt");
+
+            file.Write(textMap);
+
+            file.Flush();
+            file.Close();
         }
 
         /// <summary>

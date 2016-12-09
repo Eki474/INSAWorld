@@ -71,7 +71,13 @@ namespace INSAWORLD
                 text += t.getType() + "\n";
             }
 
-            System.IO.File.WriteAllText(@Environment.CurrentDirectory+@"\Save\"+name+".txt", text);
+            System.IO.StreamWriter file =
+               new System.IO.StreamWriter(@Environment.CurrentDirectory + @"\Save\" + name + ".txt");
+
+           file.Write(text);
+
+           file.Flush();
+           file.Close();
         }
 
         /// <summary>

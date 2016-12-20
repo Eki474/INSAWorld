@@ -5,13 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InsaworldIHM"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button x:Name="button" Content="New Game" HorizontalAlignment="Left" Margin="211,163,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="button_Copy" Content="Load" HorizontalAlignment="Left" Margin="211,199,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="button_Copy1" Content="Replay" HorizontalAlignment="Left" Margin="211,235,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.606,3.699"/>
-        <Button x:Name="button_Copy2" Content="Exit" HorizontalAlignment="Left" Margin="211,273,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label x:Name="label" Content="INSAWORLD" HorizontalAlignment="Left" Margin="208,46,0,0" VerticalAlignment="Top"/>
+        Title="INSAWORLD" Height="350" Width="525">
+    <Grid Name="mainMenu">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Ressources/images/menu/1.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <TextBlock x:Name="title" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="45" Style="{DynamicResource Square}">INSAWORLD</TextBlock>
+        <Button x:Name="newGame" Content="New Game" HorizontalAlignment="Center" Margin="0,160,0,0" VerticalAlignment="Top" Width="75" Foreground="White" Style="{DynamicResource Blank}" MouseDown="newGame_MouseDown">
+            <Button.Background>
+                <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom.jpg" Stretch="UniformToFill"></ImageBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="load" Content="Load" HorizontalAlignment="Center" Margin="0,190,0,0" VerticalAlignment="Top" Width="75" Foreground="White" Style="{DynamicResource Blank}" MouseDown="load_MouseDown">
+            <Button.Background>
+                <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom.jpg" Stretch="UniformToFill"></ImageBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="replay" Content="Replay" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" Width="75" Foreground="White" Style="{DynamicResource Blank}" MouseDown="replay_MouseDown">
+            <Button.Background>
+                <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom.jpg" Stretch="UniformToFill"></ImageBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="exit" Content="Exit" HorizontalAlignment="Center" Margin="0,270,0,0" VerticalAlignment="Top" Width="75" Foreground="White" Style="{DynamicResource Blank}" MouseDown="exit_MouseDown">
+            <Button.Background>
+                <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom.jpg" Stretch="UniformToFill"></ImageBrush>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

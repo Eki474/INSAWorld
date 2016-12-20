@@ -14,6 +14,21 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +48,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>InsaworldIHM.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -55,6 +73,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Defeat.xaml.cs">
+      <DependentUpon>Defeat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameBoard.xaml.cs">
+      <DependentUpon>GameBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InGameMenu.xaml.cs">
+      <DependentUpon>InGameMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RaceChoice.xaml.cs">
+      <DependentUpon>RaceChoice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Victory.xaml.cs">
+      <DependentUpon>Victory.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Defeat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InGameMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,8 +112,23 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MapChoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RaceChoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Victory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MapChoice.xaml.cs">
+      <DependentUpon>MapChoice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -91,6 +151,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Ressources\fonts\blank-Bold.otf" />
+    <Resource Include="Ressources\fonts\blank-Regular.otf" />
+    <Resource Include="Ressources\fonts\octin stencil rg.ttf" />
+    <Resource Include="Ressources\fonts\Squares Bold Free.otf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -100,6 +164,66 @@
       <Project>{6fad37f4-209a-4c98-944f-1f4dab4551c6}</Project>
       <Name>INSAWORLD</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\images\textures\button_zoom.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\images\background\defeat.jpg" />
+    <Resource Include="Ressources\images\background\desert_background.jpg" />
+    <Resource Include="Ressources\images\background\desert_city.jpg" />
+    <Resource Include="Ressources\images\background\plain_background.jpg" />
+    <Resource Include="Ressources\images\background\plain_city.jpg" />
+    <Resource Include="Ressources\images\background\race_background_1.jpg" />
+    <Resource Include="Ressources\images\background\race_background_2.jpg" />
+    <Resource Include="Ressources\images\background\race_background_3.jpg" />
+    <Resource Include="Ressources\images\background\victory.jpg" />
+    <Resource Include="Ressources\images\background\volcano_background.jpg" />
+    <Resource Include="Ressources\images\background\volcano_city.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\images\centaurs\mecha1.jpg" />
+    <Resource Include="Ressources\images\centaurs\tank1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\images\cerberus\mecha1.jpg" />
+    <Resource Include="Ressources\images\cerberus\mecha2.jpg" />
+    <Resource Include="Ressources\images\cerberus\mecha3.jpg" />
+    <Resource Include="Ressources\images\cerberus\mecha4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\images\cyclops\mecha1.jpg" />
+    <Resource Include="Ressources\images\cyclops\mecha2.jpg" />
+    <Resource Include="Ressources\images\cyclops\mecha3.jpg" />
+    <Resource Include="Ressources\images\cyclops\mecha4.jpg" />
+    <Resource Include="Ressources\images\cyclops\tank1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\images\menu\1.jpg" />
+    <Resource Include="Ressources\images\menu\2.jpg" />
+    <Resource Include="Ressources\images\menu\3.jpg" />
+    <Resource Include="Ressources\images\menu\4.jpg" />
+    <Resource Include="Ressources\images\menu\war_mecha.jpg" />
+    <Resource Include="Ressources\images\menu\war_tank.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\images\textures\button.jpg" />
+    <Resource Include="Ressources\images\textures\desert.jpg" />
+    <Resource Include="Ressources\images\textures\plain.png" />
+    <Resource Include="Ressources\images\textures\swamp.png" />
+    <Resource Include="Ressources\images\textures\volcano.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

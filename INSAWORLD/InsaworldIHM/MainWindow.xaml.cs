@@ -24,5 +24,25 @@ namespace InsaworldIHM
         {
             InitializeComponent();
         }
+
+        private void newGame_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void load_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void replay_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void exit_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

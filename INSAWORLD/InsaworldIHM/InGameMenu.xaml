@@ -1,0 +1,17 @@
+﻿<Page x:Class="InsaworldIHM.InGameMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InsaworldIHM"
+        mc:Ignorable="d"
+        Height="350" Width="525">
+    <Grid>
+        <Button x:Name="save" Content="Save" HorizontalAlignment="Center" Margin="0,70,0,0" VerticalAlignment="Top" Width="111"/>
+        <Button x:Name="load" Content="Load" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Width="111"/>
+        <Button x:Name="saveReplay" Content="Save for replay" HorizontalAlignment="Center" Margin="0,130,0,0" VerticalAlignment="Top" Width="111"/>
+        <Button x:Name="quit" Content="Quit" HorizontalAlignment="Center" Margin="0,160,0,0" VerticalAlignment="Top" Width="111"/>
+        <Button x:Name="back" Content="Back to game" HorizontalAlignment="Center" Margin="0,210,0,0" VerticalAlignment="Top" Width="111"/>
+
+    </Grid>
+</Page>

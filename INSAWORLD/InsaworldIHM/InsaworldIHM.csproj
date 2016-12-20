@@ -225,6 +225,15 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\images\textures\button_zoom_modified.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\images\icon\1.png" />
+    <Resource Include="Ressources\images\icon\2.png" />
+    <Resource Include="Ressources\images\icon\3.png" />
+    <Resource Include="Ressources\images\icon\4.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

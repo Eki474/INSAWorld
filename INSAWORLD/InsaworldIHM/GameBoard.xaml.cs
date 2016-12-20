@@ -17,7 +17,7 @@ namespace InsaworldIHM
     /// <summary>
     /// Interaction logic for GameBoard.xaml
     /// </summary>
-    public partial class GameBoard : Window
+    public partial class GameBoard : Page
     {
         public GameBoard()
         {

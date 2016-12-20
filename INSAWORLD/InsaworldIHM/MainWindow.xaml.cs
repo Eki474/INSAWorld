@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using INSAWORLD;
 
 namespace InsaworldIHM
 {
@@ -25,22 +26,43 @@ namespace InsaworldIHM
             InitializeComponent();  
         }
 
-        private void newGame_MouseDown(object sender, MouseButtonEventArgs e)
+        /// <summary>
+        /// to create a new game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void newGame_Click(object sender, RoutedEventArgs e)
+        {
+            RaceChoice page = new RaceChoice();
+            this.Content = page;
+        }
+
+        /// <summary>
+        /// to exit the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        /// <summary>
+        /// to read a replay of a game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void replay_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void load_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void replay_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void exit_MouseDown(object sender, MouseButtonEventArgs e)
+        /// <summary>
+        /// to load a game saved
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void load_Click(object sender, RoutedEventArgs e)
         {
 
         }

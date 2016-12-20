@@ -17,7 +17,7 @@ namespace InsaworldIHM
     /// <summary>
     /// Interaction logic for RaceChoice.xaml
     /// </summary>
-    public partial class RaceChoice : Window
+    public partial class RaceChoice : Page
     {
         public RaceChoice()
         {

@@ -34,7 +34,7 @@ namespace InsaworldIHM
         private void newGame_Click(object sender, RoutedEventArgs e)
         {
             RaceChoice page = new RaceChoice();
-            this.Content = page;
+            Content = page;
         }
 
         /// <summary>

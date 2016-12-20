@@ -58,7 +58,7 @@ namespace INSAWORLD
         /// </summary>
         /// <param name="u">target unit</param>
         /// <param name="myGame">reference to the game (to access game objects)</param>
-        /// <returns>depend on the implementation</returns>
+        /// <returns>volcano 3 - swamp 2 - desert 1 - plain 0</returns>
         public int VictoryPoints(Unit u, ref Game myGame)
         {
             Coord c = u.C;

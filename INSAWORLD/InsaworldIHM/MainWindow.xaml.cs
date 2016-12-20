@@ -22,7 +22,7 @@ namespace InsaworldIHM
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();  
         }
 
         private void newGame_MouseDown(object sender, MouseButtonEventArgs e)

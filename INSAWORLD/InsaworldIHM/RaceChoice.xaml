@@ -6,20 +6,58 @@
         xmlns:local="clr-namespace:InsaworldIHM"
         mc:Ignorable="d"
         Height="350" Width="525">
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Page.Resources>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Ressources/images/background/race_background_2.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
-        
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
+
+        <Button x:Name="menu" Content="Menu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource Blank}" Foreground="White" Click="menu_Click">
+            <Button.Background>
+                <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" Stretch="UniformToFill"></ImageBrush>
+            </Button.Background>
+        </Button>
         
         <TextBlock x:Name="player1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,40,0,0" Foreground="White" FontSize="16" Style="{DynamicResource Blank}">Player 1</TextBlock>
-        <TextBox x:Name="name1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,65,0,0" FontSize="16" Style="{DynamicResource Blank}"></TextBox>
+        <TextBlock HorizontalAlignment="Left" Margin="12,65,0,265" Text="Enter your name..." Foreground="White" FontSize="16" Style="{DynamicResource Blank}"
+                       Visibility="{Binding ElementName=name1, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <TextBox x:Name="name1" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,65,0,0" FontSize="16" Style="{DynamicResource Blank}" Width="120" Foreground="White"></TextBox>
+        
         
         <TextBlock x:Name="player2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,40,10,0" Foreground="White" FontSize="16" Style="{DynamicResource Blank}">Player 2</TextBlock>
+        <TextBlock HorizontalAlignment="Right" Margin="0,65,12,265" Text="Enter your name..." Foreground="White" FontSize="16" Style="{DynamicResource Blank}"
+                       Visibility="{Binding ElementName=name2, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <TextBox x:Name="name2" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,65,10,0" FontSize="16" Style="{DynamicResource Blank}" Width="120" Foreground="White"></TextBox>
         
         <Image x:Name="race1" HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="263"/>
         <Image x:Name="race2" HorizontalAlignment="Right" Height="350" Margin="0,0,0,0" VerticalAlignment="Top" Width="262"/>
-
+        <ComboBox x:Name="mapChoice" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" Width="120" Style="{DynamicResource Blank}">
+            <ComboBoxItem x:Name="demo" Selected="demo_Selected">Demo</ComboBoxItem>
+            <ComboBoxItem x:Name="small" Selected="small_Selected">Small</ComboBoxItem>
+            <ComboBoxItem x:Name="standard" Selected="standard_Selected">Standard</ComboBoxItem>
+        </ComboBox>
+        <TextBlock x:Name="demoSpec" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,260,0,0" FontSize="16" Style="{DynamicResource Blank}" Width="130" Foreground="White" Visibility="Hidden">
+            <WrapPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Center">Demo Map</TextBlock>
+                <TextBlock>Size : 6 x 6</TextBlock>
+                <TextBlock>Nombre de tours : 5</TextBlock>
+            </WrapPanel>
+        </TextBlock>
+        <TextBlock x:Name="smallSpec" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,260,0,0" FontSize="16" Style="{DynamicResource Blank}" Width="130" Foreground="White" Visibility="Hidden">
+            <WrapPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Center">Small Map</TextBlock>
+                <TextBlock>Size : 10 x 10</TextBlock>
+                <TextBlock>Nombre de tours : 20</TextBlock>
+            </WrapPanel>
+        </TextBlock>
+        <TextBlock x:Name="standardSpec" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,260,0,0" FontSize="16" Style="{DynamicResource Blank}" Width="130" Foreground="White" Visibility="Hidden">
+            <WrapPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Center">Standard Map</TextBlock>
+                <TextBlock>Size : 14 x 14</TextBlock>
+                <TextBlock>Nombre de tours : 30</TextBlock>
+            </WrapPanel>
+        </TextBlock>
     </Grid>
 </Page>

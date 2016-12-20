@@ -85,6 +85,9 @@
     <Compile Include="RaceChoice.xaml.cs">
       <DependentUpon>RaceChoice.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SaveChoice.xaml.cs">
+      <DependentUpon>SaveChoice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Victory.xaml.cs">
       <DependentUpon>Victory.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RaceChoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaveChoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

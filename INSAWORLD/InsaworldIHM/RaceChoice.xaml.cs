@@ -112,7 +112,6 @@ namespace InsaworldIHM
         {
             if ((bool)buttonOkCentaurs.IsChecked)
             {
-                buttonOkCentaurs.IsChecked = true; //pourquoi ? c'est pas justement la condition pour entrer dans le if ? 
                 if (joueur == 1)
                 {
                     centaursLeftSpec.Visibility = Visibility.Visible;
@@ -376,7 +375,7 @@ namespace InsaworldIHM
             {
                 buttonStartGame.Visibility = Visibility.Visible;
             }
-            else
+            else if(buttonStartGame != null)
             {
                 buttonStartGame.Visibility = Visibility.Hidden;
             }

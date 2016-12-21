@@ -27,7 +27,7 @@ namespace InsaworldIHM
             //NotFoundDirectoryException à gérer : si pas de directory --> pas de save --> message utilisateur
             InitializeComponent();
             ScrollViewer sc = scrollchoice;
-            StackPanel sp = new StackPanel();
+            StackPanel sp = new StackPanel(); 
             var dirinfo = new DirectoryInfo(@"C:\Users\franc\Source\Repos\xXx_POO_xXx\INSAWORLD\InsaworldTEST\bin\Debug\Save\");
             FileInfo[] f = dirinfo.GetFiles("*.*", SearchOption.TopDirectoryOnly);
             foreach (FileInfo t in f)

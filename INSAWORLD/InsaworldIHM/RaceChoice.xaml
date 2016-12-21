@@ -50,7 +50,7 @@
 
             <Viewbox StretchDirection="Both" Grid.Row="1" Margin="10">
                 <TextBlock HorizontalAlignment="Stretch" Text="Enter your name..." Foreground="White" Style="{DynamicResource Blank}"
-                       Visibility="{Binding Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=name2}"/>
+                       Visibility="{Binding Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=name1}"/>
             </Viewbox>
             <Viewbox Stretch="Fill" StretchDirection="Both" Grid.Row="1">
                 <TextBox x:Name="name1" Background="Transparent" HorizontalAlignment="Stretch" MinHeight="10" MinWidth="100" VerticalAlignment="Stretch" Margin="5"  Style="{DynamicResource Blank}"  Foreground="White" TextChanged="name1_TextChanged" Grid.Row="1" ></TextBox>

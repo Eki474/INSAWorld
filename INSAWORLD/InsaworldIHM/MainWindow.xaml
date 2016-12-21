@@ -7,30 +7,6 @@
         mc:Ignorable="d"
         Title="INSAWORLD" Height="350" Width="525" Icon="/Ressources/images/icon/1.png">
     <Grid Name="mainMenu">
-        <Grid.Background>
-            <ImageBrush ImageSource="/Ressources/images/menu/1.jpg" Stretch="UniformToFill"/>
-        </Grid.Background>
-        <TextBlock x:Name="title" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="45" Style="{DynamicResource Square}">INSAWORLD</TextBlock>
-        <Button x:Name="newGame" Content="New Game" HorizontalAlignment="Center" Margin="0,160,0,0" VerticalAlignment="Top" Foreground="White" Style="{DynamicResource Blank}" Click="newGame_Click" Padding="20,1" FontSize="16" Width="107">
-            <Button.Background>
-                <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" Stretch="UniformToFill"></ImageBrush>
-            </Button.Background>
-        </Button>
-        <Button x:Name="load" Content="Load" HorizontalAlignment="Center" Margin="0,190,0,0" VerticalAlignment="Top" Foreground="White" Style="{DynamicResource Blank}" Click="load_Click" FontSize="16" Padding="20,1" Width="107">
-            <Button.Background>
-                <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" Stretch="UniformToFill"></ImageBrush>
-            </Button.Background>
-        </Button>
-        <Button x:Name="replay" Content="Replay" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" Width="107" Foreground="White" Style="{DynamicResource Blank}" Click="replay_Click" Padding="20,1" FontSize="16">
-            <Button.Background>
-                <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" Stretch="UniformToFill"></ImageBrush>
-            </Button.Background>
-        </Button>
-        <Button x:Name="exit" Content="Exit" HorizontalAlignment="Center" Margin="0,270,0,0" VerticalAlignment="Top" Width="107" Foreground="White" Style="{DynamicResource Blank}" Click="exit_Click" FontSize="16" Padding="20,1">
-            <Button.Background>
-                <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" Stretch="UniformToFill"></ImageBrush>
-            </Button.Background>
-        </Button>
-
+        
     </Grid>
 </Window>

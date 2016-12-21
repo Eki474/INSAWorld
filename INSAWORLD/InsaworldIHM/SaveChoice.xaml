@@ -9,8 +9,8 @@
       Title="SaveChoice">
 
     <Grid Background="Black">
-        <ScrollViewer HorizontalAlignment="Left" Height="238" Margin="19,22,0,0" VerticalAlignment="Top" Width="262" Name="scrollchoice" Background="SlateGray"/>
-        <Button x:Name="buttonBack" Content="Back" HorizontalAlignment="Left" Margin="10,270,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <Button x:Name="buttonSelect" Content="Select" HorizontalAlignment="Left" Margin="206,270,0,0" VerticalAlignment="Top" Width="75"/>
+        <ScrollViewer HorizontalAlignment="Center" Height="238" Margin="19,22,0,0" VerticalAlignment="Top" Width="262" Name="scrollchoice" Background="SlateGray"/>
+        <Button x:Name="buttonBack" Content="Back" HorizontalAlignment="Left" Margin="10,270,0,0" VerticalAlignment="Bottom" Width="75" Click="button_Back"/>
+        <Button x:Name="buttonSelect" Content="Select" HorizontalAlignment="Right" Margin="206,270,0,0" VerticalAlignment="Bottom" Width="75" Click="buttonSelect_Click"/>
     </Grid>
 </Page>

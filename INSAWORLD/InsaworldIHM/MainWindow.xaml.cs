@@ -19,52 +19,14 @@ namespace InsaworldIHM
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow :Window
     {
         public MainWindow()
         {
-            InitializeComponent();  
+            InitializeComponent();
+            Content = new MainPage();
         }
 
-        /// <summary>
-        /// to create a new game
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void newGame_Click(object sender, RoutedEventArgs e)
-        {
-            RaceChoice page = new RaceChoice();
-            Content = page;
-        }
-
-        /// <summary>
-        /// to exit the window
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void exit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        /// <summary>
-        /// to read a replay of a game
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void replay_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// to load a game saved
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void load_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

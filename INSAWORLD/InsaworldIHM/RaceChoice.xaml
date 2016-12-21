@@ -19,18 +19,18 @@
                 <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" Stretch="UniformToFill"></ImageBrush>
             </Button.Background>
         </Button>
-        
+
         <TextBlock x:Name="player1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,40,0,0" Foreground="White" FontSize="16" Style="{DynamicResource Blank}">Player 1</TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="12,65,0,265" Text="Enter your name..." Foreground="White" FontSize="16" Style="{DynamicResource Blank}"
                        Visibility="{Binding ElementName=name1, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <TextBox x:Name="name1" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,65,0,0" FontSize="16" Style="{DynamicResource Blank}" Width="120" Foreground="White"></TextBox>
-        
-        
+
+
         <TextBlock x:Name="player2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,40,10,0" Foreground="White" FontSize="16" Style="{DynamicResource Blank}">Player 2</TextBlock>
         <TextBlock HorizontalAlignment="Right" Margin="0,65,12,265" Text="Enter your name..." Foreground="White" FontSize="16" Style="{DynamicResource Blank}"
                        Visibility="{Binding ElementName=name2, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <TextBox x:Name="name2" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,65,10,0" FontSize="16" Style="{DynamicResource Blank}" Width="120" Foreground="White"></TextBox>
-        
+
         <Image x:Name="race1" HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="263"/>
         <Image x:Name="race2" HorizontalAlignment="Right" Height="350" Margin="0,0,0,0" VerticalAlignment="Top" Width="262"/>
         <ComboBox x:Name="mapChoice" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" Width="120" Style="{DynamicResource Blank}">
@@ -59,5 +59,12 @@
                 <TextBlock>Nombre de tours : 30</TextBlock>
             </WrapPanel>
         </TextBlock>
+        <Button x:Name="buttonCentaurs" Content="Centaurs" HorizontalAlignment="Left" Margin="226,100,0,0" VerticalAlignment="Top" Width="74" Click="buttonCentaurs_Click" MouseMove="HoverCentaurs" MouseLeave="EndHoverCentaurs"/>
+        <Button x:Name="buttonCerberus" Content="Cerberus" HorizontalAlignment="Left" Margin="226,139,0,0" VerticalAlignment="Top" Width="74" Click="buttonCerberus_Click" MouseMove="HoverCerberus" MouseLeave="EndHoverCerberus"/>
+        <Button x:Name="buttonCyclops" Content="Cyclops" HorizontalAlignment="Left" Margin="226,172,0,0" VerticalAlignment="Top" Width="74" Click="buttonCyclops_Click" MouseMove="HoverCyclops" MouseLeave="EndHoverCyclops"/>
+        <ToggleButton x:Name="buttonOkCentaurs" Content="Ok?" HorizontalAlignment="Left" Margin="313,100,0,0" VerticalAlignment="Top" Width="Auto" Visibility="Hidden" IsChecked="False" Click="buttonOkCentaurs_Click"/>
+        <ToggleButton x:Name="buttonOkCerberus" Content="Ok?" HorizontalAlignment="Left" Margin="313,139,0,0" VerticalAlignment="Top" Width="Auto" Visibility="Hidden" IsChecked="False" Click="buttonOkCerberus_Click"/>
+        <ToggleButton x:Name="buttonOkCyclops" Content="Ok?" HorizontalAlignment="Left" Margin="313,172,0,0" VerticalAlignment="Top" Width="Auto" Visibility="Hidden" IsChecked="False" Click="buttonOkCyclops_Click"/>
+        <Button x:Name="buttonStartGame" Content="En avant!" HorizontalAlignment="Left" Margin="226,280,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden" Click="buttonStartGame_Click"/>
     </Grid>
 </Page>

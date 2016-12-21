@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InsaworldIHM"
         mc:Ignorable="d"
-        Height="350" Width="525">
+        d:DesignWidth="617.16" d:DesignHeight="336.538">
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Page.Resources>
@@ -23,16 +23,16 @@
         <TextBlock x:Name="player1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,40,0,0" Foreground="White" FontSize="16" Style="{DynamicResource Blank}">Player 1</TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="12,65,0,265" Text="Enter your name..." Foreground="White" FontSize="16" Style="{DynamicResource Blank}"
                        Visibility="{Binding ElementName=name1, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-        <TextBox x:Name="name1" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,65,0,0" FontSize="16" Style="{DynamicResource Blank}" Width="120" Foreground="White"></TextBox>
+        <TextBox x:Name="name1" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,65,0,0" FontSize="16" Style="{DynamicResource Blank}" Width="120" Foreground="White" TextChanged="name1_TextChanged"></TextBox>
 
 
         <TextBlock x:Name="player2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,40,10,0" Foreground="White" FontSize="16" Style="{DynamicResource Blank}">Player 2</TextBlock>
         <TextBlock HorizontalAlignment="Right" Margin="0,65,12,265" Text="Enter your name..." Foreground="White" FontSize="16" Style="{DynamicResource Blank}"
                        Visibility="{Binding ElementName=name2, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-        <TextBox x:Name="name2" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,65,10,0" FontSize="16" Style="{DynamicResource Blank}" Width="120" Foreground="White"></TextBox>
+        <TextBox x:Name="name2" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,65,10,0" FontSize="16" Style="{DynamicResource Blank}" Width="120" Foreground="White" TextChanged="name2_TextChanged"></TextBox>
 
-        <Image x:Name="race1" HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="263"/>
-        <Image x:Name="race2" HorizontalAlignment="Right" Height="350" Margin="0,0,0,0" VerticalAlignment="Top" Width="262"/>
+        <Image x:Name="race1" HorizontalAlignment="Left" Height="205" VerticalAlignment="Top" Width="198" Stretch="UniformToFill" Margin="0,100,0,0"/>
+        <Image x:Name="race2" HorizontalAlignment="Right" Height="205" Margin="0,100,0,0" VerticalAlignment="Top" Width="197" Stretch="UniformToFill"/>
         <ComboBox x:Name="mapChoice" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" Width="120" Style="{DynamicResource Blank}">
             <ComboBoxItem x:Name="demo" Selected="demo_Selected">Demo</ComboBoxItem>
             <ComboBoxItem x:Name="small" Selected="small_Selected">Small</ComboBoxItem>
@@ -59,12 +59,73 @@
                 <TextBlock>Nombre de tours : 30</TextBlock>
             </WrapPanel>
         </TextBlock>
-        <Button x:Name="buttonCentaurs" Content="Centaurs" HorizontalAlignment="Left" Margin="226,100,0,0" VerticalAlignment="Top" Width="74" Click="buttonCentaurs_Click" MouseMove="HoverCentaurs" MouseLeave="EndHoverCentaurs"/>
-        <Button x:Name="buttonCerberus" Content="Cerberus" HorizontalAlignment="Left" Margin="226,139,0,0" VerticalAlignment="Top" Width="74" Click="buttonCerberus_Click" MouseMove="HoverCerberus" MouseLeave="EndHoverCerberus"/>
-        <Button x:Name="buttonCyclops" Content="Cyclops" HorizontalAlignment="Left" Margin="226,172,0,0" VerticalAlignment="Top" Width="74" Click="buttonCyclops_Click" MouseMove="HoverCyclops" MouseLeave="EndHoverCyclops"/>
+        <Button x:Name="buttonCentaurs" Content="Centaurs" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Width="74" Click="buttonCentaurs_Click" MouseMove="HoverCentaurs" MouseLeave="EndHoverCentaurs"/>
+        <Button x:Name="buttonCerberus" Content="Cerberus" HorizontalAlignment="Center" Margin="0,139,0,0" VerticalAlignment="Top" Width="74" Click="buttonCerberus_Click" MouseMove="HoverCerberus" MouseLeave="EndHoverCerberus"/>
+        <Button x:Name="buttonCyclops" Content="Cyclops" HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" Width="74" Click="buttonCyclops_Click" MouseMove="HoverCyclops" MouseLeave="EndHoverCyclops"/>
         <ToggleButton x:Name="buttonOkCentaurs" Content="Ok?" HorizontalAlignment="Left" Margin="313,100,0,0" VerticalAlignment="Top" Width="Auto" Visibility="Hidden" IsChecked="False" Click="buttonOkCentaurs_Click"/>
         <ToggleButton x:Name="buttonOkCerberus" Content="Ok?" HorizontalAlignment="Left" Margin="313,139,0,0" VerticalAlignment="Top" Width="Auto" Visibility="Hidden" IsChecked="False" Click="buttonOkCerberus_Click"/>
         <ToggleButton x:Name="buttonOkCyclops" Content="Ok?" HorizontalAlignment="Left" Margin="313,172,0,0" VerticalAlignment="Top" Width="Auto" Visibility="Hidden" IsChecked="False" Click="buttonOkCyclops_Click"/>
-        <Button x:Name="buttonStartGame" Content="En avant!" HorizontalAlignment="Left" Margin="226,280,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden" Click="buttonStartGame_Click"/>
+
+        <TextBlock x:Name="centaursLeftSpec" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,140,0,0" FontSize="16" Style="{DynamicResource Blank}" Width="180" Foreground="White" Visibility="Hidden">
+            <WrapPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Center">Centaurs</TextBlock>
+                <TextBlock>Attack : 8</TextBlock>
+                <TextBlock>Defense : 2</TextBlock>
+                <TextBlock>Life : 10</TextBlock>
+                <TextBlock>Move : 3</TextBlock>
+                <TextBlock>Special capacity : move cost</TextBlock>
+                <TextBlock>reduced to 0.5 on plain</TextBlock>
+            </WrapPanel>
+        </TextBlock>
+        <TextBlock x:Name="cyclopsLeftSpec" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,140,0,0" FontSize="16" Style="{DynamicResource Blank}" Width="180" Foreground="White" Visibility="Hidden">
+            <WrapPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Center">Cyclops</TextBlock>
+                <TextBlock>Attack : 4</TextBlock>
+                <TextBlock>Defense : 6</TextBlock>
+                <TextBlock>Life : 12</TextBlock>
+                <TextBlock>Move : 3</TextBlock>
+            </WrapPanel>
+        </TextBlock>
+        <TextBlock x:Name="cerberusLeftSpec" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,140,0,0" FontSize="16" Style="{DynamicResource Blank}" Width="180" Foreground="White" Visibility="Hidden">
+            <WrapPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Center">Cerberus</TextBlock>
+                <TextBlock>Attack : 6</TextBlock>
+                <TextBlock>Defense : 4</TextBlock>
+                <TextBlock>Life : 10</TextBlock>
+                <TextBlock>Move : 3</TextBlock>
+            </WrapPanel>
+        </TextBlock>
+
+        <TextBlock x:Name="centaursRightSpec" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,140,10,0" FontSize="16" Style="{DynamicResource Blank}" Width="180" Foreground="White" Visibility="Hidden">
+            <WrapPanel Orientation="Vertical" Width="130">
+                <TextBlock HorizontalAlignment="Center">Centaurs</TextBlock>
+                <TextBlock>Attack : 8</TextBlock>
+                <TextBlock>Defense : 2</TextBlock>
+                <TextBlock>Life : 10</TextBlock>
+                <TextBlock>Move : 3</TextBlock>
+                <TextBlock>Special capacity : move cost</TextBlock>
+                <TextBlock>reduced to 0.5 on plain</TextBlock>
+            </WrapPanel>
+        </TextBlock>
+        <TextBlock x:Name="cyclopsRightSpec" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,140,10,0" FontSize="16" Style="{DynamicResource Blank}" Width="180" Foreground="White" Visibility="Hidden">
+            <WrapPanel Orientation="Vertical" Width="130">
+                <TextBlock HorizontalAlignment="Center">Cerberus</TextBlock>
+                <TextBlock>Attack : 6</TextBlock>
+                <TextBlock>Defense : 4</TextBlock>
+                <TextBlock>Life : 10</TextBlock>
+                <TextBlock>Move : 3</TextBlock>
+            </WrapPanel>
+        </TextBlock>
+        <TextBlock x:Name="cerberusRightSpec" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,140,10,0" FontSize="16" Style="{DynamicResource Blank}" Width="180" Foreground="White" Visibility="Hidden">
+            <WrapPanel Orientation="Vertical" Width="130">
+                <TextBlock HorizontalAlignment="Center">Cerberus</TextBlock>
+                <TextBlock>Attack : 6</TextBlock>
+                <TextBlock>Defense : 4</TextBlock>
+                <TextBlock>Life : 10</TextBlock>
+                <TextBlock>Move : 3</TextBlock>
+            </WrapPanel>
+        </TextBlock>
+
+        <Button x:Name="buttonStartGame" Content="En avant!" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Width="75" Visibility="Hidden" Click="buttonStartGame_Click"/>
     </Grid>
 </Page>

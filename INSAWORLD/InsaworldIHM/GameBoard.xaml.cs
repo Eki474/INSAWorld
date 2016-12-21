@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using INSAWORLD;
 
 namespace InsaworldIHM
 {
@@ -19,9 +20,13 @@ namespace InsaworldIHM
     /// </summary>
     public partial class GameBoard : Page
     {
-        public GameBoard()
+        Game g;
+
+        public GameBoard(ref Player p1, ref Player p2, int map)
         {
             InitializeComponent();
+            g = new Game(ref p1, ref p2);
+            g.Initialize(map);
         }
     }
 }

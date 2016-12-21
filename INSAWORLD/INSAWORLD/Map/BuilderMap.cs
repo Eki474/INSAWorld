@@ -96,6 +96,22 @@ namespace INSAWORLD
         }
 
         /// <summary>
+        /// give the size of the map in exchange of type
+        /// </summary>
+        /// <param name="type">type int of the map</param>
+        /// <returns>size of the map</returns>
+        public int getSize(int type)
+        {
+            switch (type)
+            {
+                case 0: return 6;
+                case 1: return 10;
+                case 2: return 14;
+                default: throw new BadMapException("Bad Map Type");
+            }
+        }
+
+        /// <summary>
         /// fill the Tile of the GameMap using c++ dll
         /// </summary>
         /// <param name="map">GameMap to be fill</param>

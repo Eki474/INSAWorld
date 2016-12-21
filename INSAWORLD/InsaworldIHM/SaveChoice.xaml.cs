@@ -24,6 +24,7 @@ namespace InsaworldIHM
         MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
         public SaveChoice()
         {
+            //NotFoundDirectoryException à gérer : si pas de directory --> pas de save --> message utilisateur
             InitializeComponent();
             ScrollViewer sc = scrollchoice;
             StackPanel sp = new StackPanel();

@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="GameBoard" Height="300" Width="300">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
         
     </Grid>
 </Page>

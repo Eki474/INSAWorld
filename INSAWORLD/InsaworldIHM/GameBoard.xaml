@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:InsaworldIHM"
         mc:Ignorable="d"
         Title="GameBoard" d:DesignWidth="617.16" d:DesignHeight="336.538">
-    <Grid>
+    <Grid x:Name="board">
         <Grid.Background>
             <ImageBrush ImageSource="/Ressources/images/background/race_background_3.jpg" />
         </Grid.Background>
@@ -14,7 +14,7 @@
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
-
+        
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="24" />
@@ -85,24 +85,7 @@
                 </Viewbox>
             </Grid>
         </Grid>
+        
         <!-- board -->
-        <Grid Grid.Column="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" /> <!-- 0 -->
-                <ColumnDefinition Width="1*" /> <!-- 1 -->
-                <ColumnDefinition Width="1*" /> <!-- 2 -->
-                <ColumnDefinition Width="1*" /> <!-- 3 -->
-                <ColumnDefinition Width="1*" /> <!-- 4 -->
-                <ColumnDefinition Width="1*" /> <!-- 5 -->
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" /> <!-- 0 -->
-                <RowDefinition Height="1*" /> <!-- 1 -->
-                <RowDefinition Height="1*" /> <!-- 2 -->
-                <RowDefinition Height="1*" /> <!-- 3 -->
-                <RowDefinition Height="1*" /> <!-- 4 -->
-                <RowDefinition Height="1*" /> <!-- 5 -->
-            </Grid.RowDefinitions>
-        </Grid>
-        </Grid>
+    </Grid>
 </Page>

@@ -38,21 +38,21 @@
                 </Button.Background>
             </Button>
         </Viewbox>
-        <Viewbox StretchDirection="Both" Stretch="Uniform" Grid.Row="6"  Grid.Column="2" >
+        <Viewbox StretchDirection="Both" Stretch="Uniform" Grid.Row="4"  Grid.Column="2" >
         <Button x:Name="load" Content="Load" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="White" Style="{DynamicResource Blank}" Click="load_Click" Width="Auto" MinWidth="79">
             <Button.Background>
                 <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" Stretch="UniformToFill"></ImageBrush>
             </Button.Background>
             </Button>
         </Viewbox>
-        <Viewbox StretchDirection="Both" Stretch="Uniform" Grid.Row="4"  Grid.Column="2" >
+        <Viewbox StretchDirection="Both" Stretch="Uniform" Grid.Row="5"  Grid.Column="2" >
             <Button x:Name="replay" Content="Replay" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Foreground="White" Style="{DynamicResource Blank}" Click="replay_Click" MinWidth="79" >
                 <Button.Background>
                     <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" Stretch="UniformToFill"></ImageBrush>
                 </Button.Background>
             </Button>
         </Viewbox>
-        <Viewbox StretchDirection="Both" Stretch="Uniform" Grid.Row="5"  Grid.Column="2" >
+        <Viewbox StretchDirection="Both" Stretch="Uniform" Grid.Row="6"  Grid.Column="2" >
             <Button x:Name="exit" Content="Exit" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Foreground="White" Style="{DynamicResource Blank}" Click="exit_Click" MinWidth="79">
                 <Button.Background>
                     <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" Stretch="UniformToFill"></ImageBrush>

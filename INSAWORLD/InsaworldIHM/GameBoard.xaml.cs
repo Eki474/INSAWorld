@@ -28,5 +28,10 @@ namespace InsaworldIHM
             g = new Game(ref p1, ref p2);
             g.Initialize(map);
         }
+
+        private void next_button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

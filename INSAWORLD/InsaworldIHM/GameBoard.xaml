@@ -5,12 +5,83 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InsaworldIHM"
         mc:Ignorable="d"
-        Title="GameBoard" Height="300" Width="300">
+        Title="GameBoard" d:DesignWidth="617.16" d:DesignHeight="336.538">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
-        
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="24" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="2">
+                    <TextBlock x:Name="turn_number" Foreground="White" Style="{DynamicResource Blank}" Grid.Column="0" Height="Auto" Width="Auto">Turn 1</TextBlock>
+                </Viewbox>
+
+                <!-- bouton de menu -->
+                <Button x:Name="menu" Content="Menu" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" MinWidth="75" Style="{DynamicResource Blank}" Foreground="White" Click="menu_Click" Grid.Column="1" MinHeight="18">
+                    <Button.Background>
+                        <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" ></ImageBrush>
+                    </Button.Background>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Row="0">
+                    <TextBlock x:Name="current_player_name" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Player name</TextBlock>
+                </Viewbox>
+                <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Row="1">
+                    <TextBlock x:Name="nb_unit" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Number of units disposable : 0</TextBlock>
+                </Viewbox>
+                <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Row="2">
+                    <TextBlock x:Name="nb_points" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Number of points : 0</TextBlock>
+                </Viewbox>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="24" />
+                </Grid.RowDefinitions>
+                
+                <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Row="0">
+                    <TextBlock x:Name="selected_unit_spec" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Race<LineBreak/>Attack : 0<LineBreak/>Defense : 0<LineBreak/>Life : 0<LineBreak/>Move : 0</TextBlock>
+                </Viewbox>
+                <Button x:Name="next_button" Content="Next turn" HorizontalAlignment="Right"  MinWidth="74" Width="Auto" Click="next_button_Click" Margin="2" Grid.Row="1" />
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Column="0">
+                    <TextBlock x:Name="adversary_name" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Adversary Name</TextBlock>
+                </Viewbox>
+                <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Column="1">
+                    <TextBlock x:Name="adversary_points" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Points : 0</TextBlock>
+                </Viewbox>
+            </Grid>
+        </Grid>
+        <!-- board -->
     </Grid>
 </Page>

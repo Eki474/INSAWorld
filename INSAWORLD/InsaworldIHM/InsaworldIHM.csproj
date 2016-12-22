@@ -244,6 +244,7 @@
   <ItemGroup>
     <Content Include="..\Debug\INSAWORLDCPP2.dll">
       <Link>INSAWORLDCPP2.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

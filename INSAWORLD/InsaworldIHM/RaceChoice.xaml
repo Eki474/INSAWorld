@@ -18,19 +18,21 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-
             <RowDefinition Height="24*" />
             <RowDefinition Height="64*" />
             <RowDefinition Height="78*" />
             <RowDefinition Height="171*" />
             <RowDefinition Height="0*" />
         </Grid.RowDefinitions>
+
         <Grid Grid.Row="0" Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="41*"/>
                 <ColumnDefinition Width="108*"/>
             </Grid.ColumnDefinitions>
+
+            <!-- bouton de menu -->
             <Button x:Name="menu" Content="Menu" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" MinWidth="75" Style="{DynamicResource Blank}" Foreground="White" Click="menu_Click" Grid.Column="1" MinHeight="18">
                 <Button.Background>
                     <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" ></ImageBrush>
@@ -43,18 +45,24 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
+
+            <!-- player 1 text -->
             <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="2">
                 <TextBlock x:Name="player1" Foreground="White" Style="{DynamicResource Blank}" Grid.Column="0" Grid.Row="0" Height="Auto" Width="Auto">Player 1</TextBlock>
-
             </Viewbox>
 
-            <Viewbox StretchDirection="Both" Grid.Row="1" Margin="10">
-                <TextBlock HorizontalAlignment="Stretch" Text="Enter your name..." Foreground="White" Style="{DynamicResource Blank}"
+            <Grid Grid.Row="1">
+                <Viewbox StretchDirection="Both" Grid.Row="1" Margin="10">
+                    <!-- hint -->
+                    <TextBlock HorizontalAlignment="Stretch" Text="Enter your name..." Foreground="White" Style="{DynamicResource Blank}"
                        Visibility="{Binding Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=name1}"/>
-            </Viewbox>
-            <Viewbox Stretch="Fill" StretchDirection="Both" Grid.Row="1">
-                <TextBox x:Name="name1" Background="Transparent" HorizontalAlignment="Stretch" MinHeight="10" MinWidth="100" VerticalAlignment="Stretch" Margin="5"  Style="{DynamicResource Blank}"  Foreground="White" TextChanged="name1_TextChanged" Grid.Row="1" ></TextBox>
-            </Viewbox>
+                </Viewbox>
+                <Viewbox Stretch="Fill" StretchDirection="Both" Grid.Row="1">
+                    <!-- player 1 name to fill -->
+                    <TextBox x:Name="name1" Background="Transparent" HorizontalAlignment="Stretch" MinHeight="10" MinWidth="100" VerticalAlignment="Stretch" Margin="5"  Style="{DynamicResource Blank}"  Foreground="White" TextChanged="name1_TextChanged" Grid.Row="1" ></TextBox>
+                </Viewbox>
+            </Grid>
+
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="1">
@@ -62,22 +70,28 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
+
+            <!-- player 2 text -->
             <Viewbox StretchDirection="Both" Margin="2" HorizontalAlignment="Right" VerticalAlignment="Stretch">
                 <TextBlock x:Name="player2" Foreground="White" Style="{DynamicResource Blank}" Grid.Column="0" Grid.Row="0" Height="Auto" Width="Auto">Player 2</TextBlock>
             </Viewbox>
+
             <Grid Grid.Row="1">
                 <Viewbox StretchDirection="Both" Margin="10">
+                    <!-- hint -->
                     <TextBlock HorizontalAlignment="Right" Text="Enter your name..." Foreground="White"  Style="{DynamicResource Blank}"
                        Visibility="{Binding Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=name2}" Width="109"/>
                 </Viewbox>
                 <Viewbox StretchDirection="Both" Stretch="Fill">
+                    <!-- player 2 name to fill -->
                     <TextBox x:Name="name2" Background="Transparent" HorizontalAlignment="Stretch" MinHeight="10" MinWidth="100" VerticalAlignment="Stretch" Margin="5"  Style="{DynamicResource Blank}"  Foreground="White" TextChanged="name2_TextChanged" Grid.Row="1" ></TextBox>
                 </Viewbox>
             </Grid>
-        </Grid>
-        <Image x:Name="race1" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Stretch" Width="308" Grid.Column="0" Grid.Row="3" />
-        <Image x:Name="race2" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Width="Auto" Grid.Column="1" Grid.Row="3" />
 
+        </Grid>
+
+        <Image x:Name="race1" HorizontalAlignment="Center" Height="Auto" VerticalAlignment="Stretch" Width="Auto" Grid.Column="0" Grid.Row="3" />
+        <Image x:Name="race2" HorizontalAlignment="Center" Height="Auto" VerticalAlignment="Stretch" Width="Auto" Grid.Column="1" Grid.Row="3" />
 
         <Grid HorizontalAlignment="Center" MinHeight="224" Height="229" VerticalAlignment="Center" MinWidth="424" Width="307" Grid.ColumnSpan="2" Margin="89,20,104,0" Grid.RowSpan="2" Grid.Row="2" >
             <Grid.ColumnDefinitions>
@@ -92,25 +106,28 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="buttonCentaurs" Content="Centaurs" HorizontalAlignment="Center"  VerticalAlignment="Top" MinWidth="74" Width="Auto" Click="buttonCentaurs_Click" MouseMove="HoverCentaurs" MouseLeave="EndHoverCentaurs" Margin="5" Grid.Column="0" Grid.Row="0" />
-            <ToggleButton x:Name="buttonOkCentaurs" Content="Ok?" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="Auto" Visibility="Hidden" IsChecked="False" Click="buttonOkCentaurs_Click" Margin="5" Grid.Column="1" Grid.Row="0"/>
 
-            <Button x:Name="buttonCerberus" Content="Cerberus" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="74" Click="buttonCerberus_Click" MouseMove="HoverCerberus" MouseLeave="EndHoverCerberus" Visibility="Visible" Margin="5" Grid.Column="0" Grid.Row="1"/>
+            <Button x:Name="buttonCentaurs" Content="Centaurs" HorizontalAlignment="Center"  VerticalAlignment="Top" MinWidth="74" Width="Auto" Click="buttonCentaurs_Click" MouseMove="HoverCentaurs" MouseLeave="EndHoverCentaurs" Margin="5" Grid.ColumnSpan="1" Grid.Row="0" />
+            <ToggleButton x:Name="buttonOkCentaurs" Content="Ok?" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="Auto" Visibility="Hidden" IsChecked="False" Click="buttonOkCentaurs_Click" Margin="5" Grid.Column="1" Grid.Row="0"/>
+
+            <Button x:Name="buttonCerberus" Content="Cerberus" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="74" Click="buttonCerberus_Click" MouseMove="HoverCerberus" MouseLeave="EndHoverCerberus" Visibility="Visible" Margin="5" Grid.ColumnSpan="1" Grid.Row="1"/>
             <ToggleButton x:Name="buttonOkCerberus" Content="Ok?" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="Auto" Visibility="Hidden" IsChecked="False" Click="buttonOkCerberus_Click" Margin="5" Grid.Column="1" Grid.Row="1"/>
 
-            <Button x:Name="buttonCyclops" Content="Cyclops" HorizontalAlignment="Center" VerticalAlignment="Top" Width="74" Click="buttonCyclops_Click" MouseMove="HoverCyclops" MouseLeave="EndHoverCyclops" Margin="5" Grid.Column="0" Grid.Row="2"/>
-            <ToggleButton x:Name="buttonOkCyclops" Content="Ok?" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Visibility="Hidden" IsChecked="False" Click="buttonOkCyclops_Click" Margin="5" Grid.Column="1" Grid.Row="2"/>
+            <Button x:Name="buttonCyclops" Content="Cyclops" HorizontalAlignment="Center" VerticalAlignment="Top" Width="74" Click="buttonCyclops_Click" MouseMove="HoverCyclops" MouseLeave="EndHoverCyclops" Margin="5" Grid.ColumnSpan="1" Grid.Row="2"/>
+            <ToggleButton x:Name="buttonOkCyclops" Content="Ok?" HorizontalAlignment="Center" VerticalAlignment="Top" Width="Auto" Visibility="Hidden" IsChecked="False" Click="buttonOkCyclops_Click" Margin="5" Grid.Column="1" Grid.Row="2"/>
 
+            <!-- map choice -->
             <ComboBox x:Name="mapChoice" HorizontalAlignment="Center" VerticalAlignment="Top" MinWidth="120" Style="{DynamicResource Blank}" Margin="10" Grid.ColumnSpan="2" Grid.Row="3">
                 <ComboBoxItem x:Name="demo" Selected="demo_Selected">Demo</ComboBoxItem>
                 <ComboBoxItem x:Name="small" Selected="small_Selected">Small</ComboBoxItem>
                 <ComboBoxItem x:Name="standard" Selected="standard_Selected">Standard</ComboBoxItem>
             </ComboBox>
+
+            <!-- maps descriptions -->
             <Grid Grid.Row="4" Grid.ColumnSpan="2">
                 <Viewbox  StretchDirection="Both" Name="demoSpec" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{DynamicResource Blank}" Width="Auto"  Height="Auto" Grid.Row="2">
                     <TextBlock HorizontalAlignment="Center" Foreground="White" >Demo Map<LineBreak/>Size : 6 x 6<LineBreak/>Nombre de tours : 5</TextBlock>
                 </Viewbox>
-
                 <Viewbox x:Name="smallSpec" StretchDirection="Both" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Style="{DynamicResource Blank}" Width="Auto"  Visibility="Hidden" Height="Auto" Grid.Row="2">
                     <TextBlock HorizontalAlignment="Center" Foreground="White">Small Map<LineBreak/>Size : 10 x 10<LineBreak/>Nombre de tours : 20</TextBlock>
                 </Viewbox>
@@ -118,37 +135,54 @@
                     <TextBlock HorizontalAlignment="Center"  Foreground="White">Standard Map<LineBreak/>Size : 14 x 14<LineBreak/>Nombre de tours : 30</TextBlock>
                 </Viewbox>
             </Grid>
+
             <Button Name="buttonStartGame" Content="En avant!" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="75" Visibility="Hidden" Click="buttonStartGame_Click" Height="Auto" Grid.Row="5" />
 
         </Grid>
 
-        <Viewbox StretchDirection="Both"  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left">
+        <Viewbox StretchDirection="Both"  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center">
+            <TextBlock x:Name="centaursLeftSpec" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{DynamicResource Blank}" Width="Auto" Foreground="White" Visibility="Hidden" Height="Auto" Grid.Row="2">
+                <Grid >
+					<Grid.RowDefinitions>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="1*"/>
+					</Grid.RowDefinitions>
+					
+					<TextBlock HorizontalAlignment="Center" Grid.Row="0">Centaurs</TextBlock>
+					<TextBlock Grid.Row="1">Attack : 8</TextBlock>
+					<TextBlock Grid.Row="2">Defense : 2</TextBlock>
+					<TextBlock Grid.Row="3">Life : 10</TextBlock>
+					<TextBlock Grid.Row="4">Move : 3</TextBlock>
+					<TextBlock Grid.Row="5">Special capacity : move cost reduced to 0.5 on plain</TextBlock>
+				</Grid>
+			</TextBlock>
+        </Viewbox>
 
-            <TextBlock x:Name="centaursLeftSpec" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource Blank}" Width="Auto" Foreground="White" Visibility="Hidden" Height="Auto" Grid.Row="2">
-            <WrapPanel Orientation="Vertical">
-                <TextBlock HorizontalAlignment="Center">Centaurs</TextBlock>
-                <TextBlock>Attack : 8</TextBlock>
-                <TextBlock>Defense : 2</TextBlock>
-                <TextBlock>Life : 10</TextBlock>
-                <TextBlock>Move : 3</TextBlock>
-                <TextBlock>Special capacity : move cost</TextBlock>
-                <TextBlock>reduced to 0.5 on plain</TextBlock>
-            </WrapPanel>
-        </TextBlock>
+        <Viewbox StretchDirection="Both"  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" >
+            <TextBlock  x:Name="cyclopsLeftSpec" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{DynamicResource Blank}" Width="Auto" Foreground="White" Visibility="Hidden" Height="Auto" Grid.Row="2">
+				<Grid >
+					<Grid.RowDefinitions>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="1*"/>
+					</Grid.RowDefinitions>
+					
+					<TextBlock HorizontalAlignment="Center" Grid.Row="0">Cyclops</TextBlock>
+					<TextBlock Grid.Row="1">Attack : 4</TextBlock>
+					<TextBlock Grid.Row="2">Defense : 6</TextBlock>
+					<TextBlock Grid.Row="3">Life : 12</TextBlock>
+					<TextBlock Grid.Row="4">Move : 3</TextBlock>
+				</Grid>
+			</TextBlock>
         </Viewbox>
-        <Viewbox StretchDirection="Both"  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" >
-            <TextBlock  x:Name="cyclopsLeftSpec" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource Blank}" Width="Auto" Foreground="White" Visibility="Hidden" Height="Auto" Grid.Row="2">
-            <WrapPanel Orientation="Vertical">
-                <TextBlock HorizontalAlignment="Center">Cyclops</TextBlock>
-                <TextBlock>Attack : 4</TextBlock>
-                <TextBlock>Defense : 6</TextBlock>
-                <TextBlock>Life : 12</TextBlock>
-                <TextBlock>Move : 3</TextBlock>
-            </WrapPanel>
-        </TextBlock>
-        </Viewbox>
-        <Viewbox StretchDirection="Both" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" MinWidth="44" >
-            <TextBlock x:Name="cerberusLeftSpec" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource Blank}" Foreground="White" Visibility="Hidden" Grid.Row="2">
+
+        <Viewbox StretchDirection="Both" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" MinWidth="44" >
+            <TextBlock x:Name="cerberusLeftSpec" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{DynamicResource Blank}" Foreground="White" Visibility="Hidden" Grid.Row="2">
             <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -156,7 +190,7 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
+                </Grid.RowDefinitions>
                 
                 <TextBlock HorizontalAlignment="Center" Grid.Row="0">Cerberus</TextBlock>
                 <TextBlock Grid.Row="1">Attack : 6</TextBlock>
@@ -166,41 +200,64 @@
             </Grid>
         </TextBlock>
         </Viewbox>
-        <Viewbox StretchDirection="Both"  Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right">
+
+        <Viewbox StretchDirection="Both"  Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center">
             <TextBlock x:Name="centaursRightSpec" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{DynamicResource Blank}" Width="Auto" Foreground="White" Visibility="Hidden" Height="Auto" Grid.Row="2">
-            <WrapPanel Orientation="Vertical" Width="Auto">
-                <TextBlock HorizontalAlignment="Center">Centaurs</TextBlock>
-                <TextBlock>Attack : 8</TextBlock>
-                <TextBlock>Defense : 2</TextBlock>
-                <TextBlock>Life : 10</TextBlock>
-                <TextBlock>Move : 3</TextBlock>
-                <TextBlock>Special capacity : move cost</TextBlock>
-                <TextBlock>reduced to 0.5 on plain</TextBlock>
-            </WrapPanel>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock HorizontalAlignment="Center" Grid.Row="0">Centaurs</TextBlock>
+                <TextBlock Grid.Row="1">Attack : 8</TextBlock>
+                <TextBlock Grid.Row="2">Defense : 2</TextBlock>
+                <TextBlock Grid.Row="3">Life : 10</TextBlock>
+                <TextBlock Grid.Row="4">Move : 3</TextBlock>
+				<TextBlock Grid.Row="5">Special capacity : move cost reduced to 0.5 on plain</TextBlock>
+            </Grid>
         </TextBlock>
         </Viewbox>
-        <Viewbox StretchDirection="Both"  Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right">
 
+        <Viewbox StretchDirection="Both"  Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center">
             <TextBlock x:Name="cyclopsRightSpec" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{DynamicResource Blank}" Width="Auto" Foreground="White" Visibility="Hidden" Height="Auto" Grid.Row="2">
-            <WrapPanel Orientation="Vertical" Width="Auto">
-                <TextBlock HorizontalAlignment="Center">Cerberus</TextBlock>
-                <TextBlock>Attack : 6</TextBlock>
-                <TextBlock>Defense : 4</TextBlock>
-                <TextBlock>Life : 10</TextBlock>
-                <TextBlock>Move : 3</TextBlock>
-            </WrapPanel>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock HorizontalAlignment="Center" Grid.Row="0">Cerberus</TextBlock>
+                <TextBlock Grid.Row="1">Attack : 6</TextBlock>
+                <TextBlock Grid.Row="2">Defense : 4</TextBlock>
+                <TextBlock Grid.Row="3">Life : 10</TextBlock>
+                <TextBlock Grid.Row="4">Move : 3</TextBlock>
+			</Grid>
         </TextBlock>
         </Viewbox>
-        <Viewbox StretchDirection="Both"  Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right">
-
+        <Viewbox StretchDirection="Both"  Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center">
             <TextBlock x:Name="cerberusRightSpec" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{DynamicResource Blank}" Width="Auto" Foreground="White" Visibility="Hidden" Height="Auto" Grid.Row="2">
-            <WrapPanel Orientation="Vertical" Width="Auto">
-                <TextBlock HorizontalAlignment="Center">Cerberus</TextBlock>
-                <TextBlock>Attack : 6</TextBlock>
-                <TextBlock>Defense : 4</TextBlock>
-                <TextBlock>Life : 10</TextBlock>
-                <TextBlock>Move : 3</TextBlock>
-            </WrapPanel>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock HorizontalAlignment="Center" Grid.Row="0">Cerberus</TextBlock>
+                <TextBlock Grid.Row="1">Attack : 6</TextBlock>
+                <TextBlock Grid.Row="2">Defense : 4</TextBlock>
+                <TextBlock Grid.Row="3">Life : 10</TextBlock>
+                <TextBlock Grid.Row="4">Move : 3</TextBlock>
+			</Grid>
         </TextBlock>
         </Viewbox>
 

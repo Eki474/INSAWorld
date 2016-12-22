@@ -375,7 +375,7 @@ namespace InsaworldIHM
             {
                 buttonStartGame.Visibility = Visibility.Visible;
             }
-            else if(buttonStartGame != null)
+            else if(buttonStartGame != null) //pourquoi ?
             {
                 buttonStartGame.Visibility = Visibility.Hidden;
             }

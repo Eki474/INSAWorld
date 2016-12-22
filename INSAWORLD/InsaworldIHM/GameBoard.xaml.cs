@@ -33,5 +33,10 @@ namespace InsaworldIHM
         {
 
         }
+
+        private void menu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

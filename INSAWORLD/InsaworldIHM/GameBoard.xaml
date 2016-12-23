@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:InsaworldIHM"
         mc:Ignorable="d"
         Title="GameBoard" d:DesignWidth="617.16" d:DesignHeight="336.538">
-    <Grid x:Name="board">
+    <Grid x:Name="board" >
         <Grid.Background>
             <ImageBrush ImageSource="/Ressources/images/background/race_background_3.jpg" />
         </Grid.Background>

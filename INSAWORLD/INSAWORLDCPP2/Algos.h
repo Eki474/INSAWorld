@@ -34,8 +34,10 @@ public:
 	/// sert à remplir le vecteur par les trois meilleurs chemins == les trois chemins les plus longs
 	std::vector<std::string> setMaximumvector(std::vector<std::string> resultat, std::string cheminActuel);
 	///place unit on game start : the first player random, the other as far as possible
-	void Algos::placeUnits(int retour[], int taille);
+	int * Algos::placeUnits(int retour[], int taille);
 };
+
+
 
 
 #define EXPORTCDECL extern "C" __declspec(dllexport)
@@ -48,7 +50,7 @@ EXPORTCDECL void Algos_fillMap(Algos* algos, TileType map[], int size) {
 }
 
 ///place unit on game start : the first player random, the other as far as possible
-EXPORTCDECL void Algos_placeUnits(Algos* algos, int retour[], int taille) {
+EXPORTCDECL int * Algos_placeUnits(Algos* algos, int retour[], int taille) {
 	return algos->placeUnits(retour, taille);
 }
 

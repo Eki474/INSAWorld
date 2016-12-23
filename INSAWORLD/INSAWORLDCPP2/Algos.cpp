@@ -8,6 +8,7 @@ using namespace std;
 //A new map shall be generated for each game.A map shall contain the same number of tiles of each type.
 void Algos::fillMap(TileType map[], int size)
 {
+	srand(time(NULL));
 	int cpt[4];
 	for (int j = 0; j < 4; j++) {
 		cpt[j] = (size / 4);
@@ -26,14 +27,14 @@ void Algos::fillMap(TileType map[], int size)
 // tableFile: 0 pour case "normale", 1 pour case plaine, 2 pour case occupée, 3 pour case visitée, -1 pour oob
 void Algos::suggestMove(int tableTile[49], string retour[], bool race, double moveP)
 {
-	std::vector<std::string> result(3);
+	std::vector<std::string> result;
 	// retour: stocke les chemins sous la forme {déplacementX déplacementY,} ex: "0,1,3"
 	// déplacement: 0 -> 1 <- 2 î 3 V
 	int table[7][7];
 	for (int i = 0; i < 49; i++) {
 		table[i / 7][i % 7] = tableTile[i];
 	}
-	result = suggestMoveAlgo(table, moveP, race, "", result, 3, 3);
+	result = Algos::suggestMoveAlgo(table, moveP, race, "", result, 3, 3);
 
 	retour[0] = result[0];
 	retour[1] = result[1];
@@ -62,7 +63,7 @@ std::vector<std::string> Algos::suggestMoveAlgo(int tableTile[7][7], double move
 		return setMaximumvector(resultat, cheminActuel);
 	}
 	tableTile[posX][posY] = 3;
-	std::vector<std::string> tmpvector(3);
+	std::vector<std::string> tmpvector;
 	if (posX + 1 < 7) tmpvector = suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "0,", resultat, posX + 1, posY);
 	for (int i = 0; i < (int)(tmpvector.size()); i++) {
 		resultat = setMaximumvector(resultat, tmpvector[i]);
@@ -84,11 +85,16 @@ std::vector<std::string> Algos::suggestMoveAlgo(int tableTile[7][7], double move
 }
 
 //place unit on game start : the first player random, the other as far as possible
-void Algos::placeUnits(int retour[], int taille) {
+int * Algos::placeUnits(int retour[], int taille) {
+	srand(time(NULL));
 	int x = rand() % taille;
 	int y = rand() % taille;
 	retour[0] = x;
 	retour[1] = y;
+	/*int * result = new int[2];
+	result[0] = x;
+	result[1] = y;
+	return result;*/
 }
 
 // sert à remplir le vecteur par les trois meilleurs chemins == les trois chemins les plus longs
@@ -98,7 +104,7 @@ std::vector<std::string> Algos::setMaximumvector(std::vector<std::string> result
 	if (cheminActuel == "") return resultat;
 	//vire la dernière virgule
 	cheminActuel.pop_back();
-	std::vector<std::string> tmp(3);
+	std::vector<std::string> tmp;
 	//si on n'a pas encore le nombre de chemins requis
 	if ((int)(resultat.size()) < 3) {
 		resultat.push_back(cheminActuel);
@@ -118,4 +124,3 @@ std::vector<std::string> Algos::setMaximumvector(std::vector<std::string> result
 	}
 	return resultat;
 }
-

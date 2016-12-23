@@ -30,7 +30,8 @@ namespace INSAWORLD
         extern static void Algos_delete(IntPtr algo);
 
         [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static void Algos_placeUnits(IntPtr algo, int[] retour, int taille);
+        extern static IntPtr Algos_placeUnits(IntPtr algo, int[] retour, int taille);
+        
 
         private static BuilderMap instance;
         private bool disposed = false;
@@ -153,13 +154,16 @@ namespace INSAWORLD
         public void setJoueurs(ref Player p1, ref Player p2, int taille)
         {
             int[] coord = new int[2];
-            Algos_placeUnits(nativeAlgo, coord, taille);
+            IntPtr tmp = Algos_placeUnits(nativeAlgo, coord, taille-1);
+            //int[] coord2 = new int[2];
+            //Marshal.Copy(tmp, coord2, 0, 2);
+            //ReleaseMemory(tmp);
             Coord coordonnee = new Coord(coord[0], coord[1]);
             foreach (Unit u in p1.UnitsList)
             {
                 u.C = coordonnee;
             }
-            coordonnee = new Coord(taille - coord[0], taille - coord[1]);
+            coordonnee = new Coord(taille-1 - coord[0], taille-1 - coord[1]);
             foreach (Unit u in p2.UnitsList)
             {
                 u.C = coordonnee;

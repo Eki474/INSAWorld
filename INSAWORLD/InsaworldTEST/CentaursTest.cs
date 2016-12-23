@@ -104,5 +104,12 @@ namespace InsaworldTEST
             GameMap m = g.Map;
             Assert.IsTrue(p.RacePlay.NoMoreMoves(u, ref m));
         }
+
+        [TestMethod()]
+        public void TestSuggestMove()
+        {
+            Unit u = p.UnitsList.First();
+            Assert.IsNotNull(BuilderMap.Instance.suggestMove(ref g, u));
+        }
     }
 }

@@ -24,13 +24,14 @@ namespace InsaworldIHM
         Game g;
         Grid map_view = new Grid();
         double maxTurn;
+        int turn;
 
         public GameBoard(ref Player p1, ref Player p2, int map)
         {
             InitializeComponent();
+            turn = 1;
             g = new Game(ref p1, ref p2);
-            var cmd = new NewGameCommand(g, map);
-            if (cmd.CanExecute()) cmd.Execute();
+            new NewGameCommand(g, map).Execute();
             Grid.SetColumn(map_view, 1);
             board.Children.Add(map_view);
             GenerateMapView();
@@ -149,7 +150,48 @@ namespace InsaworldIHM
 
         private void next_button_Click(object sender, RoutedEventArgs e)
         {
-            
+            var cmd = new NextTurn(g);
+            if (cmd.CanExecute())
+            {
+                cmd.Execute();
+                ExchangePlayers();
+                double d = g.Map.NbTurn * 2;
+                if(d%2 == 0)
+                {
+                    turn++;
+                    turn_number.Text = "Turn " + turn;
+                }
+            }
+            else
+            {
+                next_button.IsEnabled = false;
+                bool winner = false; //true --> PLayer 1 wins, false --> Player 2 wins
+                g.Player1.ComputePoints(ref g);
+                g.Player2.ComputePoints(ref g);
+                if (g.Player2.Lost() || g.Player1.Points > g.Player2.Points) winner = true;
+                mainWindow.Content = new EndingPage(winner);
+            }
+        }
+
+        private void ExchangePlayers()
+        {
+            g.Player1.ComputePoints(ref g);
+            g.Player2.ComputePoints(ref g);
+            if (g.Player1.Name == current_player_name.Text)
+            {
+                adversary_name.Text = g.Player1.Name;
+                adversary_points.Text = "Points : " + g.Player1.Points;
+                current_player_name.Text = g.Player2.Name;
+                nb_unit.Text = "Number of units available : " + g.Player2.UnitsList.Count;
+                nb_points.Text = "Number of points : " + g.Player2.Points;
+            }else if (g.Player2.Name == current_player_name.Text)
+            {
+                adversary_name.Text = g.Player2.Name;
+                adversary_points.Text = "Points : " + g.Player2.Points;
+                current_player_name.Text = g.Player1.Name;
+                nb_unit.Text = "Number of units available : " + g.Player1.UnitsList.Count;
+                nb_points.Text = "Number of points : " + g.Player1.Points;
+            }
         }
 
         private void menu_Click(object sender, RoutedEventArgs e)

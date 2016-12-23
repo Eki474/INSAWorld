@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace InsaworldIHM
 {
     /// <summary>
-    /// Interaction logic for Victory.xaml
+    /// Interaction logic for EndingPage.xaml
     /// </summary>
-    public partial class Victory : Page
+    public partial class EndingPage : Page
     {
-        public Victory()
+        public EndingPage(bool winner)
         {
             InitializeComponent();
         }

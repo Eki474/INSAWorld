@@ -73,8 +73,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Defeat.xaml.cs">
-      <DependentUpon>Defeat.xaml</DependentUpon>
+    <Compile Include="EndingPage.xaml.cs">
+      <DependentUpon>EndingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameBoard.xaml.cs">
       <DependentUpon>GameBoard.xaml</DependentUpon>
@@ -91,10 +91,7 @@
     <Compile Include="SaveChoice.xaml.cs">
       <DependentUpon>SaveChoice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Victory.xaml.cs">
-      <DependentUpon>Victory.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Defeat.xaml">
+    <Page Include="EndingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -127,10 +124,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SaveChoice.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Victory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

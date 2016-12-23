@@ -115,12 +115,12 @@ namespace InsaworldIHM
                 if (joueur == 1)
                 {
                     centaursLeftSpec.Visibility = Visibility.Visible;
-                    race1.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/centaurs/mecha1.jpg"));
+                    race1.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaur.png"));
                 }
                 else if(joueur == 2)
                 {
                     centaursRightSpec.Visibility = Visibility.Visible;
-                    race2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/centaurs/mecha1.jpg"));
+                    race2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaur.png"));
                 }
                 joueur++;
                 if (joueur == 3)
@@ -179,12 +179,12 @@ namespace InsaworldIHM
                 if (joueur == 1)
                 {
                     cerberusLeftSpec.Visibility = Visibility.Visible;
-                    race1.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/cerberus/mecha2.jpg"));
+                    race1.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png"));
                 }
                 else if(joueur == 2)
                 {
                     cerberusRightSpec.Visibility = Visibility.Visible;
-                    race2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/cerberus/mecha2.jpg"));
+                    race2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png"));
                 }
                 joueur++;
                 if (joueur == 3)
@@ -244,12 +244,12 @@ namespace InsaworldIHM
                 if (joueur == 1)
                 {
                     cyclopsLeftSpec.Visibility = Visibility.Visible;
-                    race1.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/cyclops/mecha3.jpg"));
+                    race1.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclop.png"));
                 }
                 else if(joueur == 2)
                 {
                     cyclopsRightSpec.Visibility = Visibility.Visible;
-                    race2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/cyclops/mecha3.jpg"));
+                    race2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclop.png"));
                 }
                 joueur++;
                 if (joueur == 3)
@@ -277,14 +277,14 @@ namespace InsaworldIHM
         {
             if (joueur == 1)
             {
-                race1.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/centaurs/mecha1.jpg"));
+                race1.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaur.png"));
                 centaursLeftSpec.Visibility = Visibility.Visible;
                 cyclopsLeftSpec.Visibility = Visibility.Hidden;
                 cerberusLeftSpec.Visibility = Visibility.Hidden;
             }
             else if (joueur == 2)
             {
-                race2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/centaurs/mecha1.jpg"));
+                race2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaur.png"));
                 centaursRightSpec.Visibility = Visibility.Visible;
                 cyclopsRightSpec.Visibility = Visibility.Hidden;
                 cerberusRightSpec.Visibility = Visibility.Hidden;
@@ -309,14 +309,14 @@ namespace InsaworldIHM
         {
             if (joueur == 1)
             {
-                race1.Source = new BitmapImage(new Uri(("pack://application:,,,/InsaworldIHM;component/Ressources/images/cerberus/mecha2.jpg")));
+                race1.Source = new BitmapImage(new Uri(("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png")));
                 centaursLeftSpec.Visibility = Visibility.Hidden;
                 cyclopsLeftSpec.Visibility = Visibility.Hidden;
                 cerberusLeftSpec.Visibility = Visibility.Visible;
             }
             else if (joueur == 2)
             {
-                race2.Source = new BitmapImage(new Uri(("pack://application:,,,/InsaworldIHM;component/Ressources/images/cerberus/mecha2.jpg")));
+                race2.Source = new BitmapImage(new Uri(("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png")));
                 centaursRightSpec.Visibility = Visibility.Hidden;
                 cyclopsRightSpec.Visibility = Visibility.Hidden;
                 cerberusRightSpec.Visibility = Visibility.Visible;
@@ -341,14 +341,14 @@ namespace InsaworldIHM
         {
             if (joueur == 1)
             {
-                race1.Source = new BitmapImage(new Uri(("pack://application:,,,/InsaworldIHM;component/Ressources/images/cyclops/mecha3.jpg")));
+                race1.Source = new BitmapImage(new Uri(("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclop.png")));
                 centaursLeftSpec.Visibility = Visibility.Hidden;
                 cyclopsLeftSpec.Visibility = Visibility.Visible;
                 cerberusLeftSpec.Visibility = Visibility.Hidden;
             }
             else if (joueur == 2)
             {
-                race2.Source = new BitmapImage(new Uri(("pack://application:,,,/InsaworldIHM;component/Ressources/images/cyclops/mecha3.jpg")));
+                race2.Source = new BitmapImage(new Uri(("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclop.png")));
                 centaursRightSpec.Visibility = Visibility.Hidden;
                 cyclopsRightSpec.Visibility = Visibility.Visible;
                 cerberusRightSpec.Visibility = Visibility.Hidden;

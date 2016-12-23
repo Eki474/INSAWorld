@@ -52,7 +52,7 @@
                     <TextBlock x:Name="current_player_name" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Player name</TextBlock>
                 </Viewbox>
                 <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Row="1">
-                    <TextBlock x:Name="nb_unit" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Number of units disposable : 0</TextBlock>
+                    <TextBlock x:Name="nb_unit" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Number of units available : 0</TextBlock>
                 </Viewbox>
                 <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Row="2">
                     <TextBlock x:Name="nb_points" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Number of points : 0</TextBlock>
@@ -65,7 +65,7 @@
                     <RowDefinition Height="24" />
                 </Grid.RowDefinitions>
                 
-                <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Row="0">
+                <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Row="0" Visibility="Hidden">
                     <TextBlock x:Name="selected_unit_spec" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Race<LineBreak/>Attack : 0<LineBreak/>Defense : 0<LineBreak/>Life : 0<LineBreak/>Move : 0</TextBlock>
                 </Viewbox>
                 <Button x:Name="next_button" Content="Next turn" HorizontalAlignment="Right"  MinWidth="74" Width="Auto" Click="next_button_Click" Margin="2" Grid.Row="1" />

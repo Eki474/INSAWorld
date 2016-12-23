@@ -246,6 +246,16 @@
       <Link>INSAWORLDCPP2.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Ressources\images\races\centaur.png" />
+    <Resource Include="Ressources\images\races\centaur_lisere.png" />
+    <Resource Include="Ressources\images\races\cerberus.png" />
+    <Resource Include="Ressources\images\races\cerberus_lisere.png" />
+    <Resource Include="Ressources\images\races\cyclop.png" />
+    <Resource Include="Ressources\images\races\cyclop_lisere.png" />
+    <Resource Include="Ressources\images\textures\desert_reduced.jpg" />
+    <Resource Include="Ressources\images\textures\plain_reduced.png" />
+    <Resource Include="Ressources\images\textures\swamp_reduced.png" />
+    <Resource Include="Ressources\images\textures\volcano_reduced.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

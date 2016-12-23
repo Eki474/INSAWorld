@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using INSAWORLD;
+using System.Windows.Controls.Primitives;
 
 namespace InsaworldIHM
 {
@@ -25,6 +26,9 @@ namespace InsaworldIHM
         Grid map_view = new Grid();
         double maxTurn;
         int turn;
+        Unit selected = null;
+        Grid container;
+        List<Unit> unitsToSelect;
 
         public GameBoard(ref Player p1, ref Player p2, int map)
         {
@@ -35,6 +39,7 @@ namespace InsaworldIHM
             Grid.SetColumn(map_view, 1);
             board.Children.Add(map_view);
             GenerateMapView();
+            map_view.MouseDown += map_viewMouseDown;
             UnitsInitialization();
             GenerateLeftSideView();
             mainWindow.Content = board;
@@ -104,8 +109,8 @@ namespace InsaworldIHM
                         u1.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png"));
                         break;
                 }
-                Grid.SetColumn(u1, c1.C.X);
-                Grid.SetRow(u1, c1.C.Y);
+                Grid.SetColumn(u1, c1.C.Y);
+                Grid.SetRow(u1, c1.C.X);
                 map_view.Children.Add(u1);
 
                 Image u2 = new Image();
@@ -122,8 +127,8 @@ namespace InsaworldIHM
                         u2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png"));
                         break;
                 }
-                Grid.SetColumn(u2, c2.C.X);
-                Grid.SetRow(u2, c2.C.Y);
+                Grid.SetColumn(u2, c2.C.Y);
+                Grid.SetRow(u2, c2.C.X);
                 map_view.Children.Add(u2);
             }
         }
@@ -138,7 +143,8 @@ namespace InsaworldIHM
                 nb_points.Text = "Number of points : 0";
                 adversary_name.Text = g.Player2.Name;
                 adversary_points.Text = "Points : 0";
-            }else if (g.Player2.Playing)
+            }
+            else if (g.Player2.Playing)
             {
                 current_player_name.Text = g.Player2.Name;
                 nb_unit.Text = "Number of units available : " + g.Player2.UnitsList.Count;
@@ -156,7 +162,7 @@ namespace InsaworldIHM
                 cmd.Execute();
                 ExchangePlayers();
                 double d = g.Map.NbTurn * 2;
-                if(d%2 == 0)
+                if (d % 2 == 0)
                 {
                     turn++;
                     turn_number.Text = "Turn " + turn;
@@ -184,7 +190,8 @@ namespace InsaworldIHM
                 current_player_name.Text = g.Player2.Name;
                 nb_unit.Text = "Number of units available : " + g.Player2.UnitsList.Count;
                 nb_points.Text = "Number of points : " + g.Player2.Points;
-            }else if (g.Player2.Name == current_player_name.Text)
+            }
+            else if (g.Player2.Name == current_player_name.Text)
             {
                 adversary_name.Text = g.Player2.Name;
                 adversary_points.Text = "Points : " + g.Player2.Points;
@@ -198,6 +205,105 @@ namespace InsaworldIHM
         {
             InGameMenu page = new InGameMenu();
             mainWindow.Content = page;
+        }
+
+        private void map_viewMouseDown(object sender, RoutedEventArgs e)
+        {
+            if (object.ReferenceEquals(selected, null))
+            {
+                selectUnitClick(sender, e);
+            }
+        }
+
+        private void selectUnitClick(object sender, RoutedEventArgs e)
+        {
+            var element = (UIElement)e.Source;
+            int x = Grid.GetRow(element);
+            int y = Grid.GetColumn(element);
+            
+            Coord actual = new INSAWORLD.Coord(x, y);
+            bool found = false;
+            unitsToSelect = new List<Unit>();
+            foreach (Unit u in g.Player1.UnitsList)
+            {
+                if (u.C.Equals(actual))
+                {
+                    found = true;
+                    unitsToSelect.Add(u);
+                }
+            }
+            if (!found)
+            {
+                foreach (Unit u in g.Player2.UnitsList)
+                {
+                    if (u.C.Equals(actual))
+                    {
+                        found = true;
+                        unitsToSelect.Add(u);
+                    }
+                }
+            }
+            if (!found) return;
+            if (unitsToSelect.Count == 1)
+            {
+                select(unitsToSelect.First());
+                return;
+            }
+            Race r = unitsToSelect.First().Race;
+            container = new Grid();
+            for (int i = 0; i < unitsToSelect.Count; i++) {
+                var c = new ColumnDefinition();
+                c.Width = new GridLength(1, GridUnitType.Star);
+                container.ColumnDefinitions.Add(c);
+                Image image = selectImageRace(r);
+                Grid.SetColumn(image, i);
+                container.Children.Add(image);
+            }
+            int taille = (map_view.ColumnDefinitions.Count/2) -1;
+            Grid.SetColumn(container,taille);
+            Grid.SetRow(container, taille);
+            Grid.SetColumnSpan(container, taille);
+            Grid.SetRowSpan(container, taille);
+            container.Background = Brushes.White;
+            container.HorizontalAlignment = HorizontalAlignment.Center;
+            container.VerticalAlignment= VerticalAlignment.Center;
+            map_view.Children.Add(container);
+
+        }
+
+        private Image selectImageRace(Race r)
+        {
+            Image u2 = new Image();
+            u2.Stretch = Stretch.Uniform;
+            switch (r.Type)
+            {
+                case "Centaurs":
+                    u2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaur.png"));
+                    break;
+                case "Cyclops":
+                    u2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclop.png"));
+                    break;
+                case "Cerberus":
+                    u2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png"));
+                    break;
+            }
+            u2.MouseDown += selectThisUnit;
+            return u2;
+        }
+
+        private void select(Unit u)
+        {
+           // throw new NotImplementedException();
+        }
+
+        private void selectThisUnit(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            var element = (UIElement)e.Source;
+            int position = Grid.GetRow(element);
+            map_view.Children.Remove(container);
+            container = null;
+            select(unitsToSelect[position]);
         }
     }
 }

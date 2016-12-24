@@ -139,6 +139,7 @@ namespace InsaworldIHM
         private void next_button_Click(object sender, RoutedEventArgs e)
         {
             var cmd = new NextTurn(g);
+            selected_unit_spec_viewbox.Visibility = Visibility.Hidden;
             if (cmd.CanExecute())
             {
                 cmd.Execute();
@@ -191,13 +192,38 @@ namespace InsaworldIHM
 
         private void map_viewMouseDown(object sender, RoutedEventArgs e)
         {
-           // if (object.ReferenceEquals(selected, null))
-           // {
-                selectUnitClick(sender, e);
-           // }
+            Player playing; Player notPlaying;
+            if (g.Player1.Playing) { playing = g.Player1; notPlaying = g.Player2; }
+            else { playing = g.Player2; notPlaying = g.Player1; }
+            if (object.ReferenceEquals(selected, null))
+            {
+                selectUnitClick(sender, e, playing);
+            }
+            else
+            {
+                var element = (UIElement)e.Source;
+                int x = Grid.GetRow(element);
+                int y = Grid.GetColumn(element);
+
+                Coord actual = new INSAWORLD.Coord(x, y);
+                bool found = false;
+                Unit unitToAttack ;
+                foreach (Unit u in notPlaying.UnitsList)
+                {
+                    if (u.C.Equals(actual))
+                    {
+                        found = true;
+                        unitToAttack = u;
+                        break;
+                    }
+                }
+                //if(found) AttackUnit()
+                //else move
+
+            }
         }
 
-        private void selectUnitClick(object sender, RoutedEventArgs e)
+        private void selectUnitClick(object sender, RoutedEventArgs e, Player p)
         {
             var element = (UIElement)e.Source;
             int x = Grid.GetRow(element);
@@ -206,7 +232,7 @@ namespace InsaworldIHM
             Coord actual = new INSAWORLD.Coord(x, y);
             bool found = false;
             unitsToSelect = new List<Unit>();
-            foreach (Unit u in g.Player1.UnitsList)
+            foreach (Unit u in p.UnitsList)
             {
                 if (u.C.Equals(actual))
                 {
@@ -214,17 +240,7 @@ namespace InsaworldIHM
                     unitsToSelect.Add(u);
                 }
             }
-            if (!found)
-            {
-                foreach (Unit u in g.Player2.UnitsList)
-                {
-                    if (u.C.Equals(actual))
-                    {
-                        found = true;
-                        unitsToSelect.Add(u);
-                    }
-                }
-            }
+            
             if (!found) return;
             if (unitsToSelect.Count == 1)
             {

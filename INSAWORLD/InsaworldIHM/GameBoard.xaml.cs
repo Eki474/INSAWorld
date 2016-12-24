@@ -40,12 +40,14 @@ namespace InsaworldIHM
             Grid.SetColumn(map_view, 1);
             board.Children.Add(map_view);
             GenerateMapView();
-            map_view.MouseDown += map_viewMouseDown;
+            map_view.MouseLeftButtonDown += map_viewLeftDown;
+            map_view.MouseRightButtonDown += map_viewRightDown;
             UnitsInitialization();
             GenerateLeftSideView();
             mainWindow.Content = board;
         }
 
+        
         private void GenerateMapView()
         {
             int map_size = g.Map.Taille;
@@ -190,7 +192,17 @@ namespace InsaworldIHM
             mainWindow.Content = page;
         }
 
-        private void map_viewMouseDown(object sender, RoutedEventArgs e)
+        private void map_viewRightDown(object sender, RoutedEventArgs e)
+        {
+            if (!object.ReferenceEquals(selected, null)) unselect();
+        }
+
+        private void unselect()
+        {
+            unitToImage[selected].Source = selectImageRace(selected.Race.Type);
+            selected = null;
+        }
+        private void map_viewLeftDown(object sender, RoutedEventArgs e)
         {
             Player playing; Player notPlaying;
             if (g.Player1.Playing) { playing = g.Player1; notPlaying = g.Player2; }
@@ -218,8 +230,20 @@ namespace InsaworldIHM
                     }
                 }
                 //if(found) AttackUnit()
-                //else move
+                if (!found) moveUnit(actual);
 
+            }
+        }
+
+        private void moveUnit(Coord coord)
+        {
+            var cmd = new MoveUnit(selected, coord, ref g);
+            if(cmd.CanExecute())
+            {
+                cmd.Execute();
+                Image i = unitToImage[selected];
+                Grid.SetColumn(i, selected.C.Y);
+                Grid.SetRow(i, selected.C.X);
             }
         }
 
@@ -324,7 +348,7 @@ namespace InsaworldIHM
         {
             if(!object.ReferenceEquals(selected, null))
             {
-                unitToImage[selected].Source = selectImageRace(selected.Race.Type);
+                unselect();
             }
             selected = u;
 

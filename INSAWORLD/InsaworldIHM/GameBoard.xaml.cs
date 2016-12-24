@@ -27,6 +27,7 @@ namespace InsaworldIHM
         double maxTurn;
         int turn;
         Unit selected = null;
+        Dictionary<Unit,Image> unitToImage;
         Grid container;
         List<Unit> unitsToSelect;
 
@@ -89,6 +90,7 @@ namespace InsaworldIHM
 
         private void UnitsInitialization()
         {
+            unitToImage = new Dictionary<Unit, Image>();
             var c1 = g.Player1.UnitsList.First();
             string r1 = g.Player1.RacePlay.Type;
             var c2 = g.Player2.UnitsList.First();
@@ -96,37 +98,17 @@ namespace InsaworldIHM
             for (int i = 0; i < g.Player1.UnitsList.Count; i++)
             {
                 Image u1 = new Image();
+                unitToImage.Add(g.Player1.UnitsList[i], u1);
                 u1.Stretch = Stretch.Uniform;
-                switch (r1)
-                {
-                    case "Centaurs":
-                        u1.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaur.png"));
-                        break;
-                    case "Cyclops":
-                        u1.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclop.png"));
-                        break;
-                    case "Cerberus":
-                        u1.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png"));
-                        break;
-                }
+                u1.Source = selectImageRace(r1);
                 Grid.SetColumn(u1, c1.C.Y);
                 Grid.SetRow(u1, c1.C.X);
                 map_view.Children.Add(u1);
 
                 Image u2 = new Image();
+                unitToImage.Add(g.Player2.UnitsList[i], u2);
                 u2.Stretch = Stretch.Uniform;
-                switch (r2)
-                {
-                    case "Centaurs":
-                        u2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaur.png"));
-                        break;
-                    case "Cyclops":
-                        u2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclop.png"));
-                        break;
-                    case "Cerberus":
-                        u2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png"));
-                        break;
-                }
+                u2.Source = selectImageRace(r2);
                 Grid.SetColumn(u2, c2.C.Y);
                 Grid.SetRow(u2, c2.C.X);
                 map_view.Children.Add(u2);
@@ -209,10 +191,10 @@ namespace InsaworldIHM
 
         private void map_viewMouseDown(object sender, RoutedEventArgs e)
         {
-            if (object.ReferenceEquals(selected, null))
-            {
+           // if (object.ReferenceEquals(selected, null))
+           // {
                 selectUnitClick(sender, e);
-            }
+           // }
         }
 
         private void selectUnitClick(object sender, RoutedEventArgs e)
@@ -255,7 +237,10 @@ namespace InsaworldIHM
                 var c = new ColumnDefinition();
                 c.Width = new GridLength(1, GridUnitType.Star);
                 container.ColumnDefinitions.Add(c);
-                Image image = selectImageRace(r);
+                Image image = new Image();
+                image.Stretch = Stretch.Uniform;
+                image.MouseDown += selectThisUnit;
+                image.Source = selectImageRace(r.Type);
                 Grid.SetColumn(image, i);
                 container.Children.Add(image);
             }
@@ -271,39 +256,64 @@ namespace InsaworldIHM
 
         }
 
-        private Image selectImageRace(Race r)
+        private BitmapImage selectImageRace(String r)
         {
-            Image u2 = new Image();
-            u2.Stretch = Stretch.Uniform;
-            switch (r.Type)
+            
+            switch (r)
             {
                 case "Centaurs":
-                    u2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaur.png"));
-                    break;
+                    return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaur.png"));
                 case "Cyclops":
-                    u2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclop.png"));
-                    break;
+                    return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclop.png"));
                 case "Cerberus":
-                    u2.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png"));
-                    break;
+                    return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png"));
             }
-            u2.MouseDown += selectThisUnit;
-            return u2;
+            return null;
+            
         }
 
         private void select(Unit u)
         {
-           // throw new NotImplementedException();
+            if(!object.ReferenceEquals(selected, null))
+            {
+                unitToImage[selected].Source = selectImageRace(selected.Race.Type);
+            }
+            selected = u;
+
+            unitToImage[selected].BringIntoView();
+            unitToImage[selected].Source = selectImageSelectedRace(u.Race.Type);
+
+            selected_unit_spec.Text = "Race " + u.Race.Type + "\n Attack : " + u.Race.Attack + "\n Defense : " + "0 \n Life : " + u.LifePoints + " \n Move : " + u.MovePoints;
+
+            selected_unit_spec_viewbox.Visibility = Visibility.Visible;
         }
 
         private void selectThisUnit(object sender, RoutedEventArgs e)
         {
-            e.Handled = true;
             var element = (UIElement)e.Source;
             int position = Grid.GetRow(element);
             map_view.Children.Remove(container);
             container = null;
             select(unitsToSelect[position]);
+            e.Handled = true;
+
+        }
+
+        private BitmapImage selectImageSelectedRace(String r)
+        {
+            switch (r)
+            {
+                case "Centaurs":
+                    return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaurselected.jpg"));
+                    
+                case "Cyclops":
+                    return  new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclopselected.jpg"));
+                    
+                case "Cerberus":
+                    return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberusselected.jpg"));
+                    
+            }
+            return null;
         }
     }
 }

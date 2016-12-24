@@ -65,7 +65,7 @@
                     <RowDefinition Height="24" />
                 </Grid.RowDefinitions>
                 
-                <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Row="0" Visibility="Hidden">
+                <Viewbox x:Name="selected_unit_spec_viewbox" StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Row="0" Visibility="Hidden">
                     <TextBlock x:Name="selected_unit_spec" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Race<LineBreak/>Attack : 0<LineBreak/>Defense : 0<LineBreak/>Life : 0<LineBreak/>Move : 0</TextBlock>
                 </Viewbox>
                 <Button x:Name="next_button" Content="Next turn" HorizontalAlignment="Right"  MinWidth="74" Width="Auto" Click="next_button_Click" Margin="2" Grid.Row="1" />

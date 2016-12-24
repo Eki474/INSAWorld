@@ -239,6 +239,9 @@
       <Link>INSAWORLDCPP2.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Ressources\images\races\cyclopselected.jpg" />
+    <Resource Include="Ressources\images\races\cerberusselected.jpg" />
+    <Resource Include="Ressources\images\races\centaurselected.jpg" />
     <Resource Include="Ressources\images\races\centaur.png" />
     <Resource Include="Ressources\images\races\centaur_lisere.png" />
     <Resource Include="Ressources\images\races\cerberus.png" />

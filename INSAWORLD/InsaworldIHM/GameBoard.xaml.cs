@@ -233,6 +233,13 @@ namespace InsaworldIHM
             }
             Race r = unitsToSelect.First().Race;
             container = new Grid();
+            var row = new RowDefinition();
+            row.Height = new GridLength(1, GridUnitType.Star);
+            container.RowDefinitions.Add(row);
+            row = new RowDefinition();
+            row.Height = new GridLength(1, GridUnitType.Star);
+            container.RowDefinitions.Add(row);
+            int maxLifePoints = r.Life;
             for (int i = 0; i < unitsToSelect.Count; i++) {
                 var c = new ColumnDefinition();
                 c.Width = new GridLength(1, GridUnitType.Star);
@@ -242,7 +249,32 @@ namespace InsaworldIHM
                 image.MouseDown += selectThisUnit;
                 image.Source = selectImageRace(r.Type);
                 Grid.SetColumn(image, i);
+                Grid.SetRow(image, 0);
+
+                Grid life = new Grid();
+                c = new ColumnDefinition();
+                c.Width = new GridLength(unitsToSelect[i].LifePoints, GridUnitType.Star);
+                life.ColumnDefinitions.Add(c);
+                c = new ColumnDefinition();
+                c.Width = new GridLength(maxLifePoints - unitsToSelect[i].LifePoints, GridUnitType.Star);
+                life.ColumnDefinitions.Add(c);
+                Rectangle rect = new Rectangle();
+                rect.Fill = Brushes.Green;
+                rect.MinHeight = 10;
+                rect.HorizontalAlignment = HorizontalAlignment.Stretch;
+                rect.VerticalAlignment = VerticalAlignment.Stretch;
+                life.Background = Brushes.Black;
+                life.ShowGridLines = true;
+                rect.Margin = new Thickness(1,0,1,0);
+                Grid.SetColumn(rect, 0);
+                life.Children.Add(rect);
+                Grid.SetColumn(life, i);
+                Grid.SetRow(life, 1);
+
+
+
                 container.Children.Add(image);
+                container.Children.Add(life);
             }
             int taille = (map_view.ColumnDefinitions.Count/2) -1;
             Grid.SetColumn(container,taille);
@@ -293,7 +325,6 @@ namespace InsaworldIHM
             var element = (UIElement)e.Source;
             int position = Grid.GetRow(element);
             map_view.Children.Remove(container);
-            container = null;
             select(unitsToSelect[position]);
             e.Handled = true;
 

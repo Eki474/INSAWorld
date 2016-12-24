@@ -28,7 +28,7 @@ namespace InsaworldIHM
         int turn;
         Unit selected = null;
         Dictionary<Unit,Image> unitToImage;
-        Grid container;
+        Grid container = null;
         List<Unit> unitsToSelect;
 
         public GameBoard(ref Player p1, ref Player p2, int map)
@@ -204,6 +204,12 @@ namespace InsaworldIHM
         }
         private void map_viewLeftDown(object sender, RoutedEventArgs e)
         {
+            if(! object.ReferenceEquals(container, null))
+            {
+                map_view.Children.Remove(container);
+                container = null;
+                return;
+            }
             Player playing; Player notPlaying;
             if (g.Player1.Playing) { playing = g.Player1; notPlaying = g.Player2; }
             else { playing = g.Player2; notPlaying = g.Player1; }

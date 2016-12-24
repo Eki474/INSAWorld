@@ -73,7 +73,7 @@ namespace INSAWORLD
         public void Initialize(int type)
         {
             new NewGameCommand(this, type).Execute();
-            
+
         }
 
         /// <summary>
@@ -94,7 +94,8 @@ namespace INSAWORLD
             return player1.Equals(g.player1) && player2.Equals(g.player2) && map.Equals(g.map);
         }
 
-        public static bool operator==(Game g, Game g2){
+        public static bool operator ==(Game g, Game g2)
+        {
             return g2.Equals(g);
         }
 
@@ -109,19 +110,29 @@ namespace INSAWORLD
         /// </summary>
         public void Cleaner()
         {
-            foreach(Unit u in player1.UnitsList)
+            Unit unitToRemove = null;
+            bool found = false;
+            foreach (Unit u in player1.UnitsList)
             {
                 if (u.LifePoints == 0)
                 {
-                    player1.UnitsList.Remove(u);
+                    found = true;
+                    unitToRemove = u;
                 }
             }
-            foreach(Unit u in player2.UnitsList)
+            if (found) player1.UnitsList.Remove(unitToRemove);
+            else
             {
-                if (u.LifePoints == 0)
+                foreach (Unit u in player2.UnitsList)
                 {
-                    player2.UnitsList.Remove(u);
+                    if (u.LifePoints == 0)
+                    {
+
+                        found = true;
+                        unitToRemove = u;
+                    }
                 }
+                if (found) player2.UnitsList.Remove(unitToRemove);
             }
         }
     }

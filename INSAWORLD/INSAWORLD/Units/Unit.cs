@@ -135,7 +135,7 @@ namespace INSAWORLD
             int lifeP = 0;
             double attacker = 0.5;
             double defender = 0.5;
-            int ratio = (race.Attack * (lifePoints / race.Life)) / (def.Race.Defense * (def.LifePoints / def.Race.Life));
+            double ratio = ((double)race.Attack * ((double)lifePoints / (double)race.Life)) / ((double)def.Race.Defense * ((double)def.LifePoints / (double)def.Race.Life));
             if (ratio < 1)
             {
                 attacker = ratio * (100 / (ratio + 1));

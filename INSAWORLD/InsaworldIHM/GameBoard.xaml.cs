@@ -141,7 +141,8 @@ namespace InsaworldIHM
         private void next_button_Click(object sender, RoutedEventArgs e)
         {
             var cmd = new NextTurn(g);
-            selected_unit_spec_viewbox.Visibility = Visibility.Hidden;
+
+            unselect();
             if (cmd.CanExecute())
             {
                 cmd.Execute();
@@ -195,12 +196,15 @@ namespace InsaworldIHM
         private void map_viewRightDown(object sender, RoutedEventArgs e)
         {
             if (!object.ReferenceEquals(selected, null)) unselect();
+            updateTextSpec();
         }
 
         private void unselect()
         {
+            if(!object.ReferenceEquals(selected, null)) { 
             unitToImage[selected].Source = selectImageRace(selected.Race.Type);
             selected = null;
+            }
         }
         private void map_viewLeftDown(object sender, RoutedEventArgs e)
         {
@@ -225,7 +229,7 @@ namespace InsaworldIHM
 
                 Coord actual = new INSAWORLD.Coord(x, y);
                 bool found = false;
-                Unit unitToAttack ;
+                Unit unitToAttack = null;
                 foreach (Unit u in notPlaying.UnitsList)
                 {
                     if (u.C.Equals(actual))
@@ -235,9 +239,36 @@ namespace InsaworldIHM
                         break;
                     }
                 }
-                //if(found) AttackUnit()
+                //TODO remove unit when lifepoint==0 not working
                 if (!found) moveUnit(actual);
+                else attackUnit(unitToAttack);
+                updateTextSpec();
+            }
+        }
 
+        private void attackUnit(Unit u)
+        {
+            var cmd = new AttackUnit(selected, u, ref g);
+            if (cmd.CanExecute())
+            {
+                cmd.Execute();
+            }
+            if(selected.LifePoints==0)
+            {
+                Image i = unitToImage[selected];
+                map_view.Children.Remove(i);
+                i = null;
+                unitToImage.Remove(selected);
+                unselect();
+            }
+            if (u.LifePoints == 0)
+            {
+                Image i = unitToImage[u];
+                map_view.Children.Remove(i);
+                i = null;
+                unitToImage.Remove(u);
+                updateCoord();
+                unselect();
             }
         }
 
@@ -247,10 +278,15 @@ namespace InsaworldIHM
             if(cmd.CanExecute())
             {
                 cmd.Execute();
-                Image i = unitToImage[selected];
-                Grid.SetColumn(i, selected.C.Y);
-                Grid.SetRow(i, selected.C.X);
+                updateCoord();
             }
+        }
+
+        private void updateCoord()
+        {
+            Image i = unitToImage[selected];
+            Grid.SetColumn(i, selected.C.Y);
+            Grid.SetRow(i, selected.C.X);
         }
 
         private void selectUnitClick(object sender, RoutedEventArgs e, Player p)
@@ -361,9 +397,18 @@ namespace InsaworldIHM
             unitToImage[selected].BringIntoView();
             unitToImage[selected].Source = selectImageSelectedRace(u.Race.Type);
 
-            selected_unit_spec.Text = "Race " + u.Race.Type + "\n Attack : " + u.Race.Attack + "\n Defense : " + "0 \n Life : " + u.LifePoints + " \n Move : " + u.MovePoints;
+            updateTextSpec();
+        }
 
-            selected_unit_spec_viewbox.Visibility = Visibility.Visible;
+        private void updateTextSpec()
+        {
+            if (object.ReferenceEquals(selected, null)) selected_unit_spec_viewbox.Visibility = Visibility.Hidden;
+            else
+            {
+                selected_unit_spec.Text = "Race " + selected.Race.Type + "\n Attack : " + selected.Race.Attack + "\n Defense : " + "0 \n Life : " + selected.LifePoints + " \n Move : " + selected.MovePoints;
+
+                selected_unit_spec_viewbox.Visibility = Visibility.Visible;
+            }
         }
 
         private void selectThisUnit(object sender, RoutedEventArgs e)

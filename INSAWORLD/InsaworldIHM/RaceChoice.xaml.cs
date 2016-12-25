@@ -30,6 +30,9 @@ namespace InsaworldIHM
         private string nameJ1;
         private string nameJ2;
 
+        /// <summary>
+        /// sonstructor
+        /// </summary>
         public RaceChoice()
         {
             InitializeComponent();
@@ -41,12 +44,22 @@ namespace InsaworldIHM
             nameJ2 = "";
     }
 
+        /// <summary>
+        /// handle menu button : display menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menu_Click(object sender, RoutedEventArgs e)
         {
             InGameMenu page = new InGameMenu();
             mainWindow.Content = page;
         }
 
+        /// <summary>
+        /// select map type demo, update attribute with 0
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void demo_Selected(object sender, RoutedEventArgs e)
         {
             smallSpec.Visibility = Visibility.Hidden;
@@ -56,6 +69,11 @@ namespace InsaworldIHM
             EnAvantDisplay();
         }
 
+        /// <summary>
+        /// select map type small, update attribute with 1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void small_Selected(object sender, RoutedEventArgs e)
         {
             standardSpec.Visibility = Visibility.Hidden;
@@ -65,6 +83,11 @@ namespace InsaworldIHM
             EnAvantDisplay();
         }
 
+        /// <summary>
+        /// select map type standard, updaate attribute with 2
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void standard_Selected(object sender, RoutedEventArgs e)
         {
             smallSpec.Visibility = Visibility.Hidden;
@@ -74,6 +97,11 @@ namespace InsaworldIHM
             EnAvantDisplay();
         }
 
+        /// <summary>
+        /// select race centaurs, update attribute with 2
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCentaurs_Click(object sender, RoutedEventArgs e)
         {
             if ((bool)buttonOkCentaurs.IsChecked || joueur == 3)
@@ -108,6 +136,11 @@ namespace InsaworldIHM
             buttonOkCentaurs.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// confirm selected race centaurs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonOkCentaurs_Click(object sender, RoutedEventArgs e)
         {
             if ((bool)buttonOkCentaurs.IsChecked)
@@ -137,6 +170,11 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// select race cerberus, update attribute with 1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCerberus_Click(object sender, RoutedEventArgs e)
         {
             if ((bool)buttonOkCerberus.IsChecked || joueur == 3)
@@ -170,7 +208,12 @@ namespace InsaworldIHM
 
             buttonOkCerberus.Visibility = Visibility.Visible;
         }
-
+        
+        /// <summary>
+        /// confirm selected race cerberus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonOkCerberus_Click(object sender, RoutedEventArgs e)
         {
             if ((bool)buttonOkCerberus.IsChecked)
@@ -201,6 +244,11 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// select race cyclops, update attribute with 0
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCyclops_Click(object sender, RoutedEventArgs e)
         {
             if ((bool)buttonOkCyclops.IsChecked || joueur == 3)
@@ -236,6 +284,11 @@ namespace InsaworldIHM
             HoverCyclops(sender, e);
         }
 
+        /// <summary>
+        /// confirm selected race cyclops
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonOkCyclops_Click(object sender, RoutedEventArgs e)
         {
             if ((bool)buttonOkCyclops.IsChecked)
@@ -266,6 +319,11 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// launch board view to start the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonStartGame_Click(object sender, RoutedEventArgs e)
         {
             var p1 = new Player(nameJ1, raceJ1, BuilderMap.Instance.getSize(map));
@@ -273,6 +331,11 @@ namespace InsaworldIHM
             mainWindow.Content = new GameBoard(ref p1, ref p2, map);
         }
 
+        /// <summary>
+        /// display centaurs spec and picture on hover
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HoverCentaurs(object sender, RoutedEventArgs  e)
         {
             if (joueur == 1)
@@ -291,6 +354,11 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// stop display centaurs spec and picture
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EndHoverCentaurs(object sender, RoutedEventArgs e)
         {
             if (joueur == 1)
@@ -305,6 +373,11 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// display cerberus spec and picture on hover
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HoverCerberus(object sender, RoutedEventArgs e)
         {
             if (joueur == 1)
@@ -323,6 +396,11 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// stop display cerberus spec and picture 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EndHoverCerberus(object sender, RoutedEventArgs e)
         {
             if (joueur == 1)
@@ -337,6 +415,11 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// display cyclops spec and picture on hover
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HoverCyclops(object sender, RoutedEventArgs e)
         {
             if (joueur == 1)
@@ -355,6 +438,11 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// stop display centaurs spec and picture
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EndHoverCyclops(object sender, RoutedEventArgs e)
         {
             if (joueur == 1)
@@ -369,9 +457,12 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// if all spec has been choose, display start game button
+        /// </summary>
         private void EnAvantDisplay()
         {
-            if (joueur==3 && mapChoice.SelectedItem != null && !string.IsNullOrWhiteSpace(name1.Text) && !string.IsNullOrWhiteSpace(name2.Text))
+            if (joueur==3 && map != -1 && !string.IsNullOrWhiteSpace(name1.Text) && !string.IsNullOrWhiteSpace(name2.Text))
             {
                 buttonStartGame.Visibility = Visibility.Visible;
             }
@@ -381,6 +472,11 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// retrieve given player 1 name
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void name1_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox t = (TextBox)sender;
@@ -388,6 +484,11 @@ namespace InsaworldIHM
             EnAvantDisplay();
         }
 
+        /// <summary>
+        /// retrieve given player 2 name
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void name2_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox t = (TextBox)sender;

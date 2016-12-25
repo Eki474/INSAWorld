@@ -31,6 +31,12 @@ namespace InsaworldIHM
         Grid container = null;
         List<Unit> unitsToSelect;
 
+        /// <summary>
+        /// constructor, create the game
+        /// </summary>
+        /// <param name="p1">player 1</param>
+        /// <param name="p2">player 2</param>
+        /// <param name="map">map type</param>
         public GameBoard(ref Player p1, ref Player p2, int map)
         {
             InitializeComponent();
@@ -47,7 +53,9 @@ namespace InsaworldIHM
             mainWindow.Content = board;
         }
 
-        
+        /// <summary>
+        /// generate the view of the map 
+        /// </summary>
         private void GenerateMapView()
         {
             int map_size = g.Map.Taille;
@@ -90,6 +98,9 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// initial units placements on the map
+        /// </summary>
         private void UnitsInitialization()
         {
             unitToImage = new Dictionary<Unit, Image>();
@@ -117,6 +128,9 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// dynamic generation of the left view (players names, points, units...)
+        /// </summary>
         private void GenerateLeftSideView()
         {
             maxTurn = g.Map.NbTurn;
@@ -138,6 +152,11 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// handler for the next turn button : launch NextTurn command
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void next_button_Click(object sender, RoutedEventArgs e)
         {
             var cmd = new NextTurn(g);
@@ -165,6 +184,9 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// exchange the players place inside view (on the left side)
+        /// </summary>
         private void ExchangePlayers()
         {
             g.Player1.ComputePoints(ref g);
@@ -187,18 +209,31 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// hendler for the menu button : display menu page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menu_Click(object sender, RoutedEventArgs e)
         {
             InGameMenu page = new InGameMenu();
             mainWindow.Content = page;
         }
 
+        /// <summary>
+        /// handle right clic on map : deselect what's selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void map_viewRightDown(object sender, RoutedEventArgs e)
         {
             if (!object.ReferenceEquals(selected, null)) unselect();
             updateTextSpec();
         }
 
+        /// <summary>
+        /// unselect image : change view of the unit from selected to unselected
+        /// </summary>
         private void unselect()
         {
             if(!object.ReferenceEquals(selected, null)) { 
@@ -206,6 +241,12 @@ namespace InsaworldIHM
             selected = null;
             }
         }
+
+        /// <summary>
+        /// handle selection of unit : change view + handle move + handle attack
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void map_viewLeftDown(object sender, RoutedEventArgs e)
         {
             if(! object.ReferenceEquals(container, null))
@@ -227,7 +268,7 @@ namespace InsaworldIHM
                 int x = Grid.GetRow(element);
                 int y = Grid.GetColumn(element);
 
-                Coord actual = new INSAWORLD.Coord(x, y);
+                Coord actual = new Coord(x, y);
                 bool found = false;
                 Unit unitToAttack = null;
                 foreach (Unit u in notPlaying.UnitsList)
@@ -246,13 +287,14 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// handle attack on another unit and remove dead unit if any
+        /// </summary>
+        /// <param name="u"></param>
         private void attackUnit(Unit u)
         {
             var cmd = new AttackUnit(selected, u, ref g);
-            if (cmd.CanExecute())
-            {
-                cmd.Execute();
-            }
+            if (cmd.CanExecute()) cmd.Execute();
             if(selected.LifePoints==0)
             {
                 Image i = unitToImage[selected];
@@ -272,6 +314,10 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// handle move to coord for the selected unit
+        /// </summary>
+        /// <param name="coord">coord to move to</param>
         private void moveUnit(Coord coord)
         {
             var cmd = new MoveUnit(selected, coord, ref g);
@@ -282,6 +328,9 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// handle view of the deplacement of a unit
+        /// </summary>
         private void updateCoord()
         {
             Image i = unitToImage[selected];
@@ -289,13 +338,19 @@ namespace InsaworldIHM
             Grid.SetRow(i, selected.C.X);
         }
 
+        /// <summary>
+        /// handle selection of a unit whether there are one or more units on the tile
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="p">player currently playing</param>
         private void selectUnitClick(object sender, RoutedEventArgs e, Player p)
         {
             var element = (UIElement)e.Source;
             int x = Grid.GetRow(element);
             int y = Grid.GetColumn(element);
             
-            Coord actual = new INSAWORLD.Coord(x, y);
+            Coord actual = new Coord(x, y);
             bool found = false;
             unitsToSelect = new List<Unit>();
             foreach (Unit u in p.UnitsList)
@@ -370,7 +425,12 @@ namespace InsaworldIHM
 
         }
 
-        private BitmapImage selectImageRace(String r)
+        /// <summary>
+        /// associate a selected unit to its view
+        /// </summary>
+        /// <param name="r">race of the unit</param>
+        /// <returns>selected image function of the race</returns>
+        private BitmapImage selectImageRace(string r)
         {
             
             switch (r)
@@ -386,6 +446,10 @@ namespace InsaworldIHM
             
         }
 
+        /// <summary>
+        /// select unit on grid and update its view
+        /// </summary>
+        /// <param name="u"></param>
         private void select(Unit u)
         {
             if(!object.ReferenceEquals(selected, null))
@@ -400,17 +464,25 @@ namespace InsaworldIHM
             updateTextSpec();
         }
 
+        /// <summary>
+        /// display spec of the selected unit
+        /// </summary>
         private void updateTextSpec()
         {
             if (object.ReferenceEquals(selected, null)) selected_unit_spec_viewbox.Visibility = Visibility.Hidden;
             else
             {
-                selected_unit_spec.Text = "Race " + selected.Race.Type + "\n Attack : " + selected.Race.Attack + "\n Defense : " + "0 \n Life : " + selected.LifePoints + " \n Move : " + selected.MovePoints;
+                selected_unit_spec.Text = "Race " + selected.Race.Type + "\n Attack : " + selected.Race.Attack + "\n Defense : " + selected.Race.Defense + "\n Life : " + selected.LifePoints + " \n Move : " + selected.MovePoints;
 
                 selected_unit_spec_viewbox.Visibility = Visibility.Visible;
             }
         }
 
+        /// <summary>
+        /// select a unit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void selectThisUnit(object sender, RoutedEventArgs e)
         {
             var element = (UIElement)e.Source;
@@ -421,7 +493,12 @@ namespace InsaworldIHM
 
         }
 
-        private BitmapImage selectImageSelectedRace(String r)
+        /// <summary>
+        /// associate a unselected unit to its view
+        /// </summary>
+        /// <param name="r"></param>
+        /// <returns>selected image function of the race</returns>
+        private BitmapImage selectImageSelectedRace(string r)
         {
             switch (r)
             {

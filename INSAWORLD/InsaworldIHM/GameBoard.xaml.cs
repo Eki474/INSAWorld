@@ -249,6 +249,7 @@ namespace InsaworldIHM
         /// <param name="e"></param>
         private void map_viewLeftDown(object sender, RoutedEventArgs e)
         {
+            //If we're already selecting a unit, close the appropriate container
             if(! object.ReferenceEquals(container, null))
             {
                 map_view.Children.Remove(container);
@@ -258,17 +259,22 @@ namespace InsaworldIHM
             Player playing; Player notPlaying;
             if (g.Player1.Playing) { playing = g.Player1; notPlaying = g.Player2; }
             else { playing = g.Player2; notPlaying = g.Player1; }
+
+            //If no unit is selected try to select one
             if (object.ReferenceEquals(selected, null))
             {
                 selectUnitClick(sender, e, playing);
             }
             else
             {
+                //Get the clicked tile's position
                 var element = (UIElement)e.Source;
                 int x = Grid.GetRow(element);
                 int y = Grid.GetColumn(element);
-
                 Coord actual = new Coord(x, y);
+
+                //Check if there's a unit in the tile
+                //TODO select unit with max life
                 bool found = false;
                 Unit unitToAttack = null;
                 foreach (Unit u in notPlaying.UnitsList)
@@ -280,9 +286,10 @@ namespace InsaworldIHM
                         break;
                     }
                 }
-                //TODO remove unit when lifepoint==0 not working
+                //If no unit on the tile we move
                 if (!found) moveUnit(actual);
-                else attackUnit(unitToAttack);
+                //else we attack the unit if the selected unit hasn't attacked yet
+                else if(!selected.Played) attackUnit(unitToAttack);
                 updateTextSpec();
             }
         }
@@ -295,6 +302,8 @@ namespace InsaworldIHM
         {
             var cmd = new AttackUnit(selected, u, ref g);
             if (cmd.CanExecute()) cmd.Execute();
+
+            //If the attacker dies
             if(selected.LifePoints==0)
             {
                 Image i = unitToImage[selected];
@@ -303,6 +312,8 @@ namespace InsaworldIHM
                 unitToImage.Remove(selected);
                 unselect();
             }
+            //If the defender dies
+            //TODO check if other units on tile
             if (u.LifePoints == 0)
             {
                 Image i = unitToImage[u];

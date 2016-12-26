@@ -81,6 +81,13 @@ namespace INSAWORLD
         /// <returns>true if the unit can move on the tile, false if not</returns>
         public void ActionMove(Unit u, Coord c, ref Game myGame)
         {
+            Player defender = null;
+            if (myGame.Player1.RacePlay.Equals(u.Race)) defender = myGame.Player2;
+            else defender = myGame.Player1;
+            foreach (Unit unit in defender.UnitsList)
+            {
+                if (unit.C.Equals(c)) return;
+            }
             u.C = c;
             u.MovePoints--;
         }

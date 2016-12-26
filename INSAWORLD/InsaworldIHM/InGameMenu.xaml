@@ -6,12 +6,43 @@
         xmlns:local="clr-namespace:InsaworldIHM"
         mc:Ignorable="d"
         HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-    <Grid>
-        <Button x:Name="save" Content="Save" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
-        <Button x:Name="load" Content="Load" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
-        <Button x:Name="saveReplay" Content="Save for replay" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
-        <Button x:Name="quit" Content="Quit" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
-        <Button x:Name="back" Content="Back to game" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
-
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="3*"/>
+        <ColumnDefinition Width="1*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="1*"/>
+        <RowDefinition Height="3*"/>
+        <RowDefinition Height="1*"/>
+    </Grid.RowDefinitions>
+    <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Grid.Column="0"  Grid.Row="0"  Grid.RowSpan="3" Fill="Transparent" ></Rectangle>
+    <Grid Grid.Column="1" Grid.Row="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Viewbox Stretch="Uniform" StretchDirection="Both" Grid.Row="0">
+            <Button x:Name="save" Content="Save" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+        </Viewbox>
+        <Viewbox Stretch="Uniform" StretchDirection="Both"  Grid.Row="2">
+            <Button x:Name="load" Content="Load" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+        </Viewbox>
+        <Viewbox Stretch="Uniform" StretchDirection="Both"  Grid.Row="4">
+                <Button x:Name="saveReplay" Content="Save for replay" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+        </Viewbox>
+        <Viewbox Stretch="Uniform" StretchDirection="Both" Grid.Row="6">
+                    <Button x:Name="quit" Content="Quit" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
+        </Viewbox>
+        <Viewbox Stretch="Uniform" StretchDirection="Both" Grid.Row="8">
+            <Button x:Name="back" Content="Back to game" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="back_Click" />
+        </Viewbox>
     </Grid>
 </Grid>

@@ -17,10 +17,11 @@ namespace InsaworldIHM
     /// <summary>
     /// Interaction logic for InGameMenu.xaml
     /// </summary>
-    public partial class InGameMenu : Page
+    public partial class InGameMenu : Grid
     {
         public InGameMenu()
         {
+
             InitializeComponent();
         }
     }

@@ -51,6 +51,10 @@ namespace InsaworldIHM
             UnitsInitialization();
             GenerateLeftSideView();
             mainWindow.Content = board;
+            InGameMenu inGameMenu = new InGameMenu();
+            Grid.SetColumn(inGameMenu, 0);
+            Grid.SetColumnSpan(inGameMenu, 2);
+            inGameMenuGrid.Children.Add(inGameMenu);
         }
 
         /// <summary>
@@ -216,8 +220,14 @@ namespace InsaworldIHM
         /// <param name="e"></param>
         private void menu_Click(object sender, RoutedEventArgs e)
         {
-            InGameMenu page = new InGameMenu();
-            mainWindow.Content = page;
+            System.Windows.Media.Effects.BlurEffect objBlur =
+                                 new System.Windows.Media.Effects.BlurEffect();
+            objBlur.Radius = 10;
+            map_view.Effect = objBlur;
+            Specs.Effect = objBlur;
+            inGameMenuGrid.Visibility = Visibility.Visible;
+            // InGameMenu page = new InGameMenu();
+            // mainWindow.Content = page;
         }
 
         /// <summary>

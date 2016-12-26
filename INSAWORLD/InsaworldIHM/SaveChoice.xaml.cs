@@ -28,7 +28,7 @@ namespace InsaworldIHM
             InitializeComponent();
             ScrollViewer sc = scrollchoice;
             StackPanel sp = new StackPanel(); 
-            var dirinfo = new DirectoryInfo(@"C:\Users\franc\Source\Repos\xXx_POO_xXx\INSAWORLD\InsaworldTEST\bin\Debug\Save\");
+            var dirinfo = new DirectoryInfo(Directory.GetCurrentDirectory() + @"\Save\");
             FileInfo[] f = dirinfo.GetFiles("*.*", SearchOption.TopDirectoryOnly);
             foreach (FileInfo t in f)
             {

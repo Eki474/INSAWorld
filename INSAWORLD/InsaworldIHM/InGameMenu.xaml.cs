@@ -1,4 +1,5 @@
-﻿using System;
+﻿using INSAWORLD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,17 +20,28 @@ namespace InsaworldIHM
     /// </summary>
     public partial class InGameMenu : Grid
     {
+        Game game;
         public InGameMenu()
         {
-
             InitializeComponent();
         }
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Visibility = Visibility.Hidden;
         }
 
-       
+        public Game Game
+        {
+            get { return game; }
+            set { game = value; }
+        }
+
+        private void save_Click(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new SaveWindow();
+            newWindow.Game = game;
+            newWindow.ShowDialog();
+        }
     }
 }

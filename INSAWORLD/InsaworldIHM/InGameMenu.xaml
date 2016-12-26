@@ -30,7 +30,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Viewbox Stretch="Uniform" StretchDirection="Both" Grid.Row="0">
-            <Button x:Name="save" Content="Save" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+            <Button x:Name="save" Content="Save" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="save_Click"/>
         </Viewbox>
         <Viewbox Stretch="Uniform" StretchDirection="Both"  Grid.Row="2">
             <Button x:Name="load" Content="Load" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>

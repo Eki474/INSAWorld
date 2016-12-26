@@ -23,7 +23,6 @@ namespace InsaworldIHM
     {
         MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
         Game g;
-        Grid map_view = new Grid();
         double maxTurn;
         int turn;
         Unit selected = null;
@@ -43,11 +42,10 @@ namespace InsaworldIHM
             turn = 1;
             g = new Game(ref p1, ref p2);
             new NewGameCommand(g, map).Execute();
-            Grid.SetColumn(map_view, 1);
-            board.Children.Add(map_view);
             GenerateMapView();
             map_view.MouseLeftButtonDown += map_viewLeftDown;
             map_view.MouseRightButtonDown += map_viewRightDown;
+            inGameMenuGrid.Game = g;
             UnitsInitialization();
             GenerateLeftSideView();
             mainWindow.Content = board;
@@ -210,7 +208,7 @@ namespace InsaworldIHM
         }
 
         /// <summary>
-        /// hendler for the menu button : display menu page
+        /// handler for the menu button : display menu page
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -518,6 +516,8 @@ namespace InsaworldIHM
 
         }
 
+       
+
         /// <summary>
         /// associate a unselected unit to its view
         /// </summary>
@@ -538,6 +538,17 @@ namespace InsaworldIHM
                     
             }
             return null;
+        }
+
+        private void removeBlur(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (inGameMenuGrid.Visibility.Equals(Visibility.Hidden)) { 
+            System.Windows.Media.Effects.BlurEffect objBlur =
+                                 new System.Windows.Media.Effects.BlurEffect();
+            objBlur.Radius = 0;
+            map_view.Effect = objBlur;
+            Specs.Effect = objBlur;
+            }
         }
     }
 }

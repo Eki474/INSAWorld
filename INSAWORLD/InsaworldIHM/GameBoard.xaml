@@ -91,8 +91,10 @@
                     <TextBlock x:Name="adversary_points" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Points : 0</TextBlock>
                 </Viewbox>
             </Grid>
+            
         </Grid>
-        <local:InGameMenu x:Name="inGameMenuGrid" Visibility="Hidden" Grid.Column="0" Grid.ColumnSpan="1">
+        <Grid x:Name="map_view" Grid.Column="1"></Grid>
+        <local:InGameMenu x:Name="inGameMenuGrid" Visibility="Hidden" Grid.Column="0" Grid.ColumnSpan="2" IsVisibleChanged="removeBlur">
             
         </local:InGameMenu>
         <!-- board generated in c# -->

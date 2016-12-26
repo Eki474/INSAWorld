@@ -24,6 +24,7 @@ namespace InsaworldIHM
     {
         Game game;
         String buttonSelected = "";
+        StackPanel sp;
         public SaveWindow()
         {
             InitializeComponent();
@@ -39,7 +40,7 @@ namespace InsaworldIHM
         private void InitializeScrollViewer()
         {
             ScrollViewer sc = scrollchoice;
-            StackPanel sp = new StackPanel();
+            sp = new StackPanel();
             var dirinfo = new DirectoryInfo(Directory.GetCurrentDirectory()+ @"\Save\");
             FileInfo[] f = dirinfo.GetFiles("*.*", SearchOption.TopDirectoryOnly);
             foreach (FileInfo t in f)
@@ -89,6 +90,11 @@ namespace InsaworldIHM
         private void toggleButtonClick(object sender, RoutedEventArgs e)
         {
             var tglbtn = (ToggleButton)sender;
+            foreach(ToggleButton tgl in sp.Children)
+            {
+                if (tgl.Equals(tglbtn)) continue;
+                tgl.IsChecked = false;
+            }
             if ((bool)tglbtn.IsChecked) { buttonDelete.Visibility = Visibility.Visible; buttonSelected = (String)tglbtn.Content; }
             else buttonDelete.Visibility = Visibility.Hidden;
         }

@@ -14,8 +14,8 @@
         </Grid.RowDefinitions>
         
         <ScrollViewer HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch" Name="scrollchoice" Background="SlateGray" />
-        <Viewbox Stretch="UniformToFill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,0" Grid.Row="1"><TextBox x:Name="textBoxSave"  TextChanged="TextBox_TextChanged" Text="" />
-        </Viewbox>
+        <TextBox x:Name="textBoxSave"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,0" Grid.Row="1" TextChanged="TextBox_TextChanged" Text="" />
+ 
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>

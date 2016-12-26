@@ -303,7 +303,7 @@ namespace InsaworldIHM
             var cmd = new AttackUnit(selected, u, ref g);
             if (cmd.CanExecute()) cmd.Execute();
 
-            //If the attacker dies
+            //If the attacker dies remove its view
             if(selected.LifePoints==0)
             {
                 Image i = unitToImage[selected];
@@ -312,8 +312,7 @@ namespace InsaworldIHM
                 unitToImage.Remove(selected);
                 unselect();
             }
-            //If the defender dies
-            //TODO check if other units on tile
+            //If the defender dies remove its view then update the attacker coordinates
             if (u.LifePoints == 0)
             {
                 Image i = unitToImage[u];
@@ -357,11 +356,13 @@ namespace InsaworldIHM
         /// <param name="p">player currently playing</param>
         private void selectUnitClick(object sender, RoutedEventArgs e, Player p)
         {
+            //Get click's coordinates
             var element = (UIElement)e.Source;
             int x = Grid.GetRow(element);
             int y = Grid.GetColumn(element);
-            
             Coord actual = new Coord(x, y);
+
+            //Check if there's a unit
             bool found = false;
             unitsToSelect = new List<Unit>();
             foreach (Unit u in p.UnitsList)
@@ -374,20 +375,27 @@ namespace InsaworldIHM
             }
             
             if (!found) return;
+
+            //If only one unit 
             if (unitsToSelect.Count == 1)
             {
                 select(unitsToSelect.First());
                 return;
             }
+
+            //If multiple units
             Race r = unitsToSelect.First().Race;
+            //Will contain the image of the units to select
             container = new Grid();
             var row = new RowDefinition();
-            row.Height = new GridLength(1, GridUnitType.Star);
+            row.Height = new GridLength(9, GridUnitType.Star);
             container.RowDefinitions.Add(row);
             row = new RowDefinition();
             row.Height = new GridLength(1, GridUnitType.Star);
             container.RowDefinitions.Add(row);
+            //In order to show lifepoints
             int maxLifePoints = r.Life;
+            //Adds the units and their lifepoints to the container
             for (int i = 0; i < unitsToSelect.Count; i++) {
                 var c = new ColumnDefinition();
                 c.Width = new GridLength(1, GridUnitType.Star);
@@ -408,7 +416,7 @@ namespace InsaworldIHM
                 life.ColumnDefinitions.Add(c);
                 Rectangle rect = new Rectangle();
                 rect.Fill = Brushes.Green;
-                rect.MinHeight = 10;
+                //rect.MinHeight = 10;
                 rect.HorizontalAlignment = HorizontalAlignment.Stretch;
                 rect.VerticalAlignment = VerticalAlignment.Stretch;
                 life.Background = Brushes.Black;
@@ -419,19 +427,20 @@ namespace InsaworldIHM
                 Grid.SetColumn(life, i);
                 Grid.SetRow(life, 1);
 
-
-
                 container.Children.Add(image);
                 container.Children.Add(life);
             }
+            //Show the container in the middle of the map
             int taille = (map_view.ColumnDefinitions.Count/2) -1;
             Grid.SetColumn(container,taille);
             Grid.SetRow(container, taille);
             Grid.SetColumnSpan(container, taille);
             Grid.SetRowSpan(container, taille);
+
             container.Background = Brushes.White;
-            container.HorizontalAlignment = HorizontalAlignment.Center;
-            container.VerticalAlignment= VerticalAlignment.Center;
+            //Could change for center depending on taste
+            container.HorizontalAlignment = HorizontalAlignment.Stretch;
+            container.VerticalAlignment= VerticalAlignment.Stretch;
             map_view.Children.Add(container);
 
         }
@@ -443,7 +452,6 @@ namespace InsaworldIHM
         /// <returns>selected image function of the race</returns>
         private BitmapImage selectImageRace(string r)
         {
-            
             switch (r)
             {
                 case "Centaurs":
@@ -453,8 +461,7 @@ namespace InsaworldIHM
                 case "Cerberus":
                     return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png"));
             }
-            return null;
-            
+            return null;   
         }
 
         /// <summary>

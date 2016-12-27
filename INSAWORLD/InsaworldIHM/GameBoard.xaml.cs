@@ -51,6 +51,10 @@ namespace InsaworldIHM
             mainWindow.Content = board;
         }
 
+        /// <summary>
+        /// constructor, load a game
+        /// </summary>
+        /// <param name="game">loaded game</param>
         public GameBoard(ref Game game)
         {
             InitializeComponent();
@@ -249,7 +253,7 @@ namespace InsaworldIHM
                 g.Player1.ComputePoints(ref g);
                 g.Player2.ComputePoints(ref g);
                 if (g.Player2.Lost() || g.Player1.Points > g.Player2.Points) winner = true;
-                mainWindow.Content = new EndingPage(winner);
+                mainWindow.Content = new EndingPage(winner, g.Player1, g.Player2);
             }
         }
 

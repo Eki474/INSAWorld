@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using INSAWORLD;
 
 namespace InsaworldIHM
 {
@@ -20,9 +21,34 @@ namespace InsaworldIHM
     /// </summary>
     public partial class EndingPage : Page
     {
-        public EndingPage(bool winner)
+
+        public EndingPage(bool winner, Player p1, Player p2)
         {
             InitializeComponent();
+            if (winner)
+            {
+                winName.Text = p1.Name;
+                winPoints.Text = "Points : "+p1.Points;
+                lostName.Text = p2.Name;
+                lostPoints.Text = "Points : " + p2.Points;
+            }else
+            {
+                winName.Text = p2.Name;
+                winPoints.Text = "Points : " + p2.Points;
+                lostName.Text = p1.Name;
+                lostPoints.Text = "Points : " + p1.Points;
+            }
+        }
+
+        private void replaySave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void mainMenu_Click(object sender, RoutedEventArgs e)
+        {
+            var newPage = new MainPage();
+            Application.Current.MainWindow.Content = newPage;
         }
     }
 }

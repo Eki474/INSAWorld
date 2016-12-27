@@ -5,10 +5,89 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:InsaworldIHM"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignWidth="617.16" d:DesignHeight="336.538"
       Title="EndingPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Image x:Name="winImg" HorizontalAlignment="Center" VerticalAlignment="Stretch" Stretch="UniformToFill" Grid.Column="0" Source="/Ressources/images/background/victory.jpg" />
+        <Image x:Name="lostImg" HorizontalAlignment="Center" VerticalAlignment="Stretch" Stretch="UniformToFill"  Grid.Column="1" Source="/Ressources/images/background/defeat.jpg" />
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <Viewbox Stretch="Uniform" MinWidth="75" StretchDirection="Both" Grid.Column="0" >
+                    <Button x:Name="replaySave" Content="Save for replay" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="Auto" Width="Auto"  Style="{DynamicResource Blank}" Foreground="White" Click="replaySave_Click" MinHeight="18">
+                        <Button.Background>
+                        <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" ></ImageBrush>
+                    </Button.Background>
+                    </Button>
+                </Viewbox>
+                <Viewbox Stretch="Uniform" MinWidth="75" StretchDirection="Both" Grid.Column="1" >
+                    <Button x:Name="mainMenu" Content="Back to main menu" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="Auto" Width="Auto"  MinWidth="75" Style="{DynamicResource Blank}" Foreground="White" Click="mainMenu_Click" MinHeight="18">
+                    <Button.Background>
+                        <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" ></ImageBrush>
+                    </Button.Background>
+                    </Button>
+                </Viewbox>
+
+            </Grid>
+
+            <Viewbox StretchDirection="Both"   HorizontalAlignment="Stretch" Grid.Row="2">
+                <TextBlock  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource Square}" Width="Auto" Foreground="White" Visibility="Visible" Height="Auto" Margin="4,0,4,0">Winner</TextBlock>
+            </Viewbox>
+
+            <Viewbox StretchDirection="Both"   HorizontalAlignment="Stretch" Grid.Row="4">
+                <TextBlock x:Name="winName" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource Square}" Width="Auto" Foreground="White" Visibility="Visible" Height="Auto" Margin="4,0,4,0">Player</TextBlock>
+            </Viewbox>
+
+            <Viewbox StretchDirection="Both"   HorizontalAlignment="Stretch" Grid.Row="6">
+                <TextBlock x:Name="winPoints" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource Square}" Width="Auto" Foreground="White" Visibility="Visible" Height="Auto" Margin="4,0,4,0">Points</TextBlock>
+            </Viewbox>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <Viewbox StretchDirection="Both"   HorizontalAlignment="Stretch" Grid.Row="1">
+                <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource Square}" Width="Auto" Foreground="White" Visibility="Visible" Height="Auto" Margin="4,0,4,0">Loser</TextBlock>
+            </Viewbox>
+
+            <Viewbox StretchDirection="Both"   HorizontalAlignment="Stretch" Grid.Row="3">
+                <TextBlock x:Name="lostName" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource Square}" Width="Auto" Foreground="White" Visibility="Visible" Height="Auto" Margin="4,0,4,0">Player</TextBlock>
+            </Viewbox>
+
+            <Viewbox StretchDirection="Both"   HorizontalAlignment="Stretch" Grid.Row="5">
+                <TextBlock x:Name="lostPoints" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource Square}" Width="Auto" Foreground="White" Visibility="Visible" Height="Auto" Margin="4,0,4,0">Points</TextBlock>
+            </Viewbox>
+        </Grid>
     </Grid>
 </Page>

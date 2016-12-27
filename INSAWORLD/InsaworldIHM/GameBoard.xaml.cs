@@ -281,20 +281,40 @@ namespace InsaworldIHM
                 //Check if there's a unit in the tile
                 //TODO select unit with max life
                 bool found = false;
-                Unit unitToAttack = null;
+                var unitToAttack = new List<Unit>();
                 foreach (Unit u in notPlaying.UnitsList)
                 {
                     if (u.C.Equals(actual))
                     {
                         found = true;
-                        unitToAttack = u;
+                        unitToAttack.Add(u);
                         break;
                     }
                 }
                 //If no unit on the tile we move
                 if (!found) moveUnit(actual);
                 //else we attack the unit if the selected unit hasn't attacked yet
-                else if(!selected.Played) attackUnit(unitToAttack);
+                else if (!selected.Played)
+                {
+                    int lifeMax = 0;
+                    foreach (Unit t in unitToAttack)
+                    {
+                        if (t.LifePoints > lifeMax)
+                        {
+                            lifeMax = t.LifePoints;
+                        }
+                    }
+                    foreach(Unit d in unitToAttack)
+                    {
+                        if (d.LifePoints < lifeMax)
+                        {
+                            unitToAttack.Remove(d);
+                        }
+                    }
+                    Random rnd = new Random();
+                    int target = rnd.Next(0, unitToAttack.Count);
+                    attackUnit(unitToAttack[target]);
+                }
                 updateTextSpec();
             }
         }
@@ -372,7 +392,7 @@ namespace InsaworldIHM
             unitsToSelect = new List<Unit>();
             foreach (Unit u in p.UnitsList)
             {
-                if (u.C.Equals(actual))
+                if (u.C.Equals(actual) && u.LifePoints>0)
                 {
                     found = true;
                     unitsToSelect.Add(u);

@@ -238,6 +238,17 @@ namespace INSAWORLD
 
         }
 
+        public double getMaxTurn(int taille)
+        {
+            switch (taille)
+            {
+                case 6: return 5;
+                case 10: return 20;
+                case 14: return 30;
+                default: throw new BadMapException("Bad Map type given");
+            }
+        }
+
         public void Dispose()
         {
             Dispose(true);

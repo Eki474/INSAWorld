@@ -23,7 +23,7 @@ namespace InsaworldIHM
     public partial class SaveWindow : Window
     {
         Game game;
-        String buttonSelected = "";
+        string buttonSelected = "";
         StackPanel sp;
         public SaveWindow()
         {
@@ -95,7 +95,7 @@ namespace InsaworldIHM
                 if (tgl.Equals(tglbtn)) continue;
                 tgl.IsChecked = false;
             }
-            if ((bool)tglbtn.IsChecked) { buttonDelete.Visibility = Visibility.Visible; buttonSelected = (String)tglbtn.Content; }
+            if ((bool)tglbtn.IsChecked) { buttonDelete.Visibility = Visibility.Visible; buttonSelected = (string)tglbtn.Content; }
             else buttonDelete.Visibility = Visibility.Hidden;
         }
     }

@@ -51,6 +51,20 @@ namespace InsaworldIHM
             mainWindow.Content = board;
         }
 
+        public GameBoard(ref Game game)
+        {
+            InitializeComponent();
+            turn = 1;
+            g = game;
+            GenerateMapView();
+            map_view.MouseLeftButtonDown += map_viewLeftDown;
+            map_view.MouseRightButtonDown += map_viewRightDown;
+            inGameMenuGrid.Game = g;
+            UnitsPlacement();
+            UpdateLeftSideView();
+            mainWindow.Content = board;
+        }
+
         /// <summary>
         /// generate the view of the map 
         /// </summary>
@@ -127,6 +141,36 @@ namespace InsaworldIHM
         }
 
         /// <summary>
+        /// units placements on the map (used to load a save)
+        /// </summary>
+        private void UnitsPlacement()
+        {
+            unitToImage = new Dictionary<Unit, Image>();
+            string r1 = g.Player1.RacePlay.Type;
+            string r2 = g.Player2.RacePlay.Type;
+            foreach (Unit u in g.Player1.UnitsList)
+            {
+                Image u1 = new Image();
+                unitToImage.Add(u, u1);
+                u1.Stretch = Stretch.Uniform;
+                u1.Source = selectImageRace(r1);
+                Grid.SetColumn(u1, u.C.Y);
+                Grid.SetRow(u1, u.C.X);
+                map_view.Children.Add(u1);
+            }
+            foreach(Unit u in g.Player2.UnitsList)
+            {
+                Image u2 = new Image();
+                unitToImage.Add(u, u2);
+                u2.Stretch = Stretch.Uniform;
+                u2.Source = selectImageRace(r2);
+                Grid.SetColumn(u2, u.C.Y);
+                Grid.SetRow(u2, u.C.X);
+                map_view.Children.Add(u2);
+            }
+        }
+
+        /// <summary>
         /// dynamic generation of the left view (players names, points, units...)
         /// </summary>
         private void GenerateLeftSideView()
@@ -147,6 +191,33 @@ namespace InsaworldIHM
                 nb_points.Text = "Number of points : 0";
                 adversary_name.Text = g.Player1.Name;
                 adversary_points.Text = "Points : 0";
+            }
+        }
+
+        /// <summary>
+        /// generate the left side view when a game is loaded
+        /// </summary>
+        private void UpdateLeftSideView()
+        {
+            maxTurn = BuilderMap.Instance.getMaxTurn(g.Map.Taille);
+            turn_number.Text = "Turn " + (maxTurn - g.Map.NbTurn + 1);
+            g.Player1.ComputePoints(ref g);
+            g.Player2.ComputePoints(ref g);
+            if (g.Player1.Playing)
+            {
+                current_player_name.Text = g.Player1.Name;
+                nb_unit.Text = "Number of units available : " + g.Player1.UnitsList.Count;
+                nb_points.Text = "Number of points : " + g.Player1.Points;
+                adversary_name.Text = g.Player2.Name;
+                adversary_points.Text = "Points : " + g.Player2.Points;
+            }
+            else if (g.Player2.Playing)
+            {
+                current_player_name.Text = g.Player2.Name;
+                nb_unit.Text = "Number of units available : " + g.Player2.UnitsList.Count;
+                nb_points.Text = "Number of points : " + g.Player2.Points;
+                adversary_name.Text = g.Player1.Name;
+                adversary_points.Text = "Points : " + g.Player1.Points;
             }
         }
 
@@ -208,7 +279,7 @@ namespace InsaworldIHM
         }
 
         /// <summary>
-        /// handler for the menu button : display menu page
+        /// handler for the menu button : display menu popup
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -431,7 +502,7 @@ namespace InsaworldIHM
                 image.Source = selectImageRace(r.Type);
                 Grid.SetColumn(image, i);
                 Grid.SetRow(image, 0);
-
+                //display life points bar
                 Grid life = new Grid();
                 c = new ColumnDefinition();
                 c.Width = new GridLength(unitsToSelect[i].LifePoints, GridUnitType.Star);
@@ -560,6 +631,11 @@ namespace InsaworldIHM
             return null;
         }
 
+        /// <summary>
+        /// to remove blur on menu closing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void removeBlur(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (inGameMenuGrid.Visibility.Equals(Visibility.Hidden)) { 

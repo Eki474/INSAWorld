@@ -64,8 +64,8 @@ namespace InsaworldIHM
         /// <param name="e"></param>
         private void load_Click(object sender, RoutedEventArgs e)
         {
-            SaveChoice page = new SaveChoice();
-            mainWindow.Content = page;
+            var newWindow = new SaveChoice();
+            newWindow.ShowDialog();
         }
     }
 }

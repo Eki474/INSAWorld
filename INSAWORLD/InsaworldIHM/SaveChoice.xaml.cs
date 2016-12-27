@@ -13,41 +13,89 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using INSAWORLD;
+using System.Windows.Controls.Primitives;
 
 namespace InsaworldIHM
 {
     /// <summary>
     /// Logique d'interaction pour SaveChoice.xaml
     /// </summary>
-    public partial class SaveChoice : Page
+    public partial class SaveChoice : Window
     {
-        MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+        string buttonSelected = "";
+        StackPanel sp;
+
         public SaveChoice()
         {
             //NotFoundDirectoryException à gérer : si pas de directory --> pas de save --> message utilisateur
             InitializeComponent();
+            InitializeScrollViewer();
+        }
+
+        private void InitializeScrollViewer()
+        {
             ScrollViewer sc = scrollchoice;
-            StackPanel sp = new StackPanel(); 
-            var dirinfo = new DirectoryInfo(Directory.GetCurrentDirectory() + @"\Save\");
+            sp = new StackPanel();
+            DirectoryInfo dirinfo;
+            try { dirinfo = new DirectoryInfo(Directory.GetCurrentDirectory() + @"\Save\"); }
+            catch (DirectoryNotFoundException e)
+            {
+                MessageBox.Show("No save to load");
+                return;
+            }
             FileInfo[] f = dirinfo.GetFiles("*.*", SearchOption.TopDirectoryOnly);
             foreach (FileInfo t in f)
             {
-                Button b = new Button();
+                var b = new ToggleButton();
                 b.Content = System.IO.Path.GetFileNameWithoutExtension(t.Name);
+                b.Click += toggleButtonClick;
                 sp.Children.Add(b);
             }
             sc.Content = sp;
         }
 
-
-        private void buttonSelect_Click(object sender, RoutedEventArgs e)
+        private void buttonLoad_Click(object sender, RoutedEventArgs e)
         {
-
+            var cmd = new LoadCommand(buttonSelected);
+            if (cmd.CanExecute()) cmd.Execute();
+            var g = cmd.Game;
+            var loaded = new GameBoard(ref g);
+            Application.Current.MainWindow.Content = loaded;
+            Close();
         }
 
-        private void button_Back(object sender, RoutedEventArgs e)
+        private void Quit(object sender, RoutedEventArgs e)
         {
-            mainWindow.Content = new MainPage();
+            Close();
+        }
+
+        private void buttonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            bool found = File.Exists(Directory.GetCurrentDirectory() + @"\Save\" + buttonSelected + ".txt");
+            File.Delete(Directory.GetCurrentDirectory() + @"\Save\" + buttonSelected + ".txt");
+            InitializeScrollViewer();
+        }
+
+        private void toggleButtonClick(object sender, RoutedEventArgs e)
+        {
+            var tglbtn = (ToggleButton)sender;
+            foreach (ToggleButton tgl in sp.Children)
+            {
+                if (tgl.Equals(tglbtn)) continue;
+                tgl.IsChecked = false;
+            }
+            if ((bool)tglbtn.IsChecked)
+            {
+                buttonLoad.Visibility = Visibility.Visible;
+                buttonDelete.Visibility = Visibility.Visible;
+                buttonSelected = (string)tglbtn.Content;
+            }
+            else
+            {
+                buttonDelete.Visibility = Visibility.Hidden;
+                buttonLoad.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

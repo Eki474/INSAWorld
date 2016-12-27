@@ -28,7 +28,7 @@ namespace InsaworldIHM
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            this.Visibility = Visibility.Hidden;
+            Visibility = Visibility.Hidden;
         }
 
         public Game Game
@@ -42,6 +42,22 @@ namespace InsaworldIHM
             var newWindow = new SaveWindow();
             newWindow.Game = game;
             newWindow.ShowDialog();
+        }
+
+        private void load_Click(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new SaveChoice();
+            newWindow.ShowDialog();
+        }
+
+        private void saveReplay_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void quit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

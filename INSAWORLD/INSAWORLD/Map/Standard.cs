@@ -46,7 +46,7 @@ namespace INSAWORLD
         public bool TurnPlayed()
         {
             nbTurn -= 0.5;
-            if (nbTurn < 0) return true;
+            if (nbTurn <= 0) return true;
             else return false;
         }
 

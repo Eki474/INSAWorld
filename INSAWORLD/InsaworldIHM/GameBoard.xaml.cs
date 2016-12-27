@@ -107,8 +107,8 @@ namespace InsaworldIHM
                             img.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/desert_reduced.jpg"));
                             break;
                     }
-                    Grid.SetColumn(img, j);
-                    Grid.SetRow(img, k);
+                    Grid.SetColumn(img, k);
+                    Grid.SetRow(img, j);
                     map_view.Children.Add(img);
                 }
             }

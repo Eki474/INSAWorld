@@ -51,7 +51,7 @@ namespace InsaworldIHM
         /// <param name="e"></param>
         private void menu_Click(object sender, RoutedEventArgs e)
         {
-            InGameMenu page = new InGameMenu();
+            var page = new MainPage();
             mainWindow.Content = page;
         }
 

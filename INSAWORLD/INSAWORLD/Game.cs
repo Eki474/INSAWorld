@@ -82,7 +82,7 @@ namespace INSAWORLD
         /// <returns>true if the game is win by one of the player, false if not</returns>
         public bool EndGame()
         {
-            return player1.Lost() || player2.Lost() || map.NbTurn-0.5 <= 0;
+            return player1.Lost() || player2.Lost() || map.NbTurn < 0;
         }
 
         /// <summary>

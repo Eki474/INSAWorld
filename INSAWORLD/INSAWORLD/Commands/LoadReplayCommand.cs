@@ -42,8 +42,8 @@ namespace INSAWORLD
             var block = new List<string>();
 
             // Read the file and display it line by line.
-            System.IO.StreamReader file =
-               new System.IO.StreamReader(@Environment.CurrentDirectory + @"\Replay\" + name + ".Game.txt");
+            StreamReader file =
+               new StreamReader(@Environment.CurrentDirectory + @"\Replay\" + name + ".Game.txt");
 
             line = file.ReadLine();
             linesplit = line.Split(',');
@@ -59,8 +59,8 @@ namespace INSAWORLD
 
             file.Close();
 
-            System.IO.StreamReader filemap =
-               new System.IO.StreamReader(@Environment.CurrentDirectory + @"\Replay\" + name + ".Map.txt");
+            StreamReader filemap =
+               new StreamReader(@Environment.CurrentDirectory + @"\Replay\" + name + ".Map.txt");
 
             int ind = 0;
             while ((line = filemap.ReadLine()) != null)
@@ -105,7 +105,7 @@ namespace INSAWORLD
                 }
             }
 
-            rc.Replay();
+            //rc.Replay();
 
         }
 

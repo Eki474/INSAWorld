@@ -23,6 +23,7 @@ namespace InsaworldIHM
     /// </summary>
     public partial class ReplayChoice : Page
     {
+        Game game;
         string buttonSelected = "";
         StackPanel sp;
 
@@ -59,9 +60,32 @@ namespace InsaworldIHM
         {
             var cmd = new LoadReplayCommand(buttonSelected);
             if (cmd.CanExecute()) cmd.Execute();
-            var g = cmd.Game;
-            var loaded = new GameBoard(ref g);
+            game = cmd.Game;
+            //var loaded = new GameBoard(ref g);
+            //Application.Current.MainWindow.Content = loaded;
+        }
+
+        private void viewReplay()
+        {
+            var loaded = new GameBoard(ref game);
             Application.Current.MainWindow.Content = loaded;
+            foreach (ToCollect cmd in game.Rpz.Step)
+            {
+                cmd.ExecuteReplay();
+                switch (cmd.GetType().ToString())
+                {
+                    case "NextTurn":
+                        var nt = (NextTurn)cmd;
+                        
+                        break;
+                    case "AttackUnit":
+                        var au = (AttackUnit)cmd;
+                        break;
+                    case "MoveUnit":
+                        var mu = (MoveUnit)cmd;
+                        break;
+                }
+            }
         }
 
         private void Quit(object sender, RoutedEventArgs e)

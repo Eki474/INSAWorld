@@ -453,6 +453,11 @@ namespace InsaworldIHM
             Grid.SetRow(i, selected.C.X);
         }
 
+        public Image getImageToUnit(Unit u)
+        {
+            return unitToImage[u];
+        }
+
         /// <summary>
         /// handle selection of a unit whether there are one or more units on the tile
         /// </summary>

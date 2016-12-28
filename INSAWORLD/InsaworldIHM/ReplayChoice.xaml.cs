@@ -61,8 +61,24 @@ namespace InsaworldIHM
             var cmd = new LoadReplayCommand(buttonSelected);
             if (cmd.CanExecute()) cmd.Execute();
             game = cmd.Game;
-            //var loaded = new GameBoard(ref g);
-            //Application.Current.MainWindow.Content = loaded;
+            var loaded = new GameBoard(ref game);
+            Application.Current.MainWindow.Content = loaded;
+            foreach(ToCollect tc in game.Rpz.Step)
+            {
+                tc.ExecuteReplay();
+                updateCoord(ref game, ref loaded);
+                System.Threading.Thread.Sleep(1000);
+            }
+        }
+
+        private void updateCoord(ref Game g, ref GameBoard gb)
+        {
+            foreach(Unit u in g.Player1.UnitsList.Concat(g.Player2.UnitsList))
+            {
+                Image i = gb.getImageToUnit(u);
+                Grid.SetColumn(i, u.C.Y);
+                Grid.SetRow(i, u.C.X);
+            }
         }
 
         private void viewReplay()

@@ -88,6 +88,9 @@
     <Compile Include="RaceChoice.xaml.cs">
       <DependentUpon>RaceChoice.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ReplayChoice.xaml.cs">
+      <DependentUpon>ReplayChoice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SaveChoice.xaml.cs">
       <DependentUpon>SaveChoice.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RaceChoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReplayChoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

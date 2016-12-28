@@ -40,7 +40,7 @@ namespace INSAWORLD
             foreach (Unit u in l1.Concat(l2))
             {
                 if (u.Id == ida) { unit = u; }
-                if (u.Id == idd) { unit = u; }
+                if (u.Id == idd) { def = u; }
             }
             game = g;
         }
@@ -121,7 +121,7 @@ namespace INSAWORLD
                     unit.Played = true;
                 }
             }
-            game.Rpz.AddStep(this);
+            //game.Rpz.AddStep(this);
         }
 
         /// <summary>

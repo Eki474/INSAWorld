@@ -54,7 +54,8 @@ namespace InsaworldIHM
         /// <param name="e"></param>
         private void replay_Click(object sender, RoutedEventArgs e)
         {
-
+            var page = new ReplayChoice();
+            mainWindow.Content = page;
         }
 
         /// <summary>

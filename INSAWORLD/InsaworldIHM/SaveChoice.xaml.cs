@@ -21,7 +21,7 @@ namespace InsaworldIHM
     /// <summary>
     /// Logique d'interaction pour SaveChoice.xaml
     /// </summary>
-    public partial class SaveChoice : Window
+    public partial class SaveChoice : Page
     {
         string buttonSelected = "";
         StackPanel sp;
@@ -62,12 +62,12 @@ namespace InsaworldIHM
             var g = cmd.Game;
             var loaded = new GameBoard(ref g);
             Application.Current.MainWindow.Content = loaded;
-            Close();
         }
 
         private void Quit(object sender, RoutedEventArgs e)
         {
-            Close();
+            var page = new MainPage();
+            Application.Current.MainWindow.Content = page;
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)

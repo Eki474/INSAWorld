@@ -91,6 +91,9 @@
     <Compile Include="SaveChoice.xaml.cs">
       <DependentUpon>SaveChoice.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SaveReplayWindow.xaml.cs">
+      <DependentUpon>SaveReplayWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SaveWindow.xaml.cs">
       <DependentUpon>SaveWindow.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SaveChoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaveReplayWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,12 +1,11 @@
-﻿<Page x:Class="InsaworldIHM.SaveChoice"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:InsaworldIHM"
-      mc:Ignorable="d" 
-     Title="Load" >
-
+﻿<Window x:Class="InsaworldIHM.SaveReplayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InsaworldIHM"
+        mc:Ignorable="d"
+        Title="Save" Height="300" Width="300">
     <Grid Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="16*"/>
@@ -15,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch" Name="scrollchoice" Background="SlateGray" />
-        
+        <TextBox x:Name="textBoxSave"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,0" Grid.Row="1" TextChanged="TextBox_TextChanged" Text="" />
 
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -26,12 +25,12 @@
             <Viewbox Grid.Column="0" Stretch="Uniform" Margin="0,2,0,2">
                 <Button x:Name="buttonQuit" Content="Back" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Quit"/>
             </Viewbox>
-            <Viewbox x:Name="buttonLoad" Grid.Column="2" Stretch="Uniform" Margin="0,2,0,2" Visibility="Hidden">
-                <Button  Content="Load" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="buttonLoad_Click"/>
+            <Viewbox x:Name="buttonSave" Grid.Column="2" Stretch="Uniform" Margin="0,2,0,2" Visibility="Hidden">
+                <Button  Content="Save" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="buttonSave_Click"/>
             </Viewbox>
             <Viewbox x:Name="buttonDelete" Grid.Column="1" Stretch="Uniform" Margin="0,2,0,2" Visibility="Hidden">
                 <Button  Content="Delete" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="buttonDelete_Click"/>
             </Viewbox>
         </Grid>
     </Grid>
-</Page>
+</Window>

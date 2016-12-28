@@ -46,13 +46,15 @@ namespace InsaworldIHM
 
         private void load_Click(object sender, RoutedEventArgs e)
         {
-            var newWindow = new SaveChoice();
-            newWindow.ShowDialog();
+            var page = new MainPage();
+            Application.Current.MainWindow.Content= page;
         }
 
         private void saveReplay_Click(object sender, RoutedEventArgs e)
         {
-
+            var newWindow = new SaveReplayWindow();
+            newWindow.Game = game;
+            newWindow.ShowDialog();
         }
 
         private void quit_Click(object sender, RoutedEventArgs e)

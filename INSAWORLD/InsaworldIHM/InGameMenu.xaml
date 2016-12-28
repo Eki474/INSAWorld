@@ -32,16 +32,16 @@
         <Viewbox Stretch="Uniform" StretchDirection="Both" Grid.Row="0">
             <Button x:Name="save" Content="Save" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="save_Click"/>
         </Viewbox>
-        <Viewbox Stretch="Uniform" StretchDirection="Both"  Grid.Row="2">
-            <Button x:Name="load" Content="Load" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="load_Click"/>
+        <Viewbox Stretch="Uniform" StretchDirection="Both"  Grid.Row="6">
+            <Button x:Name="load" Content="Back to title screen" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="load_Click"/>
         </Viewbox>
-        <Viewbox Stretch="Uniform" StretchDirection="Both"  Grid.Row="4">
+        <Viewbox Stretch="Uniform" StretchDirection="Both"  Grid.Row="2">
                 <Button x:Name="saveReplay" Content="Save for replay" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="saveReplay_Click"/>
         </Viewbox>
-        <Viewbox Stretch="Uniform" StretchDirection="Both" Grid.Row="6">
+        <Viewbox Stretch="Uniform" StretchDirection="Both" Grid.Row="8">
                     <Button x:Name="quit" Content="Quit" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="quit_Click" />
         </Viewbox>
-        <Viewbox Stretch="Uniform" StretchDirection="Both" Grid.Row="8">
+        <Viewbox Stretch="Uniform" StretchDirection="Both" Grid.Row="4">
             <Button x:Name="back" Content="Back to game" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="back_Click" />
         </Viewbox>
     </Grid>

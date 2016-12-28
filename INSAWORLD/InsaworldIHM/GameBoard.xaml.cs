@@ -580,7 +580,7 @@ namespace InsaworldIHM
         /// <param name="u"></param>
         private void select(Unit u)
         {
-            if(!object.ReferenceEquals(selected, null))
+            if(!object.ReferenceEquals(selected, null) && selected.LifePoints>0)
             {
                 unselect();
             }

@@ -321,10 +321,10 @@ namespace InsaworldIHM
         /// </summary>
         private void unselect()
         {
-            if(!object.ReferenceEquals(selected, null)) { 
+            if(!object.ReferenceEquals(selected, null) && selected.LifePoints > 0) { 
             unitToImage[selected].Source = selectImageRace(selected.Race.Type);
-            selected = null;
             }
+            selected = null;
         }
 
         /// <summary>
@@ -580,7 +580,7 @@ namespace InsaworldIHM
         /// <param name="u"></param>
         private void select(Unit u)
         {
-            if(!object.ReferenceEquals(selected, null) && selected.LifePoints>0)
+            if(!object.ReferenceEquals(selected, null))
             {
                 unselect();
             }

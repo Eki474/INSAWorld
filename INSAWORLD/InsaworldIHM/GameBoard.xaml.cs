@@ -235,6 +235,11 @@ namespace InsaworldIHM
             var cmd = new NextTurn(g);
 
             unselect();
+            if(!object.ReferenceEquals(container, null))
+            {
+                map_view.Children.Remove(container);
+                container = null;
+            }
             if (cmd.CanExecute())
             {
                 cmd.Execute();
@@ -307,7 +312,7 @@ namespace InsaworldIHM
         /// <param name="e"></param>
         private void map_viewRightDown(object sender, RoutedEventArgs e)
         {
-            if (!object.ReferenceEquals(selected, null)) unselect();
+            unselect();
             updateTextSpec();
         }
 
@@ -604,7 +609,7 @@ namespace InsaworldIHM
         private void selectThisUnit(object sender, RoutedEventArgs e)
         {
             var element = (UIElement)e.Source;
-            int position = Grid.GetRow(element);
+            int position = Grid.GetColumn(element);
             map_view.Children.Remove(container);
             select(unitsToSelect[position]);
             e.Handled = true;

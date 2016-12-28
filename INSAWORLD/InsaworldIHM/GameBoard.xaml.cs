@@ -364,7 +364,7 @@ namespace InsaworldIHM
                 var unitToAttack = new List<Unit>();
                 foreach (Unit u in notPlaying.UnitsList)
                 {
-                    if (u.C.Equals(actual))
+                    if (u.C.Equals(actual) && u.LifePoints>0)
                     {
                         found = true;
                         unitToAttack.Add(u);

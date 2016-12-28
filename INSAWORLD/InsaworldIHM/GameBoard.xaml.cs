@@ -316,7 +316,7 @@ namespace InsaworldIHM
         /// </summary>
         private void unselect()
         {
-            if(!object.ReferenceEquals(selected, null)) { 
+            if(!object.ReferenceEquals(selected, null) && selected.LifePoints!=0) { 
             unitToImage[selected].Source = selectImageRace(selected.Race.Type);
             selected = null;
             }

@@ -69,6 +69,17 @@ namespace InsaworldIHM
             mainWindow.Content = board;
         }
 
+        public void replay()
+        {
+
+            next_button_Click(null, null);
+            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(1000);
+            next_button_Click(null, null);
+        }
+
         /// <summary>
         /// generate the view of the map 
         /// </summary>

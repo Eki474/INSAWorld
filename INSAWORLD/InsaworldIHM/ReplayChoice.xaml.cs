@@ -15,21 +15,54 @@ using System.Windows.Shapes;
 using System.IO;
 using INSAWORLD;
 using System.Windows.Controls.Primitives;
+using System.Threading;
 
 namespace InsaworldIHM
 {
     /// <summary>
     /// Logique d'interaction pour SaveChoice.xaml
     /// </summary>
-    public partial class ReplayChoice : Page
+    public partial class ReplayChoice : IAsyncResult
     {
         Game game;
         string buttonSelected = "";
         StackPanel sp;
 
+        public bool IsCompleted
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public WaitHandle AsyncWaitHandle
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public object AsyncState
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public bool CompletedSynchronously
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public ReplayChoice()
         {
-            //NotFoundDirectoryException à gérer : si pas de directory --> pas de save --> message utilisateur
+            //TODO NotFoundDirectoryException à gérer : si pas de directory --> pas de save --> message utilisateur
             InitializeComponent();
             InitializeScrollViewer();
         }
@@ -63,12 +96,7 @@ namespace InsaworldIHM
             game = cmd.Game;
             var loaded = new GameBoard(ref game);
             Application.Current.MainWindow.Content = loaded;
-            foreach(ToCollect tc in game.Rpz.Step)
-            {
-                tc.ExecuteReplay();
-                updateCoord(ref game, ref loaded);
-                System.Threading.Thread.Sleep(1000);
-            }
+            loaded.replay();
         }
 
         private void updateCoord(ref Game g, ref GameBoard gb)

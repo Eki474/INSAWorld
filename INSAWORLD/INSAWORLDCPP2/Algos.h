@@ -26,15 +26,15 @@ public:
 	// action suggest a move of a unit
 
 	///fill map with random tiles, result contains same number of each tile type
-	void Algos::suggestMove(int tableTile[49], std::string retour[], bool race, double moveP);
+	void Algos::suggestMove(int tableTile[49], char retour[], int * tailleElements, bool race, double moveP);
 	///string traitement : split on ,
-	void split(const std::string &s, char delim, std::vector<std::string> &elems);
+	int split(const std::string &s, char delim);
 	///suggest the 3 best move to the player
-	std::vector<std::string> suggestMoveAlgo(int tableTile[7][7], double moveP, bool race, std::string cheminActuel, std::vector<std::string> resultat, int posX, int posY);
+	void Algos::suggestMoveAlgo(int tableTile[7][7], double moveP, bool race, std::string cheminActuel, std::string * resultat, int * taille, int posX, int posY);
 	/// sert à remplir le vecteur par les trois meilleurs chemins == les trois chemins les plus longs
-	std::vector<std::string> setMaximumvector(std::vector<std::string> resultat, std::string cheminActuel);
+	void Algos::setMaximumvector(std::string * resultat, int * taille, std::string cheminActuel);
 	///place unit on game start : the first player random, the other as far as possible
-	int * Algos::placeUnits(int retour[], int taille);
+	void Algos::placeUnits(int retour[], int taille);
 };
 
 
@@ -50,13 +50,13 @@ EXPORTCDECL void Algos_fillMap(Algos* algos, TileType map[], int size) {
 }
 
 ///place unit on game start : the first player random, the other as far as possible
-EXPORTCDECL int * Algos_placeUnits(Algos* algos, int retour[], int taille) {
+EXPORTCDECL void Algos_placeUnits(Algos* algos, int retour[], int taille) {
 	return algos->placeUnits(retour, taille);
 }
 
 ///suggest the 3 best move to the player
-EXPORTCDECL void Algos_suggestMove(Algos* algos, int tableTile[49], std::string retour[], bool race, double moveP) {
-	return algos->suggestMove(tableTile, retour, race, moveP);
+EXPORTCDECL void Algos_suggestMove(Algos* algos, int tableTile[49], char retour[], int * tailleElements, bool race, double moveP) {
+	return algos->suggestMove(tableTile, retour, tailleElements, race, moveP);
 }
 
 

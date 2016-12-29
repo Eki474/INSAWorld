@@ -7,7 +7,7 @@ using INSAWORLD;
 
 namespace InsaworldIHM.ViewModel
 {
-    class GameMapViewModel
+    class GameMapViewModel : ViewModel
     {
         private GameMap obj;
 

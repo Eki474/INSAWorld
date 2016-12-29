@@ -107,6 +107,7 @@
     <Compile Include="ViewModel\RaceViewModel.cs" />
     <Compile Include="ViewModel\SwampViewModel.cs" />
     <Compile Include="ViewModel\UnitViewModel.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="ViewModel\VolcanoViewModel.cs" />
     <Page Include="EndingPage.xaml">
       <SubType>Designer</SubType>

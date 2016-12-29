@@ -7,7 +7,7 @@ using INSAWORLD;
 
 namespace InsaworldIHM.ViewModel
 {
-    static class DesertViewModel
+    static class DesertViewModel : ViewModel
     {
         public static string SourceDesert
         {

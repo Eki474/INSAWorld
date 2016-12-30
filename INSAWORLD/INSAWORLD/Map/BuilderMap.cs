@@ -230,7 +230,8 @@ namespace INSAWORLD
                 table[i] = tableTile[i / 7, i % 7];
             }
             string retour = Algos_suggestMove(nativeAlgo, table, u.Race.Type.Equals("Centaurs"), u.MovePoints);
-            string [] result = retour.Split('/');
+            string[] result = null;
+            if (!object.ReferenceEquals(retour, null)) result = retour.Split('/');
             return result;
 
         }

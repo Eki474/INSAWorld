@@ -109,7 +109,9 @@ namespace InsaworldTEST
         public void TestSuggestMove()
         {
             Unit u = p.UnitsList.First();
-            Assert.IsNotNull(BuilderMap.Instance.suggestMove(ref g, u));
+            String[] result = BuilderMap.Instance.suggestMove(ref g, u);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(3, result.Count());
         }
     }
 }

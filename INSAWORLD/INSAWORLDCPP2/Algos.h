@@ -6,6 +6,7 @@
 #include <math.h> 
 #include <sstream>
 #include<vector>
+#include <comutil.h>
 
 enum TileType {
 	Plain = 0,
@@ -26,7 +27,7 @@ public:
 	// action suggest a move of a unit
 
 	///fill map with random tiles, result contains same number of each tile type
-	void Algos::suggestMove(int tableTile[49], char retour[], int * tailleElements, bool race, double moveP);
+	BSTR Algos::suggestMove(int tableTile[49], bool race, double moveP);
 	///string traitement : split on ,
 	int split(const std::string &s, char delim);
 	///suggest the 3 best move to the player
@@ -35,6 +36,7 @@ public:
 	void Algos::setMaximumvector(std::string * resultat, int * taille, std::string cheminActuel);
 	///place unit on game start : the first player random, the other as far as possible
 	void Algos::placeUnits(int retour[], int taille);
+	BSTR Algos::ANSItoBSTR(const char* input);
 };
 
 
@@ -55,8 +57,8 @@ EXPORTCDECL void Algos_placeUnits(Algos* algos, int retour[], int taille) {
 }
 
 ///suggest the 3 best move to the player
-EXPORTCDECL void Algos_suggestMove(Algos* algos, int tableTile[49], char retour[], int * tailleElements, bool race, double moveP) {
-	return algos->suggestMove(tableTile, retour, tailleElements, race, moveP);
+EXPORTCDECL BSTR Algos_suggestMove(Algos* algos, int tableTile[49], bool race, double moveP) {
+	return algos->suggestMove(tableTile, race, moveP);
 }
 
 

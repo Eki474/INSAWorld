@@ -1,6 +1,5 @@
 #include "Algos.h"
 
-
 using namespace std;
 
 //Plain = 0, Swamp = 1, Volcano = 2, Desert = 3
@@ -25,7 +24,7 @@ void Algos::fillMap(TileType map[], int size)
 // action suggest a move of a unit
 // race: true si centaure, false sinon
 // tableFile: 0 pour case "normale", 1 pour case plaine, 2 pour case occupée, 3 pour case visitée, -1 pour oob
-void Algos::suggestMove(int tableTile[49], char retour[], int * tailleElements, bool race, double moveP)
+BSTR  Algos::suggestMove(int tableTile[49] ,  bool race, double moveP)
 {
 	std::string result[3];
 	// retour: stocke les chemins sous la forme {déplacementX déplacementY,} ex: "0,1,3"
@@ -37,23 +36,30 @@ void Algos::suggestMove(int tableTile[49], char retour[], int * tailleElements, 
 	int  taille = 0;
 
 	Algos::suggestMoveAlgo(table, moveP, race, "", result, &taille, 3, 3);
-
-	int cmpt = 0;
-	char * table;
-	tailleElements[0] = 0;
-	tailleElements[1] = 0;
-	tailleElements[2] = 0;
-	for (int i = 0; i < taille; i++) {
-		char *cstr = new char[result[i].length() + 1];
-		strcpy(cstr, result[i].c_str());
-		for (int j = cmpt; j < result[i].length(); cmpt++) {
-			retour[j] = cstr[j - cmpt];
+	std::string tampon = "";
+	int i = 0;
+	if (taille != 0) {
+		for (; i < taille - 1; i++) {
+			tampon += result[i] + "/";
 		}
-		tailleElements[i] = result[i].length();
+		tampon += result[i];
 	}
-
+	
+	return ::SysAllocString(ANSItoBSTR(tampon.c_str()));
 };
 
+BSTR Algos::ANSItoBSTR(const char* input)
+{
+	BSTR result = NULL;
+	int lenA = lstrlenA(input);
+	int lenW = ::MultiByteToWideChar(CP_ACP, 0, input, lenA, NULL, 0);
+	if (lenW > 0)
+	{
+		result = ::SysAllocStringLen(0, lenW);
+		::MultiByteToWideChar(CP_ACP, 0, input, lenA, result, lenW);
+	}
+	return result;
+}
 
 //string traitement : split on ,
 int Algos::split(const std::string &s, char delim)

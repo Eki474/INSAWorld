@@ -21,7 +21,8 @@ namespace INSAWORLD
         extern static void Algos_fillMap(IntPtr algo, TileType[] tiles, int nbTiles);
 
         [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static void Algos_suggestMove(IntPtr algos, int[] tableTile, StringBuilder retour,int [] elementsize, bool race, double moveP);
+        [return: MarshalAs(UnmanagedType.BStr)]
+        static extern string Algos_suggestMove(IntPtr algos, int[] tableTile, bool race, double moveP);
 
         [DllImport("INSAWORLDCPP2.dll", CallingConvention = CallingConvention.Cdecl)]
         extern static IntPtr Algos_new();
@@ -169,7 +170,7 @@ namespace INSAWORLD
                 u.C = coordonnee;
             }
         }
-        public List<string> suggestMove(ref Game game, Unit u)
+        public String [] suggestMove(ref Game game, Unit u)
         {
             int[,] tableTile = new int[7, 7];
             int cXInit = u.C.X - 3;
@@ -228,12 +229,8 @@ namespace INSAWORLD
             {
                 table[i] = tableTile[i / 7, i % 7];
             }
-            StringBuilder retour;
-            Algos_suggestMove(nativeAlgo, table, retour, u.Race.Type.Equals("Centaurs"), u.MovePoints);
-            List<string> result = new List<string>();
-            result.Add(retour[0]);
-            result.Add(retour[1]);
-            result.Add(retour[2]);
+            string retour = Algos_suggestMove(nativeAlgo, table, u.Race.Type.Equals("Centaurs"), u.MovePoints);
+            string [] result = retour.Split('/');
             return result;
 
         }

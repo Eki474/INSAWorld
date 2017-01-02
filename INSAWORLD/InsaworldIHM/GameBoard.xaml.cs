@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using INSAWORLD;
 using System.Windows.Controls.Primitives;
+using InsaworldIHM.TileView;
 
 namespace InsaworldIHM
 {
@@ -26,7 +27,9 @@ namespace InsaworldIHM
         double maxTurn;
         int turn;
         Unit selected = null;
-        Dictionary<Unit,Image> unitToImage;
+        Dictionary<Unit, Image> unitToImage;
+        Dictionary<Coord, TileView.ViewTile> coordToTileView;
+        List<Coord> selectedImage = new List<Coord>();
         Grid container = null;
         List<Unit> unitsToSelect;
 
@@ -95,29 +98,32 @@ namespace InsaworldIHM
                 r.Height = new GridLength(1, GridUnitType.Star);
                 map_view.RowDefinitions.Add(r);
             }
-
+            coordToTileView = new Dictionary<Coord, TileView.ViewTile>();
             for (int j = 0; j < map_size; j++)
             {
                 for (int k = 0; k < map_size; k++)
                 {
                     string t = g.Map.CasesJoueur[new Coord(j, k)].getType();
-                    Image img = new Image();
-                    img.Stretch = Stretch.UniformToFill;
+                    TileView.ViewTile img;
+
                     switch (t)
                     {
                         case "plain":
-                            img.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/plain_reduced.png"));
+                            img = new ViewPlain();
                             break;
                         case "volcano":
-                            img.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/volcano_reduced.jpg"));
+                            img = new ViewVolcano();
                             break;
                         case "swamp":
-                            img.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/swamp_reduced.png"));
+                            img = new ViewSwamp();
                             break;
                         case "desert":
-                            img.Source = new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/desert_reduced.jpg"));
+                            img = new ViewDesert();
                             break;
+                        default: throw new Exception("Tile not recognized");
                     }
+                    img.Stretch = Stretch.UniformToFill;
+                    coordToTileView.Add(new Coord(j, k), img);
                     Grid.SetColumn(img, k);
                     Grid.SetRow(img, j);
                     map_view.Children.Add(img);
@@ -173,7 +179,7 @@ namespace InsaworldIHM
                 Grid.SetRow(u1, u.C.X);
                 map_view.Children.Add(u1);
             }
-            foreach(Unit u in g.Player2.UnitsList)
+            foreach (Unit u in g.Player2.UnitsList)
             {
                 Image u2 = new Image();
                 unitToImage.Add(u, u2);
@@ -246,7 +252,7 @@ namespace InsaworldIHM
             var cmd = new NextTurn(g);
 
             unselect();
-            if(!object.ReferenceEquals(container, null))
+            if (!object.ReferenceEquals(container, null))
             {
                 map_view.Children.Remove(container);
                 container = null;
@@ -332,10 +338,13 @@ namespace InsaworldIHM
         /// </summary>
         private void unselect()
         {
-            if(!object.ReferenceEquals(selected, null) && selected.LifePoints > 0) { 
-            unitToImage[selected].Source = selectImageRace(selected.Race.Type);
+            if (!object.ReferenceEquals(selected, null) && selected.LifePoints > 0)
+            {
+                unitToImage[selected].Source = selectImageRace(selected.Race.Type);
             }
             selected = null;
+    
+            unselectTiles();
         }
 
         /// <summary>
@@ -346,7 +355,7 @@ namespace InsaworldIHM
         private void map_viewLeftDown(object sender, RoutedEventArgs e)
         {
             //If we're already selecting a unit, close the appropriate container
-            if(! object.ReferenceEquals(container, null))
+            if (!object.ReferenceEquals(container, null))
             {
                 map_view.Children.Remove(container);
                 container = null;
@@ -375,7 +384,7 @@ namespace InsaworldIHM
                 var unitToAttack = new List<Unit>();
                 foreach (Unit u in notPlaying.UnitsList)
                 {
-                    if (u.C.Equals(actual) && u.LifePoints>0)
+                    if (u.C.Equals(actual) && u.LifePoints > 0)
                     {
                         found = true;
                         unitToAttack.Add(u);
@@ -395,7 +404,7 @@ namespace InsaworldIHM
                             lifeMax = t.LifePoints;
                         }
                     }
-                    foreach(Unit d in unitToAttack)
+                    foreach (Unit d in unitToAttack)
                     {
                         if (d.LifePoints < lifeMax)
                         {
@@ -420,7 +429,7 @@ namespace InsaworldIHM
             if (cmd.CanExecute()) cmd.Execute();
 
             //If the attacker dies remove its view
-            if(selected.LifePoints==0)
+            if (selected.LifePoints == 0)
             {
                 Image i = unitToImage[selected];
                 map_view.Children.Remove(i);
@@ -447,11 +456,13 @@ namespace InsaworldIHM
         private void moveUnit(Coord coord)
         {
             var cmd = new MoveUnit(selected, coord, ref g);
-            if(cmd.CanExecute())
+            if (cmd.CanExecute())
             {
                 cmd.Execute();
                 updateCoord();
             }
+            unselectTiles();
+            suggestMoveTile();
         }
 
         /// <summary>
@@ -488,13 +499,13 @@ namespace InsaworldIHM
             unitsToSelect = new List<Unit>();
             foreach (Unit u in p.UnitsList)
             {
-                if (u.C.Equals(actual) && u.LifePoints>0)
+                if (u.C.Equals(actual) && u.LifePoints > 0)
                 {
                     found = true;
                     unitsToSelect.Add(u);
                 }
             }
-            
+
             if (!found) return;
 
             //If only one unit 
@@ -517,7 +528,8 @@ namespace InsaworldIHM
             //In order to show lifepoints
             int maxLifePoints = r.Life;
             //Adds the units and their lifepoints to the container
-            for (int i = 0; i < unitsToSelect.Count; i++) {
+            for (int i = 0; i < unitsToSelect.Count; i++)
+            {
                 var c = new ColumnDefinition();
                 c.Width = new GridLength(1, GridUnitType.Star);
                 container.ColumnDefinitions.Add(c);
@@ -542,7 +554,7 @@ namespace InsaworldIHM
                 rect.VerticalAlignment = VerticalAlignment.Stretch;
                 life.Background = Brushes.Black;
                 life.ShowGridLines = true;
-                rect.Margin = new Thickness(1,0,1,0);
+                rect.Margin = new Thickness(1, 0, 1, 0);
                 Grid.SetColumn(rect, 0);
                 life.Children.Add(rect);
                 Grid.SetColumn(life, i);
@@ -552,8 +564,8 @@ namespace InsaworldIHM
                 container.Children.Add(life);
             }
             //Show the container in the middle of the map
-            int taille = (map_view.ColumnDefinitions.Count/2) -1;
-            Grid.SetColumn(container,taille);
+            int taille = (map_view.ColumnDefinitions.Count / 2) - 1;
+            Grid.SetColumn(container, taille);
             Grid.SetRow(container, taille);
             Grid.SetColumnSpan(container, taille);
             Grid.SetRowSpan(container, taille);
@@ -561,7 +573,7 @@ namespace InsaworldIHM
             container.Background = Brushes.White;
             //Could change for center depending on taste
             container.HorizontalAlignment = HorizontalAlignment.Stretch;
-            container.VerticalAlignment= VerticalAlignment.Stretch;
+            container.VerticalAlignment = VerticalAlignment.Stretch;
             map_view.Children.Add(container);
 
         }
@@ -582,7 +594,7 @@ namespace InsaworldIHM
                 case "Cerberus":
                     return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png"));
             }
-            return null;   
+            return null;
         }
 
         /// <summary>
@@ -591,7 +603,7 @@ namespace InsaworldIHM
         /// <param name="u"></param>
         private void select(Unit u)
         {
-            if(!object.ReferenceEquals(selected, null))
+            if (!object.ReferenceEquals(selected, null))
             {
                 unselect();
             }
@@ -599,9 +611,52 @@ namespace InsaworldIHM
 
             unitToImage[selected].BringIntoView();
             unitToImage[selected].Source = selectImageSelectedRace(u.Race.Type);
-
+            suggestMoveTile();
             updateTextSpec();
         }
+
+        private void suggestMoveTile()
+        {
+            var listString = BuilderMap.Instance.suggestMove(ref g, selected);
+            selectedImage = new List<Coord>();
+
+            if (!object.ReferenceEquals(listString, null))
+            {
+                coordToTileView[selected.C].Select();
+                selectedImage.Add(selected.C);
+                // déplacement: 0 -> 1 <- 2 î 3 V
+                foreach (String s in listString)
+                {
+                    Coord it = selected.C;
+                    foreach (String p in s.Split(','))
+                    {
+                        switch (p)
+                        {
+                            case "0":
+                                it = new Coord(it.X+1, it.Y ); break;
+                            case "1":
+                                it = new Coord(it.X-1, it.Y); break;
+                            case "2":
+                                it = new Coord(it.X, it.Y+1); break;
+                            case "3":
+                                it = new Coord(it.X, it.Y-1); break;
+                            default: throw new Exception("bad move suggestion");
+                        }
+                        coordToTileView[it].Select();
+                        selectedImage.Add(it);
+                    }
+                }
+            }
+        }
+
+        private void unselectTiles()
+        {
+            foreach(Coord c in selectedImage)
+            {
+                coordToTileView[c].Unselect();
+            }
+        }
+
 
         /// <summary>
         /// display spec of the selected unit
@@ -632,7 +687,7 @@ namespace InsaworldIHM
 
         }
 
-       
+
 
         /// <summary>
         /// associate a unselected unit to its view
@@ -645,13 +700,13 @@ namespace InsaworldIHM
             {
                 case "Centaurs":
                     return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaurselected.jpg"));
-                    
+
                 case "Cyclops":
-                    return  new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclopselected.jpg"));
-                    
+                    return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclopselected.jpg"));
+
                 case "Cerberus":
                     return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberusselected.jpg"));
-                    
+
             }
             return null;
         }
@@ -663,12 +718,13 @@ namespace InsaworldIHM
         /// <param name="e"></param>
         private void removeBlur(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (inGameMenuGrid.Visibility.Equals(Visibility.Hidden)) { 
-            System.Windows.Media.Effects.BlurEffect objBlur =
-                                 new System.Windows.Media.Effects.BlurEffect();
-            objBlur.Radius = 0;
-            map_view.Effect = objBlur;
-            Specs.Effect = objBlur;
+            if (inGameMenuGrid.Visibility.Equals(Visibility.Hidden))
+            {
+                System.Windows.Media.Effects.BlurEffect objBlur =
+                                     new System.Windows.Media.Effects.BlurEffect();
+                objBlur.Radius = 0;
+                map_view.Effect = objBlur;
+                Specs.Effect = objBlur;
             }
         }
     }

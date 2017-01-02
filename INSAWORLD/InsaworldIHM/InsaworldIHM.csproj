@@ -100,6 +100,19 @@
     <Compile Include="SaveWindow.xaml.cs">
       <DependentUpon>SaveWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TileView\ViewTile.cs" />
+    <Compile Include="TileView\ViewDesert - Copier.xaml.cs">
+      <DependentUpon>ViewDesert - Copier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TileView\ViewVolcano.xaml.cs">
+      <DependentUpon>ViewVolcano.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TileView\ViewSwamp.xaml.cs">
+      <DependentUpon>ViewSwamp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TileView\ViewPlain.xaml.cs">
+      <DependentUpon>ViewPlain.xaml</DependentUpon>
+    </Compile>
     <Page Include="EndingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -145,6 +158,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SaveWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TileView\ViewDesert - Copier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TileView\ViewVolcano.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TileView\ViewSwamp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TileView\ViewPlain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -260,6 +289,10 @@
       <Link>INSAWORLDCPP2.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Ressources\images\textures\desert_reduced_selected.jpg" />
+    <Resource Include="Ressources\images\textures\plain_reduced_selected.png" />
+    <Resource Include="Ressources\images\textures\swamp_reduced_selected.jpg" />
+    <Resource Include="Ressources\images\textures\volcano_reduced_selected.jpg" />
     <Resource Include="Ressources\images\races\cyclopselected.jpg" />
     <Resource Include="Ressources\images\races\cerberusselected.jpg" />
     <Resource Include="Ressources\images\races\centaurselected.jpg" />

@@ -78,20 +78,19 @@ int Algos::split(const std::string &s, char delim)
 //oob = out of bounds
 void Algos::suggestMoveAlgo(int tableTile[7][7], double moveP, bool race, std::string cheminActuel, std::string * resultat, int * taille, int posX, int posY) {
 	if (tableTile[posX][posY] = 1 && race) moveP += 0.5;
-	// cas d'arrêt: case déjà visitée/occupée/plus de points/oob
-	if (moveP - 1 < 0 || tableTile[posX][posY] == 2 || tableTile[posX][posY] == 3 || tableTile[posX][posY] == -1) {
-		setMaximumvector(resultat, taille, cheminActuel);
-		return;
-	}
 	tableTile[posX][posY] = 3;
-	if (posX + 1 < 7) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "0,", resultat, taille, posX + 1, posY);
+	// cas d'arrêt: case déjà visitée/occupée/plus de points/oob
+	if (moveP - 1 >= 0) {
+	if (posX + 1 < 7 && !(tableTile[posX+1][posY] == 2 || tableTile[posX+1][posY] == 3 || tableTile[posX+1][posY] == -1)) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "0,", resultat, taille, posX + 1, posY);
 
-	if (posX - 1 > 0) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "1,", resultat, taille, posX - 1, posY);
+	if (posX - 1 > 0 && !(tableTile[posX-1][posY] == 2 || tableTile[posX-1][posY] == 3 || tableTile[posX-1][posY] == -1)) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "1,", resultat, taille, posX - 1, posY);
 
-	if (posY + 1 < 7) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "2,", resultat, taille, posX, posY + 1);
+	if (posY + 1 < 7 && !(tableTile[posX][posY+1] == 2 || tableTile[posX][posY+1] == 3 || tableTile[posX][posY+1] == -1)) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "2,", resultat, taille, posX, posY + 1);
 
-	if (posY - 1 > 0) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "3,", resultat, taille, posX, posY - 1);
+	if (posY - 1 > 0 && !(tableTile[posX][posY-1] == 2 || tableTile[posX][posY-1] == 3 || tableTile[posX][posY-1] == -1)) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "3,", resultat, taille, posX, posY - 1);
 
+	}
+	setMaximumvector(resultat, taille, cheminActuel);
 
 }
 

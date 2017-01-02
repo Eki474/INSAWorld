@@ -122,7 +122,7 @@ namespace InsaworldIHM
                             break;
                         default: throw new Exception("Tile not recognized");
                     }
-                    img.Stretch = Stretch.UniformToFill;
+                    img.Stretch = Stretch.Fill;
                     coordToTileView.Add(new Coord(j, k), img);
                     Grid.SetColumn(img, k);
                     Grid.SetRow(img, j);

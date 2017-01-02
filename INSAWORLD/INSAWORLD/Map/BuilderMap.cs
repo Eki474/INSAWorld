@@ -172,9 +172,9 @@ namespace INSAWORLD
         }
         public String [] suggestMove(ref Game game, Unit u)
         {
-            int[,] tableTile = new int[7, 7];
-            int cXInit = u.C.X - 3;
-            int cYInit = u.C.Y - 3;
+            int[,] tableTile = new int[15, 15];
+            int cXInit = u.C.X - 7;
+            int cYInit = u.C.Y - 7;
             int cY = cYInit;
             Player o;
             if (game.Player1.UnitsList.Contains(u))
@@ -186,9 +186,9 @@ namespace INSAWORLD
                 o = game.Player1;
             }
             int taille = game.Map.Taille;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 0; j < 15; j++)
                 {
                     if (cXInit < 0 || cY < 0 || cXInit > taille - 1 || cY > taille - 1)
                     {
@@ -224,10 +224,11 @@ namespace INSAWORLD
                 }
                 cXInit++; cY = cYInit;
             }
-            int[] table = new int[49];
-            for (int i = 0; i < 49; i++)
+
+            int[] table = new int[225];
+            for (int i = 0; i < 225; i++)
             {
-                table[i] = tableTile[i / 7, i % 7];
+                table[i] = tableTile[i / 15, i % 15];
             }
             string retour = Algos_suggestMove(nativeAlgo, table, u.Race.Type.Equals("Centaurs"), u.MovePoints);
             string[] result = null;

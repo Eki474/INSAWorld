@@ -24,18 +24,18 @@ void Algos::fillMap(TileType map[], int size)
 // action suggest a move of a unit
 // race: true si centaure, false sinon
 // tableFile: 0 pour case "normale", 1 pour case plaine, 2 pour case occupée, 3 pour case visitée, -1 pour oob
-BSTR  Algos::suggestMove(int tableTile[49] ,  bool race, double moveP)
+BSTR  Algos::suggestMove(int tableTile[225] ,  bool race, double moveP)
 {
 	std::string result[3];
 	// retour: stocke les chemins sous la forme {déplacementX déplacementY,} ex: "0,1,3"
 	// déplacement: 0 -> 1 <- 2 î 3 V
-	int table[7][7];
-	for (int i = 0; i < 49; i++) {
-		table[i / 7][i % 7] = tableTile[i];
+	int table[15][15];
+	for (int i = 0; i < 225; i++) {
+		table[i / 15][i % 15] = tableTile[i];
 	}
 	int  taille = 0;
 
-	Algos::suggestMoveAlgo(table, moveP, race, "", result, &taille, 3, 3);
+	Algos::suggestMoveAlgo(table, moveP, race, "", result, &taille, 7, 7);
 	std::string tampon = "";
 	int i = 0;
 	if (taille != 0) {
@@ -76,18 +76,18 @@ int Algos::split(const std::string &s, char delim)
 
 //suggest the 3 best move to the player : algo logic
 //oob = out of bounds
-void Algos::suggestMoveAlgo(int tableTile[7][7], double moveP, bool race, std::string cheminActuel, std::string * resultat, int * taille, int posX, int posY) {
+void Algos::suggestMoveAlgo(int tableTile[15][15], double moveP, bool race, std::string cheminActuel, std::string * resultat, int * taille, int posX, int posY) {
 	if (tableTile[posX][posY] = 1 && race) moveP += 0.5;
 	tableTile[posX][posY] = 3;
 	// cas d'arrêt: case déjà visitée/occupée/plus de points/oob
 	if (moveP - 1 >= 0) {
-	if (posX + 1 < 7 && !(tableTile[posX+1][posY] == 2 || tableTile[posX+1][posY] == 3 || tableTile[posX+1][posY] == -1)) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "0,", resultat, taille, posX + 1, posY);
+	if (posX + 1 < 15 && (tableTile[posX+1][posY] != 2 && tableTile[posX+1][posY] != 3 && tableTile[posX+1][posY] != -1)) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "0,", resultat, taille, posX + 1, posY);
 
-	if (posX - 1 > 0 && !(tableTile[posX-1][posY] == 2 || tableTile[posX-1][posY] == 3 || tableTile[posX-1][posY] == -1)) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "1,", resultat, taille, posX - 1, posY);
+	if (posX - 1 > 0 && (tableTile[posX-1][posY] != 2 && tableTile[posX-1][posY] != 3 && tableTile[posX-1][posY] != -1)) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "1,", resultat, taille, posX - 1, posY);
 
-	if (posY + 1 < 7 && !(tableTile[posX][posY+1] == 2 || tableTile[posX][posY+1] == 3 || tableTile[posX][posY+1] == -1)) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "2,", resultat, taille, posX, posY + 1);
+	if (posY + 1 < 15 && (tableTile[posX][posY+1] != 2 && tableTile[posX][posY+1] != 3 && tableTile[posX][posY+1] != -1)) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "2,", resultat, taille, posX, posY + 1);
 
-	if (posY - 1 > 0 && !(tableTile[posX][posY-1] == 2 || tableTile[posX][posY-1] == 3 || tableTile[posX][posY-1] == -1)) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "3,", resultat, taille, posX, posY - 1);
+	if (posY - 1 > 0 && (tableTile[posX][posY-1] != 2 && tableTile[posX][posY-1] != 3 && tableTile[posX][posY-1] != -1)) suggestMoveAlgo(tableTile, moveP - 1, race, cheminActuel + "3,", resultat, taille, posX, posY - 1);
 
 	}
 	setMaximumvector(resultat, taille, cheminActuel);

@@ -21,6 +21,7 @@ namespace InsaworldIHM
     /// </summary>
     public partial class EndingPage : Page
     {
+        private Game game;
 
         public EndingPage(bool winner, Player p1, Player p2)
         {
@@ -40,9 +41,17 @@ namespace InsaworldIHM
             }
         }
 
+        public Game Game
+        {
+            get { return game; }
+            set { game = value; }
+        }
+
         private void replaySave_Click(object sender, RoutedEventArgs e)
         {
-
+            var newWindow = new SaveReplayWindow();
+            newWindow.Game = game;
+            newWindow.ShowDialog();
         }
 
         private void mainMenu_Click(object sender, RoutedEventArgs e)

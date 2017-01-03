@@ -70,6 +70,7 @@ namespace InsaworldIHM
             UnitsPlacement();
             UpdateLeftSideView();
             mainWindow.Content = board;
+            replay();
         }
 
         public void replay()
@@ -275,7 +276,9 @@ namespace InsaworldIHM
                 g.Player1.ComputePoints(ref g);
                 g.Player2.ComputePoints(ref g);
                 if (g.Player2.Lost() || g.Player1.Points > g.Player2.Points) winner = true;
-                mainWindow.Content = new EndingPage(winner, g.Player1, g.Player2);
+                var page = new EndingPage(winner, g.Player1, g.Player2);
+                page.Game = g;
+                mainWindow.Content = page;
             }
         }
 

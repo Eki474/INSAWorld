@@ -85,8 +85,8 @@ namespace InsaworldIHM
             {
                 cmd.ExecuteReplay();
                 EraseView();
-                UnitsPlacement();
-                UpdateLeftSideView();
+                UnitsPlacement();//problem --> Unit on death don't disappear + Initial Placement wrong (see c#?)
+                UpdateLeftSideView();//TODO: recap on left side view
                 await Task.Delay(1000);
             }
         }

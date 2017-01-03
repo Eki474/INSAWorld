@@ -94,11 +94,10 @@ namespace InsaworldIHM
             var cmd = new LoadReplayCommand(buttonSelected);
             if (cmd.CanExecute()) cmd.Execute();
             game = cmd.Game;
-            var loaded = new GameBoard(ref game);
+            var loaded = new GameBoard(ref game, true);
             Application.Current.MainWindow.Content = loaded;
-            loaded.replay();
         }
-
+        /*
         private void updateCoord(ref Game g, ref GameBoard gb)
         {
             foreach(Unit u in g.Player1.UnitsList.Concat(g.Player2.UnitsList))
@@ -130,7 +129,7 @@ namespace InsaworldIHM
                         break;
                 }
             }
-        }
+        }*/
 
         private void Quit(object sender, RoutedEventArgs e)
         {

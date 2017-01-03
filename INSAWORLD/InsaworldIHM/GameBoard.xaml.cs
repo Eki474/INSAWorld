@@ -58,7 +58,7 @@ namespace InsaworldIHM
         /// constructor, load a game
         /// </summary>
         /// <param name="game">loaded game</param>
-        public GameBoard(ref Game game)
+        public GameBoard(ref Game game, bool replayGame)
         {
             InitializeComponent();
             turn = 1;
@@ -70,18 +70,43 @@ namespace InsaworldIHM
             UnitsPlacement();
             UpdateLeftSideView();
             mainWindow.Content = board;
-            replay();
+            if (replayGame)
+            {
+                next_button.Visibility = Visibility.Hidden;
+                ReplayAsync();
+                next_button.Visibility = Visibility.Visible;
+            }
         }
 
-        public void replay()
+        private async void ReplayAsync()
         {
+            await Task.Delay(1000);
+            foreach(ToCollect cmd in g.Rpz.Step)
+            {
+                cmd.ExecuteReplay();
+                EraseView();
+                UnitsPlacement();
+                UpdateLeftSideView();
+                await Task.Delay(1000);
+            }
+        }
 
-            next_button_Click(null, null);
-            System.Threading.Thread.Sleep(1000);
-            System.Threading.Thread.Sleep(1000);
-            System.Threading.Thread.Sleep(1000);
-            System.Threading.Thread.Sleep(1000);
-            next_button_Click(null, null);
+        private void EraseView()
+        {
+            foreach (Unit u1 in g.Player1.UnitsList)
+            {
+                Image i = unitToImage[u1];
+                map_view.Children.Remove(i);
+                i = null;
+                unitToImage.Remove(u1);
+            }
+            foreach (Unit u2 in g.Player2.UnitsList)
+            {
+                Image i = unitToImage[u2];
+                map_view.Children.Remove(i);
+                i = null;
+                unitToImage.Remove(u2);
+            }
         }
 
         /// <summary>
@@ -222,7 +247,7 @@ namespace InsaworldIHM
         private void UpdateLeftSideView()
         {
             maxTurn = BuilderMap.Instance.getMaxTurn(g.Map.Taille);
-            turn_number.Text = "Turn " + (maxTurn - g.Map.NbTurn + 1);
+            turn_number.Text = "Turn " + (int) (maxTurn - g.Map.NbTurn + 1);
             g.Player1.ComputePoints(ref g);
             g.Player2.ComputePoints(ref g);
             if (g.Player1.Playing)

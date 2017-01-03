@@ -60,7 +60,7 @@ namespace InsaworldIHM
             var cmd = new LoadCommand(buttonSelected);
             if (cmd.CanExecute()) cmd.Execute();
             var g = cmd.Game;
-            var loaded = new GameBoard(ref g);
+            var loaded = new GameBoard(ref g, false);
             Application.Current.MainWindow.Content = loaded;
         }
 

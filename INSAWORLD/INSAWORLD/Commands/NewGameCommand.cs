@@ -9,6 +9,8 @@ namespace INSAWORLD
     {
         private Game game; //game
         private int type; //map type
+        private Coord initP1; //initial coord of player1 
+        private Coord initP2; //initial coord of player2 
 
         /// <summary>
         /// constructor
@@ -32,7 +34,8 @@ namespace INSAWORLD
             Player p1 = game.Player1;
             Player p2 = game.Player2;
             BuilderMap.Instance.setJoueurs(ref p1, ref p2, m.Taille);
-            //TODO check la reference de la game
+            initP1 = new Coord(p1.UnitsList.First().C.X, p1.UnitsList.First().C.Y);
+            initP2 = new Coord(p2.UnitsList.First().C.X, p2.UnitsList.First().C.Y);
             game.Rpz.InitState = this;
         }
 
@@ -58,9 +61,9 @@ namespace INSAWORLD
         public string ToString()
         {
             return "init," + game.Player1.Name + "," + game.Player1.RacePlay.Type + "," + 
-                game.Player1.UnitsList.First().C.X + "," + game.Player1.UnitsList.First().C.Y + "," +
+               initP1.X + "," + initP1.Y + "," +
                 game.Player2.Name + "," + game.Player2.RacePlay.Type + "," + 
-                game.Player2.UnitsList.First().C.X + "," + game.Player2.UnitsList.First().C.Y + "," +
+                initP2.X + "," + initP2.Y + "," +
                 game.Map.Taille;
         }
 

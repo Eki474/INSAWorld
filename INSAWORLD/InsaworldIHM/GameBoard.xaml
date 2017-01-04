@@ -73,7 +73,7 @@
                     <TextBlock x:Name="selected_unit_spec" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Race<LineBreak/>Attack : 0<LineBreak/>Defense : 0<LineBreak/>Life : 0<LineBreak/>Move : 0</TextBlock>
                 </Viewbox>
                 <!-- to end player turn and begin the other player turn -->
-                <Button x:Name="next_button" Content="Next turn" HorizontalAlignment="Right"  MinWidth="74" Width="Auto" Click="next_button_Click" Margin="2" Grid.Row="1" />
+                <Button x:Name="next_button" Content="Next turn" HorizontalAlignment="Right"  MinWidth="74" Width="Auto" Click="next_button_Click" Margin="2" Grid.Row="1" Visibility="Visible" />
             </Grid>
 
             <Grid Grid.Row="3">

@@ -64,48 +64,52 @@ namespace InsaworldIHM
             turn = 1;
             g = game;
             GenerateMapView();
-            map_view.MouseLeftButtonDown += map_viewLeftDown;
-            map_view.MouseRightButtonDown += map_viewRightDown;
             inGameMenuGrid.Game = g;
             UnitsPlacement();
             UpdateLeftSideView();
             mainWindow.Content = board;
             if (replayGame)
             {
-                next_button.Visibility = Visibility.Hidden;
                 ReplayAsync();
-                next_button.Visibility = Visibility.Visible;
             }
+            map_view.MouseLeftButtonDown += map_viewLeftDown;
+            map_view.MouseRightButtonDown += map_viewRightDown;
         }
 
         private async void ReplayAsync()
         {
+            next_button.Visibility = Visibility.Hidden;
             await Task.Delay(1000);
             foreach(ToCollect cmd in g.Rpz.Step)
             {
                 cmd.ExecuteReplay();
-                EraseView();
-                UnitsPlacement();//problem --> Unit on death don't disappear + Initial Placement wrong (see c#?)
+                UpdateUnitsPlacement();//problem --> disable click while replaying
                 UpdateLeftSideView();//TODO: recap on left side view
                 await Task.Delay(1000);
             }
+            next_button_Click(null, null);
+            next_button.Visibility = Visibility.Visible;
         }
 
-        private void EraseView()
+        private void UpdateUnitsPlacement()
         {
-            foreach (Unit u1 in g.Player1.UnitsList)
+            Unit toErase = null;
+            foreach (Unit u in unitToImage.Keys)
             {
-                Image i = unitToImage[u1];
-                map_view.Children.Remove(i);
-                i = null;
-                unitToImage.Remove(u1);
+                Image u1 = unitToImage[u];
+                if (u.LifePoints != 0)
+                {
+                    Grid.SetColumn(u1, u.C.Y);
+                    Grid.SetRow(u1, u.C.X);
+                }
+                else toErase = u;
             }
-            foreach (Unit u2 in g.Player2.UnitsList)
+            if (!object.ReferenceEquals(null, toErase))
             {
-                Image i = unitToImage[u2];
-                map_view.Children.Remove(i);
-                i = null;
-                unitToImage.Remove(u2);
+                Image u1 = unitToImage[toErase];
+                map_view.Children.Remove(u1);
+                u1 = null;
+                unitToImage.Remove(toErase);
             }
         }
 

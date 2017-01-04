@@ -101,8 +101,8 @@
       <DependentUpon>SaveWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TileView\ViewTile.cs" />
-    <Compile Include="TileView\ViewDesert - Copier.xaml.cs">
-      <DependentUpon>ViewDesert - Copier.xaml</DependentUpon>
+    <Compile Include="TileView\ViewDesert.xaml.cs">
+      <DependentUpon>ViewDesert.xaml</DependentUpon>
     </Compile>
     <Compile Include="TileView\ViewVolcano.xaml.cs">
       <DependentUpon>ViewVolcano.xaml</DependentUpon>
@@ -161,7 +161,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TileView\ViewDesert - Copier.xaml">
+    <Page Include="TileView\ViewDesert.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

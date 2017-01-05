@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Media;
 
 namespace InsaworldIHM
 {
@@ -21,14 +22,19 @@ namespace InsaworldIHM
     public partial class InGameMenu : Grid
     {
         Game game;
+        SoundPlayer player;
         public InGameMenu()
         {
             InitializeComponent();
+            player = new SoundPlayer(@"C:\Users\Eki\xXx_POO_xXx\INSAWORLD\InsaworldIHM\Ressources\sounds\victory_theme.mp3");
+            player.Load();
+            player.Play();
         }
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
             Visibility = Visibility.Hidden;
+            player.Stop();
         }
 
         public Game Game

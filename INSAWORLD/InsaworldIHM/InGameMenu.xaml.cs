@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Media;
+using System.Windows.Resources;
 
 namespace InsaworldIHM
 {
@@ -25,9 +26,18 @@ namespace InsaworldIHM
         SoundPlayer player;
         public InGameMenu()
         {
+
+            /*
+             Uri uri = new Uri(@"pack://application:,,,/MyAssembly;component/Sounds/10meters.wav");
+StreamResourceInfo sri = Application.GetResourceStream(uri);
+SoundPlayer simpleSound = new SoundPlayer(sri.Stream);
+simpleSound.Play();
+             */
             InitializeComponent();
-            player = new SoundPlayer(@"C:\Users\Eki\xXx_POO_xXx\INSAWORLD\InsaworldIHM\Ressources\sounds\victory_theme.mp3");
-            player.Load();
+            Uri uri = new Uri(@"pack://application:,,,/InsaworldIHM;component/Ressources/sounds/menu_song.wav");
+            StreamResourceInfo sri = Application.GetResourceStream(uri);
+            player = new SoundPlayer(sri.Stream);
+            //player.Load();
             player.Play();
         }
 

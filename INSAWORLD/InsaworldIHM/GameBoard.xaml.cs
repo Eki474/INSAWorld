@@ -71,9 +71,11 @@ namespace InsaworldIHM
             if (replayGame)
             {
                 ReplayAsync();
+            }else
+            {
+                map_view.MouseLeftButtonDown += map_viewLeftDown;
+                map_view.MouseRightButtonDown += map_viewRightDown;
             }
-            map_view.MouseLeftButtonDown += map_viewLeftDown;
-            map_view.MouseRightButtonDown += map_viewRightDown;
         }
 
         private async void ReplayAsync()
@@ -83,7 +85,7 @@ namespace InsaworldIHM
             foreach(ToCollect cmd in g.Rpz.Step)
             {
                 cmd.ExecuteReplay();
-                UpdateUnitsPlacement();//problem --> disable click while replaying
+                UpdateUnitsPlacement();
                 UpdateLeftSideView();//TODO: recap on left side view
                 await Task.Delay(1000);
             }

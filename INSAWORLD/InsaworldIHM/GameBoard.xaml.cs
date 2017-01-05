@@ -86,7 +86,7 @@ namespace InsaworldIHM
             {
                 cmd.ExecuteReplay();
                 UpdateUnitsPlacement();
-                UpdateLeftSideView();//TODO: recap on left side view
+                UpdateRecapTabReplay();//TODO: recap on left side view
                 await Task.Delay(1000);
             }
             next_button_Click(null, null);
@@ -272,6 +272,52 @@ namespace InsaworldIHM
                 adversary_name.Text = g.Player1.Name;
                 adversary_points.Text = "Points : " + g.Player1.Points;
             }
+        }
+
+        private void UpdateRecapTabReplay()
+        {
+            maxTurn = BuilderMap.Instance.getMaxTurn(g.Map.Taille);
+            turn_number.Text = "Turn " + (int)(maxTurn - g.Map.NbTurn + 1);
+            g.Player1.ComputePoints(ref g);
+            g.Player2.ComputePoints(ref g);
+            if (g.Player1.Playing)
+            {
+                current_player_name.Text = g.Player1.Name;
+                nb_unit.Text = "Number of units available : " + g.Player1.UnitsList.Count;
+                nb_points.Text = "Number of points : " + g.Player1.Points;
+                adversary_name.Text = g.Player2.Name;
+                adversary_points.Text = "Points : " + g.Player2.Points;
+            }
+            else if (g.Player2.Playing)
+            {
+                current_player_name.Text = g.Player2.Name;
+                nb_unit.Text = "Number of units available : " + g.Player2.UnitsList.Count;
+                nb_points.Text = "Number of points : " + g.Player2.Points;
+                adversary_name.Text = g.Player1.Name;
+                adversary_points.Text = "Points : " + g.Player1.Points;
+            }
+            int size = g.Player2.UnitsList.Count;
+            if (g.Player1.UnitsList.Count < size) size = g.Player1.UnitsList.Count;
+            string recapP1 = g.Player1.Name+"'s units \n";
+            string recapP2 = g.Player2.Name+"'s units \n";
+            int j = 0;
+            foreach(Unit u in g.Player1.UnitsList)
+            {
+                recapP1 += "HP : " + u.LifePoints + " - Move : " + u.MovePoints;
+                if (j != size) recapP1 += "\n";
+                j++;
+            }
+            j = 0;
+            foreach(Unit v in g.Player2.UnitsList)
+            {
+                recapP2 += "HP : " + v.LifePoints + " - Move : " + v.MovePoints;
+                if (j != size) recapP2 += "\n";
+                j++;
+            }
+            recap_p1_replay.Text = recapP1;
+            recap_p2_replay.Text = recapP2;
+            recap_p1_replay_viewbox.Visibility = Visibility.Visible;
+            recap_p2_replay_viewbox.Visibility = Visibility.Visible;
         }
 
         /// <summary>

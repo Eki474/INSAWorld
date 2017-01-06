@@ -289,7 +289,7 @@
       <Link>INSAWORLDCPP2.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Ressources\sounds\menu_song.WAV" />
+    <Content Include="Ressources\sounds\menu_song.wav" />
     <Resource Include="Ressources\images\textures\desert_reduced_selected.jpg" />
     <Resource Include="Ressources\images\textures\plain_reduced_selected.png" />
     <Resource Include="Ressources\images\textures\swamp_reduced_selected.jpg" />

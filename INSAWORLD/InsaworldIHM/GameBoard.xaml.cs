@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using INSAWORLD;
 using System.Windows.Controls.Primitives;
 using InsaworldIHM.TileView;
+using System.Media;
 
 namespace InsaworldIHM
 {
@@ -32,6 +33,7 @@ namespace InsaworldIHM
         List<Coord> selectedImage = new List<Coord>();
         Grid container = null;
         List<Unit> unitsToSelect;
+        private SoundPlayer mediaPlayer;
 
         /// <summary>
         /// constructor, create the game
@@ -42,6 +44,8 @@ namespace InsaworldIHM
         public GameBoard(ref Player p1, ref Player p2, int map)
         {
             InitializeComponent();
+            mediaPlayer = new SoundPlayer(InsaworldIHM.Properties.Resources.menu_song);
+            mediaPlayer.Play();
             turn = 1;
             g = new Game(ref p1, ref p2);
             new NewGameCommand(g, map).Execute();
@@ -60,6 +64,7 @@ namespace InsaworldIHM
         /// <param name="game">loaded game</param>
         public GameBoard(ref Game game, bool replayGame)
         {
+            
             InitializeComponent();
             turn = 1;
             g = game;
@@ -73,6 +78,8 @@ namespace InsaworldIHM
                 ReplayAsync();
             }else
             {
+                mediaPlayer = new SoundPlayer(InsaworldIHM.Properties.Resources.menu_song);
+                mediaPlayer.Play();
                 map_view.MouseLeftButtonDown += map_viewLeftDown;
                 map_view.MouseRightButtonDown += map_viewRightDown;
             }

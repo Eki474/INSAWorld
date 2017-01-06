@@ -26,19 +26,8 @@ namespace InsaworldIHM
         SoundPlayer player;
         public InGameMenu()
         {
-
-            /*
-             Uri uri = new Uri(@"pack://application:,,,/MyAssembly;component/Sounds/10meters.wav");
-StreamResourceInfo sri = Application.GetResourceStream(uri);
-SoundPlayer simpleSound = new SoundPlayer(sri.Stream);
-simpleSound.Play();
-             */
             InitializeComponent();
-            Uri uri = new Uri(@"pack://application:,,,/InsaworldIHM;component/Ressources/sounds/menu_song.wav");
-            StreamResourceInfo sri = Application.GetResourceStream(uri);
-            player = new SoundPlayer(sri.Stream);
-            //player.Load();
-            player.Play();
+
         }
 
         private void back_Click(object sender, RoutedEventArgs e)

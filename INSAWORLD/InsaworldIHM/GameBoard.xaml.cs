@@ -15,7 +15,9 @@ using INSAWORLD;
 using System.Windows.Controls.Primitives;
 using InsaworldIHM.TileView;
 using System.Media;
+using System.IO;
 using InsaworldIHM.UnitView;
+using System.Reflection;
 
 namespace InsaworldIHM
 {
@@ -34,8 +36,8 @@ namespace InsaworldIHM
         List<Coord> selectedImage = new List<Coord>();
         Grid container = null;
         List<Unit> unitsToSelect;
+        
         //private SoundPlayer mediaPlayer;
-        private MediaPlayer soundPlayer;
 
         /// <summary>
         /// constructor, create the game
@@ -46,15 +48,13 @@ namespace InsaworldIHM
         public GameBoard(ref Player p1, ref Player p2, int map)
         {
             InitializeComponent();
-            //mediaPlayer = new SoundPlayer(Properties.Resources.menu_song);
-            soundPlayer = new MediaPlayer();
-            soundPlayer.MediaFailed += (o, args) =>
+            mainWindow.SoundPlayer.MediaFailed += (o, args) =>
             {
                 MessageBox.Show("Media Failed!!");
             };
-            soundPlayer.Open(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/sounds/menu_song.mp3", UriKind.Absolute));
-            soundPlayer.Play();
-            //mediaPlayer.Play();
+            mainWindow.SoundPlayer.Open(new Uri(@Environment.CurrentDirectory + @"\Ressources\sounds\menu_song.wma"));
+            mainWindow.SoundPlayer.Play();
+
             turn = 1;
             g = new Game(ref p1, ref p2);
             new NewGameCommand(g, map).Execute();
@@ -87,16 +87,14 @@ namespace InsaworldIHM
                 ReplayAsync();
             }else
             {
-                //mediaPlayer = new SoundPlayer(InsaworldIHM.Properties.Resources.menu_song);
-                //mediaPlayer.Play();
-                soundPlayer = new MediaPlayer();
-                soundPlayer.Open(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/sounds/menu_song.wav"));
-                soundPlayer.Play();
+
+                mainWindow.SoundPlayer.Open(new Uri(@Environment.CurrentDirectory + @"\Ressources\sounds\menu_song.wma"));
+                mainWindow.SoundPlayer.Play();
                 map_view.MouseLeftButtonDown += map_viewLeftDown;
                 map_view.MouseRightButtonDown += map_viewRightDown;
             }
         }
-
+        
         private async void ReplayAsync()
         {
             next_button.Visibility = Visibility.Hidden;
@@ -372,7 +370,6 @@ namespace InsaworldIHM
                 if (g.Player2.Lost() || g.Player1.Points > g.Player2.Points) winner = true;
                 var page = new EndingPage(winner, g.Player1, g.Player2);
                 page.Game = g;
-                soundPlayer.Stop();
                 mainWindow.Content = page;
             }
         }
@@ -416,8 +413,6 @@ namespace InsaworldIHM
             Specs.Effect = objBlur;
             inGameMenuGrid.BringIntoView();
             inGameMenuGrid.Visibility = Visibility.Visible;
-            // InGameMenu page = new InGameMenu();
-            // mainWindow.Content = page;
         }
 
         /// <summary>
@@ -782,5 +777,9 @@ namespace InsaworldIHM
                 Specs.Effect = objBlur;
             }
         }
+
+        
     }
+
+    
 }

@@ -25,12 +25,14 @@ namespace InsaworldIHM
     {
         string buttonSelected = "";
         StackPanel sp;
+        MainPage page;
 
-        public SaveChoice()
+        public SaveChoice(MainPage p)
         {
             //NotFoundDirectoryException à gérer : si pas de directory --> pas de save --> message utilisateur
             InitializeComponent();
             InitializeScrollViewer();
+            page = p;
         }
 
         private void InitializeScrollViewer()
@@ -66,7 +68,6 @@ namespace InsaworldIHM
 
         private void Quit(object sender, RoutedEventArgs e)
         {
-            var page = new MainPage();
             Application.Current.MainWindow.Content = page;
         }
 

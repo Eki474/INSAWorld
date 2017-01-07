@@ -39,6 +39,10 @@ namespace InsaworldIHM
                 lostName.Text = p1.Name;
                 lostPoints.Text = "Points : " + p1.Points;
             }
+
+            InsaworldIHM.MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.SoundPlayer.Open(new Uri(@Environment.CurrentDirectory + @"\Ressources\sounds\victory.mp3"));
+            mainWindow.SoundPlayer.Play();
         }
 
         public Game Game
@@ -58,6 +62,7 @@ namespace InsaworldIHM
         {
             var newPage = new MainPage();
             Application.Current.MainWindow.Content = newPage;
+            InsaworldIHM.MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
         }
     }
 }

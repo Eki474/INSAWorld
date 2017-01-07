@@ -29,11 +29,11 @@ namespace InsaworldIHM
         private int raceJ2;
         private string nameJ1;
         private string nameJ2;
-
+        private MainPage page;
         /// <summary>
         /// sonstructor
         /// </summary>
-        public RaceChoice()
+        public RaceChoice(MainPage p)
         {
             InitializeComponent();
             joueur = 1;
@@ -42,6 +42,7 @@ namespace InsaworldIHM
             raceJ2 = -1;
             nameJ1 = "";
             nameJ2 = "";
+            page = p;
     }
 
         /// <summary>
@@ -51,7 +52,6 @@ namespace InsaworldIHM
         /// <param name="e"></param>
         private void menu_Click(object sender, RoutedEventArgs e)
         {
-            var page = new MainPage();
             mainWindow.Content = page;
         }
 

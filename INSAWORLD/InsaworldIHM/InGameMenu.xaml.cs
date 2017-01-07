@@ -52,6 +52,8 @@ namespace InsaworldIHM
         {
             var page = new MainPage();
             Application.Current.MainWindow.Content= page;
+            InsaworldIHM.MainWindow m =(MainWindow)Application.Current.MainWindow;
+            m.SoundPlayer.Stop();
         }
 
         private void saveReplay_Click(object sender, RoutedEventArgs e)

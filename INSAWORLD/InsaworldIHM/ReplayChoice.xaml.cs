@@ -27,6 +27,14 @@ namespace InsaworldIHM
         Game game;
         string buttonSelected = "";
         StackPanel sp;
+        MainPage page;
+
+        public ReplayChoice(MainPage p)
+        {
+            InitializeComponent();
+            InitializeScrollViewer();
+            page = p;
+        }
 
         public bool IsCompleted
         {
@@ -59,13 +67,7 @@ namespace InsaworldIHM
                 throw new NotImplementedException();
             }
         }
-
-        public ReplayChoice()
-        {
-            //TODO NotFoundDirectoryException à gérer : si pas de directory --> pas de save --> message utilisateur
-            InitializeComponent();
-            InitializeScrollViewer();
-        }
+        
 
         private void InitializeScrollViewer()
         {
@@ -97,43 +99,9 @@ namespace InsaworldIHM
             var loaded = new GameBoard(ref game, true);
             Application.Current.MainWindow.Content = loaded;
         }
-        /*
-        private void updateCoord(ref Game g, ref GameBoard gb)
-        {
-            foreach(Unit u in g.Player1.UnitsList.Concat(g.Player2.UnitsList))
-            {
-                Image i = gb.getImageToUnit(u);
-                Grid.SetColumn(i, u.C.Y);
-                Grid.SetRow(i, u.C.X);
-            }
-        }
-
-        private void viewReplay()
-        {
-            var loaded = new GameBoard(ref game);
-            Application.Current.MainWindow.Content = loaded;
-            foreach (ToCollect cmd in game.Rpz.Step)
-            {
-                cmd.ExecuteReplay();
-                switch (cmd.GetType().ToString())
-                {
-                    case "NextTurn":
-                        var nt = (NextTurn)cmd;
-                        
-                        break;
-                    case "AttackUnit":
-                        var au = (AttackUnit)cmd;
-                        break;
-                    case "MoveUnit":
-                        var mu = (MoveUnit)cmd;
-                        break;
-                }
-            }
-        }*/
 
         private void Quit(object sender, RoutedEventArgs e)
         {
-            var page = new MainPage();
             Application.Current.MainWindow.Content = page;
         }
 

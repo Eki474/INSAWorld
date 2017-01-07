@@ -24,6 +24,8 @@ namespace InsaworldIHM
         public MainPage()
         {
             InitializeComponent();
+            mainWindow.SoundPlayer.Open(new Uri(@Environment.CurrentDirectory + @"\Ressources\sounds\start.mp3"));
+            mainWindow.SoundPlayer.Play();
         }
 
         /// <summary>
@@ -33,7 +35,7 @@ namespace InsaworldIHM
         /// <param name="e"></param>
         private void newGame_Click(object sender, RoutedEventArgs e)
         {
-            RaceChoice page = new RaceChoice();
+            RaceChoice page = new RaceChoice(this);
             mainWindow.Content = page;
         }
 
@@ -54,7 +56,7 @@ namespace InsaworldIHM
         /// <param name="e"></param>
         private void replay_Click(object sender, RoutedEventArgs e)
         {
-            var page = new ReplayChoice();
+            var page = new ReplayChoice(this);
             mainWindow.Content = page;
         }
 
@@ -65,7 +67,7 @@ namespace InsaworldIHM
         /// <param name="e"></param>
         private void load_Click(object sender, RoutedEventArgs e)
         {
-            var page = new SaveChoice();
+            var page = new SaveChoice(this);
             mainWindow.Content = page;
         }
     }

@@ -315,9 +315,15 @@
     <Content Include="Ressources\sounds\centaur.wav" />
     <Content Include="Ressources\sounds\cerberus.wav" />
     <Content Include="Ressources\sounds\cyclops.wav" />
-    <Content Include="Ressources\sounds\menu_song.mp3" />
-    <Content Include="Ressources\sounds\menu_song.wav" />
-    <Content Include="Ressources\sounds\menu_song.wma" />
+    <Content Include="Ressources\sounds\menu_song.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Ressources\sounds\start.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Ressources\sounds\victory.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Ressources\images\textures\desert_reduced_selected.jpg" />
     <Resource Include="Ressources\images\textures\plain_reduced_selected.png" />
     <Resource Include="Ressources\images\textures\swamp_reduced_selected.jpg" />

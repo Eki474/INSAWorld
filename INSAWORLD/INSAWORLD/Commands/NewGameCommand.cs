@@ -11,6 +11,15 @@ namespace INSAWORLD
         private int type; //map type
         private Coord initP1; //initial coord of player1 
         private Coord initP2; //initial coord of player2 
+        private String typeName = "NewGameCommand";
+
+        public string TypeName
+        {
+            get
+            {
+                return typeName;
+            }
+        }
 
         /// <summary>
         /// constructor

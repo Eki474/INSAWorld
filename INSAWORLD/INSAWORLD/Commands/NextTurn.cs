@@ -9,7 +9,15 @@ namespace INSAWORLD
     {
         private Game game; //game
         private bool nbTurn; //true if game win by a player false if not
+        private String typeName = "NextTurn";
 
+        public string TypeName
+        {
+            get
+            {
+                return typeName;
+            }
+        }
         /// <summary>
         /// constructor
         /// </summary>

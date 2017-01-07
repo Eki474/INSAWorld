@@ -16,6 +16,24 @@ namespace INSAWORLD
         /// <param name="game">reference to the game</param>
         private Game game;
 
+        private String typeName = "AttackUnit";
+
+        public string TypeName
+        {
+            get
+            {
+                return typeName;
+            }
+        }
+
+        public Unit Unit
+        {
+            get
+            {
+                return unit;
+            }
+        }
+
         /// <summary>
         /// constructor
         /// </summary>

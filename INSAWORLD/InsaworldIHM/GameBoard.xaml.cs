@@ -82,14 +82,15 @@ namespace InsaworldIHM
             UnitsPlacement();
             UpdateLeftSideView();
             mainWindow.Content = board;
+            mainWindow.SoundPlayer.Open(new Uri(@Environment.CurrentDirectory + @"\Ressources\sounds\menu_song.wma"));
+            mainWindow.SoundPlayer.Play();
             if (replayGame)
             {
                 ReplayAsync();
             }else
             {
 
-                mainWindow.SoundPlayer.Open(new Uri(@Environment.CurrentDirectory + @"\Ressources\sounds\menu_song.wma"));
-                mainWindow.SoundPlayer.Play();
+                
                 map_view.MouseLeftButtonDown += map_viewLeftDown;
                 map_view.MouseRightButtonDown += map_viewRightDown;
             }
@@ -102,12 +103,18 @@ namespace InsaworldIHM
             foreach(ToCollect cmd in g.Rpz.Step)
             {
                 cmd.ExecuteReplay();
+                if(cmd.TypeName.Equals("AttackUnit"))
+                {
+                    unitToImage[((AttackUnit)cmd).Unit].Play();
+                }
                 UpdateUnitsPlacement();
                 UpdateRecapTabReplay();//TODO: recap on left side view
                 await Task.Delay(1000);
             }
             next_button_Click(null, null);
             next_button.Visibility = Visibility.Visible;
+            map_view.MouseLeftButtonDown += map_viewLeftDown;
+            map_view.MouseRightButtonDown += map_viewRightDown;
         }
 
         private void UpdateUnitsPlacement()

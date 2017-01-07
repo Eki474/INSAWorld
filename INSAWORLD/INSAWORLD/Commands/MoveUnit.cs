@@ -9,6 +9,15 @@ namespace INSAWORLD
         private Unit unit; // unit to move
         private Coord dest; // destination to move to
         private Game game; // game
+        private String typeName = "MoveUnit";
+
+        public string TypeName
+        {
+            get
+            {
+                return typeName;
+            }
+        }
 
         /// <summary>
         /// constructor

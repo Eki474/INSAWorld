@@ -8,6 +8,10 @@ namespace INSAWORLD
     public interface ToCollect
     {
         //action collector for replay
+        string TypeName
+        {
+            get;
+        }
         string ToString();
         void ExecuteReplay();
     }

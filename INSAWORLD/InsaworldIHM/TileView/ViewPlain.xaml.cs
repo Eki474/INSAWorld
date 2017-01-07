@@ -22,17 +22,29 @@ namespace InsaworldIHM.TileView
     public partial class ViewPlain : ViewTile
     {
         Uri source; Uri sourceselected;
+
+        /// <summary>
+        /// constructor
+        /// </summary>
          public ViewPlain() : base()
         {
              source = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/plain_reduced.png");
              sourceselected = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/plain_reduced_selected.png");
             Source = new BitmapImage(source);
         }
+
+        /// <summary>
+        /// to select a tile (give the good image to display)
+        /// </summary>
         override
         public void Select()
         {
             Source = new BitmapImage(sourceselected);
         }
+
+        /// <summary>
+        /// to select a tile (give the good image to display)
+        /// </summary>
         override
         public void Unselect()
         {

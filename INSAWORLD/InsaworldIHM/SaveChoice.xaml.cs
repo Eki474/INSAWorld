@@ -27,6 +27,10 @@ namespace InsaworldIHM
         StackPanel sp;
         MainPage page;
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="p">main page</param>
         public SaveChoice(MainPage p)
         {
             //NotFoundDirectoryException à gérer : si pas de directory --> pas de save --> message utilisateur
@@ -35,6 +39,9 @@ namespace InsaworldIHM
             page = p;
         }
 
+        /// <summary>
+        /// initialize the view with the files
+        /// </summary>
         private void InitializeScrollViewer()
         {
             ScrollViewer sc = scrollchoice;
@@ -57,6 +64,11 @@ namespace InsaworldIHM
             sc.Content = sp;
         }
 
+        /// <summary>
+        /// handler for the load button which load a selected save, appears only if one selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonLoad_Click(object sender, RoutedEventArgs e)
         {
             var cmd = new LoadCommand(buttonSelected);
@@ -66,11 +78,21 @@ namespace InsaworldIHM
             Application.Current.MainWindow.Content = loaded;
         }
 
+        /// <summary>
+        /// handler to quit the game 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Quit(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.Content = page;
         }
 
+        /// <summary>
+        /// handler to delete a selected save
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
             bool found = File.Exists(Directory.GetCurrentDirectory() + @"\Save\" + buttonSelected + ".txt");
@@ -78,6 +100,11 @@ namespace InsaworldIHM
             InitializeScrollViewer();
         }
 
+        /// <summary>
+        /// to select a save
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toggleButtonClick(object sender, RoutedEventArgs e)
         {
             var tglbtn = (ToggleButton)sender;

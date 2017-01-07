@@ -23,6 +23,12 @@ namespace InsaworldIHM
     {
         private Game game;
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="winner">true : Player 1 wins - false Player 2 wins</param>
+        /// <param name="p1">Player 1</param>
+        /// <param name="p2">Player 2</param>
         public EndingPage(bool winner, Player p1, Player p2)
         {
             InitializeComponent();
@@ -45,12 +51,20 @@ namespace InsaworldIHM
             mainWindow.SoundPlayer.Play();
         }
 
+        /// <summary>
+        /// Game getter and setter
+        /// </summary>
         public Game Game
         {
             get { return game; }
             set { game = value; }
         }
 
+        /// <summary>
+        /// To save replay of the complete game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void replaySave_Click(object sender, RoutedEventArgs e)
         {
             var newWindow = new SaveReplayWindow();
@@ -58,6 +72,11 @@ namespace InsaworldIHM
             newWindow.ShowDialog();
         }
 
+        /// <summary>
+        /// To go to the main main on the start page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mainMenu_Click(object sender, RoutedEventArgs e)
         {
             var newPage = new MainPage();

@@ -21,17 +21,18 @@ namespace InsaworldIHM
     /// </summary>
     public partial class RaceChoice : Page
     {
-        // know which player is choosing
-        private int joueur;
-        MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-        private int map;
-        private int raceJ1;
-        private int raceJ2;
-        private string nameJ1;
-        private string nameJ2;
+        
+        private int joueur;// know which player is choosing
+        MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;//main window
+        private int map;//map type
+        private int raceJ1;//race for Player 1
+        private int raceJ2;//race for Player 2
+        private string nameJ1;//name for Player 1
+        private string nameJ2;//name for Player 2
         private MainPage page;
+
         /// <summary>
-        /// sonstructor
+        /// constructor
         /// </summary>
         public RaceChoice(MainPage p)
         {
@@ -181,7 +182,6 @@ namespace InsaworldIHM
             {
                 return;
             }
-            //TODO Change by a groupbutton?
             if (!(bool)buttonOkCentaurs.IsChecked)
             {
                 buttonCentaurs.Background = Brushes.White;

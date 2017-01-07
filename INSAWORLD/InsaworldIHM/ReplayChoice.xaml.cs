@@ -29,6 +29,10 @@ namespace InsaworldIHM
         StackPanel sp;
         MainPage page;
 
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="p">get main page</param>
         public ReplayChoice(MainPage p)
         {
             InitializeComponent();
@@ -43,7 +47,6 @@ namespace InsaworldIHM
                 throw new NotImplementedException();
             }
         }
-
         public WaitHandle AsyncWaitHandle
         {
             get
@@ -51,7 +54,6 @@ namespace InsaworldIHM
                 throw new NotImplementedException();
             }
         }
-
         public object AsyncState
         {
             get
@@ -59,7 +61,6 @@ namespace InsaworldIHM
                 throw new NotImplementedException();
             }
         }
-
         public bool CompletedSynchronously
         {
             get
@@ -68,7 +69,9 @@ namespace InsaworldIHM
             }
         }
         
-
+        /// <summary>
+        /// to initialize the view of the files to load
+        /// </summary>
         private void InitializeScrollViewer()
         {
             ScrollViewer sc = scrollchoice;
@@ -91,6 +94,11 @@ namespace InsaworldIHM
             sc.Content = sp;
         }
 
+        /// <summary>
+        /// to load a save (represented by buttons), appears only when a save is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonLoad_Click(object sender, RoutedEventArgs e)
         {
             var cmd = new LoadReplayCommand(buttonSelected);
@@ -100,11 +108,21 @@ namespace InsaworldIHM
             Application.Current.MainWindow.Content = loaded;
         }
 
+        /// <summary>
+        /// to quit the save replay window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Quit(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.Content = page;
         }
 
+        /// <summary>
+        /// to delete the selected replay
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
             File.Delete(Directory.GetCurrentDirectory() + @"\Replay\" + buttonSelected + ".Game.txt");
@@ -112,6 +130,11 @@ namespace InsaworldIHM
             InitializeScrollViewer();
         }
 
+        /// <summary>
+        /// to select a save
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toggleButtonClick(object sender, RoutedEventArgs e)
         {
             var tglbtn = (ToggleButton)sender;

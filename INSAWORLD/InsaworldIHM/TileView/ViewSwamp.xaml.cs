@@ -22,17 +22,29 @@ namespace InsaworldIHM.TileView
     public partial class ViewSwamp : ViewTile
     {
         Uri source; Uri sourceselected;
+
+        /// <summary>
+        /// constructor
+        /// </summary>
         public ViewSwamp() : base()
         {
             source = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/swamp_reduced.png");
             sourceselected = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/swamp_reduced_selected.jpg");
             Source = new BitmapImage(source);
         }
+
+        /// <summary>
+        /// to select a tile (give the good image to display)
+        /// </summary>
         override
          public void Select()
         {
             Source = new BitmapImage(sourceselected);
         }
+
+        /// <summary>
+        /// to select a tile (give the good image to display)
+        /// </summary>
         override
         public void Unselect()
         {

@@ -25,18 +25,28 @@ namespace InsaworldIHM
         Game game;
         string buttonSelected = "";
         StackPanel sp;
+
+        /// <summary>
+        /// constructor
+        /// </summary>
         public SaveWindow()
         {
             InitializeComponent();
             InitializeScrollViewer();
         }
 
+        /// <summary>
+        /// accessors for the game
+        /// </summary>
         public Game Game
         {
             get { return game; }
             set { game = value; }
         }
 
+        /// <summary>
+        /// to initialize view with existing files
+        /// </summary>
         private void InitializeScrollViewer()
         {
             ScrollViewer sc = scrollchoice;
@@ -52,9 +62,12 @@ namespace InsaworldIHM
             }
             sc.Content = sp;
         }
-
       
-
+        /// <summary>
+        /// to retrieve the name of the save given in the textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var txtbox = (TextBox)sender;
@@ -67,7 +80,12 @@ namespace InsaworldIHM
                 buttonSave.Visibility = Visibility.Visible;
             }
         }
-
+        
+        /// <summary>
+        /// to save the game, appears only if name given
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             var cmd = new SaveCommand(ref game, textBoxSave.Text);
@@ -75,11 +93,21 @@ namespace InsaworldIHM
             this.Close();
         }
 
+        /// <summary>
+        /// to quit the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Quit(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// to delete the selected save
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
             bool found = File.Exists(Directory.GetCurrentDirectory() + @"\Save\" + buttonSelected + ".txt");
@@ -87,6 +115,11 @@ namespace InsaworldIHM
             InitializeScrollViewer();
         }
 
+        /// <summary>
+        /// to select a save
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toggleButtonClick(object sender, RoutedEventArgs e)
         {
             var tglbtn = (ToggleButton)sender;

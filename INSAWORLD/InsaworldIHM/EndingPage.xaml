@@ -36,6 +36,7 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
 
+                <!-- Save for replay button -->
                 <Viewbox Stretch="Uniform" MinWidth="75" StretchDirection="Both" Grid.Column="0" >
                     <Button x:Name="replaySave" Content="Save for replay" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="Auto" Width="Auto"  Style="{DynamicResource Blank}" Foreground="White" Click="replaySave_Click" MinHeight="18">
                         <Button.Background>
@@ -43,6 +44,7 @@
                     </Button.Background>
                     </Button>
                 </Viewbox>
+                <!-- Button to get back to main menu on start page -->
                 <Viewbox Stretch="Uniform" MinWidth="75" StretchDirection="Both" Grid.Column="1" >
                     <Button x:Name="mainMenu" Content="Back to main menu" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="Auto" Width="Auto"  MinWidth="75" Style="{DynamicResource Blank}" Foreground="White" Click="mainMenu_Click" MinHeight="18">
                     <Button.Background>
@@ -53,6 +55,7 @@
 
             </Grid>
 
+            <!-- Player 1 loose/win display -->
             <Viewbox StretchDirection="Both"   HorizontalAlignment="Stretch" Grid.Row="2">
                 <TextBlock  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource Square}" Width="Auto" Foreground="White" Visibility="Visible" Height="Auto" Margin="4,0,4,0">Winner</TextBlock>
             </Viewbox>
@@ -77,6 +80,7 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
+            <!-- Player 2 loose/win display -->
             <Viewbox StretchDirection="Both"   HorizontalAlignment="Stretch" Grid.Row="1">
                 <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource Square}" Width="Auto" Foreground="White" Visibility="Visible" Height="Auto" Margin="4,0,4,0">Loser</TextBlock>
             </Viewbox>

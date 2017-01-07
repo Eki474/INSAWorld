@@ -14,6 +14,7 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch" Name="scrollchoice" Background="SlateGray" />
+        <!-- textbox to give a name to the save -->
         <TextBox x:Name="textBoxSave"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,0" Grid.Row="1" TextChanged="TextBox_TextChanged" Text="" />
 
         <Grid Grid.Row="2">
@@ -22,12 +23,15 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
+            <!-- to quit the save window -->
             <Viewbox Grid.Column="0" Stretch="Uniform" Margin="0,2,0,2">
                 <Button x:Name="buttonQuit" Content="Back" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Quit"/>
             </Viewbox>
+            <!-- to save with the given name -->
             <Viewbox x:Name="buttonSave" Grid.Column="2" Stretch="Uniform" Margin="0,2,0,2" Visibility="Hidden">
                 <Button  Content="Save" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="buttonSave_Click"/>
             </Viewbox>
+            <!-- to delete a save -->
             <Viewbox x:Name="buttonDelete" Grid.Column="1" Stretch="Uniform" Margin="0,2,0,2" Visibility="Hidden">
                 <Button  Content="Delete" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="buttonDelete_Click"/>
             </Viewbox>

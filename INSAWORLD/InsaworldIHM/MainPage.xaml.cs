@@ -21,6 +21,10 @@ namespace InsaworldIHM
     public partial class MainPage : Page
     {
         MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+
+        /// <summary>
+        /// constructor
+        /// </summary>
         public MainPage()
         {
             InitializeComponent();

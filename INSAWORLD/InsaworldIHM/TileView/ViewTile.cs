@@ -9,7 +9,13 @@ namespace InsaworldIHM.TileView
 {
     public abstract class ViewTile : Image
     {
+        /// <summary>
+        /// select a tile
+        /// </summary>
         public abstract void Select();
+        /// <summary>
+        /// unselect a tile
+        /// </summary>
         public abstract void Unselect();
     }
 }

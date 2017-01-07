@@ -23,17 +23,30 @@ namespace InsaworldIHM.TileView
     {
         Uri source;
         Uri sourceselected;
-         public ViewDesert() : base()
+
+
+        /// <summary>
+        /// constructor
+        /// </summary>
+        public ViewDesert() : base()
         {
             source = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/desert_reduced.jpg");
             sourceselected = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/desert_reduced_selected.jpg");
             Source = new BitmapImage(source);
         }
+
+        /// <summary>
+        /// to select a tile (give the good image to display)
+        /// </summary>
         override
         public void Select()
         {
             Source = new BitmapImage(sourceselected);
         }
+
+        /// <summary>
+        /// to select a tile (give the good image to display)
+        /// </summary>
         override
         public void Unselect()
         {

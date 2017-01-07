@@ -22,7 +22,11 @@ namespace InsaworldIHM
     public partial class MainWindow :Window
     {
 
-        private MediaPlayer soundPlayer = new MediaPlayer();
+        private MediaPlayer soundPlayer = new MediaPlayer();//for background music
+
+        /// <summary>
+        /// constructor
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +34,9 @@ namespace InsaworldIHM
             soundPlayer.MediaEnded += new EventHandler(Media_Ended);
         }
 
+        /// <summary>
+        /// accessors for SoundPlayer
+        /// </summary>
         public MediaPlayer SoundPlayer
         {
             get { return soundPlayer; }

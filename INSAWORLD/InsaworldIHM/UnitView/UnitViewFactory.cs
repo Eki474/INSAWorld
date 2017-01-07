@@ -10,6 +10,10 @@ namespace InsaworldIHM.UnitView
     class UnitViewFactory
     {
         private static UnitViewFactory instance;
+
+        /// <summary>
+        /// singleton
+        /// </summary>
         public static UnitViewFactory Instance
         {
             get
@@ -22,6 +26,11 @@ namespace InsaworldIHM.UnitView
             }
         }
 
+        /// <summary>
+        /// to build unitsview
+        /// </summary>
+        /// <param name="r"></param>
+        /// <returns></returns>
         public ViewUnit build(String r)
         {
             switch (r)

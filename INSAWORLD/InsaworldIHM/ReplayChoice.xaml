@@ -23,12 +23,15 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
+            <!-- button to quit save replay window-->
             <Viewbox Grid.Column="0" Stretch="Uniform" Margin="0,2,0,2">
                 <Button x:Name="buttonQuit" Content="Back" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Quit"/>
             </Viewbox>
+            <!-- button button to load a save, appears only if one selected -->
             <Viewbox x:Name="buttonLoad" Grid.Column="2" Stretch="Uniform" Margin="0,2,0,2" Visibility="Hidden">
                 <Button  Content="Load" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="buttonLoad_Click"/>
             </Viewbox>
+            <!-- to delete the selected save -->
             <Viewbox x:Name="buttonDelete" Grid.Column="1" Stretch="Uniform" Margin="0,2,0,2" Visibility="Hidden">
                 <Button  Content="Delete" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="buttonDelete_Click"/>
             </Viewbox>

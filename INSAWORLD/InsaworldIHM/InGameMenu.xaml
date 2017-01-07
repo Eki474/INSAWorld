@@ -29,18 +29,24 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
+        
+        <!-- Save button -->
         <Viewbox Stretch="Uniform" StretchDirection="Both" Grid.Row="0">
             <Button x:Name="save" Content="Save" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="save_Click"/>
         </Viewbox>
+        <!-- to go back to title screen button -->
         <Viewbox Stretch="Uniform" StretchDirection="Both"  Grid.Row="6">
             <Button x:Name="load" Content="Back to title screen" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="load_Click"/>
         </Viewbox>
+        <!-- to save the game as a replay -->
         <Viewbox Stretch="Uniform" StretchDirection="Both"  Grid.Row="2">
                 <Button x:Name="saveReplay" Content="Save for replay" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="saveReplay_Click"/>
         </Viewbox>
+        <!-- to quit the game -->
         <Viewbox Stretch="Uniform" StretchDirection="Both" Grid.Row="8">
                     <Button x:Name="quit" Content="Quit" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="quit_Click" />
         </Viewbox>
+        <!-- to go back in the game -->
         <Viewbox Stretch="Uniform" StretchDirection="Both" Grid.Row="4">
             <Button x:Name="back" Content="Back to game" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="back_Click" />
         </Viewbox>

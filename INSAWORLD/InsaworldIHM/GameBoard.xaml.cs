@@ -26,18 +26,16 @@ namespace InsaworldIHM
     /// </summary>
     public partial class GameBoard : Page
     {
-        MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-        Game g;
-        double maxTurn;
-        int turn;
-        Unit selected = null;
-        Dictionary<Unit, ViewUnit> unitToImage;
-        Dictionary<Coord, TileView.ViewTile> coordToTileView;
-        List<Coord> selectedImage = new List<Coord>();
-        Grid container = null;
-        List<Unit> unitsToSelect;
-        
-        //private SoundPlayer mediaPlayer;
+        MainWindow mainWindow = (MainWindow)Application.Current.MainWindow; //main window of the application
+        Game g; //game which is currently played of replayed
+        double maxTurn; //maximum number of turn of the game
+        int turn;//current turn
+        Unit selected = null;//currently selected unit
+        Dictionary<Unit, ViewUnit> unitToImage;//dictionary containing a unit and its view : Key Unit - Value View
+        Dictionary<Coord, TileView.ViewTile> coordToTileView;//dictionary associating a tile view to its coordinates : Key Coord - Value Tile View
+        List<Coord> selectedImage = new List<Coord>();//list of Coord of the selected Image
+        Grid container = null;//grid containing the map
+        List<Unit> unitsToSelect;//unit on the tile we want to select (to choose which unit to select for example)
 
         /// <summary>
         /// constructor, create the game
@@ -68,9 +66,10 @@ namespace InsaworldIHM
         }
 
         /// <summary>
-        /// constructor, load a game
+        /// constructor, load a game (or replay)
         /// </summary>
         /// <param name="game">loaded game</param>
+        /// <param name="replayGame">true : replay - false : normal save</param>
         public GameBoard(ref Game game, bool replayGame)
         {
             
@@ -89,13 +88,14 @@ namespace InsaworldIHM
                 ReplayAsync();
             }else
             {
-
-                
                 map_view.MouseLeftButtonDown += map_viewLeftDown;
                 map_view.MouseRightButtonDown += map_viewRightDown;
             }
         }
         
+        /// <summary>
+        /// ASYNC method which replay the game (1sec. delay between actions)
+        /// </summary>
         private async void ReplayAsync()
         {
             next_button.Visibility = Visibility.Hidden;
@@ -108,7 +108,7 @@ namespace InsaworldIHM
                     unitToImage[((AttackUnit)cmd).Unit].Play();
                 }
                 UpdateUnitsPlacement();
-                UpdateRecapTabReplay();//TODO: recap on left side view
+                UpdateRecapTabReplay();
                 await Task.Delay(1000);
             }
             next_button_Click(null, null);
@@ -117,6 +117,9 @@ namespace InsaworldIHM
             map_view.MouseRightButtonDown += map_viewRightDown;
         }
 
+        /// <summary>
+        /// for replay, to place units on board at each turn and each change
+        /// </summary>
         private void UpdateUnitsPlacement()
         {
             Unit toErase = null;
@@ -218,7 +221,7 @@ namespace InsaworldIHM
         }
 
         /// <summary>
-        /// units placements on the map (used to load a save)
+        /// units placements on the map to load a save
         /// </summary>
         private void UnitsPlacement()
         {
@@ -296,6 +299,10 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// generate left side view for a replay
+        /// recap tab with life points and move points of all units on the board, for each player
+        /// </summary>
         private void UpdateRecapTabReplay()
         {
             maxTurn = BuilderMap.Instance.getMaxTurn(g.Map.Taille);
@@ -577,6 +584,11 @@ namespace InsaworldIHM
             Grid.SetRow(i, selected.C.X);
         }
 
+        /// <summary>
+        /// obtain the Image object corresponding to a unit
+        /// </summary>
+        /// <param name="u">unit targetted</param>
+        /// <returns>Image of the unit</returns>
         public Image getImageToUnit(Unit u)
         {
             return unitToImage[u];
@@ -683,7 +695,7 @@ namespace InsaworldIHM
         /// <summary>
         /// select unit on grid and update its view
         /// </summary>
-        /// <param name="u"></param>
+        /// <param name="u">unit to select</param>
         private void select(Unit u)
         {
             if (!object.ReferenceEquals(selected, null))
@@ -698,6 +710,9 @@ namespace InsaworldIHM
             updateTextSpec();
         }
 
+        /// <summary>
+        /// display suggested moves for the selected unit
+        /// </summary>
         private void suggestMoveTile()
         {
             var listString = BuilderMap.Instance.suggestMove(ref g, selected);
@@ -732,6 +747,9 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// To unselect a tile
+        /// </summary>
         private void unselectTiles()
         {
             foreach(Coord c in selectedImage)
@@ -739,7 +757,6 @@ namespace InsaworldIHM
                 coordToTileView[c].Unselect();
             }
         }
-
 
         /// <summary>
         /// display spec of the selected unit

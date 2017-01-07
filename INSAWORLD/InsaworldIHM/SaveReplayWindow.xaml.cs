@@ -25,18 +25,27 @@ namespace InsaworldIHM
         Game game;
         string buttonSelected = "";
         StackPanel sp;
+        /// <summary>
+        /// constructor
+        /// </summary>
         public SaveReplayWindow()
         {
             InitializeComponent();
             InitializeScrollViewer();
         }
 
+        /// <summary>
+        /// accessors for game
+        /// </summary>
         public Game Game
         {
             get { return game; }
             set { game = value; }
         }
 
+        /// <summary>
+        /// initialize view of existing files
+        /// </summary>
         private void InitializeScrollViewer()
         {
             ScrollViewer sc = scrollchoice;
@@ -53,8 +62,11 @@ namespace InsaworldIHM
             sc.Content = sp;
         }
 
-
-
+        /// <summary>
+        /// retrieve save name given in the text box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var txtbox = (TextBox)sender;
@@ -68,6 +80,11 @@ namespace InsaworldIHM
             }
         }
 
+        /// <summary>
+        /// to save the file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             var cmd = new SaveReplayCommand(textBoxSave.Text, ref game);
@@ -75,11 +92,21 @@ namespace InsaworldIHM
             this.Close();
         }
 
+        /// <summary>
+        /// to quit the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Quit(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// to delete a selected save
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
             File.Delete(Directory.GetCurrentDirectory() + @"\Replay\" + buttonSelected + ".Game.txt");
@@ -87,6 +114,11 @@ namespace InsaworldIHM
             InitializeScrollViewer();
         }
 
+        /// <summary>
+        /// to select a saved file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toggleButtonClick(object sender, RoutedEventArgs e)
         {
             var tglbtn = (ToggleButton)sender;

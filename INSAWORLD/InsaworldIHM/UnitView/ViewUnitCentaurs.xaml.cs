@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,11 +24,13 @@ namespace InsaworldIHM.UnitView
     {
         Uri source;
         Uri sourceselected;
+        SoundPlayer player;
         public ViewUnitCentaurs() : base()
         {
             source = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaur.png");
             sourceselected = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaurselected.jpg");
             Source = new BitmapImage(source);
+            player = new SoundPlayer(InsaworldIHM.Properties.Resources.centaur);
         }
         override
         public void Select()
@@ -38,6 +41,11 @@ namespace InsaworldIHM.UnitView
         public void Unselect()
         {
             Source = new BitmapImage(source);
+        }
+
+        public override void Play()
+        {
+            player.Play();
         }
     }
 }

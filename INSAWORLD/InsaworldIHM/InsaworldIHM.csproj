@@ -312,6 +312,9 @@
       <Link>INSAWORLDCPP2.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Ressources\sounds\centaur.wav" />
+    <Content Include="Ressources\sounds\cerberus.wav" />
+    <Content Include="Ressources\sounds\cyclops.wav" />
     <Content Include="Ressources\sounds\menu_song.wav" />
     <Resource Include="Ressources\images\textures\desert_reduced_selected.jpg" />
     <Resource Include="Ressources\images\textures\plain_reduced_selected.png" />

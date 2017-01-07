@@ -15,6 +15,7 @@ using INSAWORLD;
 using System.Windows.Controls.Primitives;
 using InsaworldIHM.TileView;
 using System.Media;
+using InsaworldIHM.UnitView;
 
 namespace InsaworldIHM
 {
@@ -28,7 +29,7 @@ namespace InsaworldIHM
         double maxTurn;
         int turn;
         Unit selected = null;
-        Dictionary<Unit, Image> unitToImage;
+        Dictionary<Unit, ViewUnit> unitToImage;
         Dictionary<Coord, TileView.ViewTile> coordToTileView;
         List<Coord> selectedImage = new List<Coord>();
         Grid container = null;
@@ -175,25 +176,25 @@ namespace InsaworldIHM
         /// </summary>
         private void UnitsInitialization()
         {
-            unitToImage = new Dictionary<Unit, Image>();
+            unitToImage = new Dictionary<Unit, ViewUnit>();
             var c1 = g.Player1.UnitsList.First();
             string r1 = g.Player1.RacePlay.Type;
             var c2 = g.Player2.UnitsList.First();
             string r2 = g.Player2.RacePlay.Type;
             for (int i = 0; i < g.Player1.UnitsList.Count; i++)
             {
-                Image u1 = new Image();
-                unitToImage.Add(g.Player1.UnitsList[i], u1);
+                Unit u = g.Player1.UnitsList[i];
+                ViewUnit u1 = UnitViewFactory.Instance.build(u.Race.Type);
+                unitToImage.Add(u, u1);
                 u1.Stretch = Stretch.Uniform;
-                u1.Source = selectImageRace(r1);
                 Grid.SetColumn(u1, c1.C.Y);
                 Grid.SetRow(u1, c1.C.X);
                 map_view.Children.Add(u1);
 
-                Image u2 = new Image();
-                unitToImage.Add(g.Player2.UnitsList[i], u2);
+                u = g.Player2.UnitsList[i];
+                ViewUnit u2 = UnitViewFactory.Instance.build(u.Race.Type);
+                unitToImage.Add(u, u2);
                 u2.Stretch = Stretch.Uniform;
-                u2.Source = selectImageRace(r2);
                 Grid.SetColumn(u2, c2.C.Y);
                 Grid.SetRow(u2, c2.C.X);
                 map_view.Children.Add(u2);
@@ -205,25 +206,23 @@ namespace InsaworldIHM
         /// </summary>
         private void UnitsPlacement()
         {
-            unitToImage = new Dictionary<Unit, Image>();
+            unitToImage = new Dictionary<Unit, ViewUnit>();
             string r1 = g.Player1.RacePlay.Type;
             string r2 = g.Player2.RacePlay.Type;
             foreach (Unit u in g.Player1.UnitsList)
             {
-                Image u1 = new Image();
+                ViewUnit u1 = UnitViewFactory.Instance.build(u.Race.Type);
                 unitToImage.Add(u, u1);
                 u1.Stretch = Stretch.Uniform;
-                u1.Source = selectImageRace(r1);
                 Grid.SetColumn(u1, u.C.Y);
                 Grid.SetRow(u1, u.C.X);
                 map_view.Children.Add(u1);
             }
             foreach (Unit u in g.Player2.UnitsList)
             {
-                Image u2 = new Image();
+                ViewUnit u2 = UnitViewFactory.Instance.build(u.Race.Type);
                 unitToImage.Add(u, u2);
                 u2.Stretch = Stretch.Uniform;
-                u2.Source = selectImageRace(r2);
                 Grid.SetColumn(u2, u.C.Y);
                 Grid.SetRow(u2, u.C.X);
                 map_view.Children.Add(u2);
@@ -427,7 +426,7 @@ namespace InsaworldIHM
         {
             if (!object.ReferenceEquals(selected, null) && selected.LifePoints > 0)
             {
-                unitToImage[selected].Source = selectImageRace(selected.Race.Type);
+                unitToImage[selected].Unselect();
             }
             selected = null;
     
@@ -620,10 +619,9 @@ namespace InsaworldIHM
                 var c = new ColumnDefinition();
                 c.Width = new GridLength(1, GridUnitType.Star);
                 container.ColumnDefinitions.Add(c);
-                Image image = new Image();
+                ViewUnit image = UnitViewFactory.Instance.build(unitsToSelect[i].Race.Type);
                 image.Stretch = Stretch.Uniform;
                 image.MouseDown += selectThisUnit;
-                image.Source = selectImageRace(r.Type);
                 Grid.SetColumn(image, i);
                 Grid.SetRow(image, 0);
                 //display life points bar
@@ -665,24 +663,6 @@ namespace InsaworldIHM
 
         }
 
-        /// <summary>
-        /// associate a selected unit to its view
-        /// </summary>
-        /// <param name="r">race of the unit</param>
-        /// <returns>selected image function of the race</returns>
-        private BitmapImage selectImageRace(string r)
-        {
-            switch (r)
-            {
-                case "Centaurs":
-                    return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaur.png"));
-                case "Cyclops":
-                    return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclop.png"));
-                case "Cerberus":
-                    return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png"));
-            }
-            return null;
-        }
 
         /// <summary>
         /// select unit on grid and update its view
@@ -697,7 +677,7 @@ namespace InsaworldIHM
             selected = u;
 
             unitToImage[selected].BringIntoView();
-            unitToImage[selected].Source = selectImageSelectedRace(u.Race.Type);
+            unitToImage[selected].Select();
             suggestMoveTile();
             updateTextSpec();
         }
@@ -772,30 +752,6 @@ namespace InsaworldIHM
             select(unitsToSelect[position]);
             e.Handled = true;
 
-        }
-
-
-
-        /// <summary>
-        /// associate a unselected unit to its view
-        /// </summary>
-        /// <param name="r"></param>
-        /// <returns>selected image function of the race</returns>
-        private BitmapImage selectImageSelectedRace(string r)
-        {
-            switch (r)
-            {
-                case "Centaurs":
-                    return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/centaurselected.jpg"));
-
-                case "Cyclops":
-                    return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclopselected.jpg"));
-
-                case "Cerberus":
-                    return new BitmapImage(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberusselected.jpg"));
-
-            }
-            return null;
         }
 
         /// <summary>

@@ -113,6 +113,17 @@
     <Compile Include="TileView\ViewPlain.xaml.cs">
       <DependentUpon>ViewPlain.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UnitView\UnitViewFactory.cs" />
+    <Compile Include="UnitView\ViewUnit.cs" />
+    <Compile Include="UnitView\ViewUnitCerberus.xaml.cs">
+      <DependentUpon>ViewUnitCerberus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UnitView\ViewUnitCyclop.xaml.cs">
+      <DependentUpon>ViewUnitCyclop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UnitView\ViewUnitCentaurs.xaml.cs">
+      <DependentUpon>ViewUnitCentaurs.xaml</DependentUpon>
+    </Compile>
     <Page Include="EndingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,6 +185,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TileView\ViewPlain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UnitView\ViewUnitCerberus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UnitView\ViewUnitCyclop.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UnitView\ViewUnitCentaurs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace InsaworldIHM.TileView
+namespace InsaworldIHM.UnitView
 {
-    public abstract class ViewTile : Image
+    public abstract partial class ViewUnit : Image
     {
         public abstract void Select();
         public abstract void Unselect();

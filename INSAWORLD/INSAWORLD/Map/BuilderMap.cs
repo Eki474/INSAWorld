@@ -35,6 +35,17 @@ namespace INSAWORLD
         
 
         private static BuilderMap instance;
+        public static BuilderMap Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new BuilderMap();
+                }
+                return instance;
+            }
+        }
         private bool disposed = false;
         private IntPtr nativeAlgo;
 
@@ -52,17 +63,7 @@ namespace INSAWORLD
             Algos_delete(nativeAlgo);
         }
 
-        public static BuilderMap Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new BuilderMap();
-                }
-                return instance;
-            }
-        }
+        
 
         /// <summary>
         /// create the object GameMap using c++ dll

@@ -80,7 +80,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Viewbox x:Name="recap_p1_replay_viewbox" StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Column="0" Visibility="Hidden">
-                        <TextBlock x:Name="recap_p1_replay" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Unit 1 : <LineBreak/>Unit 2 : </TextBlock>
+                        <TextBlock x:Name="recap_p1_replay" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Unit 1 : <LineBreak/>Unit 2 :</TextBlock>
                     </Viewbox>
 
                     <Viewbox x:Name="recap_p2_replay_viewbox" StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Column="1" Visibility="Hidden">
@@ -106,11 +106,13 @@
                     <TextBlock x:Name="adversary_points" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Points : 0</TextBlock>
                 </Viewbox>
             </Grid>
-            
+
         </Grid>
-        <Grid x:Name="map_view" Grid.Column="1"></Grid>
+        <ScrollViewer x:Name="scrollViewerMap" Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <Grid x:Name="map_view" Width="{Binding ActualWidth, ElementName=scrollViewerMap}" Height="{Binding ActualHeight, ElementName=scrollViewerMap}" MinHeight="500" MinWidth="500"></Grid>
+        </ScrollViewer>
         <local:InGameMenu x:Name="inGameMenuGrid" Visibility="Hidden" Grid.Column="0" Grid.ColumnSpan="2" IsVisibleChanged="removeBlur">
-            
+
         </local:InGameMenu>
         <!-- board generated in c# -->
     </Grid>

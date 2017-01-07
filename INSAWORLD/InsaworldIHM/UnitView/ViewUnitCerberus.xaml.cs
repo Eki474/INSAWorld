@@ -25,12 +25,14 @@ namespace InsaworldIHM.UnitView
         Uri source;
         Uri sourceselected;
         SoundPlayer player;
+        SoundPlayer deathplayer;
         public ViewUnitCerberus() : base()
         {
             source = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberus.png");
             sourceselected = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cerberusselected.jpg");
             Source = new BitmapImage(source);
             player = new SoundPlayer(InsaworldIHM.Properties.Resources.cerberus);
+            deathplayer = new SoundPlayer(InsaworldIHM.Properties.Resources.cerberusDeath);
         }
         override
         public void Select()
@@ -46,6 +48,11 @@ namespace InsaworldIHM.UnitView
         public override void Play()
         {
             player.Play();
+        }
+
+        public override void DeathPlay()
+        {
+            deathplayer.Play();
         }
     }
 }

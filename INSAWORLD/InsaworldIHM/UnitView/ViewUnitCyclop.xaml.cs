@@ -25,12 +25,14 @@ namespace InsaworldIHM.UnitView
         Uri source;
         Uri sourceselected;
         SoundPlayer player;
+        SoundPlayer deathplayer;
         public ViewUnitCyclop() : base()
         {
             source = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclop.png");
             sourceselected = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/races/cyclopselected.jpg");
             Source = new BitmapImage(source);
             player = new SoundPlayer(InsaworldIHM.Properties.Resources.cyclops);
+            deathplayer = new SoundPlayer(InsaworldIHM.Properties.Resources.cyclopDeath);
         }
         override
         public void Select()
@@ -46,6 +48,11 @@ namespace InsaworldIHM.UnitView
         public override void Play()
         {
             player.Play();
+        }
+
+        public override void DeathPlay()
+        {
+            deathplayer.Play();
         }
     }
 }

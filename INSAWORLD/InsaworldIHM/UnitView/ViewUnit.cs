@@ -12,5 +12,6 @@ namespace InsaworldIHM.UnitView
         public abstract void Select();
         public abstract void Unselect();
         public abstract void Play();
+        public abstract void DeathPlay();
     }
 }

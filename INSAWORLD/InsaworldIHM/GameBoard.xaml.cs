@@ -531,7 +531,8 @@ namespace InsaworldIHM
             //If the attacker dies remove its view
             if (selected.LifePoints == 0)
             {
-                Image i = unitToImage[selected];
+                ViewUnit i = unitToImage[selected];
+                i.DeathPlay();
                 map_view.Children.Remove(i);
                 i = null;
                 unitToImage.Remove(selected);
@@ -540,7 +541,8 @@ namespace InsaworldIHM
             //If the defender dies remove its view then update the attacker coordinates
             if (u.LifePoints == 0)
             {
-                Image i = unitToImage[u];
+                ViewUnit i = unitToImage[u];
+                i.DeathPlay();
                 map_view.Children.Remove(i);
                 i = null;
                 unitToImage.Remove(u);

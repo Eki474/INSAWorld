@@ -31,10 +31,9 @@ namespace InsaworldIHM.UnitView
                 case "Cyclops":
                     return new ViewUnitCyclop();
                 case "Cerberus":
-                    return new ViewUnitCerberus(); 
-
+                    return new ViewUnitCerberus();
+                default: throw new Exception("Unit Type Badly Given");
             }
-            throw new Exception("Unit Type Badly Given");
         }
     }
 }

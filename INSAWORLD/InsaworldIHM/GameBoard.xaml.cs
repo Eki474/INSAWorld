@@ -34,7 +34,8 @@ namespace InsaworldIHM
         List<Coord> selectedImage = new List<Coord>();
         Grid container = null;
         List<Unit> unitsToSelect;
-        private SoundPlayer mediaPlayer;
+        //private SoundPlayer mediaPlayer;
+        private MediaPlayer soundPlayer;
 
         /// <summary>
         /// constructor, create the game
@@ -45,8 +46,15 @@ namespace InsaworldIHM
         public GameBoard(ref Player p1, ref Player p2, int map)
         {
             InitializeComponent();
-            mediaPlayer = new SoundPlayer(InsaworldIHM.Properties.Resources.menu_song);
-            mediaPlayer.Play();
+            //mediaPlayer = new SoundPlayer(Properties.Resources.menu_song);
+            soundPlayer = new MediaPlayer();
+            soundPlayer.MediaFailed += (o, args) =>
+            {
+                MessageBox.Show("Media Failed!!");
+            };
+            soundPlayer.Open(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/sounds/menu_song.mp3", UriKind.Absolute));
+            soundPlayer.Play();
+            //mediaPlayer.Play();
             turn = 1;
             g = new Game(ref p1, ref p2);
             new NewGameCommand(g, map).Execute();
@@ -79,8 +87,11 @@ namespace InsaworldIHM
                 ReplayAsync();
             }else
             {
-                mediaPlayer = new SoundPlayer(InsaworldIHM.Properties.Resources.menu_song);
-                mediaPlayer.Play();
+                //mediaPlayer = new SoundPlayer(InsaworldIHM.Properties.Resources.menu_song);
+                //mediaPlayer.Play();
+                soundPlayer = new MediaPlayer();
+                soundPlayer.Open(new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/sounds/menu_song.wav"));
+                soundPlayer.Play();
                 map_view.MouseLeftButtonDown += map_viewLeftDown;
                 map_view.MouseRightButtonDown += map_viewRightDown;
             }
@@ -361,6 +372,7 @@ namespace InsaworldIHM
                 if (g.Player2.Lost() || g.Player1.Points > g.Player2.Points) winner = true;
                 var page = new EndingPage(winner, g.Player1, g.Player2);
                 page.Game = g;
+                soundPlayer.Stop();
                 mainWindow.Content = page;
             }
         }

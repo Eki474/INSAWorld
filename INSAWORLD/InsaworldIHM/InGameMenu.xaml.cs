@@ -23,7 +23,7 @@ namespace InsaworldIHM
     public partial class InGameMenu : Grid
     {
         Game game;
-        SoundPlayer player;
+
         public InGameMenu()
         {
             InitializeComponent();
@@ -33,7 +33,6 @@ namespace InsaworldIHM
         private void back_Click(object sender, RoutedEventArgs e)
         {
             Visibility = Visibility.Hidden;
-            player.Stop();
         }
 
         public Game Game

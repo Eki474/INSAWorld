@@ -526,10 +526,10 @@ namespace InsaworldIHM
         private void attackUnit(Unit u)
         {
             var cmd = new AttackUnit(selected, u, ref g);
-            unitToImage[selected].Play();
-            if (cmd.CanExecute()) cmd.Execute();
-            //If the attacker dies remove its view
-            if (selected.LifePoints == 0)
+
+            if (cmd.CanExecute()) { cmd.Execute(); unitToImage[selected].Play(); }
+                //If the attacker dies remove its view
+                if (selected.LifePoints == 0)
             {
                 ViewUnit i = unitToImage[selected];
                 i.DeathPlay();

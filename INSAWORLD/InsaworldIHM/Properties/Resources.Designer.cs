@@ -113,14 +113,5 @@ namespace InsaworldIHM.Properties {
                 return ResourceManager.GetStream("cyclops", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.IO.UnmanagedMemoryStream semblable à System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream menu_song {
-            get {
-                return ResourceManager.GetStream("menu_song", resourceCulture);
-            }
-        }
     }
 }

@@ -53,6 +53,9 @@
   <PropertyGroup>
     <StartupObject>InsaworldIHM.App</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>4.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -313,6 +316,8 @@
       <Link>INSAWORLDCPP2.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="4.ico" />
+    <Resource Include="Ressources\images\icon\4.ico" />
     <Content Include="Ressources\sounds\centaurDeath.wav" />
     <Content Include="Ressources\sounds\cerberusDeath.wav" />
     <Content Include="Ressources\sounds\cyclopDeath.wav" />

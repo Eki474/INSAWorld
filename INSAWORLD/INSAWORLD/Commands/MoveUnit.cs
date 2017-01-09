@@ -85,7 +85,7 @@ namespace INSAWORLD
 
             foreach (Unit u in opponentList)
             {
-                if (u.C.Equals(dest))
+                if (u.C.Equals(dest) && u.LifePoints>0)
                 {
                     return false;
                 }

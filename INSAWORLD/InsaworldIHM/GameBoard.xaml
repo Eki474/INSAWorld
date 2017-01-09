@@ -29,9 +29,10 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- turn number -->
-                <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="2">
-                    <TextBlock x:Name="turn_number" Foreground="White" Style="{DynamicResource Blank}" Grid.Column="0" Height="Auto" Width="Auto">Turn 1</TextBlock>
+                <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="2" Grid.Row="0" Grid.Column="0" >
+                    <TextBlock x:Name="turn_number" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Turn 1</TextBlock>
                 </Viewbox>
+
 
                 <!-- bouton de menu -->
                 <Button x:Name="menu" Content="Menu" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" MinWidth="75" Style="{DynamicResource Blank}" Foreground="White" Click="menu_Click" Grid.Column="1" MinHeight="18">
@@ -90,32 +91,41 @@
                     </Viewbox>
                 </Grid>
                 <!-- to end player turn and begin the other player turn -->
-                <Button x:Name="next_button" Content="Next turn" HorizontalAlignment="Right"  MinWidth="74" Width="Auto" Click="next_button_Click" Margin="2" Grid.Row="1" Visibility="Visible" />
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Viewbox Margin="2" Grid.Column="1" Stretch="Uniform" StretchDirection="Both" >
+                        <Button x:Name="next_button" Content="Next turn" HorizontalAlignment="Stretch"  Width="Auto" Click="next_button_Click" Visibility="Visible" />
+                    </Viewbox>
+                </Grid >
             </Grid>
 
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="103*" />
+                    <ColumnDefinition Width="73*" />
+                    <ColumnDefinition Width="30*"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- name of the player currently not playing -->
-                <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Column="0">
+                <Viewbox StretchDirection="Both" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"  Margin="4" Grid.Column="0">
                     <TextBlock x:Name="adversary_name" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Adversary Name</TextBlock>
                 </Viewbox>
                 <!-- points of the player currently not playing -->
-                <Viewbox StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Column="1">
+                <Viewbox StretchDirection="Both" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" Margin="4" Grid.Column="1">
                     <TextBlock x:Name="adversary_points" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Points : 0</TextBlock>
                 </Viewbox>
             </Grid>
 
         </Grid>
-        
+
         <!-- Scroll viewer when the map doesn't fit -->
         <ScrollViewer x:Name="scrollViewerMap" Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <Grid x:Name="map_view" Width="{Binding ActualWidth, ElementName=scrollViewerMap}" Height="{Binding ActualHeight, ElementName=scrollViewerMap}" MinHeight="500" MinWidth="500"></Grid>
         </ScrollViewer>
-        
+
         <!-- In geme menu to display on button click -->
         <local:InGameMenu x:Name="inGameMenuGrid" Visibility="Hidden" Grid.Column="0" Grid.ColumnSpan="2" IsVisibleChanged="removeBlur">
 

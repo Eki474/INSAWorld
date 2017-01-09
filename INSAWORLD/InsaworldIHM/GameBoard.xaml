@@ -16,10 +16,10 @@
         </Grid.ColumnDefinitions>
         <Grid x:Name="Specs" Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="24" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="24" />
+                <RowDefinition Height="24*" />
+                <RowDefinition Height="106*" />
+                <RowDefinition Height="179*" />
+                <RowDefinition Height="28*" />
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
@@ -35,11 +35,14 @@
 
 
                 <!-- bouton de menu -->
-                <Button x:Name="menu" Content="Menu" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" MinWidth="75" Style="{DynamicResource Blank}" Foreground="White" Click="menu_Click" Grid.Column="1" MinHeight="18">
-                    <Button.Background>
-                        <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" ></ImageBrush>
-                    </Button.Background>
-                </Button>
+                <Viewbox StretchDirection="Both" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1" >
+
+                    <Button x:Name="menu" Content="Menu" Style="{DynamicResource Blank}" Foreground="White" Click="menu_Click" MinWidth="60">
+                        <Button.Background>
+                            <ImageBrush ImageSource ="/Ressources/images/textures/button_zoom_modified.jpg" ></ImageBrush>
+                        </Button.Background>
+                    </Button>
+                </Viewbox>
             </Grid>
 
             <Grid Grid.Row="1">
@@ -65,11 +68,11 @@
 
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="24" />
+                    <RowDefinition Height="153*" />
+                    <RowDefinition Height="26*" />
                 </Grid.RowDefinitions>
                 <!-- spec of the selected unit -->
-                <Viewbox x:Name="selected_unit_spec_viewbox" StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5" Grid.Row="0" Visibility="Hidden">
+                <Viewbox x:Name="selected_unit_spec_viewbox" StretchDirection="Both" HorizontalAlignment="Left"   VerticalAlignment="Stretch"  Margin="5,5,0,5" Grid.Row="0" Visibility="Hidden">
                     <TextBlock x:Name="selected_unit_spec" Foreground="White" Style="{DynamicResource Blank}" Height="Auto" Width="Auto">Race<LineBreak/>Attack : 0<LineBreak/>Defense : 0<LineBreak/>Life : 0<LineBreak/>Move : 0</TextBlock>
                 </Viewbox>
 

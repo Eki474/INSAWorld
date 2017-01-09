@@ -161,13 +161,11 @@ namespace InsaworldIHM
                 {
                     EnAvantDisplay();
                 }
+                buttonOkCentaurs.Content = "Ok!";
             }
             else
             {
-                buttonCentaurs.Background = Brushes.White;
-                joueur--;
-                buttonOkCentaurs.IsChecked = false;
-                EnAvantDisplay();
+                buttonOkCentaurs.IsChecked = true;
             }
         }
 
@@ -234,13 +232,11 @@ namespace InsaworldIHM
                 {
                     EnAvantDisplay();
                 }
+                buttonOkCerberus.Content = "Ok!";
             }
             else
             {
-                buttonCerberus.Background = Brushes.White;
-                joueur--;
-                buttonOkCerberus.IsChecked = false;
-                EnAvantDisplay();
+                buttonOkCerberus.IsChecked = true;
             }
         }
 
@@ -309,13 +305,11 @@ namespace InsaworldIHM
                 {
                     EnAvantDisplay();
                 }
+                buttonOkCyclops.Content = "Ok!";
             }
             else
             {
-                buttonCyclops.Background = Brushes.White;
-                joueur--;
-                buttonOkCyclops.IsChecked = false;
-                EnAvantDisplay();
+                buttonOkCyclops.IsChecked = true;
             }
         }
 

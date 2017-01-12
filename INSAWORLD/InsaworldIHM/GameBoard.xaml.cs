@@ -88,6 +88,7 @@ namespace InsaworldIHM
             UpdateLeftSideView();
             mainWindow.Content = board;
             mainWindow.SoundPlayer.Open(new Uri(@Environment.CurrentDirectory + @"\Ressources\sounds\menu_song.wma"));
+
             mainWindow.SoundPlayer.Play();
             if (replayGame)
             {

@@ -247,48 +247,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Ressources\images\background\defeat.jpg" />
-    <Resource Include="Ressources\images\background\desert_background.jpg" />
-    <Resource Include="Ressources\images\background\desert_city.jpg" />
-    <Resource Include="Ressources\images\background\plain_background.jpg" />
-    <Resource Include="Ressources\images\background\plain_city.jpg" />
     <Resource Include="Ressources\images\background\race_background_1.jpg" />
     <Resource Include="Ressources\images\background\race_background_2.jpg" />
     <Resource Include="Ressources\images\background\race_background_3.jpg" />
     <Resource Include="Ressources\images\background\victory.jpg" />
-    <Resource Include="Ressources\images\background\volcano_background.jpg" />
-    <Resource Include="Ressources\images\background\volcano_city.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Ressources\images\centaurs\mecha1.jpg" />
-    <Resource Include="Ressources\images\centaurs\tank1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Ressources\images\cerberus\mecha1.jpg" />
-    <Resource Include="Ressources\images\cerberus\mecha2.jpg" />
-    <Resource Include="Ressources\images\cerberus\mecha3.jpg" />
-    <Resource Include="Ressources\images\cerberus\mecha4.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Ressources\images\cyclops\mecha1.jpg" />
-    <Resource Include="Ressources\images\cyclops\mecha2.jpg" />
-    <Resource Include="Ressources\images\cyclops\mecha3.jpg" />
-    <Resource Include="Ressources\images\cyclops\mecha4.jpg" />
-    <Resource Include="Ressources\images\cyclops\tank1.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Ressources\images\menu\1.jpg" />
-    <Resource Include="Ressources\images\menu\2.jpg" />
-    <Resource Include="Ressources\images\menu\3.jpg" />
-    <Resource Include="Ressources\images\menu\4.jpg" />
-    <Resource Include="Ressources\images\menu\war_mecha.jpg" />
-    <Resource Include="Ressources\images\menu\war_tank.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Ressources\images\textures\button.jpg" />
-    <Resource Include="Ressources\images\textures\desert.jpg" />
-    <Resource Include="Ressources\images\textures\plain.png" />
-    <Resource Include="Ressources\images\textures\swamp.png" />
-    <Resource Include="Ressources\images\textures\volcano.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -326,12 +294,6 @@
     <Resource Include="Ressources\images\textures\swamp_reduced_selected_can_move.jpg" />
     <Resource Include="Ressources\images\textures\volcano_reduced_selected_attack.jpg" />
     <Resource Include="Ressources\images\textures\volcano_reduced_selected_can_move.jpg" />
-    <Content Include="Ressources\sounds\centaurDeath.wav" />
-    <Content Include="Ressources\sounds\cerberusDeath.wav" />
-    <Content Include="Ressources\sounds\cyclopDeath.wav" />
-    <Content Include="Ressources\sounds\cyclops.wav" />
-    <Content Include="Ressources\sounds\cerberus.wav" />
-    <Content Include="Ressources\sounds\centaur.wav" />
     <Content Include="Ressources\sounds\menu_song.wma">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

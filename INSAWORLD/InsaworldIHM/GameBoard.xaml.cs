@@ -59,18 +59,24 @@ namespace InsaworldIHM
             GenerateMapView();
             map_view.MouseLeftButtonDown += map_viewLeftDown;
             map_view.MouseRightButtonDown += map_viewRightDown;
+            mainWindow.PreviewKeyDown += new KeyEventHandler(HandleEsc);
             inGameMenuGrid.Game = g;
             UnitsInitialization();
             GenerateLeftSideView();
             mainWindow.Content = board;
         }
 
-        /// <summary>
-        /// constructor, load a game (or replay)
-        /// </summary>
-        /// <param name="game">loaded game</param>
-        /// <param name="replayGame">true : replay - false : normal save</param>
-        public GameBoard(ref Game game, bool replayGame)
+    private void HandleEsc(object sender, KeyEventArgs e)
+    {
+            if (e.Key == Key.Escape)
+                menu_Click(null, null);
+    }
+    /// <summary>
+    /// constructor, load a game (or replay)
+    /// </summary>
+    /// <param name="game">loaded game</param>
+    /// <param name="replayGame">true : replay - false : normal save</param>
+    public GameBoard(ref Game game, bool replayGame)
         {
             
             InitializeComponent();
@@ -90,6 +96,7 @@ namespace InsaworldIHM
             {
                 map_view.MouseLeftButtonDown += map_viewLeftDown;
                 map_view.MouseRightButtonDown += map_viewRightDown;
+                mainWindow.PreviewKeyDown += new KeyEventHandler(HandleEsc);
             }
         }
         
@@ -99,6 +106,7 @@ namespace InsaworldIHM
         private async void ReplayAsync()
         {
             next_button.Visibility = Visibility.Hidden;
+            menu.Visibility = Visibility.Hidden;
             await Task.Delay(1000);
             foreach(ToCollect cmd in g.Rpz.Step)
             {
@@ -113,8 +121,10 @@ namespace InsaworldIHM
             }
             next_button_Click(null, null);
             next_button.Visibility = Visibility.Visible;
+            menu.Visibility = Visibility.Visible;
             map_view.MouseLeftButtonDown += map_viewLeftDown;
             map_view.MouseRightButtonDown += map_viewRightDown;
+            mainWindow.PreviewKeyDown += new KeyEventHandler(HandleEsc);
         }
 
         /// <summary>

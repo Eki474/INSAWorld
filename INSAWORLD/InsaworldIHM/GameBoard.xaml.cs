@@ -119,6 +119,8 @@ namespace InsaworldIHM
                 UpdateRecapTabReplay();
                 await Task.Delay(1000);
             }
+            recap_p1_replay_viewbox.Visibility = Visibility.Hidden;
+            recap_p2_replay_viewbox.Visibility = Visibility.Hidden;
             next_button_Click(null, null);
             next_button.Visibility = Visibility.Visible;
             menu.Visibility = Visibility.Visible;

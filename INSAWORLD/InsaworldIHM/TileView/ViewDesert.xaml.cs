@@ -23,6 +23,8 @@ namespace InsaworldIHM.TileView
     {
         Uri source;
         Uri sourceselected;
+        Uri sourceselectedCanMove;
+        Uri sourceselectedAttack;
 
 
         /// <summary>
@@ -32,6 +34,8 @@ namespace InsaworldIHM.TileView
         {
             source = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/desert_reduced.jpg");
             sourceselected = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/desert_reduced_selected.jpg");
+            sourceselectedCanMove = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/desert_reduced_selected_can_move.jpg");
+            sourceselectedAttack = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/desert_reduced_selected_attack.jpg");
             Source = new BitmapImage(source);
         }
 
@@ -53,5 +57,14 @@ namespace InsaworldIHM.TileView
             Source = new BitmapImage(source);
         }
 
+        public override void SelectAttack()
+        {
+            Source = new BitmapImage(sourceselectedAttack);
+        }
+
+        public override void SelectMove()
+        {
+            Source = new BitmapImage(sourceselectedCanMove);
+        }
     }
 }

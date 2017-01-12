@@ -21,7 +21,7 @@ namespace InsaworldIHM.TileView
     /// </summary>
     public partial class ViewVolcano : ViewTile
     {
-        Uri source; Uri sourceselected;
+        Uri source; Uri sourceselected;Uri sourceselectedCanMove; Uri sourceselectedAttack;
 
         /// <summary>
         /// constructor
@@ -30,6 +30,8 @@ namespace InsaworldIHM.TileView
         {
             source = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/volcano_reduced.jpg");
             sourceselected = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/volcano_reduced_selected.jpg");
+            sourceselectedCanMove = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/volcano_reduced_selected_can_move.jpg");
+            sourceselectedAttack = new Uri("pack://application:,,,/InsaworldIHM;component/Ressources/images/textures/volcano_reduced_selected_attack.jpg");
             Source = new BitmapImage(source);
         }
 
@@ -49,6 +51,16 @@ namespace InsaworldIHM.TileView
         public void Unselect()
         {
             Source = new BitmapImage(source);
+        }
+
+        public override void SelectAttack()
+        {
+            Source = new BitmapImage(sourceselectedAttack);
+        }
+
+        public override void SelectMove()
+        {
+            Source = new BitmapImage(sourceselectedCanMove);
         }
 
 

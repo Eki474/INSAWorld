@@ -374,6 +374,7 @@ namespace InsaworldIHM
                     turn++;
                     turn_number.Text = "Turn " + turn;
                 }
+                updateTextSpec();
             }
             else
             {
@@ -522,6 +523,13 @@ namespace InsaworldIHM
                     int target = rnd.Next(0, unitToAttack.Count);
                     attackUnit(unitToAttack[target]);
                 }
+                if(!object.ReferenceEquals(null, selected))
+                {
+                    unselectTiles();
+                    suggestMoveTile();
+                    selectTilesAround(selected);
+                    
+                }
                 updateTextSpec();
             }
         }
@@ -556,6 +564,7 @@ namespace InsaworldIHM
                 updateCoord();
                 unselect();
             }
+            
         }
 
         /// <summary>
@@ -570,8 +579,7 @@ namespace InsaworldIHM
                 cmd.Execute();
                 updateCoord();
             }
-            unselectTiles();
-            suggestMoveTile();
+            
         }
 
         /// <summary>
@@ -707,7 +715,103 @@ namespace InsaworldIHM
             unitToImage[selected].BringIntoView();
             unitToImage[selected].Select();
             suggestMoveTile();
+            selectTilesAround(u);
             updateTextSpec();
+        }
+
+        private void selectTilesAround(Unit u)
+        {
+            Player notplaying;
+            Coord c = u.C;
+            if (!g.Player1.Playing) notplaying = g.Player1;
+            else notplaying = g.Player2;
+            Coord work;
+            bool found;
+            if (c.X > 0)
+            {
+                found = false;
+                work = new Coord(c.X - 1, c.Y);
+                if (u.Race.TryMove(u, work, ref g))
+                {
+                    selectedImage.Add(work);
+                    foreach (Unit ui in notplaying.UnitsList)
+                    {
+                        if (ui.C.Equals(work)) { found = true; break; }
+                    }
+                    if (found)
+                    {
+                        if (!u.Played)
+                        {
+                            coordToTileView[work].SelectAttack();
+                        }
+                    }
+                    else coordToTileView[work].SelectMove();
+                }
+            }
+            if (c.X < g.Map.Taille-1)
+            {
+                found = false;
+                work = new Coord(c.X + 1, c.Y);
+                if (u.Race.TryMove(u, work, ref g))
+                {
+                    selectedImage.Add(work);
+                    foreach (Unit ui in notplaying.UnitsList)
+                    {
+                        if (ui.C.Equals(work)) { found = true; break; }
+                    }
+                    if (found)
+                    {
+                        if (!u.Played)
+                        {
+                            coordToTileView[work].SelectAttack();
+                        }
+                    }
+                    else coordToTileView[work].SelectMove();
+                }
+
+            }
+            if (c.Y > 0)
+            {
+                found = false;
+                work = new Coord(c.X, c.Y - 1);
+                if (u.Race.TryMove(u, work, ref g))
+                {
+                    selectedImage.Add(work);
+                    foreach (Unit ui in notplaying.UnitsList)
+                    {
+                        if (ui.C.Equals(work)) { found = true; break; }
+                    }
+                    if (found)
+                    {
+                        if (!u.Played)
+                        {
+                            coordToTileView[work].SelectAttack();
+                        }
+                    }
+                    else coordToTileView[work].SelectMove();
+                }
+            }
+            if (c.Y < g.Map.Taille-1)
+            {
+                found = false;
+                work = new Coord(c.X, c.Y+1);
+                if (u.Race.TryMove(u, work, ref g))
+                {
+                    selectedImage.Add(work);
+                    foreach (Unit ui in notplaying.UnitsList)
+                    {
+                        if (ui.C.Equals(work)) { found = true; break; }
+                    }
+                    if (found)
+                    {
+                        if (!u.Played)
+                        {
+                            coordToTileView[work].SelectAttack();
+                        }
+                    }
+                    else coordToTileView[work].SelectMove();
+                }
+            }
         }
 
         /// <summary>
@@ -716,12 +820,9 @@ namespace InsaworldIHM
         private void suggestMoveTile()
         {
             var listString = BuilderMap.Instance.suggestMove(ref g, selected);
-            selectedImage = new List<Coord>();
 
             if (!object.ReferenceEquals(listString, null))
             {
-                coordToTileView[selected.C].Select();
-                selectedImage.Add(selected.C);
                 // déplacement: 0 -> 1 <- 2 î 3 V
                 foreach (String s in listString)
                 {
@@ -756,6 +857,8 @@ namespace InsaworldIHM
             {
                 coordToTileView[c].Unselect();
             }
+
+            selectedImage = new List<Coord>();
         }
 
         /// <summary>

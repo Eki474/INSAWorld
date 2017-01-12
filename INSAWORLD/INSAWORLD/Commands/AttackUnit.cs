@@ -82,7 +82,7 @@ namespace INSAWORLD
             lostLifeSave = lostLife;
             if (lostLife > 0) //defender lost points
             {
-                if (def.LifePoints < lostLife)
+                if (def.LifePoints <= lostLife)
                 {
                     def.LifePoints = 0;
                     game.Cleaner();
@@ -95,7 +95,7 @@ namespace INSAWORLD
             else if (lostLife < 0) //attacker lost points
             {
                 lostLife = -lostLife;
-                if (unit.LifePoints < lostLife)
+                if (unit.LifePoints <= lostLife)
                 {
                     unit.LifePoints = 0;
                     game.Cleaner();

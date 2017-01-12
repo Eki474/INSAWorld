@@ -13,6 +13,17 @@ namespace InsaworldIHM.TileView
         /// select a tile
         /// </summary>
         public abstract void Select();
+
+        /// <summary>
+        /// select a tile to attack
+        /// </summary>
+        public abstract void SelectAttack();
+
+        /// <summary>
+        /// select a tile to move to
+        /// </summary>
+        public abstract void SelectMove();
+
         /// <summary>
         /// unselect a tile
         /// </summary>
